@@ -1,3 +1,6 @@
+@section('title')
+{{ trans('main-sidebar-translate.Dashboard') }}
+@endsection
 <!DOCTYPE html>
 <html lang="en">
 

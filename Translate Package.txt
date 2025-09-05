@@ -1,0 +1,79 @@
+*__* mcamara/laravel-localization (https://github.com/mcamara/laravel-localization)
+
+
+1- composer require mcamara/laravel-localization
+
+2- php artisan vendor:publish --provider="Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider"
+
+
+*--------------------------------------------------------------------------------------------------------------*
+
+Register Middleware
+You may register the package middleware in the app/Http/Kernel.php file:
+
+<?php namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel {
+    /**
+    * The application's route middleware.
+    *
+    * @var array
+    */
+    protected $middlewareAliases = [
+        /**** OTHER MIDDLEWARE ****/
+        'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
+    ];
+}
+If you are using Laravel 11, you may register in bootstrap/app.php file in closure withMiddleware:
+
+return Application::configure(basePath: dirname(__DIR__))
+    // Other application configurations
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            /**** OTHER MIDDLEWARE ALIASES ****/
+            'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+            'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+            'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+            'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+            'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
+        ]);
+    })
+
+*--------------------------------------------------------------------------------------------------------------*
+
+// routes/web.php
+
+Route::group([
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+], function(){
+    Route::get('/', function()
+	{
+		return view('dashboard');
+	});
+});
+
+
+*--------------------------------------------------------------------------------------------------------------*
+
+                <li class="nav-item dropdown ">
+                    <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-language"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
+                        <div class="dropdown-header ">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <a rel="alternate" class="dropdown-item" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                            {{ $properties['native'] }}
+                                        </a>
+                                @endforeach
+                        </div>
+                    </div>
+                </li>

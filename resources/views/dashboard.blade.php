@@ -7,13 +7,14 @@
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
     <meta name="author" content="potenzaglobalsolutions.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
 </head>
 
-<body>
+<body style="font-family: 'Cairo', sans-serif">
 
-    <div class="wrapper">
+    <div class="wrapper" style="font-family: 'Cairo', sans-serif">
 
         <!--=================================
  preloader -->

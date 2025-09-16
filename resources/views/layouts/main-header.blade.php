@@ -113,7 +113,7 @@
         <li class="nav-item dropdown mr-30">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                 aria-haspopup="true" aria-expanded="false">
-                <img src="{{ asset('assets/images/profile-avatar.jpg') }}" alt="avatar">
+                <img src="{{ asset('assets/images/profile-image.png') }}" alt="avatar">
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">
@@ -137,7 +137,7 @@
                         <button type="submit" class="dropdown-item">
                             <i class="text-danger ti-unlock"></i> Logout
                         </button>
-                    </form>
+                </form>
             </div>
         </li>
     </ul>

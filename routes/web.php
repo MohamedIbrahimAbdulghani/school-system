@@ -21,10 +21,10 @@ Route::group(
     // ==============================
     // Public Routes
     // ==============================
-
     Route::get('/', function () {
         return view('welcome');
     });
+
 
     // ==============================
     // Authenticated Routes
@@ -37,6 +37,7 @@ Route::group(
         Route::get('dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
+
 
         // Grades Routes (require authentication)
         Route::resource('grades', GradesController::class);

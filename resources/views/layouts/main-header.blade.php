@@ -21,7 +21,7 @@
             <div class="search">
                 <a class="search-btn not_click" href="javascript:void(0);"></a>
                 <div class="search-box not-click">
-                    <input type="text" class="not-click form-control" placeholder="Search" value=""
+                    <input type="text" class="not-click form-control" placeholder="{{ trans('navbar.search') }}" value=""
                         name="search">
                     <button class="search-button" type="submit">
                         <i class="fa fa-search not-click"></i>
@@ -46,20 +46,20 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
                 <div class="dropdown-header notifications">
-                    <strong>Notifications</strong>
+                    <strong>{{ trans('navbar.notifications') }}</strong>
                     <span class="badge badge-pill badge-warning">05</span>
                 </div>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">New registered user <small
-                        class="float-right text-muted time">Just now</small> </a>
-                <a href="#" class="dropdown-item">New invoice received <small
-                        class="float-right text-muted time">22 mins</small> </a>
-                <a href="#" class="dropdown-item">Server error report<small
-                        class="float-right text-muted time">7 hrs</small> </a>
-                <a href="#" class="dropdown-item">Database report<small class="float-right text-muted time">1
-                        day</small> </a>
-                <a href="#" class="dropdown-item">Order confirmation<small class="float-right text-muted time">2
-                        days</small> </a>
+                <a href="#" class="dropdown-item">{{ trans('navbar.new_user') }}<small
+                        class="float-right text-muted time">{{ trans('navbar.just_now') }}</small> </a>
+                <a href="#" class="dropdown-item"> {{ trans('navbar.new_invoice') }}<small
+                        class="float-right text-muted time">22{{ trans('navbar.minutes') }}</small> </a>
+                <a href="#" class="dropdown-item">{{ trans('navbar.server_error') }}<small
+                        class="float-right text-muted time">7{{ trans('navbar.hours') }}</small> </a>
+                <a href="#" class="dropdown-item">{{ trans('navbar.db_report') }}<small class="float-right text-muted time">1
+                        {{ trans('navbar.days') }}</small> </a>
+                <a href="#" class="dropdown-item">{{ trans('navbar.order_confirm') }}<small class="float-right text-muted time">2
+                        {{ trans('navbar.days') }}</small> </a>
             </div>
         </li>
 
@@ -87,23 +87,23 @@
                 aria-expanded="true"> <i class="ti-view-grid"></i> </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-big">
                 <div class="dropdown-header">
-                    <strong>Quick Links</strong>
+                    <strong>{{ trans('navbar.quick_links') }}</strong>
                 </div>
                 <div class="dropdown-divider"></div>
                 <div class="nav-grid">
                     <a href="#" class="nav-grid-item"><i class="ti-files text-primary"></i>
-                        <h5>New Task</h5>
+                        <h5>{{ trans('navbar.new_task') }}</h5>
                     </a>
                     <a href="#" class="nav-grid-item"><i class="ti-check-box text-success"></i>
-                        <h5>Assign Task</h5>
+                        <h5>{{ trans('navbar.assign_task') }}</h5>
                     </a>
                 </div>
                 <div class="nav-grid">
                     <a href="#" class="nav-grid-item"><i class="ti-pencil-alt text-warning"></i>
-                        <h5>Add Orders</h5>
+                        <h5>{{ trans('navbar.add_orders') }}</h5>
                     </a>
                     <a href="#" class="nav-grid-item"><i class="ti-truck text-danger "></i>
-                        <h5>New Orders</h5>
+                        <h5>{{ trans('navbar.new_orders') }}</h5>
                     </a>
                 </div>
             </div>
@@ -125,17 +125,17 @@
                     </div>
                 </div>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
-                <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
-                <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
-                <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
+                <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>{{ trans('navbar.activity') }}</a>
+                <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>{{ trans('navbar.messages') }}</a>
+                <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>{{ trans('navbar.profile') }}</a>
+                <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>{{ trans('navbar.projects') }}<span
                         class="badge badge-info">6</span> </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
+                <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>{{ trans('navbar.settings') }}</a>
                 <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="dropdown-item">
-                            <i class="text-danger ti-unlock"></i> Logout
+                            <i class="text-danger ti-unlock"></i> {{ trans('auth.Logout') }}
                         </button>
                 </form>
             </div>

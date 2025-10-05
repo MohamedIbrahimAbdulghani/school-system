@@ -5,7 +5,7 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ trans('translate.Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one') }}
+            {{ trans('auth.Forgot your password? No problem...') }}
         </div>
 
         @session('status')
@@ -20,13 +20,13 @@
             @csrf
 
             <div class="block">
-                <x-label for="email" value="{{ trans('translate.Email') }}" />
+                <x-label for="email" value="{{ trans('auth.Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <x-button>
-                    {{ trans('translate.Email Password Reset Link') }}
+                    {{ trans('auth.Email Password Reset Link') }}
                 </x-button>
             </div>
         </form>

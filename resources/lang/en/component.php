@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'Components'      => 'Components',
+    'Elements'        => 'Elements',
+    'Accordions'      => 'Accordions',
+    'Alerts'          => 'Alerts',
+    'Button'          => 'Button',
+    'Colorpicker'     => 'Color Picker',
+    'Dropdown'        => 'Dropdown',
+    'Lists'           => 'Lists',
+    'Modal'           => 'Modal',
+    'Nav'             => 'Navigation',
+    'Nicescroll'      => 'Nice Scroll',
+    'PricingTable'    => 'Pricing Table',
+    'Ratings'         => 'Ratings',
+    'DatePicker'      => 'Date Picker',
+    'Tabs'            => 'Tabs',
+    'Typography'      => 'Typography',
+    'PopoverTooltips' => 'Popover & Tooltips',
+    'Progress'        => 'Progress',
+    'Switch'          => 'Switch',
+    'Sweetalert2'     => 'Sweetalert2',
+    'Touchspin'       => 'Touchspin',
+];

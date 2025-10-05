@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'Components'      => 'المكونات',
+    'Elements'        => 'العناصر',
+    'Accordions'      => 'الأكورديون',
+    'Alerts'          => 'التنبيهات',
+    'Button'          => 'الأزرار',
+    'Colorpicker'     => 'أداة اختيار الألوان',
+    'Dropdown'        => 'القائمة المنسدلة',
+    'Lists'           => 'القوائم',
+    'Modal'           => 'النوافذ المنبثقة',
+    'Nav'             => 'التنقل',
+    'Nicescroll'      => 'شريط تمرير جميل',
+    'PricingTable'    => 'جدول الأسعار',
+    'Ratings'         => 'التقييمات',
+    'DatePicker'      => 'منتقي التاريخ',
+    'Tabs'            => 'التبويبات',
+    'Typography'      => 'الخطوط',
+    'PopoverTooltips' => 'التلميحات',
+    'Progress'        => 'شريط التقدم',
+    'Switch'          => 'المفاتيح',
+    'Sweetalert2'     => 'التنبيهات المتقدمة',
+    'Touchspin'       => 'أداة الأرقام',
+];

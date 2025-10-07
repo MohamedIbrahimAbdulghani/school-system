@@ -2,8 +2,8 @@
 
 return [
     'Components'      => 'Components',
-    'Elements'        => 'Elements',
-    'Accordions'      => 'Accordions',
+    'Grades'        => 'Grades',
+    'Grades_list'      => 'Grades_list',
     'Alerts'          => 'Alerts',
     'Button'          => 'Button',
     'Colorpicker'     => 'Color Picker',

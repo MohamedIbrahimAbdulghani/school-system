@@ -37,13 +37,14 @@
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
                             <div class="pull-left">
                                 <i class="ti-palette"></i>
-                                <span class="right-nav-text">{{ trans('component.Elements') }}</span>
+                                <span class="right-nav-text">{{ trans('component.Grades') }}</span>
                             </div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="elements" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="accordions.html">{{ trans('component.Accordions') }}</a></li>
+                            <li><a href="{{route('grades.index')}}">{{ trans('component.Grades_list') }}</a></li>
+
                             <li><a href="alerts.html">{{ trans('component.Alerts') }}</a></li>
                             <li><a href="button.html">{{ trans('component.Button') }}</a></li>
                             <li><a href="colorpicker.html">{{ trans('component.Colorpicker') }}</a></li>

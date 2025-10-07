@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Grades;
 
 use App\Models\grades;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class GradesController extends Controller
 {
@@ -12,7 +13,8 @@ class GradesController extends Controller
      */
     public function index()
     {
-
+        $grades = grades::all();
+        return view('pages/Grades/grades', compact('grades'));
     }
 
     /**

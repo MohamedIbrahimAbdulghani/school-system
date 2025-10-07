@@ -1,16 +1,10 @@
 <?php
 
-use App\Http\Controllers\GradesController;
+use App\Http\Controllers\Grades\GradesController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 
-
-// Route::group(['middleware' => ['guest']], function() {
-//     Route::get('/', function() {
-//         return view('auth.login');
-//     });
-// });
 
 Route::group(
 [
@@ -26,6 +20,16 @@ Route::group(
     });
 
 
+    // 🟢 Login Routes (only for guests)
+    Route::middleware('guest')->group(function () {
+        // صفحة تسجيل الدخول
+        Route::get('/login', [CustomAuthenticatedSessionController::class, 'create'])
+            ->name('login');
+
+        // معالجة تسجيل الدخول
+        Route::post('/login', [CustomAuthenticatedSessionController::class, 'store']);
+    });
+
     // ==============================
     // Authenticated Routes
     // ==============================
@@ -37,7 +41,6 @@ Route::group(
         Route::get('dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-
 
         // Grades Routes (require authentication)
         Route::resource('grades', GradesController::class);

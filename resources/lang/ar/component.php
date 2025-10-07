@@ -2,8 +2,8 @@
 
 return [
     'Components'      => 'المكونات',
-    'Elements'        => 'العناصر',
-    'Accordions'      => 'الأكورديون',
+    'Grades'        => 'المراحل الدراسية',
+    'Grades_list'      => 'قائمة المراحل الدراسية',
     'Alerts'          => 'التنبيهات',
     'Button'          => 'الأزرار',
     'Colorpicker'     => 'أداة اختيار الألوان',

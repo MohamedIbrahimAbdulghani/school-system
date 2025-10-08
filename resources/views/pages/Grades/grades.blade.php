@@ -23,11 +23,26 @@
 <!-- breadcrumb -->
 @endsection
 @section('content')
+
+
 <!-- row -->
 <div class="row">
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
+
+            {{-- Start Show Error Messages --}}
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            {{-- End Show Error Messages --}}
+
                 <button type="button" class="button x-small mb-2" data-toggle="modal" data-target="#exampleModal">{{trans('grades.add_grade')}}</button>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped table-bordered p-0">
@@ -40,15 +55,15 @@
                           </tr>
                       </thead>
                       <tbody>
+                        <?php $counter = 1; ?>
                         @foreach($grades as $grade)
-                        <?php $counter = 0 ?>
                         <tr>
-                            <td><?php echo $counter++ ?></td>
+                            <td><?php echo $counter++ ; ?></td>
                             <td>{{$grade->name}}</td>
-                            <td>{{$grade->note}}</td>
+                            <td>{{$grade->notes}}</td>
                             <td>
                                 <button class='btn btn-info btn-sm' data-toggle="modal" data-target="#edit{{$grade->id}}" title="{{trans('grades.edit')}}"><i class="fa fa-edit"></i></button>
-                                <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$grade->id}}" title="{{trans('grades.delete')}}"></button>
+                                <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$grade->id}}" title="{{trans('grades.delete')}}"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         @endforeach
@@ -67,9 +82,7 @@
         </div>
     </div>
 
-
-    {{-- modal --}}
-    <!-- Modal -->
+{{-- Start Modal --}}
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -78,17 +91,17 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
-          {{-- add form--}}
-          <form action="{{ route('grades.store') }}" method="post">
+        {{-- add form--}}
+        <form action="{{ route('grades.store') }}" method="post">
             @csrf
             <div class="row">
                 <div class="col">
                     <label for="name" class="mr-sm-2">{{trans('grades.stage_name_ar')}} : </label>
-                    <input type="text" id="name" name="name" class="form-control" required>
+                    <input type="text" id="name" name="name" class="form-control" >
                 </div>
                 <div class="col">
                     <label for="name_en" class="mr-sm-2">{{trans('grades.stage_name_en')}} : </label>
-                    <input type="text" id="name_en" name="name_en" class="form-control" required>
+                    <input type="text" id="name_en" name="name_en" class="form-control" >
                 </div>
             </div>
             <div class="form-group">
@@ -97,16 +110,14 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-success">{{trans('grades.submit')}}</button>
-            </div>
-          </form>
-        </div>
-
-        <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>
         </div>
-      </div>
+        </form>
+        </div>
     </div>
-  </div>
+    </div>
+</div>
+{{-- End Modal --}}
 
 </div>
 <!-- row closed -->

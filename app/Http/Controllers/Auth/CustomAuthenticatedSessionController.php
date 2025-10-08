@@ -8,6 +8,34 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CustomAuthenticatedSessionController
 {
+    /**
+     * عرض صفحة تسجيل الدخول
+     */
+    public function create()
+    {
+        return view('auth.login');
+    }
+
+    /**
+     * تنفيذ عملية تسجيل الدخول
+     */
+    public function store(Request $request)
+    {
+        // تحقق من بيانات المستخدم
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            // بعد تسجيل الدخول، وجّه المستخدم إلى الـ dashboard
+            return redirect()->intended('dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'بيانات الدخول غير صحيحة.',
+        ]);
+    }
+
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();

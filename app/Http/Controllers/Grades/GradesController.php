@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Grades;
 use App\Models\grades;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreGradeRequest;
 
 class GradesController extends Controller
 {
@@ -28,9 +29,22 @@ class GradesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreGradeRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        /****************************************    This is type for translation in database ******************************** */
+            // $translations = [
+            //     'ar' => $request->name,
+            //     'en' => $request->name_en
+            // ];
+            // grades->setTranslations('name', $translations);
+        /****************************************    This is type for translation in database ******************************** */
+
+        $grades = grades::create([
+            'name' => ['ar' => $request->name, 'en' => $request->name_en], // this is to enter 2 forma from name ( arabic + english )
+            'notes' => $request->notes,
+        ]);
     }
 
     /**

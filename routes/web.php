@@ -6,6 +6,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 
 
+
+
 Route::group(
 [
     'prefix' => LaravelLocalization::setLocale(),
@@ -48,4 +50,5 @@ Route::group(
         // Logout Route
         Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
     });
+
 });

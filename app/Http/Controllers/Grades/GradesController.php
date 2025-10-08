@@ -31,20 +31,28 @@ class GradesController extends Controller
      */
     public function store(StoreGradeRequest $request)
     {
-        $validated = $request->validated();
+        try {
 
-        /****************************************    This is type for translation in database ******************************** */
-            // $translations = [
-            //     'ar' => $request->name,
-            //     'en' => $request->name_en
-            // ];
-            // grades->setTranslations('name', $translations);
-        /****************************************    This is type for translation in database ******************************** */
+            $validated = $request->validated();
 
-        $grades = grades::create([
-            'name' => ['ar' => $request->name, 'en' => $request->name_en], // this is to enter 2 forma from name ( arabic + english )
-            'notes' => $request->notes,
-        ]);
+            /****************************************    This is type for translation in database ******************************** */
+                // $translations = [
+                //     'ar' => $request->name,
+                //     'en' => $request->name_en
+                // ];
+                // grades->setTranslations('name', $translations);
+            /****************************************    This is type for translation in database ******************************** */
+
+            $grades = grades::create([
+                'name' => ['ar' => $request->name, 'en' => $request->name_en], // this is to enter 2 forma from name ( arabic + english )
+                'notes' => $request->notes,
+            ]);
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('grades.index');
+
+        } catch(\Exception $exc) {
+            return redirect()->back()->withErrors(['error' => $exc->getMessage()]);
+        }
     }
 
     /**

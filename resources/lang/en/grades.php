@@ -15,6 +15,7 @@ return [
     'name' => 'name',
     'processes' => 'processes',
     'edit' => 'edit',
+    'update' => 'update',
     'delete' => 'delete',
     'close' => 'close',
 ];

@@ -74,16 +74,27 @@ class GradesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, grades $grades)
+    public function update(StoreGradeRequest $request, $id)
     {
-        //
+        $validated = $request->validated();
+
+        $grades = grades::findOrFail($id);
+        $grades->update([
+            'name' => ['ar' => $request->name, 'en' => $request->name_en], // this is to enter 2 forma from name ( arabic + english )
+                'notes' => $request->notes,
+        ]);
+        toastr()->success(trans('messages.update'));
+        return redirect()->route('grades.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(grades $grades)
+    public function destroy(Request $request, $id)
     {
-        //
+        $grades = grades::findOrFail($id);
+        $grades->delete();
+        toastr()->success(trans('messages.delete'));
+        return redirect()->route('grades.index');
     }
 }

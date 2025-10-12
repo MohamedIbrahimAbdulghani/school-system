@@ -24,7 +24,6 @@ class StoreGradeRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:255',
             'name_en' => 'required|min:3|max:255',
-            'notes' => 'required',
         ];
     }
     // this function to make message for validations

@@ -123,20 +123,12 @@
                                         @method('DELETE')
                                         <div class="row">
                                             <div class="col">
-                                                <label for="name" class="mr-sm-2">{{trans('grades.stage_name_ar')}} : </label>
+                                                <label for="name" class="mr-sm-2">{{trans('grades.warning_grade')}}</label>
                                                 <input type="text" name="name" id="name"  class="form-control"  value="{{$grade->name}}" readonly>
-
                                                 <input type="hidden" name="id" value={{$grade->id}}>
                                             </div>
-                                            <div class="col">
-                                                <label for="name_en" class="mr-sm-2">{{trans('grades.stage_name_en')}} : </label>
-                                                <input type="text" name="name_en" id="name_en" class="form-control" value="{{$grade->getTranslation('name', 'en')}}" readonly >
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">{{trans('grades.notes')}} : </label>
-                                            <textarea class="form-control" name="notes" id="notes"  rows="3" readonly> {{$grade->notes}}</textarea>
-                                        </div>
+
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-danger">{{trans('grades.delete')}}</button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>

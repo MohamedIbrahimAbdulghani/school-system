@@ -34,13 +34,12 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#classes-menu">
                             <div class="pull-left"><i class="fa fa-building"></i><span
-                                    class="right-nav-text">{{trans('main-side.classes')}}</span></div>
+                                    class="right-nav-text">{{trans('classrooms.List_classes')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="classes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">Events Calendar </a> </li>
-                            <li> <a href="calendar-list.html">List Calendar</a> </li>
+                            <li> <a href="classrooms">{{trans('classrooms.List_classes')}}</a> </li>
                         </ul>
                     </li>
 

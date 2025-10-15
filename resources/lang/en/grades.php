@@ -15,6 +15,7 @@ return [
     'name' => 'name',
     'processes' => 'processes',
     'edit' => 'edit',
+    'exists' => 'The field already exists',
     'update' => 'update',
     'delete' => 'delete',
     'close' => 'close',

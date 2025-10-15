@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Grades\GradesController;
+use App\Http\Controllers\ClassRooms\ClassRoomsController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
@@ -46,6 +47,9 @@ Route::group(
 
         // Grades Routes (require authentication)
         Route::resource('grades', GradesController::class);
+
+        // ClassRooms Routes (require authentication)
+        Route::resource('classrooms', ClassRoomsController::class);
 
         // Logout Route
         Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');

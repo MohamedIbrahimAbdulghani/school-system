@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ClassRooms;
+namespace App\Http\Controllers\Classrooms;
 
 use App\Models\ClassRooms;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class ClassRoomsController extends Controller
      */
     public function index()
     {
-        return view('pages.classrooms.classroom');
+        return view('pages.Classrooms.classrooms');
     }
 
     /**

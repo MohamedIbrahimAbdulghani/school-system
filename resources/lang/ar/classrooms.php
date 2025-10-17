@@ -8,8 +8,6 @@ return [
   'edit_class'=> 'تعديل صف',
   'delete_class'=> 'حذف صف',
   'Warning_class'=> 'هل انت متاكد من عملية الحذف ؟',
-  'stage_name_ar' => 'اسم الصف بالعربية',
-  'stage_name_en' => 'اسم الصف بالانجليزية',
   'submit' => 'حفظ البيانات',
   'Name_class'=>'اسم الصف بالعربية',
   'Name_class_en'=>'اسم الصف بالانجلزية',

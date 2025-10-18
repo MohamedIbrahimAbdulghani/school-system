@@ -174,6 +174,8 @@ return [
         'address' => 'address',
         'image' => 'image',
         'date' => 'date',
+        'class_name_ar' => 'class_name_ar',
+        'class_name_en' => 'class_name_en',
     ],
 
 ];

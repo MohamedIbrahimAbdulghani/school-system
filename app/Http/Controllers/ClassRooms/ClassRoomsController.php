@@ -6,6 +6,7 @@ use App\Models\ClassRooms;
 use App\Models\grades;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreClassRoomRequest;
 
 class ClassRoomsController extends Controller
 {
@@ -30,9 +31,21 @@ class ClassRoomsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreClassRoomRequest $request)
     {
-        return $request->List_Classes;die;
+        try {
+            $List_Classes = $request->List_Classes;
+            foreach($List_Classes as $List_Class) {
+                $classroom = ClassRooms::create([
+                    'name_class' => ['ar' => $List_Class['class_name_ar'], 'en' => $List_Class['class_name_en']], // this is to enter 2 forma from name ( arabic + english )
+                    'grade_id' => $List_Class['grade_id'],
+                ]);
+            }
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('classrooms.index');
+        } catch(\Exception $exc) {
+            return redirect()->back()->withErrors(['error' => $exc->getMessage()]);
+        }
     }
 
     /**

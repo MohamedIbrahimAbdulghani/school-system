@@ -46,25 +46,25 @@
                     <table id="datatable" class="table table-striped table-bordered p-0">
                         <thead>
                           <tr>
-                              <th>#</th>
-                              <th>{{trans('classrooms.Name_class')}}</th>
-                              <th>{{trans('classrooms.Name_Grade')}}</th>
-                              <th>{{trans('classrooms.Processes')}}</th>
+                            <th>#</th>
+                            <th>{{trans('classrooms.Name_class')}}</th>
+                            <th>{{trans('classrooms.Name_Grade')}}</th>
+                            <th>{{trans('classrooms.Processes')}}</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php $counter = 1; ?>
+                          @foreach($classrooms as $classroom)
                               <tr>
-                                  @foreach($classrooms as $classroom)
-                                      <td><?php echo $counter++; ?></td>
-                                      <td>{{$classroom->name_class}}</td>
-                                      <td>{{ $classroom->grade->getTranslation('name', app()->getLocale()) }}</td>
-                                      <td>
-                                          <button class='btn btn-info  btn-sm' data-toggle="modal"  title="{{trans('grades.edit')}}"><i class="fa fa-edit"></i></button>
-                                          <button class='btn btn-danger btn-sm' data-toggle="modal"  title="{{trans('grades.delete')}}"><i class="fa fa-trash"></i></button>
-                                      </td>
-                                  @endforeach;
+                                    <td><?php echo $counter++; ?></td>
+                                    <td>{{$classroom->name_class}}</td>
+                                    <td>{{ $classroom->grade->getTranslation('name', app()->getLocale()) }}</td>
+                                    <td>
+                                        <button class='btn btn-info  btn-sm' data-toggle="modal"  title="{{trans('grades.edit')}}"><i class="fa fa-edit"></i></button>
+                                        <button class='btn btn-danger btn-sm' data-toggle="modal"  title="{{trans('grades.delete')}}"><i class="fa fa-trash"></i></button>
+                                    </td>
                               </tr>
+                              @endforeach
                         </tbody>
                         <tfoot>
                           <tr>
@@ -100,16 +100,16 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="name_ar" class="mr-sm-2">{{trans('classrooms.Name_class')}} : </label>
-                                    <input type="text" id="name_ar" name="class_ar" class="form-control" >
+                                    <input type="text" id="name_ar" name="class_name_ar" class="form-control" >
                                 </div>
                                 <div class="col">
                                     <label for="name_en" class="mr-sm-2">{{trans('classrooms.Name_class_en')}} : </label>
-                                    <input type="text" id="name_en" name="name" class="form-control" >
+                                    <input type="text" id="name_en" name="class_name_en" class="form-control" >
                                 </div>
                                 <div class="col">
                                     <label for="name_en" class="mr-sm-2">{{trans('grades.stage_name_en')}} : </label>
                                     <div class="box">
-                                        <select class="fancyselect" name="Grade_id">
+                                        <select class="fancyselect" name="grade_id">
                                             @foreach ($grades as $grade)
                                                 <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                                             @endforeach
@@ -120,12 +120,16 @@
                                     <label for="Name_en" class="mr-sm-2">{{ trans('classrooms.Processes') }} :</label>
                                     <input class="btn btn-danger btn-block" data-repeater-delete type="button" value="{{ trans('classrooms.delete_row') }}" /> </div>
                             </div>
-
+                        </div>
+                    </div>
+                    <div class="row mt-20">
+                        <div class="col-12">
                             <button class="btn btn-success mt-3 mb-3" data-repeater-create type="button" value="">{{trans('classrooms.add_row')}}</button>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="modal-footer">
                 <button type="submit" class="btn btn-success">{{trans('grades.submit')}}</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>

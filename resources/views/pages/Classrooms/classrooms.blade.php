@@ -61,7 +61,7 @@
                                     <td>{{ $classroom->grade->getTranslation('name', app()->getLocale()) }}</td>
                                     <td>
                                         <button class='btn btn-info btn-sm' data-toggle="modal" data-target="#edit{{$classroom->id}}" title="{{trans('grades.edit')}}"><i class="fa fa-edit"></i></button>
-                                        <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$classroom->id}}"  title="{{trans('grades.delete')}}"><i class="fa fa-trash"></i></button>
+                                        <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$classroom->id}}"  title="{{trans('classrooms.delete')}}"><i class="fa fa-trash"></i></button>
                                     </td>
                               </tr>
 
@@ -70,7 +70,7 @@
                                 <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('grades.edit_grade')}}</h5>
+                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('classrooms.edit_class')}}</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
@@ -82,24 +82,24 @@
                                             <div class="col">
                                                 <label for="name" class="mr-sm-2">{{trans('classrooms.Name_class')}} : </label>
                                                 <input type="text" name="class_name_ar" id="name"  class="form-control"  value="{{$classroom->name_class}}" >
-
                                                 <input type="hidden" name="id" value={{$classroom->id}}>
                                             </div>
                                             <div class="col">
                                                 <label for="name_en" class="mr-sm-2">{{trans('classrooms.Name_class_en')}} : </label>
                                                 <input type="text" name="class_name_en" id="name_en" class="form-control" value="{{$classroom->getTranslation('name_class', 'en')}}"  >
                                             </div>
-                                            <div class="col">
-                                                <label for="name_en" class="mr-sm-2">{{trans('classrooms.Name_Grade')}} : </label>
-                                                <div class="box">
-                                                    <select class="fancyselect" name="grade_id">
+                                        </div><br>
+                                        <div class="form-group">
+                                                <label for="name_en" >{{trans('classrooms.Name_Grade')}} : </label>
+                                                    <select class="form-control form-control-lg" name="grade_id">
+                                                        <option value="{{ $classroom->grade->id }}">
+                                                            {{ $classroom->grade->name }}
+                                                        </option>
                                                         @foreach ($grades as $grade)
                                                             <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>
                                             </div>
-                                        </div>
 
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-primary">{{trans('grades.update')}}</button>

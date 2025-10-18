@@ -73,7 +73,7 @@ class ClassRoomsController extends Controller
         $classroom = ClassRooms::findOrFail($id);
 
         try {
-             $classroom->update([
+            $classroom->update([
             'name_class' => [
                 'ar' => $request->class_name_ar,
                 'en' => $request->class_name_en,
@@ -94,7 +94,7 @@ class ClassRoomsController extends Controller
     {
         $classroom = ClassRooms::findOrFail($id);
         $classroom->delete();
-        toastr()->success(trans('messages.delete'));
+        toastr()->error(trans('messages.delete'));
         return back();
     }
 }

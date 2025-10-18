@@ -31,23 +31,8 @@ class GradesController extends Controller
      */
     public function store(StoreGradeRequest $request)
     {
-        // check if grade name is found in database or not
-        if(grades::where('name->ar', $request->name)->orWhere('name->en', $request->name_en)->exists()) {
-            return redirect()->back()->withErrors(trans('grades.exists'));
-        }
-
         try {
-
             $validated = $request->validated();
-
-            /****************************************    This is type for translation in database ******************************** */
-                // $translations = [
-                //     'ar' => $request->name,
-                //     'en' => $request->name_en
-                // ];
-                // grades->setTranslations('name', $translations);
-            /****************************************    This is type for translation in database ******************************** */
-
             $grades = grades::create([
                 'name' => ['ar' => $request->name, 'en' => $request->name_en], // this is to enter 2 forma from name ( arabic + english )
                 'notes' => $request->notes,

@@ -7,6 +7,7 @@ use App\Models\grades;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClassRoomRequest;
+use App\Http\Requests\UpdateClassRoomRequest;
 
 class ClassRoomsController extends Controller
 {
@@ -67,16 +68,33 @@ class ClassRoomsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ClassRooms $classRooms)
+    public function update(UpdateClassRoomRequest $request, $id)
     {
-        //
+        $classroom = ClassRooms::findOrFail($id);
+
+        try {
+             $classroom->update([
+            'name_class' => [
+                'ar' => $request->class_name_ar,
+                'en' => $request->class_name_en,
+            ],
+            'grade_id' => $request->grade_id,
+        ]);
+            toastr()->success(trans('messages.update'));
+            return redirect()->route('classrooms.index');
+        } catch(\Exception $exc) {
+            return redirect()->back()->withErrors(['error' => $exc->getMessage()]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ClassRooms $classRooms)
+    public function destroy(Request $request, $id)
     {
-        //
+        $classroom = ClassRooms::findOrFail($id);
+        $classroom->delete();
+        toastr()->success(trans('messages.delete'));
+        return back();
     }
 }

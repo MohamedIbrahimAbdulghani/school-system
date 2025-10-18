@@ -9,7 +9,7 @@ return [
   'delete_class'=> 'حذف صف',
   'Warning_class'=> 'هل انت متاكد من عملية الحذف ؟',
   'submit' => 'حفظ البيانات',
-  'Name_class'=>'اسم الصف بالعربية',
+  'Name_class'=>'اسم الصف',
   'Name_class_en'=>'اسم الصف بالانجلزية',
   'Name_Grade'=>'اسم المرحلة',
   'add_row'=>'ادراج سجل',

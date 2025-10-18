@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Classrooms;
 
 use App\Models\ClassRooms;
+use App\Models\grades;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,7 +14,9 @@ class ClassRoomsController extends Controller
      */
     public function index()
     {
-        return view('pages.Classrooms.classrooms');
+        $classrooms = ClassRooms::all();
+        $grades = grades::all();
+        return view('pages.Classrooms.classrooms', compact('classrooms', 'grades'));
     }
 
     /**
@@ -29,7 +32,7 @@ class ClassRoomsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->List_Classes;die;
     }
 
     /**

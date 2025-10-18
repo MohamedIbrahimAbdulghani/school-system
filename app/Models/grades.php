@@ -11,5 +11,7 @@ class grades extends Model
 
     use HasTranslations;
 
-    public array $translatable = ['name'];
+    public array $translatable = ['name']; // to know what the column will translate
+
+
 }

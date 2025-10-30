@@ -87,8 +87,29 @@
             <h2 class="text-5xl font-extrabold text-white mb-6">{{ __('welcome.hero_title') }}</h2>
             <p class="text-lg text-gray-100 mb-8">{{ __('welcome.hero_description') }}</p>
             <div class="flex justify-center gap-4">
-                <a href="{{ route('register') }}" class="bg-white text-blue-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition">{{ __('welcome.start_now') }}</a>
-                <a href="{{ route('login') }}" class="border border-white px-6 py-3 rounded-lg hover:bg-white/20 transition">{{ __('welcome.login') }}</a>
+                @auth
+                <a
+                    class="text-white px-4 py-2 text-2xl "
+                >
+                {{ trans('welcome.hello') }} : {{Auth::user()->name}}
+                </a>
+            @else
+                <a
+                    href="{{ route('login') }}"
+                    class="border border-white px-6 py-3 rounded-lg hover:bg-white/20 transition"
+                >
+                    {{ trans('welcome.login') }}
+                </a>
+
+                @if (Route::has('register'))
+                    <a
+                        href="{{ route('register') }}"
+                        class="bg-white text-blue-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition">
+                        {{ trans('welcome.start_now') }}
+                    </a>
+                @endif
+            @endauth
+
             </div>
         </div>
         <div class="mt-16">
@@ -167,5 +188,9 @@
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
+
+        <!-- Tailwind (للتجربة فقط — للـ production استعمل build) -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
     </body>
 </html>

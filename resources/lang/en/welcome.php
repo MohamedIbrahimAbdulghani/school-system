@@ -28,4 +28,5 @@ return [
     'contact_title' => 'Contact Us',
     'contact_text' => 'For technical support and assistance, you can contact us via the following email:',
     'footer_text' => 'All rights reserved - School Management System',
+    'hello' => 'Hello',
 ];

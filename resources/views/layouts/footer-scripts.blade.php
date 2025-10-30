@@ -24,5 +24,6 @@
 <script src="{{ URL::asset('assets/js/validation.js') }}"></script>
 <!-- lobilist -->
 <script src="{{ URL::asset('assets/js/lobilist.js') }}"></script>
+
 <!-- custom -->
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>

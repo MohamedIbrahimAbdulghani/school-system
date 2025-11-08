@@ -19,6 +19,6 @@ return [
     'Delete'=>'Delete',
     'Close' => 'Close',
     'delete_all_classes'=> 'Delete all classes',
-
-
+    'search_classroom_name'=> 'Search classroom name',
+    'search_all_classrooms' => 'Search all classrooms',
 ];

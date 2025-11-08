@@ -19,4 +19,6 @@ return [
   'Delete'=>'حذف',
   'Close' => 'اغلاق',
   'delete_all_classes'=> 'حذف جميع الصفوف الدراسية',
+  'search_classroom_name' => 'بحث باسم المرحلة',
+  'search_all_classrooms' => 'بحث بجميع العناصر',
 ];

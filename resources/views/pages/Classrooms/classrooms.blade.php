@@ -43,10 +43,29 @@
             <div class="card-body">
                 <button type="button" class="mb-2 button x-small" data-toggle="modal" data-target="#add_class">{{trans('classrooms.add_class')}}</button>
                 <button type="button" class="mb-2 button x-small"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" id="bulk-delete-btn">{{trans('classrooms.delete_all_classes')}}</button>
+
                 <div class="table-responsive">
+                    <!-- Dropdown Button for Grades -->
+                    <div class="dropdown mb-3">
+                        <button class="btn btn-primary dropdown-toggle" style="text-transform: uppercase; font-weight: 500;" type="button"
+                                id="gradesDropdownButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            {{ trans('classrooms.search_classroom_name') }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="gradesDropdownButton">
+                            <a class="dropdown-item" href="#" onclick="showAllClasses()">
+                                {{ trans('classrooms.search_all_classrooms') }}
+                            </a>
+                            @foreach($grades as $grade)
+                                <a class="dropdown-item" href="#" onclick="filterByGrade('{{ $grade->getTranslation('name', app()->getLocale()) }}')">
+                                    {{ $grade->getTranslation('name', app()->getLocale()) }}
+                                </a>
+                            @endforeach
+                        </div>
+                      </div>
                     <table id="datatable" class="table p-0 table-striped table-bordered">
                         <thead>
-                          <tr>
+                        <tr>
                             <th><input type="checkbox" id="select_all_checkbox"></th>
                             <th>#</th>
                             <th>{{trans('classrooms.Name_class')}}</th>
@@ -268,4 +287,22 @@
 });
 </script>
 
+<script>
+    function filterByGrade(gradeName) {
+        // لما المستخدم يختار مرحلة معينة
+        $('#datatable tbody tr').each(function() {
+            const gradeCell = $(this).find('td:eq(3)').text().trim();
+            if (gradeCell === gradeName) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+
+    // زرار لعرض كل الصفوف من جديد
+    function showAllClasses() {
+        $('#datatable tbody tr').show();
+    }
+    </script>
 @endsection

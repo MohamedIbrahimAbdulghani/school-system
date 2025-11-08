@@ -42,10 +42,12 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
                 <button type="button" class="mb-2 button x-small" data-toggle="modal" data-target="#add_class">{{trans('classrooms.add_class')}}</button>
+                <button type="button" class="mb-2 button x-small"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" id="bulk-delete-btn">{{trans('classrooms.delete_all_classes')}}</button>
                 <div class="table-responsive">
                     <table id="datatable" class="table p-0 table-striped table-bordered">
                         <thead>
                           <tr>
+                            <th><input type="checkbox" id="select_all_checkbox"></th>
                             <th>#</th>
                             <th>{{trans('classrooms.Name_class')}}</th>
                             <th>{{trans('classrooms.Name_Grade')}}</th>
@@ -56,6 +58,7 @@
                           <?php $counter = 1; ?>
                           @foreach($classrooms as $classroom)
                               <tr>
+                                    <td><input type="checkbox" class="row-checkbox" value="{{$classroom->id}}"></td>
                                     <td><?php echo $counter++; ?></td>
                                     <td>{{$classroom->name_class}}</td>
                                     <td>{{ $classroom->grade->getTranslation('name', app()->getLocale()) }}</td>
@@ -65,7 +68,7 @@
                                     </td>
                               </tr>
 
-                            {{-- Start Modal To Edit Grade --}}
+                            {{-- Start Modal To Edit ClassRooms --}}
                             <div class="modal fade" id="edit{{$classroom->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -110,9 +113,9 @@
                                 </div>
                                 </div>
                             </div>
-                        {{-- End Modal To Edit Grade --}}
+                        {{-- End Modal To Edit ClassRooms --}}
 
-                        {{-- Start Modal To Delete Grade --}}
+                        {{-- Start Modal To Delete ClassRooms --}}
                             <div class="modal fade" id="delete{{$classroom->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -142,25 +145,17 @@
                                 </div>
                                 </div>
                             </div>
-                        {{-- End Modal To Delete Grade --}}
+                        {{-- End Modal To Delete ClassRooms --}}
 
                               @endforeach
                         </tbody>
-                        <tfoot>
-                          <tr>
-                              <th>#</th>
-                              <th>{{trans('classrooms.Name_class')}}</th>
-                              <th>{{trans('classrooms.Name_Grade')}}</th>
-                              <th>{{trans('classrooms.Processes')}}</th>
-                            </tr>
-                        </tfoot>
                      </table>
                 </div>
             </div>
         </div>
     </div>
 
-{{-- Start Modal To Add Grade --}}
+{{-- Start Modal To Add ClassRooms --}}
 <div class="modal fade" id="add_class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -219,7 +214,30 @@
     </div>
     </div>
 </div>
-{{-- End Modal To Add Grade --}}
+{{-- End Modal To Add ClassRooms --}}
+
+
+{{-- Start Modal To Delete All ClassRooms --}}
+<div class="modal fade" id="delete_all_classes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('classrooms.delete_row')}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+        {{-- delete form--}}
+        <form id="bulk-delete-form"  action="{{ route('classrooms.bulkDestroy') }}" method="post">
+            @csrf
+            @method('DELETE')
+            <input type="hidden" name="ids" id="bulk-delete-ids">
+            <button type="submit" class="btn btn-danger">{{trans('grades.delete')}}</button>
+        </form>
+        </div>
+    </div>
+    </div>
+</div>
+{{-- End Modal To Delete All ClassRooms --}}
 
 </div>
 <!-- row closed -->
@@ -227,4 +245,27 @@
 @section('js')
 @toastr_js
 @toastr_render
+
+<script>
+    // عندما يتم الضغط على الـ checkbox الكبير
+    $('#select_all_checkbox').click(function() {
+        $('.row-checkbox').prop('checked', this.checked);
+    });
+
+
+    $('#bulk-delete-btn').click(function() {
+    var selectedIds = [];
+    $('.row-checkbox:checked').each(function() {
+        selectedIds.push($(this).val());
+    });
+
+    if(selectedIds.length === 0){
+        alert("{{ trans('classrooms.no_selection') }}");
+        $('#delete_all_classes').modal('hide');
+    } else {
+        $('#bulk-delete-ids').val(selectedIds.join(','));
+    }
+});
+</script>
+
 @endsection

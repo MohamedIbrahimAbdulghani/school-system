@@ -31,6 +31,8 @@ Route::group(
 
         // معالجة تسجيل الدخول
         Route::post('/login', [CustomAuthenticatedSessionController::class, 'store']);
+
+
     });
 
     // ==============================
@@ -48,9 +50,10 @@ Route::group(
         // Grades Routes (require authentication)
         Route::resource('grades', GradesController::class);
 
+        Route::delete('classrooms/bulkDestroy', [ClassRoomsController::class, 'bulkDestroy'])->name('classrooms.bulkDestroy');
+
         // ClassRoom Routes ( require authentication)
         Route::resource('classrooms', ClassRoomsController::class);
-
 
         // Logout Route
         Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');

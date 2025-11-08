@@ -18,4 +18,5 @@ return [
   'Edit'=>'تعديل',
   'Delete'=>'حذف',
   'Close' => 'اغلاق',
+  'delete_all_classes'=> 'حذف جميع الصفوف الدراسية',
 ];

@@ -5,9 +5,9 @@ return [
     'title_page' => 'Classes',
     'List_classes' => 'List Classes',
     'add_class' => 'add class',
-    'edit_class'=> 'تعديل صف',
-    'delete_class'=> 'حذف صف',
-    'Warning_Grade'=> 'هل انت متاكد من عملية الحذف ؟',
+    'edit_class'=> 'Edit class',
+    'delete_class'=> 'Delete class',
+    'Warning_Grade'=> 'Are you sure you want to delete?',
     'submit' => 'submit',
     'Name_class'=>'Name_class',
     'Name_class_en'=>'Name class en',
@@ -18,7 +18,7 @@ return [
     'Edit'=>'Edit',
     'Delete'=>'Delete',
     'Close' => 'Close',
-
+    'delete_all_classes'=> 'Delete all classes',
 
 
 ];

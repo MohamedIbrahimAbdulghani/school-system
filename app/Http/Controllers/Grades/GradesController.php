@@ -86,9 +86,14 @@ class GradesController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $grades = grades::findOrFail($id);
-        $grades->delete();
-        toastr()->success(trans('messages.delete'));
+        $grades = grades::with('classRooms')->findOrFail($id);
+        // return $grade->classRooms->count();die;
+        if($grades->classRooms->count() > 0) {
+            toastr()->error(trans('messages.error'));
+        } else {
+            $grades->delete();
+            toastr()->success(trans('messages.delete'));
+        }
         return redirect()->route('grades.index');
     }
 }

@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-{{trans('grades.title_page')}}
+    {{trans('grades.title_page')}}
 @stop
 @endsection
 @section('page-header')
@@ -131,7 +131,7 @@
 
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-danger">{{trans('grades.delete')}}</button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>
                                     </div>
                                     </form>
                                     </div>

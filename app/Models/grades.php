@@ -13,5 +13,10 @@ class grades extends Model
 
     public array $translatable = ['name']; // to know what the column will translate
 
+    // this is to get the class rooms that are linked to the grade
+    public function classRooms()
+    {
+        return $this->hasMany(ClassRooms::class, 'grade_id');
+    }
 
 }

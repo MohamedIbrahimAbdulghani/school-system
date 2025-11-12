@@ -14,8 +14,8 @@
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">Home</a></li>
-                <li class="breadcrumb-item active">{{ trans('grades.title_page') }}</li>
+                <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('grades.title_page') }}</a></li>
+                <li class="breadcrumb-item active">{{ trans('grades.list_grades') }}</li>
             </ol>
         </div>
     </div>
@@ -46,15 +46,15 @@
                 <button type="button" class="button x-small mb-2" data-toggle="modal" data-target="#exampleModal">{{trans('grades.add_grade')}}</button>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped table-bordered p-0">
-                      <thead>
-                          <tr>
-                              <th>#</th>
-                              <th>{{trans('grades.name')}}</th>
-                              <th>{{trans('grades.notes')}}</th>
-                              <th>{{trans('grades.processes')}}</th>
-                          </tr>
-                      </thead>
-                      <tbody>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{{trans('grades.name')}}</th>
+                            <th>{{trans('grades.notes')}}</th>
+                            <th>{{trans('grades.processes')}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <?php $counter = 1; ?>
                         @foreach($grades as $grade)
                         <tr>
@@ -246,7 +246,5 @@
         $('#edit-notes').val(notes);
     });
 </script> --}}
-
-
 
 @endsection

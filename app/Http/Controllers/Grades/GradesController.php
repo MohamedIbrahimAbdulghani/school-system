@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Grades;
 
 use App\Models\grades;
+use App\Models\ClassRooms;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGradeRequest;
@@ -72,7 +73,7 @@ class GradesController extends Controller
         $grades = grades::findOrFail($id);
         $grades->update([
             'name' => ['ar' => $request->name, 'en' => $request->name_en], // this is to enter 2 forma from name ( arabic + english )
-                'notes' => $request->notes,
+            'notes' => $request->notes,
         ]);
         toastr()->success(trans('messages.update'));
         return redirect()->route('grades.index');
@@ -86,14 +87,28 @@ class GradesController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $grades = grades::with('classRooms')->findOrFail($id);
-        // return $grade->classRooms->count();die;
-        if($grades->classRooms->count() > 0) {
-            toastr()->error(trans('messages.error'));
+    // 1- this is first way to get classrooms by grades and delete grades if this grades don't related by classrooms
+            /*
+                $classroom = ClassRooms::where('grade_id', $request->id)->pluck('grade_id');
+                if($classroom->count() > 0)  { // classrooms have items or classrooms related by grades
+                    toastr()->error(trans('grades.delete_grade_error'));
+                } else {
+                    $grade = grades::findOrFail($id);
+                    $grade->delete();
+                    toastr()->success(trans('messages.delete'));
+                }
+                return redirect()->route('grades.index');
+            */
+
+    // 2- this is second way to get classrooms by grades and delete grades if this grades don't related by classrooms
+        $grade = grades::with("classRooms")->findOrFail($request->id);
+        if($grade->classRooms->count() > 0) {
+            toastr()->error(trans('grades.delete_grade_error'));
         } else {
-            $grades->delete();
+            $grade->delete();
             toastr()->success(trans('messages.delete'));
         }
         return redirect()->route('grades.index');
+
     }
 }

@@ -18,7 +18,10 @@ return [
   'Edit'=>'تعديل',
   'Delete'=>'حذف',
   'Close' => 'اغلاق',
-  'delete_all_classes'=> 'حذف جميع الصفوف الدراسية',
+  'delete_checkbox'=> 'حذف الصفوف المختارة',
   'search_classroom_name' => 'بحث باسم المرحلة',
   'search_all_classrooms' => 'بحث بجميع العناصر',
+  'delete_rows' => 'هل تريد حذف العناصر المتحددة ؟',
+  'no_selection' => 'لم يتم اختيار عناصر للحذف',
+
 ];

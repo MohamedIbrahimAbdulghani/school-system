@@ -20224,13 +20224,14 @@ ul.list-unstyled li {
   padding: 30px;
   overflow: hidden;
   margin-left: 215px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   -webkit-transition: all 0.9s ease;
   -moz-transition: all 0.9s ease;
   -ms-transition: all 0.9s ease;
   -o-transition: all 0.9s ease;
   transition: all 0.9s ease;
-  width: 100%; }
+  width: 100%;
+}
   .content-wrapper .page-title {
     padding: 0px; }
   .content-wrapper .breadcrumb {

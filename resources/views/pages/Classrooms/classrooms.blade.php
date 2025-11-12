@@ -42,31 +42,29 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
                 <button type="button" class="mb-2 button x-small" data-toggle="modal" data-target="#add_class">{{trans('classrooms.add_class')}}</button>
-                <button type="button" class="mb-2 button x-small"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" id="bulk-delete-btn">{{trans('classrooms.delete_all_classes')}}</button>
+                    <button type="button" class="mb-2 button x-small" id="bulk-delete-btn"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" >{{trans('classrooms.delete_checkbox')}}</button>
+                    <!-- Dropdown Button for Grades -->
+                    <button class="mb-2 button x-small dropdown-toggle " style="background: #007bff; border: 2px solid #007bff;" type="button"
+                            id="gradesDropdownButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        {{ trans('classrooms.search_classroom_name') }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="gradesDropdownButton">
+                        <a class="dropdown-item" href="#" onclick="showAllClasses()">
+                            {{ trans('classrooms.search_all_classrooms') }}
+                        </a>
+                        @foreach($grades as $grade)
+                            <a class="dropdown-item" href="#" onclick="filterByGrade('{{ $grade->getTranslation('name', app()->getLocale()) }}')">
+                                {{ $grade->getTranslation('name', app()->getLocale()) }}
+                            </a>
+                        @endforeach
+                    </div>
 
                 <div class="table-responsive">
-                    <!-- Dropdown Button for Grades -->
-                    <div class="dropdown mb-3">
-                        <button class="btn btn-primary dropdown-toggle" style="text-transform: uppercase; font-weight: 500;" type="button"
-                                id="gradesDropdownButton" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                            {{ trans('classrooms.search_classroom_name') }}
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="gradesDropdownButton">
-                            <a class="dropdown-item" href="#" onclick="showAllClasses()">
-                                {{ trans('classrooms.search_all_classrooms') }}
-                            </a>
-                            @foreach($grades as $grade)
-                                <a class="dropdown-item" href="#" onclick="filterByGrade('{{ $grade->getTranslation('name', app()->getLocale()) }}')">
-                                    {{ $grade->getTranslation('name', app()->getLocale()) }}
-                                </a>
-                            @endforeach
-                        </div>
-                      </div>
                     <table id="datatable" class="table p-0 table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th><input type="checkbox" id="select_all_checkbox"></th>
+                            <th><input type="checkbox" name="select_all_box" id="select_all_box"></th>
                             <th>#</th>
                             <th>{{trans('classrooms.Name_class')}}</th>
                             <th>{{trans('classrooms.Name_Grade')}}</th>
@@ -77,7 +75,7 @@
                           <?php $counter = 1; ?>
                           @foreach($classrooms as $classroom)
                               <tr>
-                                    <td><input type="checkbox" class="row-checkbox" value="{{$classroom->id}}"></td>
+                                    <td><input type="checkbox" name="checkbox" id="checkbox" class="checkbox_row" value="{{$classroom->id}}"></td>
                                     <td><?php echo $counter++; ?></td>
                                     <td>{{$classroom->name_class}}</td>
                                     <td>{{ $classroom->grade->getTranslation('name', app()->getLocale()) }}</td>
@@ -241,7 +239,7 @@
     <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('classrooms.delete_row')}}</h5>
+        <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('classrooms.delete_rows')}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
@@ -265,27 +263,6 @@
 @toastr_js
 @toastr_render
 
-<script>
-    // عندما يتم الضغط على الـ checkbox الكبير
-    $('#select_all_checkbox').click(function() {
-        $('.row-checkbox').prop('checked', this.checked);
-    });
-
-
-    $('#bulk-delete-btn').click(function() {
-    var selectedIds = [];
-    $('.row-checkbox:checked').each(function() {
-        selectedIds.push($(this).val());
-    });
-
-    if(selectedIds.length === 0){
-        alert("{{ trans('classrooms.no_selection') }}");
-        $('#delete_all_classes').modal('hide');
-    } else {
-        $('#bulk-delete-ids').val(selectedIds.join(','));
-    }
-});
-</script>
 
 <script>
     function filterByGrade(gradeName) {
@@ -299,10 +276,9 @@
             }
         });
     }
-
     // زرار لعرض كل الصفوف من جديد
     function showAllClasses() {
         $('#datatable tbody tr').show();
     }
-    </script>
+</script>
 @endsection

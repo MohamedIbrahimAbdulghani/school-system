@@ -94,10 +94,11 @@ class ClassRoomsController extends Controller
     {
         $classroom = ClassRooms::findOrFail($id);
         $classroom->delete();
-        toastr()->error(trans('messages.delete'));
+        toastr()->success(trans('messages.delete'));
         return back();
     }
 
+    // this is function to delete all classes
     public function bulkDestroy(Request $request) {
         // ids جايه كسلسلة مفصولة بفاصلة
         $ids = explode(',', $request->ids);
@@ -105,7 +106,7 @@ class ClassRoomsController extends Controller
         // حذف كل الصفوف اللي الـ IDs بتاعتها موجودة
         ClassRooms::whereIn('id', $ids)->delete();
 
-        toastr()->error(trans('messages.delete'));
+        toastr()->success(trans('messages.delete'));
         return back();
     }
 

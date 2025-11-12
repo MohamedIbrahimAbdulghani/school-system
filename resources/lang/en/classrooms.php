@@ -18,7 +18,9 @@ return [
     'Edit'=>'Edit',
     'Delete'=>'Delete',
     'Close' => 'Close',
-    'delete_all_classes'=> 'Delete all classes',
+    'delete_checkbox'=> 'Delete Selected',
     'search_classroom_name'=> 'Search classroom name',
     'search_all_classrooms' => 'Search all classrooms',
+    'delete_rows' => 'Are you sure delete selected rows ?',
+    'no_selection' => 'No selected items for delete',
 ];

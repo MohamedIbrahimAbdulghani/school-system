@@ -13,7 +13,7 @@
             <h4 class="mb-0"> {{ trans('grades.title_page') }}</h4>
         </div>
         <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+            <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
                 <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('grades.title_page') }}</a></li>
                 <li class="breadcrumb-item active">{{ trans('grades.list_grades') }}</li>
             </ol>
@@ -43,9 +43,9 @@
             @endif
             {{-- End Show Error Messages --}}
 
-                <button type="button" class="button x-small mb-2" data-toggle="modal" data-target="#exampleModal">{{trans('grades.add_grade')}}</button>
+                <button type="button" class="mb-2 button x-small" data-toggle="modal" data-target="#exampleModal">{{trans('grades.add_grade')}}</button>
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-striped table-bordered p-0">
+                    <table id="datatable" class="table p-0 table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -62,7 +62,7 @@
                             <td>{{$grade->name}}</td>
                             <td>{{$grade->notes}}</td>
                             <td>
-                                <button class='btn btn-info  btn-sm' data-toggle="modal" data-target="#edit{{$grade->id}}" title="{{trans('grades.edit')}}"><i class="fa fa-edit"></i></button>
+                                <button class='btn btn-info btn-sm' data-toggle="modal" data-target="#edit{{$grade->id}}" title="{{trans('grades.edit')}}"><i class="fa fa-edit"></i></button>
 
                                 <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$grade->id}}" title="{{trans('grades.delete')}}"><i class="fa fa-trash"></i></button>
                             </td>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Grades;
 
-use App\Models\grades;
+use App\Models\Grades;
 use App\Models\ClassRooms;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +15,7 @@ class GradesController extends Controller
      */
     public function index()
     {
-        $grades = grades::all();
+        $grades = Grades::all();
         return view('pages/Grades/grades', compact('grades'));
     }
 
@@ -34,7 +34,7 @@ class GradesController extends Controller
     {
         try {
             $validated = $request->validated();
-            $grades = grades::create([
+            $grades = Grades::create([
                 'name' => ['ar' => $request->name, 'en' => $request->name_en], // this is to enter 2 forma from name ( arabic + english )
                 'notes' => $request->notes,
             ]);
@@ -70,7 +70,7 @@ class GradesController extends Controller
         try {
         $validated = $request->validated();
 
-        $grades = grades::findOrFail($id);
+        $grades = Grades::findOrFail($id);
         $grades->update([
             'name' => ['ar' => $request->name, 'en' => $request->name_en], // this is to enter 2 forma from name ( arabic + english )
             'notes' => $request->notes,
@@ -101,7 +101,7 @@ class GradesController extends Controller
             */
 
     // 2- this is second way to get classrooms by grades and delete grades if this grades don't related by classrooms
-        $grade = grades::with("classRooms")->findOrFail($request->id);
+        $grade = Grades::with("classRooms")->findOrFail($request->id);
         if($grade->classRooms->count() > 0) {
             toastr()->error(trans('grades.delete_grade_error'));
         } else {

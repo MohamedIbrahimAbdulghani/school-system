@@ -5,9 +5,7 @@ use App\Http\Controllers\Classrooms\ClassRoomsController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
-
-
-
+use App\Http\Controllers\Sections\SectionController;
 
 Route::group(
 [
@@ -57,6 +55,10 @@ Route::group(
 
         // Logout Route
         Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+        Route::get('sections', [SectionController::class, 'index']);
+        Route::post('sections', [SectionController::class, 'store'])->name('sections.store');
+
     });
 
 });

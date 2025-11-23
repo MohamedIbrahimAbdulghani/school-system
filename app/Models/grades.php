@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class grades extends Model
+class Grades extends Model
 {
     protected $guarded = [];
 
@@ -17,6 +17,12 @@ class grades extends Model
     public function classRooms()
     {
         return $this->hasMany(ClassRooms::class, 'grade_id');
+    }
+
+        // this is to get the sections that are linked to the grade
+    public function sections()
+    {
+        return $this->hasMany(Sections::class, 'grade_id');
     }
 
 }

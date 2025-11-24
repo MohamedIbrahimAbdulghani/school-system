@@ -56,8 +56,9 @@ Route::group(
         // Logout Route
         Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-        Route::get('sections', [SectionController::class, 'index']);
-        Route::post('sections', [SectionController::class, 'store'])->name('sections.store');
+        Route::resource('sections', SectionController::class);
+        Route::get('classes/{id}', [SectionController::class, 'getClasses']);
+        // Route::PUT('sections/')
 
     });
 

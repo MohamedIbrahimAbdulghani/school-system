@@ -152,10 +152,10 @@
 {{-- Start Modal To Add Grade --}}
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+    <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('grades.add_grade')}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('grades.add_grade')}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
         {{-- add form--}}
@@ -188,63 +188,11 @@
 
 
 
-<!--{{-- Start Modal To Edit Grade --}}
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('grades.add_grade')}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="modal-body">
-        {{-- add form--}}
-        <form action="{{ route('grades.store') }}" method="post">
-            @csrf
-            <div class="row">
-                <div class="col">
-                    <label for="name" class="mr-sm-2">{{trans('grades.stage_name_ar')}} : </label>
-                    <input type="text" name="name" id="edit-name"  class="form-control"  >
-
-                    <input type="hidden" name="id" id="edit-id">
-                </div>
-                <div class="col">
-                    <label for="name_en" class="mr-sm-2">{{trans('grades.stage_name_en')}} : </label>
-                    <input type="text" name="name_en" id="edit-name_en" class="form-control" >
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">{{trans('grades.notes')}} : </label>
-                <textarea class="form-control" name="notes" id="edit-notes"  rows="3"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success">{{trans('grades.submit')}}</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>
-        </div>
-        </form>
-        </div>
-    </div>
-    </div>
-</div>
-{{-- End Modal To Edit Grade --}}-->
-
-
 </div>
 <!-- row closed -->
 @endsection
 @section('js')
 
-{{-- <script>
-    $(document).on('click', '.edit-button', function () {
-        var id = $(this).data('id');
-        var name = $(this).data('name');
-        var name_en = $(this).data('name_en');
-        var notes = $(this).data('notes');
 
-        $('#edit-id').val(id);
-        $('#edit-name').val(name);
-        $('#edit-name_en').val(name_en);
-        $('#edit-notes').val(notes);
-    });
-</script> --}}
 
 @endsection

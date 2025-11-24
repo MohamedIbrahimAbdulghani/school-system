@@ -53,7 +53,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="sections">{{trans('sections.List_Grade')}}</a> </li>
+                            <li> <a href="sections">{{trans('section.List_Grade')}}</a> </li>
                             {{-- <li> <a href="calendar-list.html">List Calendar</a> </li> --}}
                         </ul>
                     </li>

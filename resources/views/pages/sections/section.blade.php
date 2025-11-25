@@ -63,7 +63,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="table-responsive mt-15">
-                                                        <table class="table center-aligned-table mb-0">
+                                                        <table class="table mb-0 center-aligned-table">
                                                             <thead>
                                                             <tr class="text-dark">
                                                                 <th>#</th>
@@ -150,6 +150,20 @@
                                                                                             <option value="" disabled>{{ trans('section.Select_Class') }}</option>
                                                                                         @endif
                                                                                         </select>
+
+                                                                                        <div class="col">
+                                                                                            <div class="form-check">
+                                                                                                @if ($listSection->status === 1)
+                                                                                                    <input type="checkbox" checked class="form-check-input"  name="status" id="exampleCheck1">
+                                                                                                @else
+                                                                                                    <input type="checkbox" class="form-check-input" name="status" id="exampleCheck1">
+                                                                                                @endif
+                                                                                                <label
+                                                                                                    class="form-check-label"
+                                                                                                    for="exampleCheck1">{{ trans('section.Status') }}</label>
+                                                                                            </div>
+                                                                                        </div>
+
                                                                                     </div>
                                                                             </div>
                                                                             <div class="modal-footer">

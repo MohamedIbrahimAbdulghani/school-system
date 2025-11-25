@@ -17,7 +17,7 @@ class SectionController extends Controller
     public function index()
     {
         $grades = Grades::with('sections')->get();
-        return view('pages.sections.section', compact('grades'));
+        return view('pages.Sections.section', compact('grades'));
     }
 
     /**
@@ -74,14 +74,21 @@ class SectionController extends Controller
             $validated = $request->validated();
 
             $section = Sections::findOrFail($id);
+
+            if(isset($request->status)) {
+                $section->status = 1;
+            } else {
+                $section->status = 2;
+            }
+
             $section->update([
                 'name' => ['ar' => $request->Name_Section_Ar, 'en' => $request->Name_Section_En], // this is to enter 2 forma from name ( arabic + english )
-                'status' => 1,
                 'grade_id' => $request->Grade_id ?? $section->grade_id,
                 'classroom_id' => $request->Class_id ?? $section->classroom_id,
             ]);
             toastr()->success(trans('messages.update'));
             return redirect()->route('sections.index');
+
             } catch(\Exception $exc) {
                 return redirect()->back()->withErrors(['error' => $exc->getMessage()]);
             }

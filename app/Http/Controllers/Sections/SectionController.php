@@ -97,9 +97,12 @@ class SectionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        //
+        $section = Sections::findOrFail($id);
+        $section->delete();
+        toastr()->success(trans('messages.delete'));
+        return redirect()->route('sections.index');
     }
     public function getClasses($id) {
         $listClassrooms = ClassRooms::where('grade_id', $id)->pluck('name_class', 'id');

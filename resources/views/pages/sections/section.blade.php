@@ -100,7 +100,6 @@
 
 
                                                                 <!--تعديل قسم جديد -->
-
                                                                 <div class="modal fade" id="edit{{ $listSection->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
@@ -151,7 +150,7 @@
                                                                                         @endif
                                                                                         </select>
 
-                                                                                        <div class="col">
+                                                                                        <div class="mt-2 col">
                                                                                             <div class="form-check">
                                                                                                 @if ($listSection->status === 1)
                                                                                                     <input type="checkbox" checked class="form-check-input"  name="status" id="exampleCheck1">
@@ -176,7 +175,7 @@
                                                                 </div>
 
                                                                 <!-- delete_modal_Grade -->
-                                                                {{-- <div class="modal fade" id="delete{{ $listSection->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal fade" id="delete{{ $listSection->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -194,7 +193,7 @@
                                                                             </div>
                                                                             <div class="modal-body">
                                                                                 <form
-                                                                                    action="{{ route('Sections.destroy', 'test') }}"
+                                                                                    action="{{ route('sections.destroy', $listSection->id) }}"
                                                                                     method="post">
                                                                                     {{ method_field('Delete') }}
                                                                                     @csrf
@@ -211,7 +210,8 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div> --}}
+                                                                </div>
+
                                                             @endforeach
                                                             </tbody>
                                                         </table>

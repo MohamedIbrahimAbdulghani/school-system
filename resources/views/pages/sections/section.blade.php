@@ -89,15 +89,12 @@
                                                                             <label
                                                                                 class="badge badge-danger">{{ trans('section.Status_Section_No') }}</label>
                                                                         @endif
-
                                                                     </td>
                                                                     <td>
-
                                                                         <a href="#" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#edit{{ $listSection->id }}">{{ trans('section.Edit') }}</a>
                                                                         <a href="#" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete{{ $listSection->id }}">{{ trans('section.Delete') }}</a>
                                                                     </td>
                                                                 </tr>
-
 
                                                                 <!--تعديل قسم جديد -->
                                                                 <div class="modal fade" id="edit{{ $listSection->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -258,8 +255,7 @@
                                                     disabled>{{ trans('section.Select_Grade') }}
                                             </option>
                                             @foreach ($grades as $grade)
-                                                <option value="{{ $grade->id }}"> {{ $grade->name }}
-                                                </option>
+                                                <option value="{{ $grade->id }}"> {{ $grade->name }} </option>
                                             @endforeach
                                         </select>
                                     </div>

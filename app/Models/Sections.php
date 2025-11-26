@@ -15,6 +15,7 @@ class Sections extends Model
         return $this->belongsTo(Grades::class, 'grade_id');
     }
 
+    // relationship between Classroom and Section to get class_name in Section table
     public function classroom()
     {
         return $this->belongsTo(ClassRooms::class, 'classroom_id');

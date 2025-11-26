@@ -58,7 +58,7 @@ Route::group(
 
         Route::resource('sections', SectionController::class);
         Route::get('classes/{id}', [SectionController::class, 'getClasses']);
-        // Route::PUT('sections/')
+
 
     });
 

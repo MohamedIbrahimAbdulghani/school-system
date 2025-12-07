@@ -22,7 +22,7 @@ return [
     'Settings'=>'الاعدادات',
     'Users'=>'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
-    'Name_Programer' => 'سمير جمال مورا سوفت'
+    'Name_Programer' => 'محمد ابراهيم عبدالغني'
 
 
 ];

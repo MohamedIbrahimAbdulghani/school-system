@@ -16,7 +16,9 @@
     </a>
 </li>
                     <!-- menu title -->
-
+                @php
+                        $currentLocale = app()->getLocale();
+                @endphp
                     <!-- Grades-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Grades-menu">
@@ -26,7 +28,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Grades-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('grades.index')}}">{{trans('main-side.Grades_list')}}</a></li>
+                            <li><a href="{{route('grades.index', app()->getLocale())}}">{{trans('main-side.Grades_list')}}</a></li>
 
                         </ul>
                     </li>
@@ -99,8 +101,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">Events Calendar </a> </li>
-                            <li> <a href="calendar-list.html">List Calendar</a> </li>
+                            <li> <a href="#">{{ trans('parent.Parent_list') }}</a> </li>
+                            <li> <a href="{{url('add_parent')}}">{{ trans('parent.Add_parent') }}</a> </li>
                         </ul>
                     </li>
 

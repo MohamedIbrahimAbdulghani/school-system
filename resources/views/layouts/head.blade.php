@@ -18,6 +18,7 @@
 @yield('css')
 
 <!--- Style css -->
+<link href="{{ asset('assets/css/wizard.css') }}" rel="stylesheet"> <!-- wizard css file use when make livewire in add parent -->
 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
 <!--- RTL / LTR styles -->

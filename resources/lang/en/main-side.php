@@ -24,6 +24,6 @@ return [
 
 
      'Copyright' => 'Copyright',
-     'Name_Programer' => 'SamirGamal MoraSoft All Rights Reserved'
+     'Name_Programer' => 'Mohamed Ibrahim Abdulghani'
 
 ];

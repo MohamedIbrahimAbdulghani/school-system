@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="text-center text-md-left">
-              <p class="mb-0">{!! trans('footer.copyright_text', ['year' => date('Y')]) !!}</p>
+              <p class="mb-0">{!! trans('footer.copyright_text', ['year' => date('Y')]) !!} {{ trans('main-side.Name_Programer') }}</p>
           </div>
         </div>
         <div class="col-md-6">

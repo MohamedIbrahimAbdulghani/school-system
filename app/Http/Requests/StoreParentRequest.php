@@ -23,16 +23,16 @@ class StoreParentRequest extends FormRequest
     {
         return [
             'email' => 'required|email|unique:my_parents,email',
-            'password' => 'required|min:6',
+            'password' => 'required|min:2',
 
             // الأب
             'father_name' => 'required|string|max:255',
             'father_name_en' => 'required|string|max:255',
             'father_job' => 'required|nullable|string|max:255',
             'father_job_en' => 'required|nullable|string|max:255',
-            'father_national_id' => 'required|numeric|digits_between:5,20',
-            'father_passport_id' => 'required|nullable|string|max:20',
-            'father_phone' => 'required|string|max:20',
+            'father_national_id' => 'required|digits_between:11,20',
+            'father_passport_id' => 'required|digits_between:11,20',
+            'father_phone' => ['required', 'digits_between:11,20'],
             'father_nationality_id' => 'required|integer|exists:nationalities,id',
             'father_blood_type_id' => 'required|integer|exists:type_bloods,id',
             'father_religion_id' => 'required|integer|exists:religions,id',
@@ -43,9 +43,9 @@ class StoreParentRequest extends FormRequest
             'mother_name_en' => 'required|string|max:255',
             'mother_job' => 'required|nullable|string|max:255',
             'mother_job_en' => 'required|nullable|string|max:255',
-            'mother_national_id' => 'required|numeric|digits_between:5,20',
-            'mother_passport_id' => 'required|nullable|string|max:20',
-            'mother_phone' => 'required|string|max:20',
+            'mother_national_id' => 'required|digits_between:11,20',
+            'mother_passport_id' => 'required|digits_between:11,20',
+            'mother_phone' => ['required', 'digits_between:11,20'],
             'mother_nationality_id' => 'required|integer|exists:nationalities,id',
             'mother_blood_type_id' => 'required|integer|exists:type_bloods,id',
             'mother_religion_id' => 'required|integer|exists:religions,id',
@@ -81,6 +81,16 @@ class StoreParentRequest extends FormRequest
             'mother_blood_type_id' => trans('parent.Blood_Type_Mother_id'),
             'mother_religion_id' => trans('parent.Religion_Mother_id'),
             'mother_address' => trans('parent.Address_Mother'),
+        ];
+    }
+
+    public function messages() {
+        return [
+            'required' => 'هذا الحقل مطلوب',
+            'integer' => 'يجب اختيار قيمة صحيحة',
+            'exists' => 'القيمة المختارة غير صحيحة',
+            'email.email' => 'البريد الإلكتروني غير صحيح',
+            'password.min' => 'كلمة المرور يجب ألا تقل عن 2 أحرف',
         ];
     }
     

@@ -49,6 +49,8 @@ Route::group([
 
         // Parents
         Route::resource('add_parent', AddParentController::class);
+        Route::get('parent', [AddParentController::class, 'addParent']);
+        Route::post('/add_parent/validate', [AddParentController::class, 'validateField'])->name('parents.validate'); //this route to make realtime validation about add parent
         
     });
     

@@ -101,7 +101,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="#">{{ trans('parent.Parent_list') }}</a> </li>
+                            <li> <a href="{{url('parent')}}">{{ trans('parent.Parent_list') }}</a> </li>
                             <li> <a href="{{url('add_parent')}}">{{ trans('parent.Add_parent') }}</a> </li>
                         </ul>
                     </li>

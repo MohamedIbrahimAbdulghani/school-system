@@ -36,7 +36,8 @@ return [
     'Religion_Mother_id' => 'Religion',
     'Address_Mother' => 'Address Mother',
 
-    'Next' => 'Next',
+    'Save' => 'Save',
     'Choose' => 'Choose',
+    'Processes' => 'Processes'
 
 ];

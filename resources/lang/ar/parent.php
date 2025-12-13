@@ -36,10 +36,9 @@ return [
     'Religion_Mother_id' => 'الديانة',
     'Address_Mother' => 'عنوان الام',
 
-    'Next' => 'التالي',
-    'Back' => 'السابق',
-    'Finish' => 'تاكيد',
+    'Save' => 'حفظ',
     'Choose' => 'اختيار من القائمة',
+    'Processes' => 'العمليات',
 
 
 ];

@@ -9,6 +9,7 @@ use App\Models\Religions;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreParentRequest;
 use App\Models\My_Parent;
+use Illuminate\Support\Facades\Validator;
 
 class AddParentController extends Controller
 {
@@ -36,6 +37,7 @@ class AddParentController extends Controller
      */
     public function store(StoreParentRequest $request)
     {
+
             $parent = My_Parent::create([
                 'email' => $request->email,
                 'password' => $request->password,
@@ -59,8 +61,14 @@ class AddParentController extends Controller
                 'mother_religion_id' => $request->mother_religion_id,
                 'mother_address' => $request->mother_address,
             ]);
-            // return redirect->route('add_parent');
-            return back();
+            if ($parent) {
+                toastr()->success(trans('messages.success'));
+            } else {
+                toastr()->error(trans('messages.error'));
+            }
+            return redirect()->route('add_parent.index');
+
+            
     }
 
     /**
@@ -93,5 +101,9 @@ class AddParentController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function addParent() {
+        $parent = My_Parent::all();
+        return view('pages.Parents.show_parent', compact('parent'));
     }
 }

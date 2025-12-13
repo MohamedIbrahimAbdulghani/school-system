@@ -8,8 +8,11 @@ use App\Models\TypeBloods;
 use App\Models\Religions;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreParentRequest;
-use App\Models\My_Parent;
+use App\Models\MyParents;
+use App\Models\ParentAttachments;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+
 
 class AddParentController extends Controller
 {
@@ -37,10 +40,9 @@ class AddParentController extends Controller
      */
     public function store(StoreParentRequest $request)
     {
-
-            $parent = My_Parent::create([
+        $parent = MyParents::create([
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
                 'father_name' => ['ar' => $request->father_name, 'en' => $request->father_name_en], // this is to enter 2 forma from name ( arabic + english )
                 'father_job' => ['ar' => $request->father_job, 'en' => $request->father_job_en],
                 'father_national_id' => $request->father_national_id,
@@ -61,6 +63,18 @@ class AddParentController extends Controller
                 'mother_religion_id' => $request->mother_religion_id,
                 'mother_address' => $request->mother_address,
             ]);
+            // to create filename in ParentAttachments Table
+            if ($request->hasFile('files')) {
+                foreach ($request->file('files') as $file) {
+                    $file_name =  $file->getClientOriginalName();
+                    $file->move(public_path('attachments/parents/' . $parent->father_national_id), $file_name);
+                    ParentAttachments::create([
+                        'file_name' => $file_name,
+                        'parent_id' => $parent->id,
+                    ]);
+                }
+            }
+
             if ($parent) {
                 toastr()->success(trans('messages.success'));
             } else {
@@ -102,8 +116,28 @@ class AddParentController extends Controller
     {
         //
     }
+    // this function to make realtime validation about add_parent
+    public function validateField(Request $request) {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                $request->field => $request->rules,
+            ],
+            (new StoreParentRequest())->messages(),
+            (new StoreParentRequest())->attributes()
+        );
+
+        if ($validator->fails()) {
+            return response()->json([
+                'error' => $validator->errors()->first($request->field),
+            ], 422);
+        }
+
+        return response()->json(['success' => true]);
+    }
+
     public function addParent() {
-        $parent = My_Parent::all();
+        $parent = MyParents::all();
         return view('pages.Parents.show_parent', compact('parent'));
     }
 }

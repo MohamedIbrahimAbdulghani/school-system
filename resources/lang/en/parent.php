@@ -38,6 +38,13 @@ return [
 
     'Save' => 'Save',
     'Choose' => 'Choose',
-    'Processes' => 'Processes'
+    'Processes' => 'Processes',
+
+    'required' => 'This field is required',
+    'integer' => 'You must select a valid value',
+    'exists' => 'The selected value is invalid',
+    'email.email' => 'The email must be a valid email address',
+    'password.min' => 'The password must be at least 2 characters',
+    'choose_file_name' => 'Choose file name',
 
 ];

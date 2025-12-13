@@ -28,7 +28,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <form action="{{route('add_parent.store')}}" method="post">   
+                <form action="{{route('add_parent.store')}}" method="post" enctype="multipart/form-data">   
                     @csrf     
                     <!-- Start Father Form -->
                     <h5>{{trans('parent.Information_Father')}}</h5>
@@ -379,7 +379,11 @@
                                 </div>
                             </div>
                     </div>
-                    <button class="btn btn-success" type="submit">{{trans('parent.Save')}}</button>
+                    <hr>
+                    <hr>
+                    <label for="file_name">{{ trans('parent.choose_file_name')}}</label>
+                    <input type="file" name="files[]" id="files" class="form-control d-block" multiple>
+                    <button class="btn btn-success mt-3" type="submit">{{trans('parent.Save')}}</button>
                     <!-- End Mother Form -->
                 </form>
             </div>

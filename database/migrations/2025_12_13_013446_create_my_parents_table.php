@@ -25,7 +25,6 @@ return new class extends Migration
             $table->foreignId('father_blood_type_id')->constrained('type_bloods')->cascadeOnDelete();
             $table->foreignId('father_religion_id')->constrained('religions')->cascadeOnDelete();
             $table->string('father_address');
-
             // Mother information
             $table->string('mother_name');
             $table->string('mother_national_id');

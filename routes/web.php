@@ -6,14 +6,15 @@ use App\Http\Controllers\Grades\GradesController;
 use App\Http\Controllers\Classrooms\ClassRoomsController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Sections\SectionController;
+use App\Http\Controllers\Parents\AddParentController;
 
 // ======== المجموعة الرئيسية ========
 Route::group([
-    // 'prefix' => LaravelLocalization::setLocale(),
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+    // 'prefix' => '{locale}',
+    // 'where' => ['locale' => 'ar|en'],
     // 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    'prefix' => '{locale}',
-    'where' => ['locale' => 'ar|en'],
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
     
     // الصفحة الرئيسية
@@ -46,8 +47,9 @@ Route::group([
         // Logout
         Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-        // صفحة add_parent - دي اللي تهمنا
-        Route::view('add_parent', 'livewire.show-form')->name('add_parent');
+        // Parents
+        Route::resource('add_parent', AddParentController::class);
+        
     });
     
 });

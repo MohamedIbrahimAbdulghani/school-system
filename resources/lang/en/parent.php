@@ -10,6 +10,7 @@ return [
     'Email' => 'Email',
     'Password' => 'Password',
 
+    'Information_Father' => 'Father Information',
     'Name_Father' => 'Father Name Arabic',
     'Name_Father_en' => 'Father Name English',
     'Job_Father' => 'Job Title Arabic',
@@ -22,6 +23,7 @@ return [
     'Religion_Father_id' => 'Religion',
     'Address_Father' => 'Address Father',
 
+    'Information_Mother' => 'Mother Information',
     'Name_Mother' => 'Mother Name Arabic',
     'Name_Mother_en' => 'Mother Name English',
     'Job_Mother' => 'Job Title Arabic',

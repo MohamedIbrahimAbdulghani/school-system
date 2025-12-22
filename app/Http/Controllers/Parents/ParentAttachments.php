@@ -12,7 +12,7 @@ class ParentAttachments extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

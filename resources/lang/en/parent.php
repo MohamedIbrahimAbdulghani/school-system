@@ -46,5 +46,7 @@ return [
     'email.email' => 'The email must be a valid email address',
     'password.min' => 'The password must be at least 2 characters',
     'choose_file_name' => 'Choose file name',
+    'Edit' => 'Edit Information About Parent',
+    'Delete' => 'Delete Information Parent'
 
 ];

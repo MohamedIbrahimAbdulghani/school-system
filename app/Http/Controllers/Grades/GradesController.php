@@ -101,8 +101,8 @@ class GradesController extends Controller
             */
 
     // 2- this is second way to get classrooms by grades and delete grades if this grades don't related by classrooms
-        $grade = Grades::with("classRooms")->findOrFail($request->id);
-        if($grade->classRooms->count() > 0) {
+        $grade = Grades::with("sections")->findOrFail($request->id);
+        if($grade->sections->count() > 0) {
             toastr()->error(trans('grades.delete_grade_error'));
         } else {
             $grade->delete();

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreParentRequest extends FormRequest
 {
@@ -22,7 +23,12 @@ class StoreParentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:my_parents,email',
+            // 'email' => 'required|email|unique:my_parents,email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('my_parents', 'email')->ignore($this->input('id')),
+            ],
             'password' => 'required|min:2',
 
             // الأب
@@ -65,5 +71,5 @@ class StoreParentRequest extends FormRequest
             'password.min' => trans('parent.password.min'),
         ];
     }
-    
+
 }

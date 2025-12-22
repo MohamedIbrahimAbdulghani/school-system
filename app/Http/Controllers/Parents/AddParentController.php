@@ -13,7 +13,6 @@ use App\Models\ParentAttachments;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
-
 class AddParentController extends Controller
 {
     /**
@@ -21,10 +20,8 @@ class AddParentController extends Controller
      */
     public function index()
     {
-        $Nationalities = Nationalitie::all();
-        $Type_Bloods = TypeBloods::all();
-        $Religions = Religions::all();
-        return view('pages.Parents.add_parent', compact('Nationalities', 'Type_Bloods', 'Religions'));
+        $parent = MyParents::all();
+        return view('pages.Parents.index', compact('parent'));
     }
 
     /**
@@ -32,7 +29,10 @@ class AddParentController extends Controller
      */
     public function create()
     {
-        //
+        $Nationalities = Nationalitie::all();
+        $Type_Bloods = TypeBloods::all();
+        $Religions = Religions::all();
+        return view('pages.Parents.show_parent', compact('Nationalities', 'Type_Bloods', 'Religions'));
     }
 
     /**
@@ -81,8 +81,6 @@ class AddParentController extends Controller
                 toastr()->error(trans('messages.error'));
             }
             return redirect()->route('add_parent.index');
-
-            
     }
 
     /**
@@ -98,23 +96,63 @@ class AddParentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $Nationalities = Nationalitie::all();
+        $Type_Bloods = TypeBloods::all();
+        $Religions = Religions::all();
+        $parent = MyParents::findOrFail($id);
+        return view('pages.Parents.edit_parent', compact('Nationalities', 'Type_Bloods', 'Religions', 'parent'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreParentRequest $request, string $id)
     {
-        //
+        $parent = MyParents::findOrFail($id);
+        $parent->update([
+            'email' => $request->email,
+            'father_name' => ['ar' => $request->father_name, 'en' => $request->father_name_en], // this is to enter 2 forma from name ( arabic + english )
+            'father_job' => ['ar' => $request->father_job, 'en' => $request->father_job_en],
+            'father_national_id' => $request->father_national_id,
+            'father_passport_id' => $request->father_passport_id,
+            'father_phone' => $request->father_phone,
+            'father_nationality_id' => $request->father_nationality_id,
+            'father_blood_type_id' => $request->father_blood_type_id,
+            'father_religion_id' => $request->father_religion_id,
+            'father_address' => $request->father_address,
+
+            'mother_name' => ['ar' => $request->mother_name, 'en' => $request->mother_name_en], // this is to enter 2 forma from name ( arabic + english )
+            'mother_job' => ['ar' => $request->mother_job, 'en' => $request->mother_job_en],
+            'mother_national_id' => $request->mother_national_id,
+            'mother_passport_id' => $request->mother_passport_id,
+            'mother_phone' => $request->mother_phone,
+            'mother_nationality_id' => $request->mother_nationality_id,
+            'mother_blood_type_id' => $request->mother_blood_type_id,
+            'mother_religion_id' => $request->mother_religion_id,
+            'mother_address' => $request->mother_address,
+        ]);
+            if ($request->filled('password')) {
+                $parent->password = Hash::make($request->password);
+            }
+            if ($parent) {
+                toastr()->success(trans('messages.update'));
+            } else {
+                toastr()->error(trans('messages.error'));
+            }
+            return redirect()->route('add_parent.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $parent = MyParents::findOrFail($id);
+        $parent->delete();
+        if ($parent) {
+            toastr()->success(trans('messages.delete'));
+        }
+        return redirect()->route('add_parent.index');
     }
     // this function to make realtime validation about add_parent
     public function validateField(Request $request) {
@@ -136,8 +174,8 @@ class AddParentController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function addParent() {
-        $parent = MyParents::all();
-        return view('pages.Parents.show_parent', compact('parent'));
-    }
+    // public function addParent() {
+    //     $parent = MyParents::all();
+    //     return view('pages.Parents.show_parent', compact('parent'));
+    // }
 }

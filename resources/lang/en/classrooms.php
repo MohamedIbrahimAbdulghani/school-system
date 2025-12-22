@@ -7,7 +7,7 @@ return [
     'add_class' => 'add class',
     'edit_class'=> 'Edit class',
     'delete_class'=> 'Delete class',
-    'Warning_Grade'=> 'Are you sure you want to delete?',
+    'Warning_class'=> 'Are you sure you want to delete?',
     'submit' => 'submit',
     'Name_class'=>'Name_class',
     'Name_class_en'=>'Name class en',

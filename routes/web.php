@@ -13,11 +13,8 @@ use App\Http\Controllers\Parents\ParentAttachments;
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
-    // 'prefix' => '{locale}',
-    // 'where' => ['locale' => 'ar|en'],
-    // 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
-    
+
     // الصفحة الرئيسية
     Route::get('/', function () {
         return view('welcome');
@@ -32,28 +29,34 @@ Route::group([
 
     // الروابط بعد التسجيل
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-        
+
         // Dashboard
         Route::get('dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-        
-        // 🔴 مهم: كل الـ resources لازم تبقى جوا middleware الـ auth
-        Route::resource('grades', GradesController::class);
-        Route::resource('classrooms', ClassRoomsController::class);
-        Route::delete('classrooms/bulkDestroy', [ClassRoomsController::class, 'bulkDestroy'])->name('classrooms.bulkDestroy');
-        Route::resource('sections', SectionController::class);
-        Route::get('classes/{id}', [SectionController::class, 'getClasses']);
-        
+
+
         // Logout
         Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
 
+        // Grades
+            Route::resource('grades', GradesController::class);
+
+        // ClassRooms
+            Route::delete('classrooms/bulkDestroy', [ClassRoomsController::class, 'bulkDestroy'])->name('classrooms.bulkDestroy');
+            Route::resource('classrooms', ClassRoomsController::class);
+
+        // Sections
+            Route::get('classes/{id}', [SectionController::class, 'getClasses']);
+            Route::resource('sections', SectionController::class);
+
         // Parents
-        Route::resource('add_parent', AddParentController::class);
-        Route::get('parent', [AddParentController::class, 'addParent']);
-        Route::post('/add_parent/validate', [AddParentController::class, 'validateField'])->name('parents.validate'); //this route to make realtime validation about add parent
-        
-        Route::resource('parent_attachments', ParentAttachments::class);
+            // Route::get('parent', [AddParentController::class, 'addParent']);
+            Route::post('/add_parent/validate', [AddParentController::class, 'validateField'])->name('parents.validate'); //this route to make realtime validation about add parent
+            Route::resource('add_parent', AddParentController::class);
+
+        // Parents Attachments
+            Route::resource('parent_attachments', ParentAttachments::class);
     });
-    
+
 });

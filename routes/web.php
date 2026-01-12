@@ -12,7 +12,7 @@ use App\Http\Controllers\Parents\ParentAttachments;
 // ======== المجموعة الرئيسية ========
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
+    'middleware' => ['localeSessionRedirect', 'localeViewPath'],
 ], function () {
 
     // الصفحة الرئيسية
@@ -52,7 +52,7 @@ Route::group([
 
         // Parents
             // Route::get('parent', [AddParentController::class, 'addParent']);
-            Route::post('/add_parent/validate', [AddParentController::class, 'validateField'])->name('parents.validate'); //this route to make realtime validation about add parent
+            Route::post('add_parent/validate', [AddParentController::class, 'validateField'])->name('parents.validate'); //this route to make realtime validation about add parent
             Route::resource('add_parent', AddParentController::class);
 
         // Parents Attachments

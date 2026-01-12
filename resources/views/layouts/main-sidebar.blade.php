@@ -28,7 +28,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Grades-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('grades.index', app()->getLocale())}}">{{trans('main-side.Grades_list')}}</a></li>
+                            <li><a href="{{route('grades.index')}}">{{trans('main-side.Grades_list')}}</a></li>
 
                         </ul>
                     </li>

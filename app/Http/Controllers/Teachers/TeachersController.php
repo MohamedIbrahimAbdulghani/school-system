@@ -4,15 +4,22 @@ namespace App\Http\Controllers\Teachers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Repository\TeacherRepositoryInterface;
 
 class TeachersController extends Controller
 {
+    protected $teacher;
+
+    public function __construct(TeacherRepositoryInterface $teacher) {
+        $this->teacher = $teacher;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return 'welcome in teachers controller';
+        $teacher = $this->teacher->getTeacherById(1);
+        dd($teacher);
     }
 
     /**

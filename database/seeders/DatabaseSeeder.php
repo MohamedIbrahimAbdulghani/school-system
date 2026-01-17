@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,5 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeBloodSeeder::class);
         $this->call(NationalitieSeeder::class);
         $this->call(ReligionSeeder::class);
+        $this->call(SpecializationSeeder::class);
+        $this->call(GenderSeeder::class);
     }
 }

@@ -13,6 +13,7 @@ return [
     'sections'=>'الاقسام',
     'students'=>'الطلاب',
     'Teachers'=>'المعلمين',
+    'List_Teachers' => 'قائمة المعلمين',
     'Parents'=>'اولياء الامور',
     'Accounts'=>'الحسابات',
     'Attendance'=>'الحضور والغياب',

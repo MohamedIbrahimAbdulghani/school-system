@@ -15,6 +15,9 @@ class CustomAuthenticatedSessionController
     {
         return view('auth.login');
     }
+    public function register() {
+        return view('auth.register');
+    }
 
     /**
      * تنفيذ عملية تسجيل الدخول

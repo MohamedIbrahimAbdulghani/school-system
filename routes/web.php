@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\AddParentController;
 use App\Http\Controllers\Parents\ParentAttachments;
+use App\Http\Controllers\Teachers\TeachersController;
 
 // ======== المجموعة الرئيسية ========
 Route::group([
@@ -25,6 +26,7 @@ Route::group([
     Route::middleware('guest')->group(function () {
         Route::get('/login', [CustomAuthenticatedSessionController::class, 'create'])->name('login');
         Route::post('/login', [CustomAuthenticatedSessionController::class, 'store']);
+        Route::get('/register', [CustomAuthenticatedSessionController::class, 'register'])->name('register');
     });
 
     // الروابط بعد التسجيل
@@ -54,6 +56,9 @@ Route::group([
             // Route::get('parent', [AddParentController::class, 'addParent']);
             Route::post('add_parent/validate', [AddParentController::class, 'validateField'])->name('parents.validate'); //this route to make realtime validation about add parent
             Route::resource('add_parent', AddParentController::class);
+
+        // Teachers
+            Route::resource('teachers', TeachersController::class);
 
         // Parents Attachments
             Route::resource('parent_attachments', ParentAttachments::class);

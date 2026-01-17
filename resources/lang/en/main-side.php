@@ -13,6 +13,7 @@ return [
     'sections'=>'Sections',
     'students'=>'Students',
     'Teachers'=>'Teachers',
+    'List_Teachers' => 'Teachers List',
     'Parents'=>'Parents',
     'Accounts'=>'Accounts',
     'Attendance'=>'Attendance',

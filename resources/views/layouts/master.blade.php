@@ -16,8 +16,7 @@
 <body>
 
     <div class="wrapper">
-        <!--=================================
- preloader -->
+        <!--=================================preloader -->
 
         <div id="pre-loader">
             <img src="assets/images/pre-loader/loader-01.svg" alt="">
@@ -34,31 +33,22 @@
          Main content -->
         <!-- main-content -->
         <div class="content-wrapper">
-
             @yield('page-header')
-
             @yield('content')
-
-            <!--=================================
- wrapper -->
-
-            <!--=================================
- footer -->
-
-            @include('layouts.footer')
+            <!--=================================wrapper -->
+        <!--=================================footer -->
+        @include('layouts.footer')
         </div><!-- main content wrapper end-->
-    </div>
-    </div>
+
     </div>
 
     <!--=================================
  footer -->
+ 
 
     @include('layouts.footer-scripts')
 
-    @yield('js')
-        <!-- إضافة Livewire Scripts هنا -->
-    @livewireScripts
+
 </body>
 
 </html>

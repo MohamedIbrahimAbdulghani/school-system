@@ -155,7 +155,7 @@
                                                                                                     <input type="checkbox" class="form-check-input" name="status" id="exampleCheck1">
                                                                                                 @endif
                                                                                                 <label
-                                                                                                    class="form-check-label"
+                                                                                                    class="form-check-label mt-0"
                                                                                                     for="exampleCheck1">{{ trans('section.Status') }}</label>
                                                                                             </div>
                                                                                         </div>
@@ -277,8 +277,8 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 <!-- row closed -->
 @endsection
 @section('js')

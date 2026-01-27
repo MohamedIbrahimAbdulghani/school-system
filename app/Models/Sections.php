@@ -20,4 +20,7 @@ class Sections extends Model
     {
         return $this->belongsTo(ClassRooms::class, 'classroom_id');
     }
+    public function teacher() {
+        return $this->belongsToMany(Teachers::class);
+    }
 }

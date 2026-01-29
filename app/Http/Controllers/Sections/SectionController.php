@@ -17,11 +17,9 @@ class SectionController extends Controller
      */
     public function index()
     {
-        $section = Sections::find(23);
-        return $section->teacher;
-        // $grades = Grades::with('sections')->get();
-        // $teachers = Teachers::all();
-        // return view('pages.Sections.section', compact('grades', 'teachers'));
+        $grades = Grades::with('sections')->get();
+        $teachers = Teachers::all();
+        return view('pages.Sections.section', compact('grades', 'teachers'));
     }
 
     /**

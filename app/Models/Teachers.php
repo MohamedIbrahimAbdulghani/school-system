@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use App\Models\Genders;
 use App\Models\Specializations;
+use App\Models\Sections;
 
 class Teachers extends Model
 {
@@ -13,13 +14,14 @@ class Teachers extends Model
     public array $translatable = ['name'];
     public $guarded = [];
 
-    public function section() {
-        return $this->belongsToMany(Sections::class);
-    }
     public function gender() {
         return $this->belongsTo(Genders::class);
     }
     public function specialization() {
         return $this->belongsTo(Specializations::class);
+    }
+    // relationship between Section and Teacher to get Section in Teacher table
+    public function section() {
+        return $this->belongsToMany(Sections::class, 'teacher_section', 'teacher_id', 'section_id');
     }
 }

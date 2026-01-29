@@ -103,7 +103,8 @@ class TeachersController extends Controller
      */
     public function destroy(string $id)
     {
-        $teacher = Teachers::find($id)->delete();
+        $teacher = Teachers::findOrFail($id);
+        $teacher->delete();
         if($teacher) {
             toastr()->success(trans('messages.delete'));
         } else {
@@ -111,4 +112,17 @@ class TeachersController extends Controller
         }
         return redirect()->route('teachers.index');
     }
+
+    // this is function to delete all teachers
+    public function bulkDestroy(Request $request) {
+        // ids جايه كسلسلة مفصولة بفاصلة
+        $ids = explode(',', $request->ids);
+
+        // حذف كل الصفوف اللي الـ IDs بتاعتها موجودة
+        Teachers::whereIn('id', $ids)->delete();
+
+        toastr()->success(trans('messages.delete'));
+        return back();
+    }
+
 }

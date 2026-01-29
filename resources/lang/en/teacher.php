@@ -20,6 +20,7 @@ return [
     'address'         => 'Address',
 
     'edit_teacher'=>'Edit Teacher',
+    'teacher_name_required' => 'Teacher name is required',
 
     'teacher_list'    => 'Teachers List',
     'processes'=>'Processes',
@@ -27,7 +28,7 @@ return [
     'delete'=>'Delete',
 
     'Information_teacher' => 'Teacher Information',
-    'name_teacher' => 'Teacher Name in Arabic',
+    'name_teacher_ar' => 'Teacher Name in Arabic',
     'name_teacher_en' => 'Teacher Name in English',
     'specialization' => 'Specialization',
     'gender' => 'Gender',

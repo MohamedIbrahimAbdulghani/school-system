@@ -21,8 +21,9 @@ return [
 
     'edit_teacher'=>'تعديل معلم',
 
+    'teacher_name_required' => 'يرجي ادخال اسم المعلم ',
     'Information_teacher' => 'معلومات المعلم',
-    'name_teacher' => 'اسم المعلم باللغة العربية',
+    'name_teacher_ar' => 'اسم المعلم باللغة العربية',
     'name_teacher_en' => 'اسم المعلم باللغة الانجليزية',
     'specialization' => 'التخصص',
     'gender' => 'النوع',

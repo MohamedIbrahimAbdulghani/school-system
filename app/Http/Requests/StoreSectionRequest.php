@@ -26,6 +26,7 @@ class StoreSectionRequest extends FormRequest
             'Name_Section_En' => 'required|min:1|max:255',
             'Grade_id'        => 'required|exists:grades,id',
             'Class_id'        => 'required|exists:class_rooms,id',
+            'teachers_id'     => 'required|exists:teachers,id',
         ];
     }
     // this function to make message for validations
@@ -36,6 +37,7 @@ class StoreSectionRequest extends FormRequest
             'Name_Section_En.required' => trans('section.required_en'),
             'Grade_id.required' => trans('section.Grade_id_required'),
             'Class_id.required' => trans('section.Class_id_required'),
+            'teachers_id.required' => trans('teacher.teacher_name_required'),
         ];
     }
 

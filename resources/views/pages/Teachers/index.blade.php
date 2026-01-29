@@ -35,11 +35,15 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
                 <a href="{{route('teachers.create')}}"><button type="button" class="mb-2 button x-small">{{trans('teacher.add_teacher')}}</button></a>
+                
+                <button type="button" class="mb-2 button x-small" id="bulk-delete-btn"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" >{{trans('classrooms.delete_checkbox')}}</button>
+            
                 <div class="table-responsive">
-                    <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
+                    <table id="datatable" class="table p-0 table-striped table-bordered" data-page-length="50"
                         style="text-align: center">
                         <thead>
-                        <tr class="table-success">
+                        <tr>
+                            <th><input type="checkbox" name="select_all_box" id="select_all_box"></th>
                             <th>#</th>
                             <th>{{ trans('teacher.name_teacher') }}</th>
                             <th>{{ trans('teacher.gender') }}</th>
@@ -53,6 +57,7 @@
                         @foreach ($teachers as $teacher)
                             <tr>
                                 <?php $i++; ?>
+                                <td><input type="checkbox" name="checkbox" id="checkbox" class="checkbox_row" value="{{$teacher->id}}"></td>
                                 <td>{{ $i }}</td>
                                 <td>{{ $teacher->name }}</td>
                                 <td>{{ $teacher->gender->name }}</td>
@@ -181,6 +186,28 @@
                     {{-- End Modal To Delete teacher --}}
 
                         @endforeach
+
+                        {{-- Start Modal To Delete All ClassRooms --}}
+                            <div class="modal fade" id="delete_all_classes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('classrooms.delete_rows')}}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    {{-- delete form--}}
+                                    <form id="bulk-delete-form"  action="{{ route('teachers.bulkDestroy') }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="ids" id="bulk-delete-ids">
+                                        <button type="submit" class="btn btn-danger">{{trans('grades.delete')}}</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        {{-- End Modal To Delete All ClassRooms --}}
                     </table>
                 </div>
             </div>
@@ -193,5 +220,21 @@
 <!-- row closed -->
 @endsection
 @section('js')
-
+<script>
+    function filterByGrade(gradeName) {
+        // لما المستخدم يختار مرحلة معينة
+        $('#datatable tbody tr').each(function() {
+            const gradeCell = $(this).find('td:eq(3)').text().trim();
+            if (gradeCell === gradeName) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+    // زرار لعرض كل الصفوف من جديد
+    function showAllClasses() {
+        $('#datatable tbody tr').show();
+    }
+</script>
 @endsection

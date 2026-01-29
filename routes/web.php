@@ -58,6 +58,7 @@ Route::group([
             Route::resource('add_parent', AddParentController::class);
 
         // Teachers
+            Route::delete('teachers/bulkDestroy', [TeachersController::class, 'bulkDestroy'])->name('teachers.bulkDestroy');
             Route::resource('teachers', TeachersController::class);
 
         // Parents Attachments

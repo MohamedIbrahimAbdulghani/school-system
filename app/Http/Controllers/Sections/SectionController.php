@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Grades;
 use App\Models\ClassRooms;
 use App\Models\Sections;
+use App\Models\Teachers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSectionRequest;
 
@@ -16,8 +17,11 @@ class SectionController extends Controller
      */
     public function index()
     {
-        $grades = Grades::with('sections')->get();
-        return view('pages.Sections.section', compact('grades'));
+        $section = Sections::find(23);
+        return $section->teacher;
+        // $grades = Grades::with('sections')->get();
+        // $teachers = Teachers::all();
+        // return view('pages.Sections.section', compact('grades', 'teachers'));
     }
 
     /**
@@ -41,6 +45,7 @@ class SectionController extends Controller
                 'grade_id' => $request->Grade_id,
                 'classroom_id' => $request->Class_id,
             ]);
+            $section->teacher()->attach($request->teachers_id); // attach() is a function take teacher_id and section_id and insert this value in table teacher_section
             toastr()->success(trans('messages.success'));
             return redirect()->route('sections.index');
 

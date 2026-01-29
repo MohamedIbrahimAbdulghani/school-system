@@ -266,6 +266,14 @@
 
                                         </select>
                                     </div>
+                                    <div class="col">
+                                        <label for="inputName"  class="control-label">{{ trans('teacher.name_teacher') }}</label>
+                                        <select multiple name="teachers_id[]" class="custom-select">
+                                            @foreach ($teachers as $teacher)
+                                                <option value="{{ $teacher->id }}"> {{ $teacher->name }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('section.Close') }}</button>

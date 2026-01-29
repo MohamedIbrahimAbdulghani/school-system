@@ -61,8 +61,8 @@
 
                                     <div class="form-row">
                                         <div class="col">
-                                            <label for="title">{{trans('teacher.name_teacher')}}</label>
-                                            <input type="text" name="teacher_name_ar" placeholder="{{trans('teacher.name_teacher')}}" class="form-control" value="{{ old('father_name') }}">
+                                            <label for="title">{{trans('teacher.name_teacher_ar')}}</label>
+                                            <input type="text" name="teacher_name_ar" placeholder="{{trans('teacher.name_teacher_ar')}}" class="form-control" value="{{ old('teacher_name_ar') }}">
                                             @error('teacher_name_ar')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -154,7 +154,6 @@
 </div>
 <!-- row closed -->
 @endsection
-@section('js')
 @section('js')
 <script>
 document.querySelectorAll('[data-rules]').forEach(input => {

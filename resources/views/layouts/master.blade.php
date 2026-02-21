@@ -9,8 +9,7 @@
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
-        <!-- إضافة Livewire Styles هنا -->
-    @livewireStyles
+       
 </head>
 
 <body>
@@ -36,8 +35,8 @@
             @yield('page-header')
             @yield('content')
             <!--=================================wrapper -->
-        <!--=================================footer -->
-        @include('layouts.footer')
+            <!--=================================footer -->
+            @include('layouts.footer')
         </div><!-- main content wrapper end-->
 
     </div>

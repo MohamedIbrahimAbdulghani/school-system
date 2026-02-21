@@ -17,6 +17,8 @@
 
 @yield('css')
 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
+
 <!--- Style css -->
 <link href="{{ asset('assets/css/wizard.css') }}" rel="stylesheet"> <!-- wizard css file use when make livewire in add parent -->
 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">

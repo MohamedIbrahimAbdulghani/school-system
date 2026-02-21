@@ -223,15 +223,35 @@ var $window = $(window),
 /*************************
       DataTable
 *************************/  
+// POTENZA.datatables = function () {
+//    if ($('#datatable').exists()) {
+//        loadScript(plugin_path + 'bootstrap-datatables/jquery.dataTables.min.js', function() {
+//        loadScript(plugin_path + 'bootstrap-datatables/dataTables.bootstrap4.min.js', function() {
+//       $('#datatable').DataTable();
+//      });
+//        });
+//     }
+//  };
+
 POTENZA.datatables = function () {
    if ($('#datatable').exists()) {
+       // لو DataTable اتحمل من CDN بالفعل، متحملش التاني
+       if (typeof $.fn.DataTable !== 'undefined') {
+           if (!$.fn.DataTable.isDataTable('#datatable')) {
+               $('#datatable').DataTable({ pageLength: 50 });
+           }
+           return; // وقف هنا، متحملش السكريبتات التانية
+       }
+
        loadScript(plugin_path + 'bootstrap-datatables/jquery.dataTables.min.js', function() {
        loadScript(plugin_path + 'bootstrap-datatables/dataTables.bootstrap4.min.js', function() {
-      $('#datatable').DataTable();
-     });
+           if (!$.fn.DataTable.isDataTable('#datatable')) {
+               $('#datatable').DataTable({ pageLength: 50 });
+           }
+       });
        });
     }
- };
+};
 
 /*********************************
     Wow animation on scroll

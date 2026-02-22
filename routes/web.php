@@ -55,6 +55,7 @@ Route::group([
         // Parents
             // Route::get('parent', [AddParentController::class, 'addParent']);
             Route::post('add_parent/validate', [AddParentController::class, 'validateField'])->name('parents.validate'); //this route to make realtime validation about add parent
+            Route::delete('add_parent/bulkDestroy', [AddParentController::class, 'bulkDestroy'])->name('add_parent.bulkDestroy');
             Route::resource('add_parent', AddParentController::class);
 
         // Teachers

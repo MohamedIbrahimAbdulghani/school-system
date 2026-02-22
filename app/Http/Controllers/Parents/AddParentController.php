@@ -174,6 +174,17 @@ class AddParentController extends Controller
         return response()->json(['success' => true]);
     }
 
+    // this is function to delete all parents
+    public function bulkDestroy(Request $request) {
+        // ids جايه كسلسلة مفصولة بفاصلة
+        $ids = explode(',', $request->ids);
+
+        // حذف كل الصفوف اللي الـ IDs بتاعتها موجودة
+        MyParents::whereIn('id', $ids)->delete();
+
+        toastr()->success(trans('messages.delete'));
+        return back();
+    }
     // public function addParent() {
     //     $parent = MyParents::all();
     //     return view('pages.Parents.show_parent', compact('parent'));

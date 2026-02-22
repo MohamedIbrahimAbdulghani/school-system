@@ -23,6 +23,7 @@ class TeachersController extends Controller
      */
     public function index()
     {
+        // return $this->teacher->getAllTeachers();
         $teachers = Teachers::all();
         $specializations = Specializations::all();
         $genders = Genders::all();

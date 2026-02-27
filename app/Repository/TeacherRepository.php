@@ -72,11 +72,7 @@ class TeacherRepository implements TeacherRepositoryInterface {
     public function deleteTeacher($id) {
         $teacher = Teachers::findOrFail($id);
         $teacher->delete();
-        if($teacher) {
-            toastr()->success(trans('messages.delete'));
-        } else {
-            toastr()->error(trans('messages.error'));
-        }
+        toastr()->success(trans('messages.delete'));
         return redirect()->route('teachers.index');
     }
 

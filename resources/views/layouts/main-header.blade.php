@@ -113,7 +113,7 @@
         <li class="nav-item dropdown mr-30">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                 aria-haspopup="true" aria-expanded="false">
-                <img src="{{ asset('assets/images/profile-image.png') }}" alt="avatar">
+                <img src="{{ asset('assets/images/user_icon.png') }}" alt="avatar">
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">

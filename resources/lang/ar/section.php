@@ -15,6 +15,7 @@ return [
     'Notes' => 'Notes',
     'submit' => 'حفظ البيانات',
     'Name_Section'=>'اسم القسم',
+    'Select_Class' => '-- حدد الصف --',
     'Name_Class'=>'اسم الصف',
     'Status'=>'الحالة',
     'Status_Section_AC'=>'نشط',

@@ -10,6 +10,7 @@ use App\Models\Teachers;
 use Illuminate\Support\Facades\Hash;
 use App\Repository\TeacherRepositoryInterface;
 use App\Http\Requests\StoreTeacherRequest;
+use App\Http\Requests\UpdateTeacherRequest;
 
 class TeachersController extends Controller
 {
@@ -23,10 +24,12 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        // return $this->teacher->getAllTeachers();
-        $teachers = Teachers::all();
-        $specializations = Specializations::all();
-        $genders = Genders::all();
+        // $teachers = Teachers::all();
+        // $specializations = Specializations::all();
+        // $genders = Genders::all();
+        $teachers =  $this->teacher->getTeachers();
+        $specializations = $this->teacher->getSpecializations();
+        $genders = $this->teacher->getGenders();
         return view('pages.Teachers.index', compact('teachers', 'specializations', 'genders'));
     }
 
@@ -35,8 +38,8 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        $specializations = Specializations::all();
-        $genders = Genders::all();
+        $specializations = $this->teacher->getSpecializations();
+        $genders = $this->teacher->getGenders();
         return view('pages.Teachers.add_teacher', compact('specializations', 'genders'));
     }
 
@@ -45,21 +48,7 @@ class TeachersController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {
-        $teacher = Teachers::create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'name' => ['ar' => $request->teacher_name_ar, 'en' => $request->teacher_name_en],
-            'specialization_id' => $request->specialization_id,
-            'gender_id' => $request->gender_id,
-            'join_date' => $request->join_date,
-            'address' => $request->address,
-        ]);
-        if ($teacher) {
-            toastr()->success(trans('messages.success'));
-        } else {
-            toastr()->error(trans('messages.error'));
-        }
-            return redirect()->route('teachers.index');
+        return $this->teacher->storeTeacher($request);
     }
 
     /**
@@ -67,8 +56,7 @@ class TeachersController extends Controller
      */
     public function show(string $id)
     {
-        $teacher = Teachers::find($id);
-        return view('pages.Teachers.show', compact('teacher'));
+        
     }
 
     /**
@@ -76,27 +64,19 @@ class TeachersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $teachers =  $this->teacher->editTeacher($id);
+        $specializations = $this->teacher->getSpecializations();
+        $genders = $this->teacher->getGenders();
+        return view('pages.Teachers.edit', compact('teachers', 'specializations', 'genders'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateTeacherRequest $request, string $id)
     {
-        $teacher = Teachers::find($id)->update([
-            'name' => ['ar' => $request->teacher_name_ar, 'en' => $request->teacher_name_en],
-            'specialization_id' => $request->specialization,
-            'gender_id' => $request->gender,
-            'join_date' => $request->join_date,
-            'address' => $request->address,
-        ]);
-        if($teacher) {
-            toastr()->success(trans('messages.update'));
-        } else {
-            toastr()->error(trans('messages.error'));        
-        }
-        return redirect()->route('teachers.index');
+        // return $request;
+        return $this->teacher->updateTeacher($request, $id);
     }
 
     /**
@@ -104,14 +84,7 @@ class TeachersController extends Controller
      */
     public function destroy(string $id)
     {
-        $teacher = Teachers::findOrFail($id);
-        $teacher->delete();
-        if($teacher) {
-            toastr()->success(trans('messages.delete'));
-        } else {
-            toastr()->error(trans('messages.error'));
-        }
-        return redirect()->route('teachers.index');
+        return $this->teacher->deleteTeacher($id);
     }
 
     // this is function to delete all teachers

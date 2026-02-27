@@ -14,6 +14,7 @@ return [
     'Name_Grade' => 'Name Grade',
     'submit' => 'submit',
     'Name_Section'=>'Name Section',
+    'Select_Class' => '-- Select Class --',
     'Name_Class'=>'Name Class',
     'Status'=>'Status',
     'Status_Section_AC'=>'Active',
@@ -25,7 +26,6 @@ return [
     'Class_id_required'=>'Please Select The Class Name',
     'Processes'=>'Processes',
     'Edit'=>'Edit',
-    'Update' => 'Update',
     'Delete'=>'Delete',
     'Close' => 'Close',
 

@@ -28,7 +28,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Grades-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('grades.index')}}">{{trans('main-side.Grades_list')}}</a></li>
+                            <li><a href="{{route('grades.index')}}">{{trans('main-side.list_grades')}}</a></li>
 
                         </ul>
                     </li>
@@ -36,12 +36,12 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#classes-menu">
                             <div class="pull-left"><i class="fa fa-building"></i><span
-                                    class="right-nav-text">{{trans('classrooms.title_page')}}</span></div>
+                                    class="right-nav-text">{{trans('main-side.classes')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="classes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="classrooms">{{trans('classrooms.List_classes')}}</a> </li>
+                            <li> <a href="classrooms">{{trans('main-side.list_classes')}}</a> </li>
                         </ul>
                     </li>
 
@@ -55,7 +55,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="sections">{{trans('section.List_Grade')}}</a> </li>
+                            <li> <a href="sections">{{trans('main-side.list_sections')}}</a> </li>
                             {{-- <li> <a href="calendar-list.html">List Calendar</a> </li> --}}
                         </ul>
                     </li>

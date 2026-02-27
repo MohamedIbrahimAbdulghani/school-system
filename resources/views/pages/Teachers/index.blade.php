@@ -29,6 +29,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right !important"></button>
         </div>
     @endif
+
+                @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+
     <!-- row -->
     <div class="row">
         <div class="col-md-12 mb-30">
@@ -39,7 +53,7 @@
                     <button type="button" class="mb-2 button x-small" id="bulk-delete-btn"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" >{{trans('classrooms.delete_checkbox')}}</button>
                 
                     <div class="table-responsive">
-                        <table id="datatable" class="table p-0 table-striped table-bordered" data-page-length="50"  style="text-align: center">
+                        <table id="datatable" class="table p-0 table-striped table-bordered" data-page-length="5"  style="text-align: center">
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" name="select_all_box" id="select_all_box"></th>
@@ -63,14 +77,13 @@
                                         <td>{{ $teacher->join_date }}</td>
                                         <td>{{ $teacher->specialization->name }}</td>
                                         <td>
-                                            <button title="{{ trans('teacher.edit') }}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit{{$teacher->id}}"><i class="fa fa-edit"></i></button>
+                                             <a href="{{route('teachers.edit', $teacher->id)}}"><button title="{{ trans('teacher.edit') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
                                             
                                             <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$teacher->id}}"  title="{{trans('teacher.Delete')}}"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
-
                                 {{-- Start Modal To Edit teacher --}}
-                                    <div class="modal fade" id="edit{{$teacher->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <!-- <div class="modal fade" id="edit{{$teacher->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -128,7 +141,6 @@
                                                         </div>
                                                         @enderror
                                                 </div>
-
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">{{trans('teacher.address')}}</label>
                                                 <textarea class="form-control mb-1" name="address" id="exampleFormControlTextarea1" rows="4">{{ $teacher->address }}</textarea>
@@ -140,7 +152,6 @@
                                                     </div>
                                                 @enderror
                                             </div>
-
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-primary">{{trans('grades.update')}}</button>
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>
@@ -149,7 +160,7 @@
                                             </div>
                                         </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 {{-- End Modal To Edit teacher --}}
 
 

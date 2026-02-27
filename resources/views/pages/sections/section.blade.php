@@ -103,7 +103,7 @@
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;"
                                                                                     id="exampleModalLabel">
-                                                                                    {{ trans('section.add_section') }}</h5>
+                                                                                    {{ trans('section.edit_Section') }}</h5>
                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span>
                                                                                 </button>
@@ -147,6 +147,17 @@
                                                                                         @endif
                                                                                         </select>
 
+                                                                                        <div class="col">
+                                                                                            <label for="inputName"  class="control-label">{{ trans('teacher.name_teacher') }}</label>
+                                                                                            <select multiple name="teachers_id[]" class="custom-select">
+                                                                                                @foreach ($teachers as $teacher)
+                                                                                                    <option value="{{ $teacher->id }}"
+                                                                                                        {{ $listSection->teacher->contains($teacher->id) ? 'selected' : '' }}> <!--  it's very important to select the teacher name who's added this section -->
+                                                                                                        {{ $teacher->name }}
+                                                                                                    </option>
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
                                                                                         <div class="mt-2 col">
                                                                                             <div class="form-check">
                                                                                                 @if ($listSection->status === 1)
@@ -263,7 +274,11 @@
                                     <div class="col">
                                         <label for="inputName"  class="control-label">{{ trans('section.Name_Class') }}</label>
                                         <select name="Class_id" class="custom-select">
-
+                                            <!--placeholder-->
+                                            <option value="" selected
+                                                    disabled>{{ trans('section.Select_Class') }}
+                                            </option>
+                                           
                                         </select>
                                     </div>
                                     <div class="col">
@@ -338,5 +353,30 @@
 
     });
     </script>
+
+                <script>
+                $(document).ready(function () {
+                    $('select[name="Grade_id"]').on('change', function () {
+                        var Grade_id = $(this).val();
+                        if (Grade_id) {
+                            $.ajax({
+                                url: "{{ URL::to('classes') }}/" + Grade_id,
+                                type: "GET",
+                                dataType: "json",
+                                success: function (data) {
+                                    $('select[name="Class_id"]').empty();
+                                    $.each(data, function (key, value) {
+                                        $('select[name="Class_id"]').append('<option value="' + key + '">' + value + '</option>');
+                                    });
+                                },
+                            });
+                        } else {
+                            console.log('AJAX load did not work');
+                        }
+                    });
+                });
+
+            </script>
+
 
 @endsection

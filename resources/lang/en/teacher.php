@@ -32,10 +32,13 @@ return [
     'name_teacher_en' => 'Teacher Name in English',
     'specialization' => 'Specialization',
     'gender' => 'Gender',
-    'join_date' => 'Join_Date',
-    'address' => 'Address',
 
     'blood_Type' => 'Blood Type',
     'religion' => 'Religion',
+
+    'required_name_ar' => 'the name_ar is required',
+    'required_name_en' => 'the name_en is required',
+    'join_date' => 'the join_date is required',
+    'address' => 'the address is required',
 
 ];

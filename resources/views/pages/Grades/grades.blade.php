@@ -47,7 +47,7 @@
 
                 <button type="button" class="mb-2 button x-small" data-toggle="modal" data-target="#addGrade">{{trans('grades.add_grade')}}</button>
                 <div class="table-responsive">
-                    <table id="datatable" class="table p-0 table-striped table-bordered">
+                    <table id="datatable" data-page-length="10"  class="table p-0 table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>#</th>

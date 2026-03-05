@@ -15,7 +15,7 @@
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
                 <li class="breadcrumb-item"><a href="#" class="default-color">{{trans('section.title_page')}}</a></li>
-                <li class="breadcrumb-item active">{{trans('section.List_Grade')}}</li>
+                <li class="breadcrumb-item active">{{trans('section.list_sections')}}</li>
             </ol>
         </div>
     </div>
@@ -152,7 +152,7 @@
                                                                                             <select multiple name="teachers_id[]" class="custom-select">
                                                                                                 @foreach ($teachers as $teacher)
                                                                                                     <option value="{{ $teacher->id }}"
-                                                                                                        {{ $listSection->teacher->contains($teacher->id) ? 'selected' : '' }}> <!--  it's very important to select the teacher name who's added this section -->
+                                                                                                        {{ $listSection->teachers->contains($teacher->id) ? 'selected' : '' }}> <!--  it's very important to select the teacher name who's added this section -->
                                                                                                         {{ $teacher->name }}
                                                                                                     </option>
                                                                                                 @endforeach

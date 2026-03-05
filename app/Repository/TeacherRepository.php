@@ -8,23 +8,23 @@ use Illuminate\Support\Facades\Hash;
 
 
 class TeacherRepository implements TeacherRepositoryInterface {
-        // this is fuction to get all teachers from database by this design patteren
+        // this is function to get all teachers from database by this design patteren
     public function getTeachers() {
         return Teachers::all();
     }
-        // this is fuction to get teacher by id from database by this design patteren
+        // this is function to get teacher by id from database by this design patteren
     public function getTeacherById($id) {
         return Teachers::where('id', $id)->get();
     }
-        // this is fuction to get specializations from database by this design patteren
+        // this is function to get specializations from database by this design patteren
     public function getSpecializations() {
         return Specializations::all();
     }
-        // this is fuction to store genders from database by this design patteren
+        // this is function to store genders from database by this design patteren
     public function getGenders() {
         return Genders::all();
     }
-    // this is fuction to store teacher in database by this design patteren
+    // this is function to store teacher in database by this design patteren
     public function storeTeacher($request) {
         $teacher = Teachers::create([
             'email' => $request->email,
@@ -43,13 +43,13 @@ class TeacherRepository implements TeacherRepositoryInterface {
             return redirect()->route('teachers.index');
     }
 
-    // this is fuction to edit teacher from database by this design patteren
+    // this is function to edit teacher from database by this design patteren
     public function editTeacher($id) {
         return Teachers::findOrFail($id);
     }
 
-    
-    // this is fuction to update teacher in database by this design patteren
+
+    // this is function to update teacher in database by this design patteren
     public function updateTeacher($request, $id) {
         $teacher = Teachers::find($id)->update([
             'email' => $request->email,
@@ -63,12 +63,12 @@ class TeacherRepository implements TeacherRepositoryInterface {
         if($teacher) {
             toastr()->success(trans('messages.update'));
         } else {
-            toastr()->error(trans('messages.error'));        
+            toastr()->error(trans('messages.error'));
         }
         return redirect()->route('teachers.index');
     }
 
-    // this is fuction to delete teacher from database by this design patteren
+    // this is function to delete teacher from database by this design patteren
     public function deleteTeacher($id) {
         $teacher = Teachers::findOrFail($id);
         $teacher->delete();

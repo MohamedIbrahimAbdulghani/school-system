@@ -2,10 +2,11 @@
 
 return [
 
-    'title_page' => 'sections',
+    'title_page' => 'Sections',
     'List_Grade' => 'List_Grade',
     'add_section' => 'Add Section ',
     'edit_Section'=> 'Edit Section',
+    'list_sections'=>'List Sections',
     'delete_Section'=> 'Delete Section',
     'Warning_Section'=> 'Are Sure Of The Deleting Process ?',
     'Section_name_ar' => 'Section name Ar',
@@ -27,6 +28,7 @@ return [
     'Processes'=>'Processes',
     'Edit'=>'Edit',
     'Delete'=>'Delete',
+    'Update'=>'Update',
     'Close' => 'Close',
 
 ];

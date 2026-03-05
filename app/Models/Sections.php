@@ -24,7 +24,7 @@ class Sections extends Model
         return $this->belongsTo(ClassRooms::class, 'classroom_id');
     }
     // relationship between Teacher and Section to get Teacher in Section table
-    public function teacher() {
+    public function teachers() {
         return $this->belongsToMany(Teachers::class, 'teacher_section', 'section_id', 'teacher_id');
     }
 }

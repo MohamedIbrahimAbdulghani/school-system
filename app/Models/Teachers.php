@@ -20,6 +20,8 @@ class Teachers extends Model
     public function specialization() {
         return $this->belongsTo(Specializations::class);
     }
-    
-    
+    // relationship between Teacher and Section to get Section in Teacher table
+    public function sections() {
+        return $this->belongsToMany(Sections::class, 'teacher_section', 'teacher_id', 'section_id');
+    } 
 }

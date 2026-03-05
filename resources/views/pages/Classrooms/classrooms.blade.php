@@ -64,7 +64,7 @@
                     </div>
 
                 <div class="table-responsive">
-                    <table id="datatable" class="table p-0 table-striped table-bordered">
+                    <table id="datatable" data-page-length="10"  class="table p-0 table-striped table-bordered">
                         <thead>
                         <tr>
                             <th><input type="checkbox" name="select_all_box" id="select_all_box"></th>

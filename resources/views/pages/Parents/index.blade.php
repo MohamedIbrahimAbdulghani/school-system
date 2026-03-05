@@ -33,7 +33,7 @@
                     <button type="button" class="mb-2 button x-small" id="bulk-delete-btn"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" >{{trans('classrooms.delete_checkbox')}}</button>
 
                     <div class="table-responsive">
-                        <table id="datatable" class="table p-0 table-striped table-bordered" data-page-length="50"  style="text-align: center">
+                        <table id="datatable" class="table p-0 table-striped table-bordered" data-page-length="10"  style="text-align: center">
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" name="select_all_box" id="select_all_box"></th>

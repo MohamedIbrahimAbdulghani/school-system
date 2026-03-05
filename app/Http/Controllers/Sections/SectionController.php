@@ -44,7 +44,7 @@ class SectionController extends Controller
                 'grade_id' => $request->Grade_id,
                 'classroom_id' => $request->Class_id,
             ]);
-            $section->teacher()->attach($request->teachers_id); // attach() is a function take teacher_id and section_id and insert this value in table teacher_section
+            $section->teachers()->attach($request->teachers_id); // attach() is a function to take teacher_id and section_id and insert this value in table teacher_section
             toastr()->success(trans('messages.success'));
             return redirect()->route('sections.index');
 
@@ -90,6 +90,7 @@ class SectionController extends Controller
                 'grade_id' => $request->Grade_id ?? $section->grade_id,
                 'classroom_id' => $request->Class_id ?? $section->classroom_id,
             ]);
+            $section->teachers()->sync($request->teachers_id); // sync() is a function to update teacher_id and section_id  in table teacher_section
             toastr()->success(trans('messages.update'));
             return redirect()->route('sections.index');
 

@@ -6,6 +6,7 @@ return [
     'List_Grade' => 'قائمة الاقسام الرئيسية',
     'add_section' => 'اضافة قسم',
     'edit_Section'=> 'تعديل قسم',
+    'list_sections' =>'قائمة الاقسام',
     'delete_Section'=> 'حذف قسم',
     'Warning_Section'=> 'هل انت متاكد من عملية الحذف',
     'Section_name_ar' => 'اسم القسم باللغة العربية',

@@ -70,8 +70,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">Events Calendar </a> </li>
-                            <li> <a href="calendar-list.html">List Calendar</a> </li>
+                            <li> <a href="{{ route('students.index') }}">{{ trans('main-side.list_students') }} </a> </li>
+                            <!-- <li> <a href="calendar-list.html">List Calendar</a> </li> -->
                         </ul>
                     </li>
 
@@ -100,8 +100,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{url('add_parent')}}">{{ trans('parent.Parent_list') }}</a> </li>
-                            {{-- <li> <a href="{{url('add_parent')}}">{{ trans('parent.Add_parent') }}</a> </li> --}}
+                            <li> <a href="{{url('add_parent')}}">{{ trans('main-side.Parent_list') }}</a> </li>
+                            <!-- {{-- <li> <a href="{{url('add_parent')}}">{{ trans('parent.Add_parent') }}</a> </li> --}} -->
                         </ul>
                     </li>
 

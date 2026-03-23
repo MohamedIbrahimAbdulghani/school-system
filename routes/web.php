@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\AddParentController;
 use App\Http\Controllers\Parents\ParentAttachments;
+use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Teachers\TeachersController;
 
 // ======== المجموعة الرئيسية ========
@@ -61,6 +62,9 @@ Route::group([
         // Teachers
             Route::delete('teachers/bulkDestroy', [TeachersController::class, 'bulkDestroy'])->name('teachers.bulkDestroy');
             Route::resource('teachers', TeachersController::class);
+
+        // Students
+            Route::resource('students', StudentsController::class);
 
         // Parents Attachments
             Route::resource('parent_attachments', ParentAttachments::class);

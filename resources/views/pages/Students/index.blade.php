@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{ trans('parent.Parent_list') }}
+    {{ trans('student.title') }}
 @stop
 @endsection
 @section('page-header')
@@ -10,12 +10,12 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">{{ trans('parent.Parent_list') }}</h4>
+            <h4 class="mb-0">{{ trans('student.title') }}</h4>
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('main-side.Parents') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('parent.Parent_list') }}</li>
+                <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('student.title') }}</a></li>
+                <li class="breadcrumb-item active">{{ trans('student.students') }}</li>
             </ol>
         </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <a href="{{route('add_parent.create')}}"><button type="button" class="mb-2 button x-small">{{trans('parent.Add_parent')}}</button></a>
+                <a href="{{route('students.create')}}"><button type="button" class="mb-2 button x-small">{{trans('student.add_student')}}</button></a>
 
                     <button type="button" class="mb-2 button x-small" id="bulk-delete-btn"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" >{{trans('classrooms.delete_checkbox')}}</button>
 
@@ -38,35 +38,37 @@
                                 <tr>
                                     <th><input type="checkbox" name="select_all_box" id="select_all_box"></th>
                                     <th>#</th>
-                                    <th>{{ trans('parent.Email') }}</th>
-                                    <th>{{ trans('parent.Name_Father') }}</th>
-                                    <th>{{ trans('parent.National_ID_Father') }}</th>
-                                    <th>{{ trans('parent.Passport_ID_Father') }}</th>
-                                    <th>{{ trans('parent.Phone_Father') }}</th>
-                                    <th>{{ trans('parent.Job_Father') }}</th>
-                                    <th>{{ trans('parent.Processes') }}</th>
+                                    <th>{{ trans('student.email') }}</th>
+                                    <th>{{ trans('student.name_ar') }}</th>
+                                    <th>{{ trans('student.Grade') }}</th>
+                                    <th>{{ trans('student.classrooms') }}</th>
+                                    <th>{{ trans('student.section') }}</th>
+                                    <th>{{ trans('student.parent') }}</th>
+                                    <th>{{ trans('student.academic_year') }}</th>
+                                    <th>{{ trans('student.Processes') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 0; ?>
-                                @foreach ($parent as $my_parent)
+                                @foreach ($students as $student)
                                     <tr>
                                         <?php $i++; ?>
-                                        <td><input type="checkbox" name="checkbox" id="checkbox" class="checkbox_row" value="{{$my_parent->id}}"></td>
+                                        <td><input type="checkbox" name="checkbox" id="checkbox" class="checkbox_row" value="{{$student->id}}"></td>
                                         <td>{{ $i }}</td>
-                                        <td>{{ $my_parent->email }}</td>
-                                        <td>{{ $my_parent->father_name }}</td>
-                                        <td>{{ $my_parent->father_national_id }}</td>
-                                        <td>{{ $my_parent->father_passport_id }}</td>
-                                        <td>{{ $my_parent->father_phone }}</td>
-                                        <td>{{ $my_parent->father_job }}</td>
+                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->name_ar }}</td>
+                                        <td>{{ $student->grade_id }}</td>
+                                        <td>{{ $student->classroom_id }}</td>
+                                        <td>{{ $student->section_id }}</td>
+                                        <td>{{ $student->parent_id }}</td>
+                                        <td>{{ $student->academic_year }}</td>
                                         <td>
-                                            <a href="{{route('add_parent.edit', $my_parent->id)}}"><button title="{{ trans('parent.Edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
-                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$my_parent->id}}"  title="{{trans('parent.Delete')}}"><i class="fa fa-trash"></i></button>
+                                            <a href="{{route('add_parent.edit', $student->id)}}"><button title="{{ trans('parent.Edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
+                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$student->id}}"  title="{{trans('parent.Delete')}}"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
                                         {{-- Start Modal To Delete Parent --}}
-                                            <div class="modal fade" id="delete{{$my_parent->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="delete{{$student->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -75,13 +77,13 @@
                                                     </div>
                                                     <div class="modal-body">
                                                     {{-- delete form--}}
-                                                    <form action="{{ route('add_parent.destroy', $my_parent->id) }}" method="post">
+                                                    <form action="{{ route('add_parent.destroy', $student->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="row">
                                                             <div class="col">
                                                                 <label for="name" class="mr-sm-2">{{trans('classrooms.Warning_class')}}</label>
-                                                                <input type="hidden" name="id" value={{$my_parent->id}}>
+                                                                <input type="hidden" name="id" value={{$student->id}}>
                                                             </div>
                                                         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreStudentRequest;
 use App\Models\ClassRooms;
 use App\Models\Sections;
 use App\Repository\StudentRepositoryInterface;
@@ -41,9 +42,9 @@ class StudentsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreStudentRequest $request)
     {
-        //
+        return $this->student->storeStudent($request);
     }
 
     /**
@@ -75,16 +76,28 @@ class StudentsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->student->deleteStudent($id);
     }
 
     public function getClassrooms($id)
     {
-        return ClassRooms::where('grade_id', $id)->pluck('name_class', 'id');
+        return $this->student->getClassrooms($id);
     }
 
     public function getSections($id)
     {
-        return Sections::where('classroom_id', $id)->pluck('name', 'id');
+        return $this->student->getSections($id);
+    }
+    // this is function to delete all students
+    public function deleteAllStudents(Request $request) {
+        $result = $this->student->deleteAllStudents($request->ids);
+
+            if ($result['status'] == 'success') {
+                toastr()->success($result['message']);
+            } else {
+                toastr()->error($result['message']);
+            }
+
+            return back();
     }
 }

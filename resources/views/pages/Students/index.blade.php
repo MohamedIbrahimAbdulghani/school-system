@@ -39,7 +39,7 @@
                                     <th><input type="checkbox" name="select_all_box" id="select_all_box"></th>
                                     <th>#</th>
                                     <th>{{ trans('student.email') }}</th>
-                                    <th>{{ trans('student.name_ar') }}</th>
+                                    <th>{{ trans('student.name') }}</th>
                                     <th>{{ trans('student.Grade') }}</th>
                                     <th>{{ trans('student.classrooms') }}</th>
                                     <th>{{ trans('student.section') }}</th>
@@ -56,28 +56,28 @@
                                         <td><input type="checkbox" name="checkbox" id="checkbox" class="checkbox_row" value="{{$student->id}}"></td>
                                         <td>{{ $i }}</td>
                                         <td>{{ $student->email }}</td>
-                                        <td>{{ $student->name_ar }}</td>
-                                        <td>{{ $student->grade_id }}</td>
-                                        <td>{{ $student->classroom_id }}</td>
-                                        <td>{{ $student->section_id }}</td>
-                                        <td>{{ $student->parent_id }}</td>
+                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->grade->name }}</td>
+                                        <td>{{ $student->classroom->name_class }}</td>
+                                        <td>{{ $student->section->name }}</td>
+                                        <td>{{ $student->parent->father_name }}</td>
                                         <td>{{ $student->academic_year }}</td>
                                         <td>
-                                            <a href="{{route('add_parent.edit', $student->id)}}"><button title="{{ trans('parent.Edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
-                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$student->id}}"  title="{{trans('parent.Delete')}}"><i class="fa fa-trash"></i></button>
+                                            <a href="{{route('students.edit', $student->id)}}"><button title="{{ trans('student.Edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
+                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$student->id}}"  title="{{trans('student.Delete')}}"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
-                                        {{-- Start Modal To Delete Parent --}}
+                                        {{-- Start Modal To Delete students --}}
                                             <div class="modal fade" id="delete{{$student->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('parent.Delete')}}</h5>
+                                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('student.Delete')}}</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
                                                     <div class="modal-body">
                                                     {{-- delete form--}}
-                                                    <form action="{{ route('add_parent.destroy', $student->id) }}" method="post">
+                                                    <form action="{{ route('students.destroy', $student->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="row">
@@ -96,9 +96,9 @@
                                                 </div>
                                                 </div>
                                             </div>
-                                        {{-- End Modal To Delete Parent --}}
+                                        {{-- End Modal To Delete students --}}
                                 @endforeach
-                                {{-- Start Modal To Delete All ClassRooms --}}
+                                {{-- Start Modal To Delete All students --}}
                                     <div class="modal fade" id="delete_all_classes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -108,7 +108,7 @@
                                             </div>
                                             <div class="modal-body">
                                             {{-- delete form--}}
-                                            <form id="bulk-delete-form"  action="{{ route('add_parent.bulkDestroy') }}" method="post">
+                                            <form id="bulk-delete-form" action="{{ route('students.deleteAllStudents') }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <input type="hidden" name="ids" id="bulk-delete-ids">
@@ -118,7 +118,7 @@
                                         </div>
                                         </div>
                                     </div>
-                                {{-- End Modal To Delete All ClassRooms --}}
+                                {{-- End Modal To Delete All students --}}
                             </tbody>
                         </table>
                     </div>

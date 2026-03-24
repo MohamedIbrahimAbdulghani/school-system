@@ -10,4 +10,9 @@ interface StudentRepositoryInterface {
     public function getParents();
     public function getNationalities();
     public function getType_Bloods();
+    public function getClassrooms($id);
+    public function getSections($id);
+    public function storeStudent($request);
+    public function deleteStudent($id);
+    public function deleteAllStudents($ids);
 }

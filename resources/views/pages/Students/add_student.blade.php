@@ -64,8 +64,8 @@
                                     <div class="form-row">
                                         <div class="col">
                                             <label for="title">{{trans('student.name_ar')}}</label>
-                                            <input type="text" name="father_name" placeholder="{{trans('student.name_ar')}}" class="form-control" value="{{ old('father_name') }}">
-                                            @error('father_name')
+                                            <input type="text" name="name_ar" placeholder="{{trans('student.name_ar')}}" class="form-control" value="{{ old('name_ar') }}">
+                                            @error('name_ar')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -75,7 +75,7 @@
                                         </div>
                                         <div class="col">
                                             <label for="title">{{trans('student.name_en')}}</label>
-                                            <input type="text" name="father_name_en" placeholder="{{trans('student.name_en')}}" class="form-control" value="{{ old('name_en') }}">
+                                            <input type="text" name="name_en" placeholder="{{trans('student.name_en')}}" class="form-control" value="{{ old('name_en') }}">
                                             @error('name_en')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -89,13 +89,13 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-3">
                                             <label for="inputCity">{{trans('student.gender')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="gender">
+                                            <select class="my-1 custom-select mr-sm-2" name="gender_id">
                                                 <option value="">{{trans('student.Choose')}}...</option>
                                                 @foreach($Genders as $gender)
-                                                    <option value="{{$gender->id}}" {{ old('gender') == $gender->id ? 'selected' : '' }}>{{$gender->name}}</option>
+                                                    <option value="{{$gender->id}}" {{ old('gender_id') == $gender->id ? 'selected' : '' }}>{{$gender->name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('gender')
+                                            @error('gender_id')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -105,13 +105,13 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="inputCity">{{trans('student.Nationality')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="Nationality">
+                                            <select class="my-1 custom-select mr-sm-2" name="nationality_id">
                                                 <option value="">{{trans('parent.Choose')}}...</option>
                                                 @foreach($Nationalities as $National)
-                                                    <option value="{{$National->id}}" {{ old('Nationality') == $National->id ? 'selected' : '' }}>{{$National->name}}</option>
+                                                    <option value="{{$National->id}}" {{ old('nationality_id') == $National->id ? 'selected' : '' }}>{{$National->name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('Nationality')
+                                            @error('nationality_id')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -121,13 +121,13 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="inputState">{{trans('student.blood_type')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="blood_type">
+                                            <select class="my-1 custom-select mr-sm-2" name="blood_type_id">
                                                 <option value="">{{trans('parent.Choose')}}...</option>
                                                 @foreach($Type_Bloods as $Type_Blood)
-                                                    <option value="{{$Type_Blood->id}}" {{ old('blood_type') == $Type_Blood->id ? 'selected' : '' }}>{{$Type_Blood->name}}</option>
+                                                    <option value="{{$Type_Blood->id}}" {{ old('blood_type_id') == $Type_Blood->id ? 'selected' : '' }}>{{$Type_Blood->name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('blood_type')
+                                            @error('blood_type_id')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -182,7 +182,7 @@
                                         </div>
                                         <div class="form-group col">
                                             <label for="inputState">{{trans('student.section')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="section_id" disabled>
+                                            <select class="my-1 custom-select mr-sm-2" name="section_id" >
 
                                             </select>
                                             @error('section_id')
@@ -198,10 +198,10 @@
                                             <select class="my-1 custom-select mr-sm-2" name="parent_id">
                                                 <option value="">{{trans('parent.Choose')}}...</option>
                                                 @foreach($Parents as $parent)
-                                                    <option value="{{$parent->id}}" {{ old('parent') == $parent->id ? 'selected' : '' }}>{{$parent->name}}</option>
+                                                    <option value="{{$parent->id}}" {{ old('parent_id') == $parent->id ? 'selected' : '' }}>{{$parent->father_name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('parent')
+                                            @error('parent_id')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -211,13 +211,13 @@
                                         </div>
                                         <div class="form-group col">
                                             <label for="inputState">{{trans('student.academic_year')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="academic_year_id">
+                                            <select class="my-1 custom-select mr-sm-2" name="academic_year">
                                                 <option value="">{{trans('parent.Choose')}}...</option>
                                                 @foreach($Type_Bloods as $Type_Blood)
-                                                    <option value="{{$Type_Blood->id}}" {{ old('blood_type') == $Type_Blood->id ? 'selected' : '' }}>{{$Type_Blood->name}}</option>
+                                                    <option value="{{$Type_Blood->id}}" {{ old('academic_year') == $Type_Blood->id ? 'selected' : '' }}>{{$Type_Blood->name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('birth_date')
+                                            @error('academic_year')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -326,36 +326,5 @@ $(document).ready(function () {
 
 </script>
 
-<script>
-document.querySelectorAll('[data-rules]').forEach(input => {
-    input.addEventListener('blur', function () {
-
-        fetch("{{ route('parents.validate') }}", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": "{{ csrf_token() }}"
-            },
-            body: JSON.stringify({
-                field: this.name,
-                rules: this.dataset.rules,
-                [this.name]: this.value
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            let errorBox = document.getElementById(this.name + '_error');
-            if (!errorBox) return;
-
-            if (data.error) {
-                errorBox.innerText = data.error;
-            } else {
-                errorBox.innerText = '';
-            }
-        });
-    });
-});
-
-</script>
 
 @endsection

@@ -5,6 +5,7 @@ return [
     'students' => 'Students',
     'add_student'=>'Add New Student',
     'personal_information' => 'personal information',
+    'name' => 'name',
     'name_ar' => 'name_ar',
     'name_en' => 'name_en',
     'email' => 'email',

@@ -64,6 +64,7 @@ Route::group([
             Route::resource('teachers', TeachersController::class);
 
         // Students
+            Route::delete('students/deleteAllStudents', [StudentsController::class, 'deleteAllStudents'])->name('students.deleteAllStudents');
             Route::resource('students', StudentsController::class);
             Route::get('get_classrooms/{id}', [StudentsController::class, 'getClassrooms']);
             Route::get('get_sections/{id}', [StudentsController::class, 'getSections']);

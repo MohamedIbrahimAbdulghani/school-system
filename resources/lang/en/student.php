@@ -22,7 +22,7 @@ return [
     'submit' => 'submit',
     'Save' => 'Save',
     'Choose' => 'Choose',
-    'Processes' => 'العمليات',
+    'Processes' => 'Processes',
     'choose_file_name' => 'choose_file_name',
     'Edit' => 'Edit',
     'Delete' => 'Delete',

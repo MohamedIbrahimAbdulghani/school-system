@@ -65,6 +65,8 @@ Route::group([
 
         // Students
             Route::resource('students', StudentsController::class);
+            Route::get('get_classrooms/{id}', [StudentsController::class, 'getClassrooms']);
+            Route::get('get_sections/{id}', [StudentsController::class, 'getSections']);
 
         // Parents Attachments
             Route::resource('parent_attachments', ParentAttachments::class);

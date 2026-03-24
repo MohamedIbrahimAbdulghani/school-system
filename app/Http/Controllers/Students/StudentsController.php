@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
+use App\Models\ClassRooms;
+use App\Models\Sections;
 use App\Repository\StudentRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -74,5 +76,15 @@ class StudentsController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getClassrooms($id)
+    {
+        return ClassRooms::where('grade_id', $id)->pluck('name_class', 'id');
+    }
+
+    public function getSections($id)
+    {
+        return Sections::where('classroom_id', $id)->pluck('name', 'id');
     }
 }

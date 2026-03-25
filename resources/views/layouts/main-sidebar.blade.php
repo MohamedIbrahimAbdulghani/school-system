@@ -71,7 +71,7 @@
                         </a>
                         <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('students.index') }}">{{ trans('main-side.list_students') }} </a> </li>
-                            <!-- <li> <a href="calendar-list.html">List Calendar</a> </li> -->
+                            <li> <a href="{{ route('students.create') }}">{{ trans('student.add_student') }}</a> </li>
                         </ul>
                     </li>
 

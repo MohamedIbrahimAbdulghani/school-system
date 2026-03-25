@@ -38,8 +38,9 @@
                                 <tr>
                                     <th><input type="checkbox" name="select_all_box" id="select_all_box"></th>
                                     <th>#</th>
-                                    <th>{{ trans('student.email') }}</th>
                                     <th>{{ trans('student.name') }}</th>
+                                    <th>{{ trans('student.email') }}</th>
+                                    <th>{{ trans('student.gender') }}</th>
                                     <th>{{ trans('student.Grade') }}</th>
                                     <th>{{ trans('student.classrooms') }}</th>
                                     <th>{{ trans('student.section') }}</th>
@@ -55,8 +56,9 @@
                                         <?php $i++; ?>
                                         <td><input type="checkbox" name="checkbox" id="checkbox" class="checkbox_row" value="{{$student->id}}"></td>
                                         <td>{{ $i }}</td>
-                                        <td>{{ $student->email }}</td>
                                         <td>{{ $student->name }}</td>
+                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->gender->name }}</td>
                                         <td>{{ $student->grade->name }}</td>
                                         <td>{{ $student->classroom->name_class }}</td>
                                         <td>{{ $student->section->name }}</td>
@@ -80,13 +82,13 @@
                                                     <form action="{{ route('students.destroy', $student->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
+                                                            <input type="hidden" name="id" value={{$student->id}}>
                                                         <div class="row">
                                                             <div class="col">
                                                                 <label for="name" class="mr-sm-2">{{trans('classrooms.Warning_class')}}</label>
-                                                                <input type="hidden" name="id" value={{$student->id}}>
+                                                                <input type="text" readonly value="{{ $student->name }}" class="form-control">
                                                             </div>
                                                         </div>
-
                                                         <div class="modal-footer">
                                                             <button type="submit" class="btn btn-danger">{{trans('grades.delete')}}</button>
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>

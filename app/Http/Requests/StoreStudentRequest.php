@@ -24,8 +24,8 @@ class StoreStudentRequest extends FormRequest
         return [
             'name_ar' => 'required',
             'name_en' => 'required',
-            'email' => 'required|email|unique:students,email',
-            'password' => 'required|min:3|max:10',
+            'email' => 'required|email|unique:students,email,'.$this->id,
+            'password' => 'required|min:3',
             'gender_id' => 'required',
             'nationality_id' => 'required',
             'blood_type_id' => 'required',
@@ -35,6 +35,21 @@ class StoreStudentRequest extends FormRequest
             'section_id' => 'required',
             'parent_id' => 'required',
             'academic_year' => 'required',
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'name_ar' => trans("student.name_ar"),
+            'gender_id' =>'',
+            'nationality_id' => trans("student.Nationality"),
+            'blood_type_id' =>  trans("student.blood_type"),
+            'birth_date' => trans("student.Date_of_Birth"),
+            'grade_id'     => trans("student.Grade"),
+            'classroom_id' => trans("student.classrooms"),
+            'section_id'   => trans("student.section"),
+            'parent_id'    => trans("student.parent"),
+            'academic_year'=> trans("student.academic_year"),
         ];
     }
 }

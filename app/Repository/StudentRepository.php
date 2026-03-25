@@ -11,11 +11,13 @@ use App\Models\Sections;
 use App\Models\Students;
 use App\Models\TypeBloods;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 
 class StudentRepository implements StudentRepositoryInterface {
     public function getStudents() {
         return Students::all();
+    }
+    public function getStudentById($id) {
+        return Students::findOrFail($id);
     }
     public function getGenders() {
         return Genders::all();
@@ -38,6 +40,7 @@ class StudentRepository implements StudentRepositoryInterface {
     public function getSections($id) {
         return Sections::where('classroom_id', $id)->pluck('name', 'id');
     }
+
     public function storeStudent($request) {
         $student = Students::create([
             'name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
@@ -60,6 +63,30 @@ class StudentRepository implements StudentRepositoryInterface {
         }
             return redirect()->route('students.index');
     }
+
+    public function updateStudent($request, $id) {
+        $student = Students::findOrFail($id)->update([
+            'name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'gender_id' => $request->gender_id,
+            'nationality_id' => $request->nationality_id,
+            'blood_type_id' => $request->blood_type_id,
+            'birth_date' => $request->birth_date,
+            'grade_id' => $request->grade_id,
+            'classroom_id' => $request->classroom_id,
+            'section_id' => $request->section_id,
+            'parent_id' => $request->parent_id,
+            'academic_year' => $request->academic_year,
+        ]);
+        if($student) {
+            toastr()->success(trans('messages.update'));
+        } else {
+            toastr()->error(trans('messages.error'));
+        }
+        return redirect()->route('students.index');
+    }
+
     public function deleteStudent($id) {
         $student = Students::findOrFail($id);
         $student->delete();

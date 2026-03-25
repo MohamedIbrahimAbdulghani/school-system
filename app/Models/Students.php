@@ -22,4 +22,13 @@ class Students extends Model
     public function parent() {
         return $this->belongsTo(MyParents::class, 'parent_id');
     }
+    public function gender() {
+        return $this->belongsTo(Genders::class, 'gender_id');
+    }
+    public function nationality() {
+        return $this->belongsTo(Nationalitie::class, 'nationality_id');
+    }
+    public function typeBlood() {
+        return $this->belongsTo(TypeBloods::class, 'blood_type_id');
+    }
 }

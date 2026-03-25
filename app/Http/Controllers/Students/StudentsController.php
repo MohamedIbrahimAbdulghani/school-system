@@ -60,15 +60,21 @@ class StudentsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $student = $this->student->getStudentById($id);
+        $Nationalities = $this->student->getNationalities();
+        $Type_Bloods = $this->student->getType_Bloods();
+        $Genders = $this->student->getGenders();
+        $Grades = $this->student->getGrades();
+        $Parents = $this->student->getParents();
+        return view('pages.Students.edit_student', compact('student', 'Nationalities', 'Type_Bloods', 'Genders', 'Grades', 'Parents'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreStudentRequest $request, string $id)
     {
-        //
+        return $this->student->updateStudent($request, $id);
     }
 
     /**

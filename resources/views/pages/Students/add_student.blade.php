@@ -229,6 +229,10 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="form-group col">
+                                        <label for="images[]">{{ trans('parent.choose_file_name')}}</label>
+                                        <input type="file" accept="image/*" name="images[]" id="images" class="form-control d-block" multiple>
+                                    </div>
                                     <button class="mt-3 btn btn-success" type="submit">{{trans('student.Save')}}</button>
                                 </div>
                             </div>

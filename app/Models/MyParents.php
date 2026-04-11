@@ -9,5 +9,10 @@ class MyParents extends Model
     use HasTranslations;
     public array $translatable = ['father_name', 'mother_name', 'father_job', 'mother_job'];
     protected $guarded = [];
-    
+
+    // Relationship between Parents and images
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

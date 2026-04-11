@@ -381,8 +381,8 @@
                     </div>
                     <hr>
                     <hr>
-                    <label for="file_name">{{ trans('parent.choose_file_name')}}</label>
-                    <input type="file" name="files[]" id="files" class="form-control d-block" multiple>
+                    <label for="images">{{ trans('parent.choose_file_name')}}</label>
+                    <input type="file" accept="image/*" name="images[]" id="images" class="form-control d-block" multiple>
                     <button class="btn btn-success mt-3" type="submit">{{trans('parent.Save')}}</button>
                     <!-- End Mother Form -->
                 </form>

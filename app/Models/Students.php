@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
 use Spatie\Translatable\HasTranslations;
 
 class Students extends Model
@@ -30,5 +31,10 @@ class Students extends Model
     }
     public function typeBlood() {
         return $this->belongsTo(TypeBloods::class, 'blood_type_id');
+    }
+    // Relationship between students and images
+        public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

@@ -11,6 +11,7 @@ use App\Models\Sections;
 use App\Models\Students;
 use App\Models\TypeBloods;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Image;
 
 class StudentRepository implements StudentRepositoryInterface {
     public function getStudents() {
@@ -56,6 +57,18 @@ class StudentRepository implements StudentRepositoryInterface {
             'parent_id' => $request->parent_id,
             'academic_year' => $request->academic_year,
         ]);
+        // store images
+        if($request->hasFile('images')) {
+            foreach($request->file('images') as $image) {
+                $name = $image->getClientOriginalName();
+                $image->storeAs('attachments/students/' . $student->name, $name, 'uploda_attachments');
+                Image::create([
+                    'filename' => $name,
+                    'imageable_id' => $student->id,
+                    'imageable_type' => 'App\Models\Students',
+                ]);
+            }
+        }
         if ($student) {
             toastr()->success(trans('messages.success'));
         } else {

@@ -12,6 +12,7 @@ use App\Models\MyParents;
 use App\Models\ParentAttachments;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Image;
 
 class AddParentController extends Controller
 {
@@ -63,14 +64,15 @@ class AddParentController extends Controller
                 'mother_religion_id' => $request->mother_religion_id,
                 'mother_address' => $request->mother_address,
             ]);
-            // to create filename in ParentAttachments Table
-            if ($request->hasFile('files')) {
-                foreach ($request->file('files') as $file) {
-                    $file_name =  $file->getClientOriginalName();
-                    $file->move(public_path('attachments/parents/' . $parent->father_national_id), $file_name);
-                    ParentAttachments::create([
-                        'file_name' => $file_name,
-                        'parent_id' => $parent->id,
+            // to create filename in Images Table
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    $name =  $image->getClientOriginalName();
+                    $image->storeAs('attachments/parents/' . $parent->name, $name, 'uploda_attachments');
+                    Image::create([
+                        'filename' => $name,
+                        'imageable_id' => $parent->id,
+                        'imageable_type' => 'App\Models\MyParents',
                     ]);
                 }
             }

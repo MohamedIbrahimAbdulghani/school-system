@@ -12,6 +12,7 @@ use App\Models\Students;
 use App\Models\TypeBloods;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Image;
+use Illuminate\Support\Facades\DB;
 
 class StudentRepository implements StudentRepositoryInterface {
     public function getStudents() {
@@ -43,7 +44,9 @@ class StudentRepository implements StudentRepositoryInterface {
     }
 
     public function storeStudent($request) {
-        $student = Students::create([
+        DB::beginTransaction(); // start transaction
+        try {
+            $student = Students::create([
             'name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -73,6 +76,13 @@ class StudentRepository implements StudentRepositoryInterface {
             toastr()->success(trans('messages.success'));
         } else {
             toastr()->error(trans('messages.error'));
+        }
+            
+            DB::commit(); // insert data in database
+
+        } catch (\Exception $e) {
+            DB::rollBack(); // if any error rollback all data
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
             return redirect()->route('students.index');
     }

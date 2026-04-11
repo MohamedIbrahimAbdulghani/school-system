@@ -13,6 +13,7 @@ use App\Models\ParentAttachments;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Image;
+use Illuminate\Support\Facades\DB;
 
 class AddParentController extends Controller
 {
@@ -41,6 +42,8 @@ class AddParentController extends Controller
      */
     public function store(StoreParentRequest $request)
     {
+        DB::beginTransaction(); // start transaction
+        try {
         $parent = MyParents::create([
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
@@ -68,7 +71,7 @@ class AddParentController extends Controller
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {
                     $name =  $image->getClientOriginalName();
-                    $image->storeAs('attachments/parents/' . $parent->name, $name, 'uploda_attachments');
+                    $image->storeAs('attachments/parents/' . $parent->father_name, $name, 'uploda_attachments');
                     Image::create([
                         'filename' => $name,
                         'imageable_id' => $parent->id,
@@ -81,9 +84,17 @@ class AddParentController extends Controller
                 toastr()->success(trans('messages.success'));
             } else {
                 toastr()->error(trans('messages.error'));
-            }
+            } 
+                       
+            DB::commit(); // insert data in database
+
+        } catch (\Exception $e) {
+            DB::rollBack(); // if any error rollback all data
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
             return redirect()->route('add_parent.index');
     }
+
 
     /**
      * Display the specified resource.

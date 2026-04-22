@@ -14,6 +14,7 @@ interface StudentRepositoryInterface {
     public function getClassrooms($id);
     public function getSections($id);
     public function storeStudent($request);
+    public function showStudent($id);
     public function updateStudent($request, $id);
     public function deleteStudent($id);
     public function deleteAllStudents($ids);

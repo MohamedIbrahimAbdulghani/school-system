@@ -24,6 +24,7 @@
 @endsection
 @section('content')
 <!-- row -->
+
 <div class="row">
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
@@ -67,6 +68,7 @@
                                         <td>
                                             <a href="{{route('students.edit', $student->id)}}"><button title="{{ trans('student.Edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
                                             <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$student->id}}"  title="{{trans('student.Delete')}}"><i class="fa fa-trash"></i></button>
+                                            <a href="{{ route('students.show',$student->id)}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="far fa-eye"></i></a>
                                         </td>
                                     </tr>
                                         {{-- Start Modal To Delete students --}}

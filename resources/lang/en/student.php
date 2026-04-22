@@ -15,6 +15,7 @@ return [
     'blood_type' => 'blood_type',
     'Date_of_Birth' => 'Date_of_Birth',
     'Student_information' => 'Student information',
+    'Student_details' => 'Student Details',
     'Grade' => 'Grade',
     'classrooms' => 'classrooms',
     'section' => 'section',
@@ -27,5 +28,10 @@ return [
     'choose_file_name' => 'choose_file_name',
     'Edit' => 'Edit',
     'Delete' => 'Delete',
+    'Back' => 'Back',
+    'Attachments' => 'Student Attachments',
+    'filename' => 'Filename',
+    'created_at' => 'created_at',
+    'Download' => 'Download',
 
 ];

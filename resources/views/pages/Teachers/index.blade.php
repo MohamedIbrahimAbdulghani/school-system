@@ -24,7 +24,7 @@
 @endsection
 @section('content')
     @if(session('success'))
-        <div class="alert alert-success mb-2" role="alert">
+        <div class="mb-2 alert alert-success" role="alert">
             <span>{{ session('success') }}</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right !important"></button>
         </div>
@@ -49,9 +49,9 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
                     <a href="{{route('teachers.create')}}"><button type="button" class="mb-2 button x-small">{{trans('teacher.add_teacher')}}</button></a>
-                    
+
                     <button type="button" class="mb-2 button x-small" id="bulk-delete-btn"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" >{{trans('classrooms.delete_checkbox')}}</button>
-                
+
                     <div class="table-responsive">
                         <table id="datatable" class="table p-0 table-striped table-bordered" data-page-length="10"  style="text-align: center">
                             <thead>
@@ -78,7 +78,7 @@
                                         <td>{{ $teacher->specialization->name }}</td>
                                         <td>
                                              <a href="{{route('teachers.edit', $teacher->id)}}"><button title="{{ trans('teacher.edit') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
-                                            
+
                                             <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$teacher->id}}"  title="{{trans('teacher.Delete')}}"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
@@ -143,7 +143,7 @@
                                                 </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">{{trans('teacher.address')}}</label>
-                                                <textarea class="form-control mb-1" name="address" id="exampleFormControlTextarea1" rows="4">{{ $teacher->address }}</textarea>
+                                                <textarea class="mb-1 form-control" name="address" id="exampleFormControlTextarea1" rows="4">{{ $teacher->address }}</textarea>
                                                 @error('address')
                                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

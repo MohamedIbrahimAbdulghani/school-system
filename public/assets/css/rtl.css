@@ -65,11 +65,13 @@ NOTE: This file includes all admin Template plugins and Shortcodes. If you don't
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol";
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
+    --font-family-sans-serif:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+    --font-family-monospace:
+        SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+        "Courier New", monospace;
 }
 
 *,
@@ -108,9 +110,10 @@ section {
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
@@ -584,7 +587,8 @@ pre,
 samp {
     direction: ltr;
     unicode-bidi: bidi-override;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    font-family:
+        SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
         "Courier New", monospace;
 }
 
@@ -2105,7 +2109,9 @@ pre code {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
 }
 
 .form-control::-ms-expand {
@@ -2427,7 +2433,9 @@ select.form-control-lg:not([size]):not([multiple]) {
 .was-validated
     .custom-control-input:valid:focus
     ~ .custom-control-label::before {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    box-shadow:
+        0 0 0 1px #fff,
+        0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
 .custom-file-input.is-valid ~ .custom-file-label,
@@ -2541,7 +2549,9 @@ select.form-control-lg:not([size]):not([multiple]) {
 .was-validated
     .custom-control-input:invalid:focus
     ~ .custom-control-label::before {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    box-shadow:
+        0 0 0 1px #fff,
+        0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
 .custom-file-input.is-invalid ~ .custom-file-label,
@@ -2670,8 +2680,11 @@ select.form-control-lg:not([size]):not([multiple]) {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0.25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
 }
 
 .btn:focus,
@@ -3910,7 +3923,9 @@ tbody.collapse.show {
 }
 
 .custom-control-input:focus ~ .custom-control-label::before {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow:
+        0 0 0 1px #fff,
+        0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .custom-control-input:active ~ .custom-control-label::before {
@@ -4035,7 +4050,8 @@ tbody.collapse.show {
 .custom-select:focus {
     border-color: #80bdff;
     outline: 0;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075),
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.075),
         0 0 5px rgba(128, 189, 255, 0.5);
 }
 
@@ -5770,7 +5786,9 @@ button.close {
 .modal.fade .modal-dialog {
     transition: -webkit-transform 0.3s ease-out;
     transition: transform 0.3s ease-out;
-    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    transition:
+        transform 0.3s ease-out,
+        -webkit-transform 0.3s ease-out;
     -webkit-transform: translate(0, -25%);
     transform: translate(0, -25%);
 }
@@ -5914,9 +5932,10 @@ button.close {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -6041,9 +6060,10 @@ button.close {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -6255,7 +6275,9 @@ button.close {
     width: 100%;
     transition: -webkit-transform 0.6s ease;
     transition: transform 0.6s ease;
-    transition: transform 0.6s ease, -webkit-transform 0.6s ease;
+    transition:
+        transform 0.6s ease,
+        -webkit-transform 0.6s ease;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-perspective: 1000px;
@@ -9797,7 +9819,8 @@ body .fc {
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #333;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
         0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
@@ -9840,7 +9863,8 @@ body .fc {
 .fc-state-down {
     background-color: #ccc;
     background-image: none;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.15),
         0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
@@ -11818,7 +11842,8 @@ span.CodeMirror-selectedtext {
     font-style: normal;
     font-weight: normal;
     src: url("../fonts/summernote.eot?e557617934c52ea068954af79ed7c221");
-    src: url("../fonts/summernote.eot?#iefix") format("embedded-opentype"),
+    src:
+        url("../fonts/summernote.eot?#iefix") format("embedded-opentype"),
         url("../fonts/summernote.woff?e557617934c52ea068954af79ed7c221")
             format("woff"),
         url("../fonts/summernote.ttf?e557617934c52ea068954af79ed7c221")
@@ -12774,7 +12799,8 @@ span.CodeMirror-selectedtext {
 @font-face {
     font-family: weathericons;
     src: url(../fonts/weathericons-regular-webfont.eot);
-    src: url(../fonts/weathericons-regular-webfont.eot?#iefix)
+    src:
+        url(../fonts/weathericons-regular-webfont.eot?#iefix)
             format("embedded-opentype"),
         url(../fonts/weathericons-regular-webfont.woff2) format("woff2"),
         url(../fonts/weathericons-regular-webfont.woff) format("woff"),
@@ -15192,7 +15218,8 @@ span.CodeMirror-selectedtext {
 @font-face {
     font-family: "themify";
     src: url("../fonts/themify.eot?-fvbane");
-    src: url("../fonts/themify.eot?#iefix-fvbane") format("embedded-opentype"),
+    src:
+        url("../fonts/themify.eot?#iefix-fvbane") format("embedded-opentype"),
         url("../fonts/themify.woff?-fvbane") format("woff"),
         url("../fonts/themify.ttf?-fvbane") format("truetype"),
         url("../fonts/themify.svg?-fvbane#themify") format("svg");
@@ -16629,7 +16656,8 @@ span.CodeMirror-selectedtext {
 @font-face {
     font-family: "FontAwesome";
     src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
-    src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0")
+    src:
+        url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0")
             format("embedded-opentype"),
         url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"),
         url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"),
@@ -23558,8 +23586,12 @@ ol.ui.list ol li,
     border-radius: 0;
     -webkit-box-shadow: 0em 0em 0em 0em transparent inset;
     box-shadow: 0em 0em 0em 0em transparent inset;
-    -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-    transition: color 0.1s ease, border-color 0.1s ease;
+    -webkit-transition:
+        color 0.1s ease,
+        border-color 0.1s ease;
+    transition:
+        color 0.1s ease,
+        border-color 0.1s ease;
     transition: all 0.5s ease-in-out;
 }
 
@@ -23588,8 +23620,12 @@ ol.ui.list ol li,
     border-radius: 0.28571429rem;
     -webkit-box-shadow: 0em 0em 0em 0em transparent inset;
     box-shadow: 0em 0em 0em 0em transparent inset;
-    -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-    transition: color 0.1s ease, border-color 0.1s ease;
+    -webkit-transition:
+        color 0.1s ease,
+        border-color 0.1s ease;
+    transition:
+        color 0.1s ease,
+        border-color 0.1s ease;
     font-size: 1em;
     line-height: 1.2857;
     resize: vertical;
@@ -23627,8 +23663,12 @@ ol.ui.list ol li,
     box-shadow: 0em 0em 0em 0em transparent inset;
     padding: 0.62em 1em;
     color: rgba(0, 0, 0, 0.87);
-    -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-    transition: color 0.1s ease, border-color 0.1s ease;
+    -webkit-transition:
+        color 0.1s ease,
+        border-color 0.1s ease;
+    transition:
+        color 0.1s ease,
+        border-color 0.1s ease;
 }
 
 /*--------------------
@@ -26022,9 +26062,12 @@ ul.list-unstyled li {
     -webkit-transform: scale(0.75) translateY(-21px);
     -ms-transform: scale(0.75) translateY(-21px);
     transform: scale(0.75) translateY(-21px);
-    -webkit-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25),
+    -webkit-transition:
+        all 0.2s cubic-bezier(0.5, 0, 0, 1.25),
         opacity 0.15s ease-out;
-    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    transition:
+        all 0.2s cubic-bezier(0.5, 0, 0, 1.25),
+        opacity 0.15s ease-out;
     z-index: 9;
 }
 
@@ -26990,7 +27033,9 @@ ul.list-unstyled li {
     position: absolute;
     right: 0;
     top: 100%;
-    transition: visibility 300ms ease 0s, opacity 300ms ease 0s;
+    transition:
+        visibility 300ms ease 0s,
+        opacity 300ms ease 0s;
     visibility: hidden;
     width: 327px;
     z-index: 888;
@@ -28294,7 +28339,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #ffffff;
     border-color: #eeeeee;
     box-shadow: #dfdfdf 0px 0px 0px 0px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s;
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s;
     display: inline-block;
     vertical-align: middle;
     margin-left: 5px;
@@ -28332,7 +28379,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #b4b6b7;
     border-color: #b4b6b7;
     box-shadow: #b4b6b7 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28341,7 +28390,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: gainsboro;
     border-color: gainsboro;
     box-shadow: gainsboro 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28366,7 +28417,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #f8f9fa;
     border-color: #f8f9fa;
     box-shadow: #f8f9fa 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28376,7 +28429,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #343a40;
     border-color: #343a40;
     box-shadow: #343a40 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28385,7 +28440,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #646668;
     border-color: #646668;
     box-shadow: #646668 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28395,7 +28452,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #28a745;
     border-color: #28a745;
     box-shadow: #28a745 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28412,7 +28471,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #c82333;
     border-color: #c82333;
     box-shadow: #c82333 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28421,7 +28482,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #d87781;
     border-color: #d87781;
     box-shadow: #d87781 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28431,7 +28494,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #0069d9;
     border-color: #0069d9;
     box-shadow: #0069d9 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28440,7 +28505,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #6da3dd;
     border-color: #6da3dd;
     box-shadow: #6da3dd 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28450,7 +28517,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #17a2b8;
     border-color: #17a2b8;
     box-shadow: #17a2b8 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28459,7 +28528,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #66c0ce;
     border-color: #66c0ce;
     box-shadow: #66c0ce 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28469,7 +28540,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #ffc107;
     border-color: #ffc107;
     box-shadow: #ffc107 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 
@@ -28478,7 +28551,9 @@ ul.to-do li .remember-checkbox input[type="checkbox"]:checked ~ label {
     background-color: #e2c366;
     border-color: #e2c366;
     box-shadow: #e2c366 0px 0px 0px 8px inset;
-    transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s,
+    transition:
+        border 0.4s ease 0s,
+        box-shadow 0.4s ease 0s,
         background-color 1.2s ease 0s;
 }
 

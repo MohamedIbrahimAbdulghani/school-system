@@ -1,6 +1,6 @@
 button.dropdown-item {
     cursor: pointer;
 }
-table.dataTable thead>tr>th {
+table.dataTable thead > tr > th {
     text-align: center;
 }

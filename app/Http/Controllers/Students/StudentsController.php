@@ -9,6 +9,7 @@ use App\Models\Sections;
 use App\Repository\StudentRepositoryInterface;
 use Illuminate\Http\Request;
 
+
 class StudentsController extends Controller
 {
     protected $student;
@@ -52,7 +53,7 @@ class StudentsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return $this->student->showStudent($id);
     }
 
     /**

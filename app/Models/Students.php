@@ -32,7 +32,7 @@ class Students extends Model
     public function typeBlood() {
         return $this->belongsTo(TypeBloods::class, 'blood_type_id');
     }
-    // Relationship between students and images
+    // Relationship between students and images ( Type this relationship is One to Many (Polymorphic) )
         public function images()
     {
         return $this->morphMany(Image::class, 'imageable');

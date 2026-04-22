@@ -77,7 +77,7 @@ class StudentRepository implements StudentRepositoryInterface {
         } else {
             toastr()->error(trans('messages.error'));
         }
-            
+
             DB::commit(); // insert data in database
 
         } catch (\Exception $e) {
@@ -85,6 +85,11 @@ class StudentRepository implements StudentRepositoryInterface {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
             return redirect()->route('students.index');
+    }
+
+    public function showStudent($id) {
+        $student = Students::findOrFail($id);
+        return view('pages.Students.show_student', compact('student'));
     }
 
     public function updateStudent($request, $id) {

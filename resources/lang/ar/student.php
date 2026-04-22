@@ -16,6 +16,7 @@ return [
     'blood_type' => 'فصلية الدم',
     'Date_of_Birth' => 'تاريخ الميلاد',
     'Student_information' => 'معلومات الطالب',
+    'Student_details' => 'تفاصيل الطالب',
     'Grade' => 'المرحلة الدراسية',
     'classrooms' => 'الصف الدراسي',
     'section' => 'القسم',
@@ -28,5 +29,10 @@ return [
     'choose_file_name' => 'اختار ملف',
     'Edit' => 'تعديل بيانات الطالب ',
     'Delete' => 'حذف بيانات الطالب  ',
+    'Back' => 'رجوع',
+    'Attachments' => 'مرفقات الطالب',
+    'filename' => 'اسم المرفق',
+    'created_at' => 'تاريخ تحميل المرفق',
+    'Download' => 'تحميل',
 
 ];

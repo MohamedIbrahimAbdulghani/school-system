@@ -38,12 +38,12 @@
                 <div class="tab nav-border">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#home-02">
+                            <a class="nav-link active" data-toggle="tab" href="#student_details">
                                 {{trans('student.Student_details')}}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#profile-02">
+                            <a class="nav-link" data-toggle="tab" href="#student_attachments">
                                 {{trans('student.Attachments')}}
                             </a>
                         </li>
@@ -52,7 +52,7 @@
                     <div class="tab-content">
 
                         {{-- ================= STUDENT DETAILS ================= --}}
-                        <div class="tab-pane fade active show" id="home-02">
+                        <div class="tab-pane fade active show" id="student_details">
 
                             <table class="table p-0 table-striped table-bordered">
                                 <tbody>
@@ -102,12 +102,11 @@
                         </div>
 
                         {{-- ================= ATTACHMENTS ================= --}}
-                        <div class="tab-pane fade" id="profile-02">
+                        <div class="tab-pane fade" id="student_attachments">
 
                             {{-- Upload form --}}
-                            <form method="post" action="" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('students.uploadStudentAttachments', $student->id) }}" enctype="multipart/form-data">
                                 @csrf
-
                                 <div class="form-group">
                                     <label class="d-block">{{trans('student.Attachments')}}</label>
                                     <input type="file" name="photos[]" multiple required>

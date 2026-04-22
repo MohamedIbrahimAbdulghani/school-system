@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Students;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudentRequest;
 use App\Models\ClassRooms;
+use App\Models\Image;
 use App\Models\Sections;
+use App\Models\Students;
 use App\Repository\StudentRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -97,14 +99,10 @@ class StudentsController extends Controller
     }
     // this is function to delete all students
     public function deleteAllStudents(Request $request) {
-        $result = $this->student->deleteAllStudents($request->ids);
-
-            if ($result['status'] == 'success') {
-                toastr()->success($result['message']);
-            } else {
-                toastr()->error($result['message']);
-            }
-
-            return back();
+        return $this->student->deleteAllStudents($request->ids);
+    }
+    // this is function to upload photo for student or to upload attachments for students
+    public function uploadStudentAttachments(Request $request, $id) {
+        return $this->student->uploadStudentAttachments($request, $id);
     }
 }

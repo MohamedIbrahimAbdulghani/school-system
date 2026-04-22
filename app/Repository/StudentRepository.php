@@ -72,6 +72,7 @@ class StudentRepository implements StudentRepositoryInterface {
                 ]);
             }
         }
+
         if ($student) {
             toastr()->success(trans('messages.success'));
         } else {
@@ -107,6 +108,7 @@ class StudentRepository implements StudentRepositoryInterface {
             'parent_id' => $request->parent_id,
             'academic_year' => $request->academic_year,
         ]);
+
         if($student) {
             toastr()->success(trans('messages.update'));
         } else {
@@ -129,12 +131,30 @@ class StudentRepository implements StudentRepositoryInterface {
             $ids = explode(',', $ids);
         }
         // حذف الطلاب
-        Students::whereIn('id', $ids)->delete();
+        $student = Students::whereIn('id', $ids)->delete();
 
-        return [
-            'status' => 'success',
-            'message' => trans('messages.delete')
-        ];
+        if ($student) {
+            toastr()->success(trans('messages.delete'));
+        }
+        return back();
+    }
+
+    public function uploadStudentAttachments($request, $id) {
+        $student = Students::findOrFail($id);
+        // Storage photo
+        if($request->hasFile('photos')) {
+            foreach($request->file('photos') as $photo) {
+                $name = $photo->getClientOriginalName();
+                $photo->storeAs('attachments/students/' . $student->name, $name, 'uploda_attachments');
+                Image::create([
+                    'filename' => $name,
+                    'imageable_id' => $student->id,
+                    'imageable_type' => 'App\Models\Students',
+                ]);
+            }
+        }
+        toastr()->success(trans('messages.upload'));
+        return back();
     }
 
 }

@@ -7,7 +7,6 @@ use App\Http\Controllers\Classrooms\ClassRoomsController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\AddParentController;
-use App\Http\Controllers\Parents\ParentAttachments;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Teachers\TeachersController;
 
@@ -65,12 +64,11 @@ Route::group([
 
         // Students
             Route::delete('students/deleteAllStudents', [StudentsController::class, 'deleteAllStudents'])->name('students.deleteAllStudents');
+            Route::post('uploadStudentAttachments/{id}', [StudentsController::class, 'uploadStudentAttachments'])->name('students.uploadStudentAttachments');
             Route::resource('students', StudentsController::class);
             Route::get('get_classrooms/{id}', [StudentsController::class, 'getClassrooms']);
             Route::get('get_sections/{id}', [StudentsController::class, 'getSections']);
 
-        // Parents Attachments
-            Route::resource('parent_attachments', ParentAttachments::class);
     });
 
 });

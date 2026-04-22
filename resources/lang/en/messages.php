@@ -5,4 +5,5 @@ return [
     'success' => 'Data has been saved successfully.',
     'update'  => 'Data has been updated successfully.',
     'delete'  => 'Data has been deleted successfully.',
+    'upload' => 'Data has been uploaded successfully.',
 ];

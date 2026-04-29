@@ -105,4 +105,8 @@ class StudentsController extends Controller
     public function uploadStudentAttachments(Request $request, $id) {
         return $this->student->uploadStudentAttachments($request, $id);
     }
+    // this is function to delete photo for  attachments for students
+    public function deleteStudentAttachments($id) {
+        return $this->student->deleteStudentAttachments($id);
+    }
 }

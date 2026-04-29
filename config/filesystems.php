@@ -47,7 +47,7 @@ return [
             'report' => false,
         ],
 
-        'uploda_attachments' => [
+        'upload_attachments' => [
             'driver' => 'local',
             'root' => public_path(''),
             'url' => env('APP_URL').'/storage',

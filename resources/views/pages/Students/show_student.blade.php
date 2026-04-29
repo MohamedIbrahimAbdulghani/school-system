@@ -103,7 +103,6 @@
 
                         {{-- ================= ATTACHMENTS ================= --}}
                         <div class="tab-pane fade" id="student_attachments">
-
                             {{-- Upload form --}}
                             <form method="post" action="{{ route('students.uploadStudentAttachments', $student->id) }}" enctype="multipart/form-data">
                                 @csrf
@@ -112,14 +111,11 @@
                                     <input type="file" name="photos[]" multiple required>
                                     <input type="hidden" name="student_id" value="{{ $student->id }}">
                                 </div>
-
                                 <button type="submit" class="button button-border x-small">
                                     {{trans('student.submit')}}
                                 </button>
                             </form>
-
                             <br>
-
                             {{-- Attachments table --}}
                             <table class="table p-0 table-striped table-bordered">
                                 <thead>
@@ -130,65 +126,50 @@
                                         <th>{{trans('student.Processes')}}</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                 @foreach($student->images as $attachment)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $attachment->filename }}</td>
+                                        <td>{{ basename($attachment->filename) }}</td>
                                         <td>{{ $attachment->created_at->diffForHumans() }}</td>
                                         <td>
-
                                             <a class="btn btn-info btn-sm"
                                             href="{{ url('Download_attachment/'.$attachment->imageable->name.'/'.$attachment->filename) }}">
                                                 <i class="fas fa-download"></i>
                                             </a>
-
-                                            <button class="btn btn-danger btn-sm"
-                                                    data-toggle="modal"
-                                                    data-target="#delete_img{{ $attachment->id }}">
-                                                Delete
+                                            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_img{{ $attachment->id }}">
+                                                <i class="fas fa-trash"></i>
                                             </button>
-
+                                            <input type="hidden" value="{{ $attachment->id }}" name="attachment_id">
                                         </td>
                                     </tr>
-
                                     {{-- Modal خارج الجدول بشكل صحيح --}}
                                     <div class="modal fade" id="delete_img{{ $attachment->id }}">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-
                                                 <div class="modal-header">
-                                                    <h5>Delete File</h5>
+                                                    <h5>{{ trans('student.Delete_File') }}</h5>
                                                 </div>
-
-                                                <div class="modal-body">
-                                                    Are you sure?
-
-                                                    <form method="POST" action="">
+                                                <div class="pt-0 modal-body">
+                                                    <label class="mb-2">{{ trans('student.sure_delete?') }}</label>
+                                                    <form method="POST" action="{{ route('students.deleteStudentAttachments', $attachment->id) }}">
                                                         @csrf
                                                         @method('DELETE')
-
-                                                        <button class="btn btn-danger">
-                                                            Delete
-                                                        </button>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-danger">{{trans('grades.delete')}}</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>
+                                                    </div>
                                                     </form>
-
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
-
                                 @endforeach
                                 </tbody>
                             </table>
-
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

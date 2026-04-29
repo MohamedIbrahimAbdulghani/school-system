@@ -28,6 +28,8 @@ return [
     'choose_file_name' => 'choose_file_name',
     'Edit' => 'Edit',
     'Delete' => 'Delete',
+    'sure_delete?' => 'Are you sure delete ?',
+    'Delete_File' => 'Delete File',
     'Back' => 'Back',
     'Attachments' => 'Student Attachments',
     'filename' => 'Filename',

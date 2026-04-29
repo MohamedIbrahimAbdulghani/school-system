@@ -65,6 +65,7 @@ Route::group([
         // Students
             Route::delete('students/deleteAllStudents', [StudentsController::class, 'deleteAllStudents'])->name('students.deleteAllStudents');
             Route::post('uploadStudentAttachments/{id}', [StudentsController::class, 'uploadStudentAttachments'])->name('students.uploadStudentAttachments');
+            Route::delete('deleteStudentAttachments/{id}', [StudentsController::class, 'deleteStudentAttachments'])->name('students.deleteStudentAttachments');
             Route::resource('students', StudentsController::class);
             Route::get('get_classrooms/{id}', [StudentsController::class, 'getClassrooms']);
             Route::get('get_sections/{id}', [StudentsController::class, 'getSections']);

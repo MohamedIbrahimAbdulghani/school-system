@@ -29,6 +29,8 @@ return [
     'choose_file_name' => 'اختار ملف',
     'Edit' => 'تعديل بيانات الطالب ',
     'Delete' => 'حذف بيانات الطالب  ',
+    'sure_delete?' => 'هل تريد الحذف ؟',
+    'Delete_File' => 'حذف الملف',
     'Back' => 'رجوع',
     'Attachments' => 'مرفقات الطالب',
     'filename' => 'اسم المرفق',

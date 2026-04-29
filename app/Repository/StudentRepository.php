@@ -13,6 +13,7 @@ use App\Models\TypeBloods;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class StudentRepository implements StudentRepositoryInterface {
     public function getStudents() {
@@ -145,9 +146,9 @@ class StudentRepository implements StudentRepositoryInterface {
         if($request->hasFile('photos')) {
             foreach($request->file('photos') as $photo) {
                 $name = $photo->getClientOriginalName();
-                $photo->storeAs('attachments/students/' . $student->name, $name, 'uploda_attachments');
+                $photo->storeAs('attachments/students/' . $student->name, $name, 'upload_attachments');
                 Image::create([
-                    'filename' => $name,
+                    'filename' => 'attachments/students/' . $student->name . '/' . $name,
                     'imageable_id' => $student->id,
                     'imageable_type' => 'App\Models\Students',
                 ]);
@@ -157,4 +158,16 @@ class StudentRepository implements StudentRepositoryInterface {
         return back();
     }
 
+    public function deleteStudentAttachments($id) {
+        $image = Image::findOrFail($id);
+
+        if (Storage::disk('upload_attachments')->exists($image->filename)) {
+            Storage::disk('upload_attachments')->delete($image->filename);
+        }
+
+        $image->delete();
+
+        toastr()->success(trans('messages.delete'));
+        return back();
+    }
 }

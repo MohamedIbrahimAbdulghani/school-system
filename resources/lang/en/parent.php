@@ -3,6 +3,12 @@
 return [
 
     'Parent_list' => 'Parent list',
+    'Edit_parent' => 'Edit Parent Information',
+    'Delete_parent' => 'Delete Parent Information',
+    'Warning_parent' => 'Are you sure you want to delete ?',
+    'Add_Parent' => 'Add New Parent',
+    'Add_Parents' => 'Add Parents',
+    'Parents' => 'Parents',
     'Add_parent' => 'Add Parent',
     'Step1' => 'Father information',
     'Step2' => 'Mother information',
@@ -47,6 +53,14 @@ return [
     'password.min' => 'The password must be at least 2 characters',
     'choose_file_name' => 'Choose file name',
     'Edit' => 'Edit Information About Parent',
-    'Delete' => 'Delete Information Parent'
+    'Delete' => 'Delete Information Parent',
+    'Back' => 'Back',
+    'Parent_details' => 'Parent Details',
+    'Attachments' => 'Attachments',
+    'sure_delete?' => 'Are you sure you want to delete ?',
+    'filename' => 'File Name',
+    'created_at' => 'Created at',
+    'Delete_File' => 'Delete Attachment',
+    'submit' => 'Submit',
 
 ];

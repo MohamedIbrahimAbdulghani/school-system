@@ -9,13 +9,13 @@ use App\Models\Religions;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreParentRequest;
 use App\Models\MyParents;
-use App\Models\ParentAttachments;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
-class AddParentController extends Controller
+class ParentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AddParentController extends Controller
         $Nationalities = Nationalitie::all();
         $Type_Bloods = TypeBloods::all();
         $Religions = Religions::all();
-        return view('pages.Parents.show_parent', compact('Nationalities', 'Type_Bloods', 'Religions'));
+        return view('pages.Parents.add_parent', compact('Nationalities', 'Type_Bloods', 'Religions'));
     }
 
     /**
@@ -84,15 +84,15 @@ class AddParentController extends Controller
                 toastr()->success(trans('messages.success'));
             } else {
                 toastr()->error(trans('messages.error'));
-            } 
-                       
+            }
+
             DB::commit(); // insert data in database
 
         } catch (\Exception $e) {
             DB::rollBack(); // if any error rollback all data
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-            return redirect()->route('add_parent.index');
+            return redirect()->route('parents.index');
     }
 
 
@@ -101,7 +101,11 @@ class AddParentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $parent = MyParents::findOrFail($id);
+        $Nationalities = Nationalitie::all();
+        $Type_Bloods = TypeBloods::all();
+        $Religions = Religions::all();
+        return view('pages.Parents.show_parent', compact('parent', 'Nationalities', 'Type_Bloods', 'Religions'));
     }
 
     /**
@@ -152,7 +156,7 @@ class AddParentController extends Controller
             } else {
                 toastr()->error(trans('messages.error'));
             }
-            return redirect()->route('add_parent.index');
+            return redirect()->route('parents.index');
     }
 
     /**
@@ -165,7 +169,7 @@ class AddParentController extends Controller
         if ($parent) {
             toastr()->success(trans('messages.delete'));
         }
-        return redirect()->route('add_parent.index');
+        return redirect()->route('parents.index');
     }
     // this function to make realtime validation about add_parent
     public function validateField(Request $request) {
@@ -198,8 +202,37 @@ class AddParentController extends Controller
         toastr()->success(trans('messages.delete'));
         return back();
     }
-    // public function addParent() {
-    //     $parent = MyParents::all();
-    //     return view('pages.Parents.show_parent', compact('parent'));
-    // }
+
+    // this is function to upload photo for parents or to upload attachments for parents
+        public function uploadParentAttachments(Request $request, $id) {
+        $parent = MyParents::findOrFail($id);
+        // Storage photo
+        if($request->hasFile('photos')) {
+            foreach($request->file('photos') as $photo) {
+                $name = $photo->getClientOriginalName();
+                $father_name = $parent->getTranslation('father_name', app()->getLocale());
+                $photo->storeAs('attachments/parents/' . $father_name, $name, 'upload_attachments');
+                Image::create([
+                    'filename' => 'attachments/parents/' . $father_name . '/' . $name,
+                    'imageable_id' => $parent->id,
+                    'imageable_type' => 'App\Models\MyParents',
+                ]);
+            }
+        }
+        toastr()->success(trans('messages.upload'));
+        return back();
+    }
+// this is function to delete photo for  attachments for students
+    public function deleteParentAttachments($id) {
+        $image = Image::findOrFail($id);
+
+        if (Storage::disk('upload_attachments')->exists($image->filename)) {
+            Storage::disk('upload_attachments')->delete($image->filename);
+        }
+
+        $image->delete();
+
+        toastr()->success(trans('messages.delete'));
+        return back();
+    }
 }

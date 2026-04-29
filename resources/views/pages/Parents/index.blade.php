@@ -28,7 +28,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <a href="{{route('add_parent.create')}}"><button type="button" class="mb-2 button x-small">{{trans('parent.Add_parent')}}</button></a>
+                <a href="{{route('parents.create')}}"><button type="button" class="mb-2 button x-small">{{trans('parent.Add_parent')}}</button></a>
 
                     <button type="button" class="mb-2 button x-small" id="bulk-delete-btn"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" >{{trans('classrooms.delete_checkbox')}}</button>
 
@@ -61,8 +61,9 @@
                                         <td>{{ $my_parent->father_phone }}</td>
                                         <td>{{ $my_parent->father_job }}</td>
                                         <td>
-                                            <a href="{{route('add_parent.edit', $my_parent->id)}}"><button title="{{ trans('parent.Edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
+                                            <a href="{{route('parents.edit', $my_parent->id)}}"><button title="{{ trans('parent.Edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
                                             <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$my_parent->id}}"  title="{{trans('parent.Delete')}}"><i class="fa fa-trash"></i></button>
+                                            <a href="{{ route('parents.show',$my_parent->id)}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="far fa-eye"></i></a>
                                         </td>
                                     </tr>
                                         {{-- Start Modal To Delete Parent --}}
@@ -75,7 +76,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                     {{-- delete form--}}
-                                                    <form action="{{ route('add_parent.destroy', $my_parent->id) }}" method="post">
+                                                    <form action="{{ route('parents.destroy', $my_parent->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="row">
@@ -106,7 +107,7 @@
                                             </div>
                                             <div class="modal-body">
                                             {{-- delete form--}}
-                                            <form id="bulk-delete-form"  action="{{ route('add_parent.bulkDestroy') }}" method="post">
+                                            <form id="bulk-delete-form"  action="{{ route('parents.bulkDestroy') }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <input type="hidden" name="ids" id="bulk-delete-ids">

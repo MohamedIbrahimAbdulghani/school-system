@@ -65,7 +65,7 @@ class StudentRepository implements StudentRepositoryInterface {
         if($request->hasFile('images')) {
             foreach($request->file('images') as $image) {
                 $name = $image->getClientOriginalName();
-                $image->storeAs('attachments/students/' . $student->name, $name, 'uploda_attachments');
+                $image->storeAs('attachments/students/' . $student->name, $name, 'upload_attachments');
                 Image::create([
                     'filename' => $name,
                     'imageable_id' => $student->id,

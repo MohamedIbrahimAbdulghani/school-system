@@ -6,7 +6,7 @@ use App\Http\Controllers\Grades\GradesController;
 use App\Http\Controllers\Classrooms\ClassRoomsController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Sections\SectionController;
-use App\Http\Controllers\Parents\AddParentController;
+use App\Http\Controllers\Parents\ParentController;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Teachers\TeachersController;
 
@@ -53,10 +53,12 @@ Route::group([
             Route::resource('sections', SectionController::class);
 
         // Parents
-            // Route::get('parent', [AddParentController::class, 'addParent']);
-            Route::post('add_parent/validate', [AddParentController::class, 'validateField'])->name('parents.validate'); //this route to make realtime validation about add parent
-            Route::delete('add_parent/bulkDestroy', [AddParentController::class, 'bulkDestroy'])->name('add_parent.bulkDestroy');
-            Route::resource('add_parent', AddParentController::class);
+            // Route::get('parent', [ParentController::class, 'addParent']);
+            Route::post('parents/validate', [ParentController::class, 'validateField'])->name('parents.validate'); //this route to make realtime validation about add parent
+            Route::post('parents/uploadParentAttachments/{id}', [ParentController::class, 'uploadParentAttachments'])->name('parents.uploadParentAttachments');
+            Route::delete('parents/deleteParentAttachments/{id}', [ParentController::class, 'deleteParentAttachments'])->name('parents.deleteParentAttachments');
+            Route::delete('parents/bulkDestroy', [ParentController::class, 'bulkDestroy'])->name('parents.bulkDestroy');
+            Route::resource('parents', ParentController::class);
 
         // Teachers
             Route::delete('teachers/bulkDestroy', [TeachersController::class, 'bulkDestroy'])->name('teachers.bulkDestroy');

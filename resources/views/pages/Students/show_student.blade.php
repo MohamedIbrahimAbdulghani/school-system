@@ -108,7 +108,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label class="d-block">{{trans('student.Attachments')}}</label>
-                                    <input type="file" name="photos[]" multiple required>
+                                    <input type="file" name="photos[]" multiple required accept="image/*,application/pdf">
                                     <input type="hidden" name="student_id" value="{{ $student->id }}">
                                 </div>
                                 <button type="submit" class="button button-border x-small">
@@ -134,7 +134,7 @@
                                         <td>{{ $attachment->created_at->diffForHumans() }}</td>
                                         <td>
                                             <a class="btn btn-info btn-sm"
-                                            href="{{ url('Download_attachment/'.$attachment->imageable->name.'/'.$attachment->filename) }}">
+                                            href="{{ url('downloadStudentAttachments/'.$attachment->filename.'/'.$attachment->imageable->name) }}">
                                                 <i class="fas fa-download"></i>
                                             </a>
                                             <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_img{{ $attachment->id }}">

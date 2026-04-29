@@ -170,4 +170,5 @@ class StudentRepository implements StudentRepositoryInterface {
         toastr()->success(trans('messages.delete'));
         return back();
     }
+
 }

@@ -35,5 +35,6 @@ return [
     'filename' => 'Filename',
     'created_at' => 'created_at',
     'Download' => 'Download',
+    'Show' => 'Show Student Details',
 
 ];

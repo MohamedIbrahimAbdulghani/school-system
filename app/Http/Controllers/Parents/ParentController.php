@@ -8,6 +8,7 @@ use App\Models\TypeBloods;
 use App\Models\Religions;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreParentRequest;
+use App\Http\Requests\UploadAttachments;
 use App\Models\MyParents;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -204,14 +205,14 @@ class ParentController extends Controller
     }
 
     // this is function to upload photo for parents or to upload attachments for parents
-        public function uploadParentAttachments(Request $request, $id) {
+        public function uploadParentAttachments(UploadAttachments $request, $id) {
         $parent = MyParents::findOrFail($id);
         // Storage photo
-        if($request->hasFile('photos')) {
-            foreach($request->file('photos') as $photo) {
-                $name = $photo->getClientOriginalName();
+        if($request->hasFile('files')) {
+            foreach($request->file('files') as $file) {
+                $name = $file->getClientOriginalName();
                 $father_name = $parent->getTranslation('father_name', app()->getLocale());
-                $photo->storeAs('attachments/parents/' . $father_name, $name, 'upload_attachments');
+                $file->storeAs('attachments/parents/' . $father_name, $name, 'upload_attachments');
                 Image::create([
                     'filename' => 'attachments/parents/' . $father_name . '/' . $name,
                     'imageable_id' => $parent->id,
@@ -224,14 +225,13 @@ class ParentController extends Controller
     }
 // this is function to delete photo for  attachments for students
     public function deleteParentAttachments($id) {
-        $image = Image::findOrFail($id);
-
-        if (Storage::disk('upload_attachments')->exists($image->filename)) {
-            Storage::disk('upload_attachments')->delete($image->filename);
+        $file = Image::findOrFail($id);
+        // delete file from storage or from local serve
+        if (Storage::disk('upload_attachments')->exists($file->filename)) {
+            Storage::disk('upload_attachments')->delete($file->filename);
         }
-
-        $image->delete();
-
+        // to delete file from database
+        $file->delete();
         toastr()->success(trans('messages.delete'));
         return back();
     }
@@ -248,5 +248,16 @@ class ParentController extends Controller
         // تحميل الملف
         return Storage::disk('upload_attachments')->download( $filePath, basename($filePath) ); // اسم الملف عند التحميل
     }
+    // this is function to preview photo for  attachments for parents
+    public function previewParentAttachment($id) {
+        $file = Image::findOrFail($id);
 
+        $path = Storage::disk('upload_attachments')->path($file->filename);
+
+        if (!file_exists($path)) {
+            abort(404);
+        }
+
+        return response()->file($path);
+    }
 }

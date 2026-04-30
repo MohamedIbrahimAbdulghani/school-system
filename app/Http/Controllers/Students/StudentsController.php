@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudentRequest;
+use App\Http\Requests\UploadAttachments;
 use App\Models\ClassRooms;
 use App\Models\Image;
 use App\Models\Sections;
@@ -103,7 +104,7 @@ class StudentsController extends Controller
         return $this->student->deleteAllStudents($request->ids);
     }
     // this is function to upload photo for student or to upload attachments for students
-    public function uploadStudentAttachments(Request $request, $id) {
+    public function uploadStudentAttachments(UploadAttachments $request, $id) {
         return $this->student->uploadStudentAttachments($request, $id);
     }
     // this is function to delete photo for  attachments for students
@@ -113,5 +114,9 @@ class StudentsController extends Controller
     // this is function to download photo for  attachments for students
     public function downloadStudentAttachment($id) {
         return $this->student->downloadStudentAttachment($id);
+    }
+    // this is function to preview photo for  attachments for students
+    public function previewStudentAttachment($id) {
+        return $this->student->previewStudentAttachment($id);
     }
 }

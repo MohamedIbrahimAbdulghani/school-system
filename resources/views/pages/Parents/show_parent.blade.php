@@ -30,6 +30,22 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
 
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>
+                    @endif
+
                 <a href="{{route('parents.index')}}">
                     <button type="button" class="mb-3 button x-small">← {{trans('parent.Back')}}</button>
                 </a>
@@ -151,7 +167,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label class="d-block">{{trans('parent.Attachments')}}</label>
-                                    <input type="file" name="photos[]" multiple required>
+                                    <input type="file" name="files[]" multiple required>
                                     <input type="hidden" name="parent_id" value="{{ $parent->id }}">
                                 </div>
                                 <button type="submit" class="button button-border x-small">
@@ -183,6 +199,9 @@
                                             <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_img{{ $attachment->id }}">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+                                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#preview_img{{ $attachment->id }}">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
                                             <input type="hidden" value="{{ $attachment->id }}" name="attachment_id">
                                         </td>
                                     </tr>
@@ -207,6 +226,33 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {{-- Model to preview attachment student --}}
+                                        <div class="modal fade" id="preview_img{{ $attachment->id }}" tabindex="-1">
+                                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    {{-- Body --}}
+                                                    <div class="text-center modal-body">
+                                                        @if(\Illuminate\Support\Str::endsWith($attachment->filename, ['.pdf']))
+                                                            <iframe
+                                                                src="{{ route('parents.previewParentAttachment', $attachment->id) }}"
+                                                                width="100%" height="500px">
+                                                            </iframe>
+                                                        @else
+                                                            <img
+                                                                src="{{ route('parents.previewParentAttachment', $attachment->id) }}"
+                                                                class="rounded img-fluid">
+                                                        @endif
+                                                    </div>
+                                                    {{-- Footer --}}
+                                                    <div class="modal-footer">
+                                                        <a href="{{ route('parents.downloadParentAttachment', $attachment->id) }}" class="btn btn-success"> {{ trans('parent.Download') }} </a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                            {{ trans('grades.close') }}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                 @endforeach
                                 </tbody>
                             </table>

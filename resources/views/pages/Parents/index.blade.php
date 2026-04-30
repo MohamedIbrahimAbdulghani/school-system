@@ -61,9 +61,9 @@
                                         <td>{{ $my_parent->father_phone }}</td>
                                         <td>{{ $my_parent->father_job }}</td>
                                         <td>
-                                            <a href="{{route('parents.edit', $my_parent->id)}}"><button title="{{ trans('parent.Edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
-                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$my_parent->id}}"  title="{{trans('parent.Delete')}}"><i class="fa fa-trash"></i></button>
-                                            <a href="{{ route('parents.show',$my_parent->id)}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="far fa-eye"></i></a>
+                                            <a href="{{route('parents.edit', $my_parent->id)}}"><button title="{{ trans('parent.Edit') }}" class="mb-1 btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
+                                            <button class='mb-1 btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$my_parent->id}}"  title="{{trans('parent.Delete')}}"><i class="fa fa-trash"></i></button>
+                                            <a href="{{ route('parents.show',$my_parent->id)}}" class="mb-1 btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="far fa-eye"></i></a>
                                         </td>
                                     </tr>
                                         {{-- Start Modal To Delete Parent --}}

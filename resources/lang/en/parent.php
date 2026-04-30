@@ -62,5 +62,8 @@ return [
     'created_at' => 'Created at',
     'Delete_File' => 'Delete Attachment',
     'submit' => 'Submit',
+    'Show' => 'Show Information About Parent',
+    'Download' => 'Download Attachment',
+    'Close' => 'Close',
 
 ];

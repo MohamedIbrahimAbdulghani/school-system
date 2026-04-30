@@ -143,10 +143,10 @@ class StudentRepository implements StudentRepositoryInterface {
     public function uploadStudentAttachments($request, $id) {
         $student = Students::findOrFail($id);
         // Storage photo
-        if($request->hasFile('photos')) {
-            foreach($request->file('photos') as $photo) {
-                $name = $photo->getClientOriginalName();
-                $photo->storeAs('attachments/students/' . $student->name, $name, 'upload_attachments');
+        if($request->hasFile('files')) {
+            foreach($request->file('files') as $file) {
+                $name = $file->getClientOriginalName();
+                $file->storeAs('attachments/students/' . $student->name, $name, 'upload_attachments');
                 Image::create([
                     'filename' => 'attachments/students/' . $student->name . '/' . $name,
                     'imageable_id' => $student->id,
@@ -159,13 +159,13 @@ class StudentRepository implements StudentRepositoryInterface {
     }
 
     public function deleteStudentAttachments($id) {
-        $image = Image::findOrFail($id);
+        $file = Image::findOrFail($id);
 
-        if (Storage::disk('upload_attachments')->exists($image->filename)) {
-            Storage::disk('upload_attachments')->delete($image->filename);
+        if (Storage::disk('upload_attachments')->exists($file->filename)) {
+            Storage::disk('upload_attachments')->delete($file->filename);
         }
 
-        $image->delete();
+        $file->delete();
 
         toastr()->success(trans('messages.delete'));
         return back();
@@ -182,6 +182,19 @@ class StudentRepository implements StudentRepositoryInterface {
         }
         // تحميل الملف
         return Storage::disk('upload_attachments')->download( $filePath, basename($filePath) ); // اسم الملف عند التحميل
+    }
+
+    // this is function to preview file for  attachments for students
+    public function previewStudentAttachment($id) {
+        $file = Image::findOrFail($id);
+
+        $path = Storage::disk('upload_attachments')->path($file->filename);
+
+        if (!file_exists($path)) {
+            abort(404);
+        }
+
+        return response()->file($path);
     }
 
 }

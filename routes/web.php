@@ -58,6 +58,7 @@ Route::group([
             Route::post('parents/uploadParentAttachments/{id}', [ParentController::class, 'uploadParentAttachments'])->name('parents.uploadParentAttachments');
             Route::delete('parents/deleteParentAttachments/{id}', [ParentController::class, 'deleteParentAttachments'])->name('parents.deleteParentAttachments');
             Route::get('parents/downloadParentAttachment/{id}', [ParentController::class, 'downloadParentAttachment'])->name('parents.downloadParentAttachment');
+            Route::get('parents/previewParentAttachment/{id}', [ParentController::class, 'previewParentAttachment'])->name('parents.previewParentAttachment');
             Route::delete('parents/bulkDestroy', [ParentController::class, 'bulkDestroy'])->name('parents.bulkDestroy');
             Route::resource('parents', ParentController::class);
 
@@ -70,6 +71,7 @@ Route::group([
             Route::post('uploadStudentAttachments/{id}', [StudentsController::class, 'uploadStudentAttachments'])->name('students.uploadStudentAttachments');
             Route::delete('deleteStudentAttachments/{id}', [StudentsController::class, 'deleteStudentAttachments'])->name('students.deleteStudentAttachments');
             Route::get('students/downloadStudentAttachment/{id}', [StudentsController::class, 'downloadStudentAttachment'])->name('students.downloadStudentAttachment');
+            Route::get('students/previewStudentAttachment/{id}', [StudentsController::class, 'previewStudentAttachment'])->name('students.previewStudentAttachment');
             Route::resource('students', StudentsController::class);
             Route::get('get_classrooms/{id}', [StudentsController::class, 'getClassrooms']);
             Route::get('get_sections/{id}', [StudentsController::class, 'getSections']);

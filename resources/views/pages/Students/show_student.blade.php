@@ -134,7 +134,7 @@
                                         <td>{{ $attachment->created_at->diffForHumans() }}</td>
                                         <td>
                                             <a class="btn btn-info btn-sm"
-                                            href="{{ url('downloadStudentAttachments/'.$attachment->filename.'/'.$attachment->imageable->name) }}">
+                                            href="{{ route('students.downloadStudentAttachment', $attachment->id) }}">
                                                 <i class="fas fa-download"></i>
                                             </a>
                                             <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_img{{ $attachment->id }}">

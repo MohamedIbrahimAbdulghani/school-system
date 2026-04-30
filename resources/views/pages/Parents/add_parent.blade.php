@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{route('add_parent.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('parents.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <!-- Start Father Form -->
                     <h5>{{trans('parent.Information_Father')}}</h5>

@@ -20,4 +20,5 @@ interface StudentRepositoryInterface {
     public function deleteAllStudents($ids);
     public function uploadStudentAttachments($request, $id);
     public function deleteStudentAttachments($id);
+    public function downloadStudentAttachment($id);
 }

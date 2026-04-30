@@ -235,4 +235,18 @@ class ParentController extends Controller
         toastr()->success(trans('messages.delete'));
         return back();
     }
+
+    // this is function to download photo for  attachments for parents
+    public function downloadParentAttachment($id) {
+        $attachment = Image::findOrFail($id);
+        // المسار اللي في الداتابيز
+        $filePath = $attachment->filename;
+        // تأكد إن الملف موجود
+        if (!Storage::disk('upload_attachments')->exists($filePath)) {
+            abort(404, 'File not found');
+        }
+        // تحميل الملف
+        return Storage::disk('upload_attachments')->download( $filePath, basename($filePath) ); // اسم الملف عند التحميل
+    }
+
 }

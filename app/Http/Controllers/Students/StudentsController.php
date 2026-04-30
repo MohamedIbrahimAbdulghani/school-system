@@ -10,6 +10,7 @@ use App\Models\Sections;
 use App\Models\Students;
 use App\Repository\StudentRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class StudentsController extends Controller
@@ -108,5 +109,9 @@ class StudentsController extends Controller
     // this is function to delete photo for  attachments for students
     public function deleteStudentAttachments($id) {
         return $this->student->deleteStudentAttachments($id);
+    }
+    // this is function to download photo for  attachments for students
+    public function downloadStudentAttachment($id) {
+        return $this->student->downloadStudentAttachment($id);
     }
 }

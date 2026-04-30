@@ -171,4 +171,17 @@ class StudentRepository implements StudentRepositoryInterface {
         return back();
     }
 
+    // this function to make download for attachments for students
+    public function downloadStudentAttachment($id) {
+        $attachment = Image::findOrFail($id);
+        // المسار اللي في الداتابيز
+        $filePath = $attachment->filename;
+        // تأكد إن الملف موجود
+        if (!Storage::disk('upload_attachments')->exists($filePath)) {
+            abort(404, 'File not found');
+        }
+        // تحميل الملف
+        return Storage::disk('upload_attachments')->download( $filePath, basename($filePath) ); // اسم الملف عند التحميل
+    }
+
 }

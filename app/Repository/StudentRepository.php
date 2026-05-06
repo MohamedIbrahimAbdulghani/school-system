@@ -98,7 +98,6 @@ class StudentRepository implements StudentRepositoryInterface {
         $student = Students::findOrFail($id)->update([
             'name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
             'email' => $request->email,
-            'password' => Hash::make($request->password),
             'gender_id' => $request->gender_id,
             'nationality_id' => $request->nationality_id,
             'blood_type_id' => $request->blood_type_id,
@@ -109,6 +108,10 @@ class StudentRepository implements StudentRepositoryInterface {
             'parent_id' => $request->parent_id,
             'academic_year' => $request->academic_year,
         ]);
+
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->password);
+        }
 
         if($student) {
             toastr()->success(trans('messages.update'));

@@ -1,65 +1,40 @@
-<!-- jquery -->
 <script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>
-<!-- datatable -->
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
-<!-- plugins-jquery -->
 <script src="{{ URL::asset('assets/js/plugins-jquery.js') }}"></script>
-<!-- plugin_path -->
 <script type="text/javascript">var plugin_path = '{{ asset('assets/js') }}/';</script>
-
-<!-- chart -->
 <script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>
-<!-- calendar -->
 <script src="{{ URL::asset('assets/js/calendar.init.js') }}"></script>
-<!-- charts sparkline -->
 <script src="{{ URL::asset('assets/js/sparkline.init.js') }}"></script>
-<!-- charts morris -->
 <script src="{{ URL::asset('assets/js/morris.init.js') }}"></script>
-<!-- datepicker -->
 <script src="{{ URL::asset('assets/js/datepicker.js') }}"></script>
-<!-- sweetalert2 -->
 <script src="{{ URL::asset('assets/js/sweetalert2.js') }}"></script>
-<!-- toastr -->
 <script src="{{ URL::asset('assets/js/toastr.js') }}"></script>
-<!-- validation -->
 <script src="{{ URL::asset('assets/js/validation.js') }}"></script>
-<!-- lobilist -->
 <script src="{{ URL::asset('assets/js/lobilist.js') }}"></script>
-<!-- custom -->
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
 
 <script>
-    // عندما يتم الضغط على الـ checkbox الكبير
     $('#select_all_box').click(function() {
         $('.checkbox_row').prop('checked', this.checked);
     });
 
-    // لحذف جميع ال checkboxs المتحددة
     $('#bulk-delete-btn').click(function() {
-    var selectedIds = [];
-    $('.checkbox_row:checked').each(function() {
-        selectedIds.push($(this).val());
+        var selectedIds = [];
+        $('.checkbox_row:checked').each(function() {
+            selectedIds.push($(this).val());
+        });
+        if (selectedIds.length === 0) {
+            alert("{{ trans('classrooms.no_selection') }}");
+            $('#delete_all_classes').modal('hide');
+        } else {
+            $('#bulk-delete-ids').val(selectedIds.join(','));
+        }
     });
 
-    if(selectedIds.length === 0){
-        alert("{{ trans('classrooms.no_selection') }}");
-        $('#delete_all_classes').modal('hide');
-    } else {
-        $('#bulk-delete-ids').val(selectedIds.join(','));
-    }
-});
-
-</script>
-
-
-{{-- this script to show button to delete all classrooms when checked the checkboxes --}}
-<script>
-    // وظيفة علشان تتحقق من الـ checkboxes وتظهر أو تخفي الزر
     function toggleBulkDeleteButton() {
         const checkedBoxes = $('.checkbox_row:checked');
         const bulkDeleteBtn = $('#bulk-delete-btn');
-
         if (checkedBoxes.length > 0) {
             bulkDeleteBtn.show();
         } else {
@@ -67,25 +42,113 @@
         }
     }
 
-    // لما الصفحة تتحمل
-        $(document).ready(function() {
-        // تحقق أول مرة
+    $(document).ready(function() {
         toggleBulkDeleteButton();
-
-        // استمع للتغير في كل الـ checkboxes
         $('.checkbox_row').change(function() {
             toggleBulkDeleteButton();
         });
-
-        // Select all checkbox
         $('#select_all_box').change(function() {
             $('.checkbox_row').prop('checked', this.checked);
             toggleBulkDeleteButton();
         });
-
     });
 </script>
-<!-- custom DataTable code -->
+
+{{-- Ajax grade -> classroom -> section --}}
 <script>
+$(document).ready(function () {
+    $('select[name="grade_id"]').on('change', function () {
+        let grade_id = $(this).val();
+        let classroom = $('select[name="classroom_id"]');
+        let section = $('select[name="section_id"]');
+
+        classroom.empty().prop('disabled', true);
+        section.empty().prop('disabled', true);
+
+        if (grade_id) {
+            $.ajax({
+                url: "/{{ app()->getLocale() }}/get_classrooms/" + grade_id,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    classroom.append('<option selected disabled>{{ trans("student.Choose") }}</option>');
+                    $.each(data, function (key, value) {
+                        classroom.append('<option value="' + key + '">' + value + '</option>');
+                    });
+                    classroom.prop('disabled', false);
+                }
+            });
+        }
+    });
+
+    $('select[name="classroom_id"]').on('change', function () {
+        let classroom_id = $(this).val();
+        let section = $('select[name="section_id"]');
+
+        section.empty().prop('disabled', true);
+
+        if (classroom_id) {
+            $.ajax({
+                url: "/{{ app()->getLocale() }}/get_sections/" + classroom_id,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    section.append('<option selected disabled>{{ trans("student.Choose") }}</option>');
+                    $.each(data, function (key, value) {
+                        section.append('<option value="' + key + '">' + value + '</option>');
+                    });
+                    section.prop('disabled', false);
+                }
+            });
+        }
+    });
+
+    $('select[name="grade_id_new"]').on('change', function () {
+        let grade_id = $(this).val();
+        let classroom = $('select[name="classroom_id_new"]');
+        let section = $('select[name="section_id_new"]');
+
+        classroom.empty().prop('disabled', true);
+        section.empty().prop('disabled', true);
+
+        if (grade_id) {
+            $.ajax({
+                url: "/{{ app()->getLocale() }}/get_classrooms/" + grade_id,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    classroom.append('<option selected disabled>{{ trans("student.Choose") }}</option>');
+                    $.each(data, function (key, value) {
+                        classroom.append('<option value="' + key + '">' + value + '</option>');
+                    });
+                    classroom.prop('disabled', false);
+                }
+            });
+        }
+    });
+
+    $('select[name="classroom_id_new"]').on('change', function () {
+        let classroom_id = $(this).val();
+        let section = $('select[name="section_id_new"]');
+
+        section.empty().prop('disabled', true);
+
+        if (classroom_id) {
+            $.ajax({
+                url: "/{{ app()->getLocale() }}/get_sections/" + classroom_id,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    section.append('<option selected disabled>{{ trans("student.Choose") }}</option>');
+                    $.each(data, function (key, value) {
+                        section.append('<option value="' + key + '">' + value + '</option>');
+                    });
+                    section.prop('disabled', false);
+                }
+            });
+        }
+    });
+});
+</script>
 
 @yield('js')

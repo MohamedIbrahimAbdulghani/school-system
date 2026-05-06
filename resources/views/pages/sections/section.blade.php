@@ -166,7 +166,7 @@
                                                                                                     <input type="checkbox" class="form-check-input" name="status" id="exampleCheck1">
                                                                                                 @endif
                                                                                                 <label
-                                                                                                    class="form-check-label mt-0"
+                                                                                                    class="mt-0 form-check-label"
                                                                                                     for="exampleCheck1">{{ trans('section.Status') }}</label>
                                                                                             </div>
                                                                                         </div>
@@ -278,7 +278,6 @@
                                             <option value="" selected
                                                     disabled>{{ trans('section.Select_Class') }}
                                             </option>
-                                           
                                         </select>
                                     </div>
                                     <div class="col">

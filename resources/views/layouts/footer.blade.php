@@ -1,5 +1,5 @@
 <!-- Footer opened -->
- <footer class="p-4 bg-white">
+ <footer class="p-4 mt-auto bg-white">
       <div class="row">
         <div class="col-md-6">
           <div class="text-center text-md-left">

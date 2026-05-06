@@ -4,17 +4,17 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Left Sidebar start-->
-        <div class="side-menu-fixed vh-100" style="overflow-y:auto; overflow-x:hidden;">
+        <div class="side-menu-fixed " style="overflow-y:auto; overflow-x:hidden;">
             <div class="scrollbar side-menu-bg">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
                     <li>
-    <a href="{{ url('/dashboard') }}">
-        <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main-side.Dashboard')}}</span>
-        </div>
-        <div class="clearfix"></div>
-    </a>
-</li>
+                        <a href="{{ url('/dashboard') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main-side.Dashboard')}}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
                     <!-- menu title -->
                 @php
                         $currentLocale = app()->getLocale();
@@ -72,6 +72,7 @@
                         <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('students.index') }}">{{ trans('main-side.list_students') }} </a> </li>
                             <li> <a href="{{ route('students.create') }}">{{ trans('student.add_student') }}</a> </li>
+                            <li> <a href="{{ route('promotions.index') }}">{{ trans('main-side.Promotion_students') }}</a> </li>
                         </ul>
                     </li>
 
@@ -213,8 +214,3 @@
         <!-- Left Sidebar End-->
     </div>
 </div>
-
-
-        <!-- Left Sidebar End-->
-
-        <!--=================================

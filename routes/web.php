@@ -7,6 +7,7 @@ use App\Http\Controllers\Classrooms\ClassRoomsController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\ParentController;
+use App\Http\Controllers\Students\PromotionsController;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Teachers\TeachersController;
 
@@ -76,6 +77,8 @@ Route::group([
             Route::get('get_classrooms/{id}', [StudentsController::class, 'getClassrooms']);
             Route::get('get_sections/{id}', [StudentsController::class, 'getSections']);
 
+        // Promotions
+            Route::resource('promotions', PromotionsController::class);
     });
 
 });

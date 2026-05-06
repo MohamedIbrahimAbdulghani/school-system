@@ -36,5 +36,10 @@ return [
     'created_at' => 'created_at',
     'Download' => 'Download',
     'Show' => 'Show Student Details',
+    'Promotion_students' => 'Promotion Students',
+    'old_grade' => 'Old Grade',
+    'new_grade' => 'New Grade',
+    'submit' => 'Submit',
+    'no_students_found' => 'No students found in this classroom',
 
 ];

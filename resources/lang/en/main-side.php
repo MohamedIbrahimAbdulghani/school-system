@@ -1,4 +1,3 @@
-
 <?php
 
 return [
@@ -15,6 +14,9 @@ return [
     'list_sections'=>'List Sections',
     'students'=>'Students',
     'list_students'=>'List Students',
+    'add_student'=>'Add Student',
+    'Promotion_students'=>'Promotion Students',
+    'Promotions_management'=>'Promotions Management',
     'Teachers'=>'Teachers',
     'List_Teachers' => 'List Teachers',
     'Parents'=>'Parents',

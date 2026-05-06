@@ -169,11 +169,12 @@
                                             @enderror
                                         </div>
                                         <div class="form-group col">
-                                            <label for="inputCity">{{trans('student.classrooms')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="classroom_id"  disabled>
-                                                <option value="">{{ $student->classroom->name_class }}</option>
-                                            </select>
-                                            <input type="hidden" name="classroom_id" value="{{ $student->classroom_id }}">
+                                                <label>{{trans('student.classrooms')}}</label>
+                                                <select class="my-1 custom-select mr-sm-2" name="classroom_id" id="classroom_id" disabled>
+                                                    <option value="{{ $student->classroom_id }}">
+                                                        {{ $student->classroom->name_class }}
+                                                    </option>
+                                                </select>
                                             @error('classroom_id')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -184,10 +185,9 @@
                                         </div>
                                         <div class="form-group col">
                                             <label for="inputState">{{trans('student.section')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="section_id" disabled>
+                                            <select class="my-1 custom-select mr-sm-2" name="section_id" id="section_id" disabled>
                                                 <option value="">{{ $student->section->name }}</option>
                                             </select>
-                                            <input type="hidden" name="section_id" value="{{ $student->section_id }}">
                                             @error('section_id')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -242,95 +242,4 @@
     </div>
 </div>
 <!-- row closed -->
-@endsection
-@section('js')
-
-{{-- script ajax code --}}
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-$(document).ready(function () {
-
-    // Grades -> Classrooms
-    $('select[name="grade_id"]').on('change', function () {
-
-        let grade_id = $(this).val();
-
-        let classroom = $('select[name="classroom_id"]');
-        let section = $('select[name="section_id"]');
-
-        // reset
-        classroom.empty().prop('disabled', true);
-        section.empty().prop('disabled', true);
-
-
-        if (grade_id) {
-
-            $.ajax({
-                url: "{{ url('get_classrooms') }}/" + grade_id,
-                type: "GET",
-                dataType: "json",
-
-                success: function (data) {
-
-                    // option افتراضي
-                    classroom.append('<option selected disabled>{{ trans('student.Choose') }}</option>');
-
-                    // loop على البيانات
-                    $.each(data, function (key, value) {
-                        classroom.append('<option value="' + key + '">' + value + '</option>'); //ضيف option جديد واديله ال key and value
-                    });
-
-                    classroom.prop('disabled', false); // تفعيل
-
-                },
-
-                error: function () {
-                    console.log('Error loading classrooms');
-                }
-            });
-
-        } else {
-            $('select[name="classroom_id"]').empty();
-        }
-
-    });
-
-    // Grades -> Classrooms
-
-    $('select[name="classroom_id"]').on('change', function () {
-
-        let classroom_id = $(this).val();
-
-        let section = $('select[name="section_id"]');
-
-        // reset
-        section.empty().prop('disabled', true);
-
-        if (classroom_id) {
-
-            $.ajax({
-                url: "{{ url('get_sections') }}/" + classroom_id,
-                type: "GET",
-                dataType: "json",
-
-                success: function (data) {
-
-                    section.append('<option selected disabled>{{ trans('student.Choose') }}</option>');
-
-                    $.each(data, function (key, value) {
-                        section.append('<option value="' + key + '">' + value + '</option>');
-                    });
-                    section.prop('disabled', false); // تفعيل
-                }
-            });
-        }
-    });
-
-});
-
-</script>
-
-
 @endsection

@@ -68,7 +68,7 @@
                                         <td>
                                             <a href="{{route('students.edit', $student->id)}}"><button title="{{ trans('student.Edit') }}" class="mb-1 btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
                                             <button class='mb-1 btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$student->id}}"  title="{{trans('student.Delete')}}"><i class="fa fa-trash"></i></button>
-                                            <a href="{{route('students.show',$student->id)}}"><button title="{{ trans('student.Show') }}" class="mb-1  btn btn-warning btn-sm"><i class="far fa-eye"></i></button></a>
+                                            <a href="{{route('students.show',$student->id)}}"><button title="{{ trans('student.Show') }}" class="mb-1 btn btn-warning btn-sm"><i class="far fa-eye"></i></button></a>
                                         </td>
                                     </tr>
                                         {{-- Start Modal To Delete students --}}
@@ -131,7 +131,4 @@
     </div>
 </div>
 <!-- row closed -->
-@endsection
-@section('js')
-
 @endsection

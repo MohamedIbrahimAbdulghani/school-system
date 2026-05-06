@@ -147,14 +147,14 @@
                                         <td>{{ basename($attachment->filename) }}</td>
                                         <td>{{ $attachment->created_at->diffForHumans() }}</td>
                                         <td>
-                                            <a class="btn btn-info btn-sm"
+                                            <a class="mt-2 btn btn-info btn-sm"
                                             href="{{ route('students.downloadStudentAttachment', $attachment->id) }}">
                                                 <i class="fas fa-download"></i>
                                             </a>
-                                            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_img{{ $attachment->id }}">
+                                            <button class="mt-2 btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_img{{ $attachment->id }}">
                                                 <i class="fas fa-trash"></i>
                                             </button>
-                                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#preview_img{{ $attachment->id }}">
+                                            <button class="mt-2 btn btn-primary btn-sm" data-toggle="modal" data-target="#preview_img{{ $attachment->id }}">
                                                 <i class="fas fa-eye"></i>
                                             </button>
                                             <input type="hidden" value="{{ $attachment->id }}" name="attachment_id">

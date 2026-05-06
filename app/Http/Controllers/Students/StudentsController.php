@@ -92,12 +92,14 @@ class StudentsController extends Controller
 
     public function getClassrooms($id)
     {
-        return $this->student->getClassrooms($id);
+        // return $this->student->getClassrooms($id);
+        return response()->json($this->student->getClassrooms($id));
     }
 
     public function getSections($id)
     {
-        return $this->student->getSections($id);
+        // return $this->student->getSections($id);
+        return response()->json($this->student->getSections($id));
     }
     // this is function to delete all students
     public function deleteAllStudents(Request $request) {

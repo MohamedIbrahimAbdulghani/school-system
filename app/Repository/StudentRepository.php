@@ -67,7 +67,7 @@ class StudentRepository implements StudentRepositoryInterface {
                 $name = $image->getClientOriginalName();
                 $image->storeAs('attachments/students/' . $student->name, $name, 'upload_attachments');
                 Image::create([
-                    'filename' => $name,
+                    'filename' => 'attachments/students/' . $student->name . '/' . $name,
                     'imageable_id' => $student->id,
                     'imageable_type' => 'App\Models\Students',
                 ]);

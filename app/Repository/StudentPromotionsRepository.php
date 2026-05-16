@@ -6,6 +6,7 @@ namespace App\Repository;
 use App\Models\Grades;
 use App\Models\promotion;
 use App\Models\Students;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StudentPromotionsRepository implements StudentPromotionsRepositoryInterface {
@@ -63,5 +64,25 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
         }
     }
 
+    public function create() {
+        $promotions = promotion::all();
+        return view('pages.Students.Promotions.promotions_manage',compact('promotions'));
+    }
+    public function destroy($request) {
+        DB::beginTransaction(); // Start a transaction ( it will allow us to roll back the changes if something goes wrong )
+
+        try {
+            if($request->page_id == 1) {
+                // rollback promotion for all students
+                $promotions = promotion::all();
+                return $promotions;
+            } else {
+                echo "go from delete on student";
+            }
+        }  catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error_promotions', trans('messages.error'));
+        }
+    }
 
 }

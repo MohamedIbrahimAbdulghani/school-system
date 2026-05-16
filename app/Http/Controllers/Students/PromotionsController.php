@@ -30,7 +30,7 @@ class PromotionsController extends Controller
      */
     public function create()
     {
-        //
+        return $this->promotions->create();
     }
 
     /**
@@ -68,8 +68,9 @@ class PromotionsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->promotions->destroy($request);
     }
+
 }

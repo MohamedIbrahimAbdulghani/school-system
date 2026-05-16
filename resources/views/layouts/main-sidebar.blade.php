@@ -73,6 +73,7 @@
                             <li> <a href="{{ route('students.index') }}">{{ trans('main-side.list_students') }} </a> </li>
                             <li> <a href="{{ route('students.create') }}">{{ trans('student.add_student') }}</a> </li>
                             <li> <a href="{{ route('promotions.index') }}">{{ trans('main-side.Promotion_students') }}</a> </li>
+                            <li> <a href="{{ route('promotions.create') }}">{{ trans('main-side.Promotions_management') }}</a> </li>
                         </ul>
                     </li>
 

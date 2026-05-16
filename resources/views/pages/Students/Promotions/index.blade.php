@@ -66,6 +66,25 @@
 
                                 </select>
                             </div>
+                            <div class="form-group col">
+                                <label for="inputState">{{trans('student.academic_year')}}</label>
+                                <select class="my-1 custom-select mr-sm-2" name="academic_year">
+                                    <option value="">{{trans('parent.Choose')}}...</option>
+                                    @php
+                                        $current_year = date("Y");
+                                    @endphp
+                                    @for($year=$current_year; $year<=$current_year +1 ;$year++)
+                                        <option value="{{ $year}}">{{ $year }}</option>
+                                    @endfor
+                                </select>
+                                @error('academic_year')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
+                            </div>
                         </div>
 
                         <h6 style="color: red;font-family: Cairo">{{trans('student.new_grade')}}</h6>
@@ -92,6 +111,25 @@
                                 <select class="custom-select mr-sm-2" name="section_id_new" required disabled>
 
                                 </select>
+                            </div>
+                            <div class="form-group col">
+                                <label for="inputState">{{trans('student.new_academic_year')}}</label>
+                                <select class="my-1 custom-select mr-sm-2" name="new_academic_year">
+                                    <option value="">{{trans('parent.Choose')}}...</option>
+                                    @php
+                                        $current_year = date("Y");
+                                    @endphp
+                                    @for($year=$current_year; $year<=$current_year +1 ;$year++)
+                                        <option value="{{ $year}}">{{ $year }}</option>
+                                    @endfor
+                                </select>
+                                @error('new_academic_year')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">{{trans('student.submit')}}</button>

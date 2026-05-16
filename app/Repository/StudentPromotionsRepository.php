@@ -14,6 +14,7 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
         return view('pages.Students.Promotions.index',compact('Grades'));
     }
 
+    // this function to promote students from one grade to another grade
     public function store($request) {
 
         DB::beginTransaction(); // Start a transaction ( it will allow us to roll back the changes if something goes wrong )
@@ -22,9 +23,10 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
             $students = Students::where('grade_id', $request->grade_id)
             ->where('classroom_id', $request->classroom_id)
             ->where('section_id', $request->section_id)
+            ->where('academic_year', $request->academic_year)
             ->get();
 
-            if ($students->isEmpty()) {
+            if ($students->count() < 1) {
                 return redirect()->back()->with('error_promotions', trans('student.no_students_found'));
             }
 
@@ -32,7 +34,8 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
             Students::whereIn('id', $students->pluck('id'))->update([
                 'grade_id' => $request->grade_id_new,
                 'classroom_id' => $request->classroom_id_new,
-                'section_id' => $request->section_id_new
+                'section_id' => $request->section_id_new,
+                'academic_year' => $request->new_academic_year
             ]);
 
             // create promotion
@@ -44,7 +47,9 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
                     'from_section' => $request->section_id,
                     'to_grade' => $request->grade_id_new,
                     'to_classroom' => $request->classroom_id_new,
-                    'to_section' => $request->section_id_new
+                    'to_section' => $request->section_id_new,
+                    'academic_year' => $request->academic_year,
+                    'new_academic_year' => $request->new_academic_year
                 ]);
             }
 
@@ -57,4 +62,6 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
             return redirect()->back()->with('error_promotions', trans('messages.error'));
         }
     }
+
+
 }

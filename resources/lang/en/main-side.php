@@ -28,9 +28,7 @@ return [
     'Onlineclasses'=>'Online classes',
     'Settings'=>'Settings',
     'Users'=>'Users',
-
-
-     'Copyright' => 'Copyright',
-     'Name_Programer' => 'Mohamed Ibrahim Abdulghani'
+    'Copyright' => 'Copyright',
+    'Name_Programer' => 'Mohamed Ibrahim Abdulghani',
 
 ];

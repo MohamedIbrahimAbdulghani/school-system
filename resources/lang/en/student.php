@@ -21,6 +21,7 @@ return [
     'section' => 'section',
     'parent' => 'parent',
     'academic_year' => 'academic_year',
+    'new_academic_year' => 'New Academic Year',
     'submit' => 'submit',
     'Save' => 'Save',
     'Choose' => 'Choose',

@@ -22,6 +22,7 @@ return [
     'section' => 'القسم',
     'parent' => 'ولي الامر',
     'academic_year' => 'السنة الدراسية',
+    'new_academic_year' => 'السنة الدراسية الجديدة',
     'submit' => 'حفظ البيانات',
     'Save' => 'حفظ',
     'Choose' => 'اختيار من القائمة',

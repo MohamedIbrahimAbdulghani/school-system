@@ -13,6 +13,8 @@ class promotion extends Model
         'from_section',
         'to_grade',
         'to_classroom',
-        'to_section'
+        'to_section',
+        'academic_year',
+        'new_academic_year'
     ];
 }

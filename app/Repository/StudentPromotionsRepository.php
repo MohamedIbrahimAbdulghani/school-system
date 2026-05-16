@@ -31,16 +31,15 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
                 return redirect()->back()->with('error_promotions', trans('student.no_students_found'));
             }
 
-            // update students
-            Students::whereIn('id', $students->pluck('id'))->update([
-                'grade_id' => $request->grade_id_new,
-                'classroom_id' => $request->classroom_id_new,
-                'section_id' => $request->section_id_new,
-                'academic_year' => $request->new_academic_year
-            ]);
-
-            // create promotion
             foreach($students as $student) {
+                // update students
+                Students::whereIn('id', $students->pluck('id'))->update([
+                    'grade_id' => $request->grade_id_new,
+                    'classroom_id' => $request->classroom_id_new,
+                    'section_id' => $request->section_id_new,
+                    'academic_year' => $request->new_academic_year
+                ]);
+                // create promotion
                 promotion::updateOrCreate([
                     'student_id' => $student->id,
                     'from_grade' => $request->grade_id,
@@ -69,13 +68,27 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
         return view('pages.Students.Promotions.promotions_manage',compact('promotions'));
     }
     public function destroy($request) {
+
         DB::beginTransaction(); // Start a transaction ( it will allow us to roll back the changes if something goes wrong )
 
         try {
             if($request->page_id == 1) {
                 // rollback promotion for all students
                 $promotions = promotion::all();
-                return $promotions;
+                foreach($promotions as $promotion) {
+                    // update students
+                    Students::whereIn('id', $promotion->pluck('id'))->update([
+                        'grade_id' => $request->grade_id_new,
+                        'classroom_id' => $request->classroom_id_new,
+                        'section_id' => $request->section_id_new,
+                        'academic_year' => $request->new_academic_year
+                    ]);
+                    // Delete promotions
+                    promotion::truncate();
+                    DB::commit(); // Commit the transaction ( if everything is ok, it will save the changes to the database )
+                    toastr()->success(trans('messages.success'));
+                    return redirect()->route('promotions.index');
+                }
             } else {
                 echo "go from delete on student";
             }

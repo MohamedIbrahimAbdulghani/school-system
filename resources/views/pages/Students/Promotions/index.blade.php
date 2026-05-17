@@ -14,8 +14,8 @@
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('student.students') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('main-side.Promotion_students') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('students.index') }}" class="default-color">{{ trans('student.students') }}</a></li>
+                <li class="breadcrumb-item active">{{ trans('student.Promotion_students') }}</li>
             </ol>
         </div>
     </div>

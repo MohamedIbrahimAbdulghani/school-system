@@ -52,7 +52,11 @@ return [
     'old_section' => 'Old Section',
     'new_section' => 'New Section',
     'rollback' => 'Rollback Student Promotion',
-    'rollback_all' => 'Are You Sure You Want To Rollback All Students?',
+    'rollback_all?' => 'Are You Sure You Want To Rollback All Students ?',
+    'rollback?' => 'Are You Sure You Want To Rollback a Student ?',
     'close' => 'Close',
     'submit' => 'Confirm',
+    'student_information' => 'Student Information',
+    'add_Promotion' => 'Add Promotion',
+    'graduation' => 'Graduate Student',
 ];

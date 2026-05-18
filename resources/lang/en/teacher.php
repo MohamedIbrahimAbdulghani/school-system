@@ -22,6 +22,7 @@ return [
     'edit_teacher'=>'Edit Teacher',
     'teacher_name_required' => 'Teacher name is required',
 
+
     'teacher_list'    => 'Teachers List',
     'processes'=>'Processes',
     'edit'=>'Edit',

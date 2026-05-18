@@ -19,7 +19,7 @@ class promotion extends Model
     ];
 
     public function student() {
-        return $this->belongsTo(Students::class, 'student_id');
+        return $this->belongsTo(Students::class, 'student_id')->withTrashed();
     }
     public function fromGrade() {
         return $this->belongsTo(Grades::class, 'from_grade');

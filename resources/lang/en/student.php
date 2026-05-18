@@ -54,6 +54,7 @@ return [
     'rollback' => 'Rollback Student Promotion',
     'rollback_all?' => 'Are You Sure You Want To Rollback All Students ?',
     'rollback?' => 'Are You Sure You Want To Rollback a Student ?',
+    'Graduate?' => 'Are You Sure You Want To Graduate a Student ?',
     'close' => 'Close',
     'submit' => 'Confirm',
     'student_information' => 'Student Information',
@@ -62,4 +63,10 @@ return [
     'Graduate_students' => 'Graduate Students',
     'add_Graduate' => 'Add Graduate Student',
     'list_Graduates' => 'Graduate Students List',
+    'not_found_students' => 'No Found Students In This Classroom',
+    'graduated_successfully' => 'Graduated Students Successfully',
+    'restore' => 'Restore Student',
+    'restore_successfully' => 'Restored Student Successfully',
+    'delete' => 'Delete Student',
+    'deleted_successfully' => 'Deleted Student Successfully',
 ];

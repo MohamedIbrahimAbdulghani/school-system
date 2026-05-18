@@ -54,6 +54,7 @@ return [
     'rollback' => 'تراجع عن ترقية الطلاب',
     'rollback_all?' => 'هل انت متاكد من عملية تراجع كافة الطلاب؟',
     'rollback?' => 'هل انت متاكد من عملية تراجع الطالب؟',
+    'Graduate?' => 'هل انت متاكد من عملية تخرج الطالب؟',
     'close' => 'اغلاق',
     'submit' => 'تأكيد',
     'student_information' => 'معلومات الطالب',
@@ -62,4 +63,10 @@ return [
     'Graduate_students' => 'الطلاب المتخرجين',
     'add_Graduate' => 'اضافة تخرج طالب',
     'list_Graduates' => 'قائمة الطلاب المتخرجين',
+    'not_found_students' => 'لا يوجد طلاب في هذا الفصل',
+    'graduated_successfully' => 'تم تخرج الطلاب بنجاح',
+    'restore' => 'ارجاع الطالب',
+    'restore_successfully' => 'تم ارجاع الطالب بنجاح',
+    'delete' => 'حذف الطالب',
+    'deleted_successfully' => 'تم حذف الطالب بنجاح',
 ];

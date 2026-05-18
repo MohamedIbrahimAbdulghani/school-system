@@ -21,10 +21,11 @@ return [
 
     'edit_teacher'=>'تعديل معلم',
 
-    
+
     'Information_teacher' => 'معلومات المعلم',
     'name_teacher_ar' => 'اسم المعلم باللغة العربية',
     'name_teacher_en' => 'اسم المعلم باللغة الانجليزية',
+    'teacher_name_required' => 'يرجي ادخال اسم المعلم',
     'specialization' => 'التخصص',
     'gender' => 'النوع',
 
@@ -40,7 +41,7 @@ return [
     'choose_file_name' => 'اختار ملف',
     'Edit' => 'تعديل بيانات ولي الامر',
     'Delete' => 'حذف بيانات ولي الامر',
-    
+
     'required_name_ar' => 'يرجي ادخال اسم المعلم باللغة العربية',
     'required_name_en' => 'يرجي ادخال اسم المعلم باللغة الانجليزية',
     'join_date' => 'يرجي ادخال تاريخ التعين',

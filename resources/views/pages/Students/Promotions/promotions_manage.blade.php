@@ -16,6 +16,7 @@
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('students.index') }}" class="default-color">{{ trans('student.students') }}</a></li>
                 <li class="breadcrumb-item active">{{ trans('student.Promotion_students') }}</li>
+                <li class="breadcrumb-item active">{{ trans('student.manage_promotion') }}</li>
             </ol>
         </div>
     </div>
@@ -68,11 +69,11 @@
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <button type="button"  class="mr-2 btn btn-outline-danger" data-toggle="modal" data-target="#rollback_one_promotion{{ $promotion->id }}">{{trans('student.rollback')}}</button>
-                                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">{{trans('student.Graduation')}}</button>
+                                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#graduate_student{{ $promotion->id }}">{{trans('student.Graduation')}}</button>
                                             </div>
                                         </td>
                                     </tr>
-                                    {{-- Start Modal To Make Rollback About One Promotion --}}
+                                        {{-- Start Modal To Make Rollback About One Promotion --}}
                                             <div class="modal fade" id="rollback_one_promotion{{ $promotion->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -103,21 +104,20 @@
                                             </div>
                                         {{-- End Modal To Make Rollback About One Promotion --}}
 
-                                        {{-- Start Modal To Make Rollback About AllPromotions --}}
-                                            <div class="modal fade" id="rollback_all_promotions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        {{-- Start Modal To Make Graduate Students --}}
+                                            <div class="modal fade" id="graduate_student{{ $promotion->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('student.rollback')}}</h5>
+                                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('student.Graduation')}}</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
                                                     <div class="modal-body">
                                                     {{-- delete form--}}
-                                                    <form  action="{{ route('promotions.destroy', $promotion->id) }}" method="post">
+                                                    <form  action="{{ route('graduations.graduateStudent', $promotion->student_id) }}" method="post">
                                                         @csrf
-                                                        @method('DELETE')
-                                                        <input type="hidden" name="page_id" value="1">
-                                                        <h5 style="font-family: 'Cairo', sans-serif;">{{ trans('student.rollback_all?') }}</h5>
+                                                        <input type="hidden" name="id" value={{ $promotion->student_id }}>
+                                                        <h5 style="font-family: 'Cairo', sans-serif;">{{ trans('student.Graduate?') }}</h5>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('student.close')}}</button>
                                                             <button  class="btn btn-danger">{{trans('student.submit')}}</button>

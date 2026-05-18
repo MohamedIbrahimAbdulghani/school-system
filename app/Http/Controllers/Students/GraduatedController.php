@@ -3,17 +3,21 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
-use App\Models\Grades;
+use App\Models\Students;
+use App\Repository\GraduatedRepositoryInterface;
 use Illuminate\Http\Request;
 
-class GraduationsController extends Controller
+class GraduatedController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public $Graduated;
+
+    public function __construct(GraduatedRepositoryInterface $Graduated)
+    {
+        $this->Graduated = $Graduated;
+    }
     public function index()
     {
-        return view('pages.Students.Graduates.index');
+        return $this->Graduated->index();
     }
 
     /**
@@ -21,8 +25,7 @@ class GraduationsController extends Controller
      */
     public function create()
     {
-        $Grades = Grades::all();
-        return view('pages.Students.Graduates.add_graduate', compact('Grades'));
+        return $this->Graduated->create();
     }
 
     /**
@@ -30,7 +33,7 @@ class GraduationsController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        return $this->Graduated->store($request);
     }
 
     /**
@@ -62,6 +65,15 @@ class GraduationsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->Graduated->destroy($id);
+    }
+
+    public function restore($id)
+    {
+        return $this->Graduated->restore($id);
+    }
+
+    public function graduateStudent($id) {
+        return $this->Graduated->graduateStudent($id);
     }
 }

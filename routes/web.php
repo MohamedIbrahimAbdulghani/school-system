@@ -7,7 +7,7 @@ use App\Http\Controllers\Classrooms\ClassRoomsController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\ParentController;
-use App\Http\Controllers\Students\GraduationsController;
+use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\PromotionsController;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Teachers\TeachersController;
@@ -82,7 +82,9 @@ Route::group([
             Route::resource('promotions', PromotionsController::class);
 
         // Graduations
-            Route::resource('graduations', GraduationsController::class);
+            Route::post('graduations/restore/{id}', [GraduatedController::class, 'restore'])->name('graduations.restore');
+            Route::post('graduations/graduateStudent/{id}', [GraduatedController::class, 'graduateStudent'])->name('graduations.graduateStudent');
+            Route::resource('graduations', GraduatedController::class);
     });
 
 });

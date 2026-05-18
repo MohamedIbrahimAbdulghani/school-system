@@ -58,5 +58,8 @@ return [
     'submit' => 'تأكيد',
     'student_information' => 'معلومات الطالب',
     'add_Promotion' => 'اضافة ترقية طالب',
-    'graduation' => 'تخرج الطالب',
+    'Graduation' => 'تخرج الطالب',
+    'Graduate_students' => 'الطلاب المتخرجين',
+    'add_Graduate' => 'اضافة تخرج طالب',
+    'list_Graduates' => 'قائمة الطلاب المتخرجين',
 ];

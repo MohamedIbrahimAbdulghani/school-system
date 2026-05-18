@@ -68,7 +68,7 @@
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <button type="button"  class="mr-2 btn btn-outline-danger" data-toggle="modal" data-target="#rollback_one_promotion{{ $promotion->id }}">{{trans('student.rollback')}}</button>
-                                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">{{trans('student.graduation')}}</button>
+                                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">{{trans('student.Graduation')}}</button>
                                             </div>
                                         </td>
                                     </tr>

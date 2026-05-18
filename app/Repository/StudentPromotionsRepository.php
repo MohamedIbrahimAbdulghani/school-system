@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\DB;
 
 class StudentPromotionsRepository implements StudentPromotionsRepositoryInterface {
     public function index() {
-        $Grades = Grades::all();
-        return view('pages.Students.Promotions.index',compact('Grades'));
+        $promotions = promotion::all();
+        return view('pages.Students.Promotions.promotions_manage',compact('promotions'));
     }
 
     // this function to promote students from one grade to another grade
@@ -64,8 +64,8 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
     }
 
     public function create() {
-        $promotions = promotion::all();
-        return view('pages.Students.Promotions.promotions_manage',compact('promotions'));
+        $Grades = Grades::all();
+        return view('pages.Students.Promotions.add_promotions',compact('Grades'));
     }
 
     public function destroy($request) {

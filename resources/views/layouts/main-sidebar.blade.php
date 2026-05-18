@@ -76,18 +76,18 @@
                             <li>
                                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#Students_upgrade">{{trans('student.Promotion_students')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
                                 <ul id="Students_upgrade" class="collapse">
-                                    <li> <a href="{{route('promotions.index')}}">{{trans('student.add_Promotion')}}</a></li>
-                                    <li> <a href="{{route('promotions.create')}}">{{trans('student.manage_promotion')}}</a> </li>
+                                    <li> <a href="{{route('promotions.create')}}">{{trans('student.add_Promotion')}}</a></li>
+                                    <li> <a href="{{route('promotions.index')}}">{{trans('student.manage_promotion')}}</a> </li>
                                 </ul>
                             </li>
 
-                            {{-- <li>
-                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#Graduate students">{{trans('main-side.Graduate_students')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#Graduate students">{{trans('student.Graduate_students')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
                                 <ul id="Graduate students" class="collapse">
-                                    <li> <a href="{{route('Graduated.create')}}">{{trans('main-side.add_Graduate')}}</a> </li>
-                                    <li> <a href="{{route('Graduated.index')}}">{{trans('main-side.list_Graduate')}}</a> </li>
+                                    <li> <a href="{{route('graduations.create')}}">{{trans('student.add_Graduate')}}</a> </li>
+                                    <li> <a href="{{route('graduations.index')}}">{{trans('student.list_Graduates')}}</a> </li>
                                 </ul>
-                            </li> --}}
+                            </li>
                         </ul>
                     </li>
 

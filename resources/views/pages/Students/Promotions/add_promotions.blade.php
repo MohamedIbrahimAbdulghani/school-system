@@ -40,7 +40,7 @@
 
                         <h6 style="color: red;font-family: Cairo">{{trans('student.old_grade')}}</h6>
 
-                    <form method="post" action="#">
+                    <form method="post" action="{{ route('promotions.store') }}" autocomplete="off">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col">

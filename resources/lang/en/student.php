@@ -58,5 +58,8 @@ return [
     'submit' => 'Confirm',
     'student_information' => 'Student Information',
     'add_Promotion' => 'Add Promotion',
-    'graduation' => 'Graduate Student',
+    'Graduation' => 'Graduate Student',
+    'Graduate_students' => 'Graduate Students',
+    'add_Graduate' => 'Add Graduate Student',
+    'list_Graduates' => 'Graduate Students List',
 ];

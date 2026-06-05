@@ -28,15 +28,6 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <form action="{{route('fees.store')}}" method="post" >
                     @csrf
                     <div class="row setup-content">
@@ -97,8 +88,8 @@
                                             @enderror
                                         </div>
                                         <div class="form-group col">
-                                            <label for="inputCity">{{trans('student.classrooms')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="classroom_id" disabled>
+                                            <label>{{trans('student.classrooms')}}</label>
+                                            <select class="my-1 custom-select mr-sm-2" name="classroom_id" >
 
                                             </select>
                                             @error('classroom_id')
@@ -110,8 +101,8 @@
                                             @enderror
                                         </div>
                                         <div class="form-group col">
-                                            <label for="inputState">{{trans('student.section')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="section_id" disabled>
+                                            <label>{{trans('student.section')}}</label>
+                                            <select class="my-1 custom-select mr-sm-2" name="section_id" >
 
                                             </select>
                                             @error('section_id')
@@ -123,14 +114,14 @@
                                             @enderror
                                         </div>
                                         <div class="form-group col">
-                                            <label for="inputState">{{trans('student.academic_year')}}</label>
+                                            <label>{{trans('student.academic_year')}}</label>
                                             <select class="my-1 custom-select mr-sm-2" name="year">
                                                 <option value="">{{trans('parent.Choose')}}...</option>
                                                 @php
                                                     $current_year = date("Y");
                                                 @endphp
                                                 @for($year=$current_year; $year<=$current_year +1 ;$year++)
-                                                    <option value="{{ $year}}">{{ $year }}</option>
+                                                    <option value="{{ $year }}">{{ $year }}</option>
                                                 @endfor
                                             </select>
                                             @error('year')

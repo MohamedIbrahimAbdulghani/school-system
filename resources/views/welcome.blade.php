@@ -619,69 +619,6 @@
     </footer>
 
 
-    <!-- Demo Login Credentials Modal -->
-    <div id="demo-modal" class="hidden fixed inset-0 z-999 flex items-center justify-center p-4">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeDemoModal()"></div>
-        
-        <!-- Modal Content Box -->
-        <div class="bg-white rounded-3xl border border-slate-100 shadow-2xl w-full max-w-md overflow-hidden relative z-10 transform transition duration-300 scale-95 opacity-0" id="modal-box">
-            
-            <!-- Header -->
-            <div class="bg-gradient-to-r from-brand-blue to-indigo-900 text-white px-6 py-5 flex justify-between items-center">
-                <div class="flex items-center gap-2.5">
-                    <i class="fa-solid fa-key text-lg"></i>
-                    <h3 class="font-extrabold text-lg">{{ __('welcome.demo_login') }}</h3>
-                </div>
-                <button onclick="closeDemoModal()" class="text-white/80 hover:text-white transition duration-300"><i class="fa-solid fa-xmark text-xl"></i></button>
-            </div>
-
-            <!-- Body -->
-            <div class="p-6 space-y-6">
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    {{ app()->getLocale() == 'ar' 
-                       ? 'يمكنك تسجيل الدخول كمدير للنظام باستخدام البيانات التالية لتجربة كافة لوحات التحكم والوظائف:' 
-                       : 'You can log in as Admin using the credentials below to explore all functionalities:' }}
-                </p>
-
-                <!-- Admin credentials card -->
-                <div class="bg-slate-50 border border-slate-100 rounded-2xl p-5 space-y-4 relative">
-                    <span class="absolute top-3 {{ app()->getLocale() == 'ar' ? 'left-3' : 'right-3' }} px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-blue/10 text-brand-blue">
-                        {{ __('welcome.role_admin') }}
-                    </span>
-                    
-                    <div class="space-y-1">
-                        <label class="text-xs text-slate-400 font-semibold uppercase">{{ app()->getLocale() == 'ar' ? 'البريد الإلكتروني' : 'Email Address' }}</label>
-                        <div class="flex justify-between items-center gap-2 bg-white border border-slate-100 px-3 py-2 rounded-xl">
-                            <span class="text-sm font-bold text-slate-700 select-all" id="demo-email">admin@admin.com</span>
-                            <button onclick="copyText('demo-email', this)" class="text-slate-400 hover:text-brand-blue transition"><i class="fa-regular fa-copy"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="space-y-1">
-                        <label class="text-xs text-slate-400 font-semibold uppercase">{{ app()->getLocale() == 'ar' ? 'كلمة المرور' : 'Password' }}</label>
-                        <div class="flex justify-between items-center gap-2 bg-white border border-slate-100 px-3 py-2 rounded-xl">
-                            <span class="text-sm font-bold text-slate-700 select-all" id="demo-pass">admin</span>
-                            <button onclick="copyText('demo-pass', this)" class="text-slate-400 hover:text-brand-blue transition"><i class="fa-regular fa-copy"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex gap-3">
-                    <a href="{{ route('login') }}" class="flex-1 inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-brand-blue/20 transition duration-300">
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        <span>{{ __('welcome.login') }}</span>
-                    </a>
-                    <button onclick="closeDemoModal()" class="border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold px-5 py-3.5 rounded-2xl transition duration-300">
-                        {{ app()->getLocale() == 'ar' ? 'إغلاق' : 'Close' }}
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
     <!-- AOS library scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     

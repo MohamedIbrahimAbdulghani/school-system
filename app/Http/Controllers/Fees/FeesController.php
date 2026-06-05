@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Fees;
 
 use App\Http\Controllers\Controller;
 use App\Repository\FeesRepositoryInterface;
+use App\Http\Requests\StoreFeesRequest;
 use Illuminate\Http\Request;
 
 class FeesController extends Controller
@@ -32,7 +33,7 @@ class FeesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFeesRequest $request)
     {
         return $this->fees->store($request);
     }
@@ -56,7 +57,7 @@ class FeesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreFeesRequest $request, string $id)
     {
         return $this->fees->update($request);
     }

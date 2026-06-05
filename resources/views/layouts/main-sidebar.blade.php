@@ -130,7 +130,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">Events Calendar </a> </li>
+                            <li> <a href="{{ route('fees.index') }}">{{ trans('main-side.Fees') }}</a> </li>
                             <li> <a href="calendar-list.html">List Calendar</a> </li>
                         </ul>
                     </li>
@@ -148,6 +148,7 @@
                             <li> <a href="weather-icon.html">Weather icons</a> </li>
                         </ul>
                     </li>
+
 
                     <!-- Exams-->
                     <li>

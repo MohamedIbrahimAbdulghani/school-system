@@ -5,6 +5,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Grades\GradesController;
 use App\Http\Controllers\Classrooms\ClassRoomsController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
+use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\ParentController;
 use App\Http\Controllers\Students\GraduatedController;
@@ -85,6 +86,9 @@ Route::group([
             Route::post('graduations/restore/{id}', [GraduatedController::class, 'restore'])->name('graduations.restore');
             Route::post('graduations/graduateStudent/{id}', [GraduatedController::class, 'graduateStudent'])->name('graduations.graduateStudent');
             Route::resource('graduations', GraduatedController::class);
+
+        // Fees
+            Route::resource('fees', FeesController::class);
     });
 
 });

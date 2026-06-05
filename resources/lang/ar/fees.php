@@ -21,4 +21,5 @@ return [
     'required_classroom_id'=>'يرجي اختيار الصف الدراسي',
     'required_section_id'=>'يرجي اختيار القسم',
     'required_year'=>'يرجي اختيار السنة',
+    'unique' => 'الرسوم الدراسية مكررة ',
 ];

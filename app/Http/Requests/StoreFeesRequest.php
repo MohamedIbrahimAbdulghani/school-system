@@ -27,7 +27,7 @@ class StoreFeesRequest extends FormRequest
             'amount'  => 'required|numeric',
             'notes' => 'required',
             'grade_id' => 'required|exists:grades,id',
-            'classroom_id' => 'required|exists:class_rooms,id',
+            'classroom_id' => 'required|unique:fees,classroom_id,'.$this->classroom_id,
             'section_id'  => 'required|exists:sections,id',
             'year' => 'required'
         ];
@@ -41,6 +41,7 @@ class StoreFeesRequest extends FormRequest
             'notes.required' => trans("fees.required_notes"),
             'grade_id.required'     => trans("fees.required_grade_id"),
             'classroom_id.required' => trans("fees.required_classroom_id"),
+            'classroom_id.unique' => trans("fees.unique"),
             'section_id.required' => trans('fees.required_section_id'),
             'year.required'   => trans("fees.required_year"),
         ];

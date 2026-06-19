@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFeesRequest extends FormRequest
+class UpdateFeesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,9 @@ class StoreFeesRequest extends FormRequest
             'name_ar' => 'required',
             'name_en' => 'required',
             'amount'  => 'required|numeric',
-            // 'notes' => 'required',
             'grade_id' => 'required',
-            'classroom_id' => 'required|unique:fees,classroom_id,'.$this->classroom_id,
-            'section_id'  => 'required|exists:sections,id',
+            'classroom_id' => 'required',
+            'section_id'  => 'required',
             'year' => 'required'
         ];
     }
@@ -38,7 +37,6 @@ class StoreFeesRequest extends FormRequest
             'name_ar.required' => trans('fees.required_ar'),
             'name_en.required' => trans("fees.required_en"),
             'amount.required' =>  trans("fees.required_fees_amount"),
-            // 'notes.required' => trans("fees.required_notes"),
             'grade_id.required'     => trans("fees.required_grade_id"),
             'classroom_id.required' => trans("fees.required_classroom_id"),
             'classroom_id.unique' => trans("fees.unique"),

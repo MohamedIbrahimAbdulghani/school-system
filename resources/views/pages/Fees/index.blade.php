@@ -40,7 +40,7 @@
                                     <th>{{ trans('fees.fees_amount') }}</th>
                                     <th>{{ trans('student.Grade') }}</th>
                                     <th>{{ trans('student.classrooms') }}</th>
-                                    <th>{{ trans('student.academic_year') }}</th>
+                                    <th>{{ trans('student.section') }}</th>
                                     <th>{{ trans('fees.notes') }}</th>
                                     <th>{{ trans('student.Processes') }}</th>
                                 </tr>
@@ -60,7 +60,7 @@
                                         <td>
                                             <a href="{{route('fees.edit', $fee->id)}}"><button title="{{ trans('fees.edit') }}" class="mb-1 btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
                                             <button class='mb-1 btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$fee->id}}"  title="{{trans('fees.delete')}}"><i class="fa fa-trash"></i></button>
-                                            <a href="{{route('fees.show',$fee->id)}}"><button title="{{ trans('fees.show') }}" class="mb-1 btn btn-warning btn-sm"><i class="far fa-eye"></i></button></a>
+                                            {{-- <a href="{{route('fees.show',$fee->id)}}"><button title="{{ trans('fees.show') }}" class="mb-1 btn btn-warning btn-sm"><i class="far fa-eye"></i></button></a> --}}
                                         </td>
                                     </tr>
                                     {{-- Start Modal To Delete students --}}

@@ -2,7 +2,7 @@
 
 return [
     'fees' => 'Fees',
-    'add_fees' => 'Add Fees',
+    'add_fees' => 'Add New Fees',
     'edit_fees' => 'Edit Fees',
     'delete_fees' => 'Delete Fees',
     'show_fees' => 'Show Fees',
@@ -12,7 +12,7 @@ return [
     'edit' => 'Edit Fees',
     'delete' => 'Delete Fees',
     'show' => 'Show Fees',
-    
+
     'required_ar'=>'Please enter the fees name in Arabic',
     'required_en'=>'Please enter the fees name in English',
     'required_fees_amount'=>'Please enter the fees amount',

@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{trans('fees.add_fees')}}
+    {{trans('fees.edit_fees')}}
 @stop
 @endsection
 @section('page-header')
@@ -10,12 +10,12 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">{{trans('fees.add_fees')}}</h4>
+            <h4 class="mb-0">{{trans('fees.edit_fees')}}</h4>
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('fees.index') }}" class="default-color">{{ trans('fees.fees') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('fees.add_fees') }}</li>
+                <li class="breadcrumb-item active">{{ trans('fees.edit_fees') }}</li>
             </ol>
         </div>
     </div>
@@ -105,10 +105,10 @@
                                             @enderror
                                         </div>
                                         <div class="form-group col">
-                                            <label for="inputState">{{trans('student.section')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="section_id" >
-                                                <option value="{{ $fee->section_id }}">
-                                                    {{ $fee->section->name }}
+                                            <label for="inputState">{{trans('fees.type_fees')}}</label>
+                                            <select class="my-1 custom-select mr-sm-2" name="type_fees" >
+                                                <option value="{{ $fee->type_fees }}">
+                                                    {{ $fee->type_fees }}
                                                 </option>
                                             </select>
                                             @error('section_id')

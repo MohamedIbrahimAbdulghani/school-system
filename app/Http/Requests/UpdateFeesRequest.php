@@ -25,9 +25,9 @@ class UpdateFeesRequest extends FormRequest
             'name_ar' => 'required',
             'name_en' => 'required',
             'amount'  => 'required|numeric',
+            'type_fees' => 'required',
             'grade_id' => 'required',
             'classroom_id' => 'required',
-            'section_id'  => 'required',
             'year' => 'required'
         ];
     }
@@ -37,10 +37,10 @@ class UpdateFeesRequest extends FormRequest
             'name_ar.required' => trans('fees.required_ar'),
             'name_en.required' => trans("fees.required_en"),
             'amount.required' =>  trans("fees.required_fees_amount"),
+            'type_fees.required' =>  trans("fees.required_fees_amount"),
             'grade_id.required'     => trans("fees.required_grade_id"),
             'classroom_id.required' => trans("fees.required_classroom_id"),
             'classroom_id.unique' => trans("fees.unique"),
-            'section_id.required' => trans('fees.required_section_id'),
             'year.required'   => trans("fees.required_year"),
         ];
     }

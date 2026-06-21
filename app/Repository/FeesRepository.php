@@ -24,8 +24,8 @@ class FeesRepository implements FeesRepositoryInterface {
             'amount' => $request->amount,
             'grade_id' => $request->grade_id,
             'classroom_id' => $request->classroom_id,
-            'section_id' => $request->section_id,
             'year' => $request->year,
+            'type_fees' => $request->type_fees,
             'notes' => $request->notes,
         ]);
         if ($fee) {
@@ -53,8 +53,8 @@ class FeesRepository implements FeesRepositoryInterface {
             'amount' => $request->amount,
             'grade_id' => $request->grade_id,
             'classroom_id' => $request->classroom_id,
-            'section_id' => $request->section_id,
             'year' => $request->year,
+            'type_fees' => $request->type_fees,
             'notes' => $request->notes,
         ]);
         if ($fee) {

@@ -68,6 +68,7 @@
                                             </div>
                                             @enderror
                                         </div>
+
                                     </div>
 
                                     <div class="form-row">
@@ -100,12 +101,16 @@
                                             </div>
                                             @enderror
                                         </div>
-                                        <div class="form-group col">
-                                            <label>{{trans('student.section')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="section_id" >
 
+
+                                        <div class="form-group col">
+                                            <label>{{trans('fees.type_fees')}}</label>
+                                            <select class="my-1 custom-select mr-sm-2" name="type_fees">
+                                                <option value="">{{trans('parent.Choose')}}...</option>
+                                                <option value="1">{{ trans('fees.studying_fees') }}</option>
+                                                <option value="2">{{ trans('fees.bus_fees') }}</option>
                                             </select>
-                                            @error('section_id')
+                                            @error('type_fees')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -113,6 +118,7 @@
                                             </div>
                                             @enderror
                                         </div>
+
                                         <div class="form-group col">
                                             <label>{{trans('student.academic_year')}}</label>
                                             <select class="my-1 custom-select mr-sm-2" name="year">

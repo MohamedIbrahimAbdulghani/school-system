@@ -40,7 +40,7 @@
                                     <th>{{ trans('fees.fees_amount') }}</th>
                                     <th>{{ trans('student.Grade') }}</th>
                                     <th>{{ trans('student.classrooms') }}</th>
-                                    <th>{{ trans('student.section') }}</th>
+                                    <th>{{ trans('student.academic_year') }}</th>
                                     <th>{{ trans('fees.notes') }}</th>
                                     <th>{{ trans('student.Processes') }}</th>
                                 </tr>
@@ -55,7 +55,7 @@
                                         <td>{{ number_format($fee->amount, 2) }}</td>
                                         <td>{{ $fee->grade->name }}</td>
                                         <td>{{ $fee->classroom->name_class }}</td>
-                                        <td>{{ $fee->section->name }}</td>
+                                        <td>{{ $fee->year }}</td>
                                         <td>{{ $fee->notes }}</td>
                                         <td>
                                             <a href="{{route('fees.edit', $fee->id)}}"><button title="{{ trans('fees.edit') }}" class="mb-1 btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>

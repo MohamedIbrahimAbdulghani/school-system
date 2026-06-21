@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\ParentController;
+use App\Http\Controllers\Students\FeeInvoicesController;
 use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\PromotionsController;
 use App\Http\Controllers\Students\StudentsController;
@@ -89,6 +90,9 @@ Route::group([
 
         // Fees
             Route::resource('fees', FeesController::class);
+
+        // FeeInvoices
+            Route::resource('fee_invoices', FeeInvoicesController::class);
     });
 
 });

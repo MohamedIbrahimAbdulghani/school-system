@@ -28,8 +28,8 @@ class StoreFeesRequest extends FormRequest
             'type_fees' => 'required',
             // 'notes' => 'required',
             'grade_id' => 'required',
-            'classroom_id' => 'required|unique:fees,classroom_id,'.$this->classroom_id,
-            'year' => 'required'
+            'classroom_id' => 'required',
+            'year' => 'required',
         ];
     }
 

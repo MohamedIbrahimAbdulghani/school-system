@@ -15,6 +15,8 @@ return [
     'type_fees' => 'Type a fees',
     'studying_fees' => 'Studying Fees',
     'bus_fees' => 'Bus Fees',
+    'add_fee_invoice' => 'Add New Fee Invoice',
+    'Statement' => 'Statement',
 
     'required_ar'=>'Please enter the fees name in Arabic',
     'required_en'=>'Please enter the fees name in English',

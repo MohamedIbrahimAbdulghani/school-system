@@ -35,7 +35,7 @@ class FeeInvoicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->fee_invoice->store($request);
     }
 
     /**

@@ -32,7 +32,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="repeater">
-                                    <div data-repeater-list="List_Fees">
+                                    <div data-repeater-list="list_fees">
                                         <div data-repeater-item>
                                             <div class="row">
 
@@ -44,12 +44,12 @@
                                                 </div>
 
                                                 <div class="col">
-                                                    <label for="Name_en" class="mr-sm-2">{{ trans('fees.type_fees') }} </label>
+                                                    <label for="type_fees" class="mr-sm-2">{{ trans('fees.type_fees') }} </label>
                                                     <div class="box">
                                                         <select class="fancyselect" name="fee_id" required>
                                                             <option value="">{{ trans('parent.Choose') }}</option>
                                                             @foreach($fees as $fee)
-                                                                <option value="{{ $fee->id }}">{{ $fee->title }}</option>
+                                                                <option value="{{ $fee->id }}">{{ $fee->name }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -71,7 +71,7 @@
                                                 <div class="col">
                                                     <label for="description" class="mr-sm-2">{{ trans('fees.Statement') }}</label>
                                                     <div class="box">
-                                                        <input type="text" class="form-control" name="description" required>
+                                                        <input type="text" class="form-control" name="description" >
                                                     </div>
                                                 </div>
 
@@ -87,8 +87,8 @@
                                             <input class="button" data-repeater-create type="button" value="{{ trans('classrooms.add_class') }}"/>
                                         </div>
                                     </div><br>
-                                    <input type="hidden" name="Grade_id" value="{{$student->Grade_id}}">
-                                    <input type="hidden" name="Classroom_id" value="{{$student->Classroom_id}}">
+                                    <input type="hidden" name="grade_id" value="{{$student->grade_id}}">
+                                    <input type="hidden" name="classroom_id" value="{{$student->classroom_id}}">
 
                                     <button type="submit" class="btn btn-primary">{{ trans('classrooms.submit') }} </button>
                                 </div>

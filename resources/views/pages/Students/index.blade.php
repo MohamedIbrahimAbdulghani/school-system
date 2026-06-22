@@ -70,19 +70,19 @@
                                             <div class="dropdown show">
                                                 <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{trans('student.Processes')}}</a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="{{route('students.show',$student->id)}}"><i style="color: #ffc107" class="far fa-eye "></i>&nbsp;{{trans('fees.show')}}</a>
-                                                    <a class="dropdown-item" href="{{route('students.edit', $student->id)}}"><i style="color:green" class="fa fa-edit"></i>&nbsp;{{trans('fees.edit_fees')}}</a>
+                                                    <a class="dropdown-item" href="{{route('students.show',$student->id)}}"><i style="color: #ffc107" class="far fa-eye "></i>&nbsp;{{trans('student.Show')}}</a>
+                                                    <a class="dropdown-item" href="{{route('students.edit', $student->id)}}"><i style="color:green" class="fa fa-edit"></i>&nbsp;{{trans('student.Edit')}}</a>
                                                     <a class="dropdown-item" href="{{route('fee_invoices.show', $student->id)}}"><i style="color: #0000cc" class="fa fa-edit"></i>&nbsp; {{trans('fees.add_fees')}}</a>
                                                     <a class="dropdown-item btn" data-target="#delete{{$student->id}}" data-toggle="modal"><i style="color: red" class="fa fa-trash"></i>&nbsp;  {{trans('student.Delete')}}  </a>
                                                 </div>
                                             </div>
                                         </td>
-                                        {{-- <td>
+                                        <!-- {{-- <td>
                                             <a href="{{route('students.show',$student->id)}}"><button title="{{ trans('student.Show') }}" class="mb-1 btn btn-warning btn-sm"><i class="far fa-eye"></i></button></a>
                                             <a href="{{route('students.edit', $student->id)}}"><button title="{{ trans('student.Edit') }}" class="mb-1 btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></a>
                                             <a href="{{route('fee_invoices.create')}}"><button title="{{ trans('fees.add_fees') }}" class="mb-1 btn btn-success btn-sm"><i class="fas fa-plus"></i></button></a>
                                             <button class='mb-1 btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$student->id}}"  title="{{trans('student.Delete')}}"><i class="fa fa-trash"></i></button>
-                                        </td> --}}
+                                        </td> --}} -->
                                     </tr>
                                         {{-- Start Modal To Delete students --}}
                                             <div class="modal fade" id="delete{{$student->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

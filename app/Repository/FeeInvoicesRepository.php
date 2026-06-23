@@ -29,7 +29,7 @@ class FeeInvoicesRepository implements FeeInvoicesInterface {
         try {
             foreach($list_fees as $list_fee) {
                 // 1- save or insert data in fee_invoices table in database
-                $fee = FeeInvoices::create([
+                FeeInvoices::create([
                     'invoice_date' => date('Y-m-d'),
                     'student_id' => $list_fee['student_id'],
                     'grade_id' => $request->grade_id,
@@ -40,10 +40,13 @@ class FeeInvoicesRepository implements FeeInvoicesInterface {
                 ]);
 
                 // 2- save or insert data in students_account table in database
-                $student_account = StudentsAccount::create([
+                StudentsAccount::create([
+                    'date' => date('Y-m-d'),
                     'student_id' => $list_fee['student_id'],
                     'grade_id' => $request->grade_id,
                     'classroom_id' => $request->classroom_id,
+                    'type' => 'invoice',
+                    'fee_invoice_id' => $list_fee['fee_id'],
                     'debit' => $list_fee['amount'],
                     'credit' => 0.00,
                     'description' => $list_fee['description'],
@@ -60,6 +63,7 @@ class FeeInvoicesRepository implements FeeInvoicesInterface {
 
     public function edit($id) {
         $fee_invoice = FeeInvoices::findOrFail($id);
-        return view('pages.Students.FeeInvoices.edit', compact('fee_invoice'));
+        $fees = Fees::where('classroom_id', $fee_invoice->classroom_id)->get();
+        return view('pages.Students.FeeInvoices.edit', compact('fee_invoice', 'fees'));
     }
 }

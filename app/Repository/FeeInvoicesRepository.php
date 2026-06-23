@@ -4,13 +4,17 @@ namespace App\Repository;
 
 use App\Models\FeeInvoices;
 use App\Models\Fees;
+use App\Models\Grades;
 use App\Models\Students;
+use App\Models\StudentsAccount;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
 class FeeInvoicesRepository implements FeeInvoicesInterface {
     public function index() {
-        // TODO: implement index() method
+        $fee_invoices = FeeInvoices::all();
+        $grades = Grades::all();
+        return view('pages.Students.FeeInvoices.index', compact('fee_invoices', 'grades'));
     }
 
     public function show($id) {
@@ -20,27 +24,42 @@ class FeeInvoicesRepository implements FeeInvoicesInterface {
     }
 
     public function store($request) {
-        // $list_fees = $request->list_fees;
-        // DB::beginTransaction();
-        // try {
-        //     foreach($list_fees as $list_fee) {
-        //         $fee = FeeInvoices::create([
-        //             $fee->invoice_date = date('YYYY-MM-DD'),
-        //             $fee->student_id = $request->student_id,
-        //             $fee->grade_id = $request->grade_id,
-        //             $fee->classroom_id = $request->classroom_id,
-        //             $fee->fee_id = $request->fee_id,
-        //             $fee->amount = $request->amount,
-        //             $fee->description = $request->description,
-        //         ]);
-        //     }
-        //     DB::commit();
-        //     toastr()->success(trans('messages.success'));
-        //     return redirect()->route('fee_invoices.index.show');
-        // } catch(Exception $exp) {
-        //     DB::rollback();
-        //     return redirect()->back()->withErrors(['error' => $exp->getMessage()]);
-        // }
-        return $request;
+        $list_fees = $request->list_fees;
+        DB::beginTransaction();
+        try {
+            foreach($list_fees as $list_fee) {
+                // 1- save or insert data in fee_invoices table in database
+                $fee = FeeInvoices::create([
+                    'invoice_date' => date('Y-m-d'),
+                    'student_id' => $list_fee['student_id'],
+                    'grade_id' => $request->grade_id,
+                    'classroom_id' => $request->classroom_id,
+                    'fee_id' => $list_fee['fee_id'],
+                    'amount' => $list_fee['amount'],
+                    'description' => $list_fee['description'],
+                ]);
+
+                // 2- save or insert data in students_account table in database
+                $student_account = StudentsAccount::create([
+                    'student_id' => $list_fee['student_id'],
+                    'grade_id' => $request->grade_id,
+                    'classroom_id' => $request->classroom_id,
+                    'debit' => $list_fee['amount'],
+                    'credit' => 0.00,
+                    'description' => $list_fee['description'],
+                ]);
+            }
+            DB::commit();
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('fee_invoices.index.show');
+        } catch(Exception $exp) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['error' => $exp->getMessage()]);
+        }
+    }
+
+    public function edit($id) {
+        $fee_invoice = FeeInvoices::findOrFail($id);
+        return view('pages.Students.FeeInvoices.edit', compact('fee_invoice'));
     }
 }

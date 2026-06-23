@@ -19,7 +19,7 @@ class FeeInvoicesController extends Controller
      */
     public function index()
     {
-        //
+        return $this->fee_invoice->index();
     }
 
     /**
@@ -51,7 +51,7 @@ class FeeInvoicesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return $this->fee_invoice->edit($id);
     }
 
     /**

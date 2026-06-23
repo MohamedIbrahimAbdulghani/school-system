@@ -17,6 +17,13 @@ return [
     'bus_fees' => 'Bus Fees',
     'add_fee_invoice' => 'Add New Fee Invoice',
     'Statement' => 'Statement',
+    'amount' => 'Amount',
+    'invoice_date' => 'Invoice Date',
+    'fee_invoices' => 'Fee Invoices',
+    'add_invoice' => 'Add Invoice',
+    'edit_invoice' => 'Edit Invoice',
+    'delete_invoice' => 'Delete Invoice',
+    'show_invoice' => 'Show Invoice',
 
     'required_ar'=>'Please enter the fees name in Arabic',
     'required_en'=>'Please enter the fees name in English',

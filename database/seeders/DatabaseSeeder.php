@@ -17,10 +17,16 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call(UsersSeeder::class);
+        $this->call(GradeSeeder::class);
+        $this->call(ClassRoomSeeder::class);
+        $this->call(SectionSeeder::class);
         $this->call(TypeBloodSeeder::class);
         $this->call(NationalitieSeeder::class);
         $this->call(ReligionSeeder::class);
         $this->call(SpecializationSeeder::class);
         $this->call(GenderSeeder::class);
+        $this->call(ParentSeeder::class);
+        $this->call(StudentSeeder::class);
+        $this->call(TeacherSeeder::class);
     }
 }

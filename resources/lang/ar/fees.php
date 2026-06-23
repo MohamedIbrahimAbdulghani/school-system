@@ -17,6 +17,16 @@ return [
     'bus_fees' => 'رسوم الباص',
     'add_fee_invoice' => 'إضافة فاتورة دراسية جديدة',
     'Statement' => 'البيان',
+    'amount' => 'المبلغ',
+    'invoice_date' => 'تاريخ الفاتورة',
+    'add_invoice' => 'إضافة فاتورة',
+    'fee_invoices' => 'الفواتير الدراسية',
+    'edit_invoice' => 'تعديل فاتورة',
+    'delete_invoice' => 'حذف فاتورة',
+    'show_invoice' => 'عرض فاتورة',
+
+
+
 
     'required_ar'=>'يرجي ادخال اسم القسم باللغة العربية',
     'required_en'=>'يرجي ادخال اسم القسم باللغة الانجليزية',

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('fee_invoices', function (Blueprint $table) {
             $table->id();
             $table->date('invoice_date');
-            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
-            $table->foreignId('grade_id')->constrained('grades')->onDelete('cascade');
-            $table->foreignId('classroom_id')->constrained('class_rooms')->onDelete('cascade');
-            $table->foreignId('fee_id')->constrained('fees')->onDelete('cascade');
+            $table->foreignId('student_id')->constrained('students')->cascadeOnDelete();
+            $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
+            $table->foreignId('classroom_id')->constrained('class_rooms')->cascadeOnDelete();
+            $table->foreignId('fee_id')->constrained('fees')->cascadeOnDelete();
             $table->decimal('amount', 8, 2);
             $table->string('description')->nullable();
             $table->timestamps();

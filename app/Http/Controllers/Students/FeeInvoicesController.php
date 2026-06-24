@@ -57,9 +57,9 @@ class FeeInvoicesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        return $request;
+        return $this->fee_invoice->update($request);
     }
 
     /**
@@ -67,6 +67,6 @@ class FeeInvoicesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->fee_invoice->destroy($id);
     }
 }

@@ -8,4 +8,6 @@ interface FeeInvoicesInterface {
     public function show($id);
     public function store($request);
     public function edit($id);
+    public function update($request);
+    public function destroy($id);
 }

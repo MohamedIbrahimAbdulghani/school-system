@@ -31,36 +31,45 @@
                         <form class=" row mb-30" action="{{ route('fee_invoices.store') }}" method="POST">
                             @csrf
                             <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="close" data-dismiss="alert"  aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
                                 <div class="repeater">
                                     <div data-repeater-list="list_fees">
                                         <div data-repeater-item>
                                             <div class="row">
-
                                                 <div class="col">
                                                     <label for="student_id" class="mr-sm-2">{{ trans('student.name') }}</label>
                                                     <select class="fancyselect" name="student_id" required>
                                                             <option value="{{ $student->id }}">{{ $student->name }}</option>
                                                     </select>
                                                 </div>
-
                                                 <div class="col">
                                                     <label for="type_fees" class="mr-sm-2">{{ trans('fees.type_fees') }} </label>
                                                     <div class="box">
-                                                        <select class="fancyselect" name="fee_id" required>
+                                                        <select class="fancyselect" name="fee_id" >
                                                             <option value="">{{ trans('parent.Choose') }}</option>
                                                             @foreach($fees as $fee)
                                                                 <option value="{{ $fee->id }}">{{ $fee->name }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
-
                                                 </div>
 
                                                 <div class="col">
-                                                    <label for="Name_en" class="mr-sm-2">{{ trans('fees.fees_amount') }}</label>
+                                                    <label for="amount" class="mr-sm-2">{{ trans('fees.fees_amount') }}</label>
                                                     <div class="box">
-                                                        <select class="fancyselect" name="amount" required>
-                                                            <option value="">--  {{ trans('parent.Choose') }}  --</option>
+                                                        <select class="fancyselect" name="amount" >
+                                                            <option value="">{{ trans('parent.Choose') }}</option>
                                                             @foreach($fees as $fee)
                                                                 <option value="{{ $fee->amount }}">{{ $fee->amount }}</option>
                                                             @endforeach

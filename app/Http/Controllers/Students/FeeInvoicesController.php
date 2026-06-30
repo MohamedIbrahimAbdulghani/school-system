@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
 use App\Repository\FeeInvoicesInterface;
+use App\Http\Requests\StoreFeeInvoiceRequest;
+use App\Http\Requests\UpdateFeeInvoiceRequest;
 use Illuminate\Http\Request;
 
 class FeeInvoicesController extends Controller
@@ -33,7 +35,7 @@ class FeeInvoicesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFeeInvoiceRequest $request)
     {
         return $this->fee_invoice->store($request);
     }
@@ -57,7 +59,7 @@ class FeeInvoicesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(UpdateFeeInvoiceRequest $request)
     {
         return $this->fee_invoice->update($request);
     }

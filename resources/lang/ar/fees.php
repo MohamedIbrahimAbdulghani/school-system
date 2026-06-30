@@ -37,4 +37,8 @@ return [
     'required_classroom_id'=>'يرجي اختيار الصف الدراسي',
     'required_year'=>'يرجي اختيار السنة',
     'unique' => 'الرسوم الدراسية مكررة ',
+    'required_student_id' => 'يرجي اختيار اسم الطالب',
+    'required_fee_id' => 'يرجي إدخال نوع الرسوم ',
+    'required_amount' => 'يرجي إدخال مبلغ الرسوم',
+    'required_description' => 'يرجي إدخال بيان ',
 ];

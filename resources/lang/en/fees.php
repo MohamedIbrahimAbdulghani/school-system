@@ -34,4 +34,8 @@ return [
     'required_classroom_id'=>'Please select the classroom',
     'required_year'=>'Please select the year',
     'unique' => 'Fees already exists',
+    'required_student_id' => 'Please select the student',
+    'required_fee_id' => 'Please enter the type of fees',
+    'required_amount' => 'Please enter the amount',
+    'required_description' => 'Please enter the description',
 ];

@@ -13,6 +13,7 @@ use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\PromotionsController;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Teachers\TeachersController;
+use App\Http\Controllers\Students\ReceiptStudentsController;
 
 // ======== المجموعة الرئيسية ========
 Route::group([
@@ -93,6 +94,9 @@ Route::group([
 
         // FeeInvoices
             Route::resource('fee_invoices', FeeInvoicesController::class);
+
+        // Receipts
+            Route::resource('receipt_students', ReceiptStudentsController::class);
     });
 
 });

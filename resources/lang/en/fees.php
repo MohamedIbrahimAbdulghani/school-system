@@ -24,6 +24,11 @@ return [
     'edit_invoice' => 'Edit Invoice',
     'delete_invoice' => 'Delete Invoice',
     'show_invoice' => 'Show Invoice',
+    'receipt_student' => 'Receipt For Student',
+    'receipts' => 'Receipts',
+    'edit_receipt' => 'Edit Receipt',
+    'delete_receipt' => 'Delete Receipt',
+    'show_receipt' => 'Show Receipt',
 
     'required_ar'=>'Please enter the fees name in Arabic',
     'required_en'=>'Please enter the fees name in English',

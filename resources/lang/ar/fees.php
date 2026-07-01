@@ -24,7 +24,11 @@ return [
     'edit_invoice' => 'تعديل فاتورة',
     'delete_invoice' => 'حذف فاتورة',
     'show_invoice' => 'عرض فاتورة',
-
+    'receipt_student' => 'سند قبض الطالب',
+    'receipts' => 'سندات القبض ',
+    'edit_receipt' => 'تعديل سند قبض',
+    'delete_receipt' => 'حذف سند قبض',
+    'show_receipt' => 'عرض سند قبض',
 
 
 

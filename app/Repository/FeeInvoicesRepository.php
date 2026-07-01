@@ -6,7 +6,7 @@ use App\Models\FeeInvoices;
 use App\Models\Fees;
 use App\Models\Grades;
 use App\Models\Students;
-use App\Models\StudentsAccount;
+use App\Models\StudentAccounts;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -40,11 +40,9 @@ class FeeInvoicesRepository implements FeeInvoicesInterface {
                 ]);
 
                 // 2- save or insert data in students_account table in database
-                StudentsAccount::create([
+                StudentAccounts::create([
                     'date' => date('Y-m-d'),
                     'student_id' => $list_fee['student_id'],
-                    'grade_id' => $request->grade_id,
-                    'classroom_id' => $request->classroom_id,
                     'type' => 'invoice',
                     'fee_invoice_id' => $fee_invoice->id,
                     'debit' => $list_fee['amount'],
@@ -78,7 +76,7 @@ class FeeInvoicesRepository implements FeeInvoicesInterface {
                     'description' => $request->description,
                 ]);
            // 2- update data from students_account table in database
-            $students_account = StudentsAccount::where('fee_invoice_id', $request->id)->first();
+            $students_account = StudentAccounts::where('fee_invoice_id', $request->id)->first();
                 $students_account->update([
                     'debit' => $request->amount,
                     'description' => $request->description,

@@ -45,4 +45,11 @@ return [
     'required_fee_id' => 'يرجي إدخال نوع الرسوم ',
     'required_amount' => 'يرجي إدخال مبلغ الرسوم',
     'required_description' => 'يرجي إدخال بيان ',
+
+    'amount_required' => 'المبلغ مطلوب.',
+    'amount_numeric' => 'يجب أن يكون المبلغ رقمًا.',
+    'amount_min' => 'يجب أن يكون المبلغ أكبر من  1.',
+    'amount_max' => 'يجب ألا يزيد المبلغ عن 1000000.',
+    'required_description' => 'البيان مطلوب.',
+    'description_max' => 'يجب ألا يزيد البيان عن 255 حرفًا.',
 ];

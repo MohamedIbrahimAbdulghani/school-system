@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Students;
 use App\Http\Controllers\Controller;
 use App\Repository\ReceiptStudentsRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreReceiptStudentRequest;
 
 class ReceiptStudentsController extends Controller
 {
@@ -32,7 +33,7 @@ class ReceiptStudentsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreReceiptStudentRequest $request)
     {
         return $this->receipt->store($request);
     }
@@ -50,22 +51,22 @@ class ReceiptStudentsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return $this->receipt->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreReceiptStudentRequest $request)
     {
-        //
+        return $this->receipt->update($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->receipt->destroy($request);
     }
 }

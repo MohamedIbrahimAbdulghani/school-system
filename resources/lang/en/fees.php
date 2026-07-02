@@ -43,4 +43,11 @@ return [
     'required_fee_id' => 'Please enter the type of fees',
     'required_amount' => 'Please enter the amount',
     'required_description' => 'Please enter the description',
+
+    'amount_required' => 'The amount field is required.',
+    'amount_numeric' => 'The amount must be a number.',
+    'amount_min' => 'The amount must be at least 1.',
+    'amount_max' => 'The amount may not be greater than 1,000,000.',
+    'required_description' => 'The statement field is required.',
+    'description_max' => 'The statement may not be greater than 255 characters.',
 ];

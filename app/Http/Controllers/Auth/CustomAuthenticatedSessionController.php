@@ -24,6 +24,10 @@ class CustomAuthenticatedSessionController
      */
     public function store(Request $request)
     {
+        // Set the app locale from the session (saved during GET request)
+        $locale = session('locale', app()->getLocale());
+        app()->setLocale($locale);
+
         // تحقق من بيانات المستخدم
         $credentials = $request->only('email', 'password');
 
@@ -35,7 +39,7 @@ class CustomAuthenticatedSessionController
         }
 
         return back()->withErrors([
-            'email' => 'بيانات الدخول غير صحيحة.',
+            'email' => trans('auth.failed'),
         ]);
     }
 

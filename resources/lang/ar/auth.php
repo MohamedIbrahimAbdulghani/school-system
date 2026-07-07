@@ -4,6 +4,7 @@ return [
     'failed'   => 'بيانات تسجيل الدخول غير صحيحة.',
     'password' => 'كلمة المرور المدخلة غير صحيحة.',
     'throttle' => 'محاولات تسجيل دخول كثيرة جدًا. حاول مرة أخرى بعد :seconds ثانية.',
+    'validation_error' => 'خطأ في التحقق من البيانات.',
 
     'Login'            => 'تسجيل الدخول',
     'Register'         => 'إنشاء حساب',
@@ -15,12 +16,18 @@ return [
     'Remember me'      => 'تذكرني',
     'Forgot your password?'  => 'هل نسيت الباسورد؟',
     'Log in'           => 'دخول',
+    'Welcome Back'     => 'مرحباً بك مجدداً',
+    'Login to your account to continue' => 'قم بتسجيل الدخول إلى حسابك للمتابعة',
+    'Don\'t have an account?' => 'ليس لديك حساب؟',
+    'Sign up'          => 'أنشئ حساباً',
 
     // صفحة انشاء حساب
     'Name'                 => 'الاسم',
     'Confirm Password'     => 'تأكيد الباسورد',
     'Already registered?'  => 'هل سجلت من قبل؟',
     'Register_btn'         => 'تسجيل',
+    'Register_title'       => 'إنشاء حساب جديد',
+    'Register_subtitle'    => 'انضم إلينا وابدأ رحلتك التعليمية المتميزة',
 
     // صفحة نسيان الباسورد
     'Forgot your password? No problem...'
@@ -28,4 +35,6 @@ return [
     'Email Password Reset Link' => 'إرسال رابط إعادة تعيين كلمة المرور',
     // صفحة تسجيل الخروج
     'Logout' => 'تسجيل الخروج',
+
+    'Whoops' => 'عذراً! حدث خطأ ما.',
 ];

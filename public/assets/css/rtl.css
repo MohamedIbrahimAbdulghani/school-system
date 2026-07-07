@@ -26848,7 +26848,7 @@ ul.list-unstyled li {
     transition: all 0.3s ease;
 }
 
-.admin-header .dropdown:hover .dropdown-menu {
+.admin-header .dropdown:not(.no-hover):hover .dropdown-menu {
     margin-top: 0;
     display: block;
     visibility: visible;

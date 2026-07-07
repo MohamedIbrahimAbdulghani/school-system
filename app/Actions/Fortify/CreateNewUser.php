@@ -19,6 +19,10 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
+        // Set the app locale from the session (saved during GET request)
+        $locale = session('locale', app()->getLocale());
+        app()->setLocale($locale);
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

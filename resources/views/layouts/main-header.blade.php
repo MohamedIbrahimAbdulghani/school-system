@@ -38,7 +38,7 @@
         </li>
 
         <!-- Notifications -->
-        <li class="nav-item dropdown ">
+        <li class="nav-item dropdown no-hover">
             <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
                 <i class="ti-bell"></i>
@@ -64,25 +64,100 @@
         </li>
 
         <!-- Language Switcher -->
-        <li class="nav-item dropdown ">
-            <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        <style>
+            .lang-dropdown-wrapper {
+                display: flex;
+                align-items: center;
+                padding: 0 10px;
+            }
+            .lang-switcher-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 12px;
+                border-radius: 8px;
+                text-decoration: none !important;
+                border: 1px solid #cbd5e1;
+                color: #475569 !important;
+                background-color: #ffffff;
+                transition: all 0.3s ease;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                height: 34px;
+                cursor: pointer;
+            }
+            .lang-switcher-btn:hover, .dropdown.show .lang-switcher-btn {
+                color: #1e40af !important;
+                background-color: #f8fafc;
+                border-color: #1e40af;
+            }
+            .lang-chevron {
+                font-size: 8px;
+                transition: transform 0.3s ease;
+            }
+            .dropdown.show .lang-chevron {
+                transform: rotate(180deg);
+            }
+            
+            .lang-switcher-dropdown {
+                border-radius: 12px !important;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+                border: 1px solid #f1f5f9 !important;
+                padding: 6px 0 !important;
+                min-width: 130px !important;
+                margin-top: 8px !important;
+            }
+            .lang-switcher-item {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                padding: 8px 16px !important;
+                font-size: 13px !important;
+                color: #334155 !important;
+                font-weight: 600 !important;
+                transition: all 0.2s ease !important;
+            }
+            .lang-switcher-item:hover {
+                background-color: #f8fafc !important;
+                color: #1e40af !important;
+                text-decoration: none !important;
+            }
+            .lang-switcher-item .active-check {
+                color: #10b981 !important;
+                font-size: 12px;
+            }
+            
+            /* Enable Click behavior for dropdowns using no-hover class */
+            .admin-header .dropdown.no-hover.show .dropdown-menu {
+                margin-top: 0 !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+        </style>
+        <li class="nav-item dropdown lang-dropdown-wrapper no-hover">
+            <a class="lang-switcher-btn" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
-                <i class="fa-solid fa-language"></i>
+                <i class="fa-solid fa-globe" style="font-size: 13px;"></i>
+                <span>{{ app()->getLocale() }}</span>
+                <i class="fa-solid fa-chevron-down lang-chevron"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
-                <div class="dropdown-header ">
-                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <a rel="alternate" class="dropdown-item" hreflang="{{ $localeCode }}"
-                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
-                    @endforeach
-                </div>
+            <div class="dropdown-menu dropdown-menu-right lang-switcher-dropdown">
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <a rel="alternate" class="dropdown-item lang-switcher-item" hreflang="{{ $localeCode }}"
+                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        <span>{{ $properties['native'] }}</span>
+                        @if(app()->getLocale() == $localeCode)
+                            <i class="fa-solid fa-circle-check active-check"></i>
+                        @endif
+                    </a>
+                @endforeach
             </div>
         </li>
 
         <!-- Quick Links -->
-        <li class="nav-item dropdown ">
+        <li class="nav-item dropdown no-hover">
             <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="true"> <i class="ti-view-grid"></i> </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-big">
@@ -110,7 +185,7 @@
         </li>
 
         <!-- User Profile -->
-        <li class="nav-item dropdown mr-30">
+        <li class="nav-item dropdown mr-30 no-hover">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                 aria-haspopup="true" aria-expanded="false">
                 <img src="{{ asset('assets/images/user_icon.png') }}" alt="avatar">

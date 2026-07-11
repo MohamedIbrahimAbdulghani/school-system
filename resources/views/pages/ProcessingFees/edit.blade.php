@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{ trans('fees.Add_Fees_Processing') }}
+    {{ trans('fees.edit_Fees_Processing') }}
 @stop
 @endsection
 @section('page-header')
@@ -10,12 +10,12 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0"> {{ trans('fees.Add_Fees_Processing') }} : <span style="color: red">{{ $student->name }}</span></h4>
+            <h4 class="mb-0"> {{ trans('fees.edit_Fees_Processing') }} : <span style="color: red;">{{ $processing_fee->student->name }}</span></h4>
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('students.index') }}" class="default-color">{{ trans('student.students') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('fees.Add_Fees_Processing') }} : <span style="color: red"> {{ $student->name }} </span></li>
+                <li class="breadcrumb-item"><a href="{{ route('processing_fees.index') }}" class="default-color">{{ trans('fees.Fees_Processing') }}</a></li>
+                <li class="breadcrumb-item active">{{ trans('fees.edit_Fees_Processing') }} : <span style="color: red;">{{ $processing_fee->student->name }}</span></li>
             </ol>
         </div>
     </div>
@@ -28,14 +28,15 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <form action="{{ route('processing_fees.store') }}" method="post">
+                <form action="{{ route('processing_fees.update', $processing_fee->id) }}" method="post">
                     @csrf
+                    @method('PUT')
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12">
                             <label for="debit" class="mr-sm-2">{{ trans('fees.amount_Processing') }}</label>
                             <div class="box">
-                                <input type="number" class="form-control" name="debit" >
-                                <input type="hidden" name="student_id" id="student_id" value="{{ $student->id }}">
+                                <input type="number" class="form-control" name="debit" value="{{ $processing_fee->amount }}">
+                                <input type="hidden" name="processing_fee_id" id="processing_fee_id" value="{{ $processing_fee->id }}">
                             </div>
                             @error('debit')
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
@@ -45,25 +46,10 @@
                                 </div>
                             @enderror
                         </div>
-
-                        <div class="col-6">
-                            <label for="balance_student" class="mr-sm-2">{{ trans('fees.balance_student') }}</label>
-                            <div class="box">
-                                <input  class="form-control" name="balance_student" value="{{ number_format($student->student_accounts->sum('debit') - $student->student_accounts->sum('credit'),2) }}" readonly>
-                            </div>
-                            @error('balance_student')
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @enderror
-                        </div>
-
                         <div class="col-12">
                             <label for="description" class="mr-sm-2">{{ trans('fees.description_Processing') }}</label>
                             <div class="box">
-                                <textarea class="form-control" name="description" rows="4"></textarea>
+                                <textarea class="form-control" name="description" rows="4">{{ $processing_fee->description }}</textarea>
                             </div>
                             @error('description')
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
@@ -74,7 +60,7 @@
                             @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">{{ trans('classrooms.submit') }} </button>
+                    <button type="submit" class="btn btn-primary mt-3">{{ trans('section.Update') }} </button>
                 </form>
             </div>
         </div>

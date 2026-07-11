@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Students;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repository\ProcessingFeesRepositoryInterface;
+use App\Http\Requests\StoreProcessingFeeRequest;
 
 class ProcessingFeesController extends Controller
 {
@@ -32,7 +33,7 @@ class ProcessingFeesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProcessingFeeRequest $request)
     {
         return $this->processing->store($request);
     }
@@ -56,7 +57,7 @@ class ProcessingFeesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreProcessingFeeRequest $request, string $id)
     {
         return $this->processing->update($request);
     }

@@ -39,4 +39,8 @@ class Students extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+    // Relationhsip between students and student_accounts to get debit and credit
+    public function student_accounts() {
+        return $this->hasMany(StudentAccounts::class, 'student_id');
+    }
 }

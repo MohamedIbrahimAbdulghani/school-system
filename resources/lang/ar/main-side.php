@@ -25,6 +25,8 @@ return [
     'Accounts'=>'الحسابات',
     'Fees' => 'الرسوم الدراسية',
     'fee_invoices' => 'الفواتير',
+    'receipts' => 'سندات القبض',
+    'processing_fees' => 'استبعاد رسوم',
     'Attendance'=>'الحضور والغياب',
     'Exams'=>'الامتحانات',
     'library'=>'المكتبة',

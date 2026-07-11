@@ -14,6 +14,7 @@ use App\Http\Controllers\Students\PromotionsController;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Students\ReceiptStudentsController;
+use App\Http\Controllers\Students\ProcessingFeesController;
 
 // ======== المجموعة الرئيسية ========
 Route::group([
@@ -97,6 +98,9 @@ Route::group([
 
         // Receipts
             Route::resource('receipt_students', ReceiptStudentsController::class);
+
+        // ProcessingFees
+            Route::resource('processing_fees', ProcessingFeesController::class);
     });
 
 });

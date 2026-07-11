@@ -24,6 +24,8 @@ return [
     'Accounts'=>'Accounts',
     'Fees' => 'Fees',
     'fee_invoices' => 'Fee Invoices',
+    'receipts' => 'Receipts',
+    'processing_fees' => 'Processing Fees',
     'Attendance'=>'Attendance',
     'Exams'=>'Exams',
     'library'=>'Library',

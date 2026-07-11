@@ -29,6 +29,8 @@ return [
     'edit_receipt' => 'Edit Receipt',
     'delete_receipt' => 'Delete Receipt',
     'show_receipt' => 'Show Receipt',
+    'processing_fees' => 'Processing Fees',
+    'balance_student' => 'Student Balance',
 
     'required_ar'=>'Please enter the fees name in Arabic',
     'required_en'=>'Please enter the fees name in English',

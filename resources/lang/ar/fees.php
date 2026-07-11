@@ -29,6 +29,8 @@ return [
     'edit_receipt' => 'تعديل سند قبض',
     'delete_receipt' => 'حذف سند قبض',
     'show_receipt' => 'عرض سند قبض',
+    'processing_fees' => 'استبعاد رسوم',
+    'balance_student' => 'رصيد الطالب',
 
 
 

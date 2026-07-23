@@ -27,6 +27,7 @@ return [
     'fee_invoices' => 'الفواتير',
     'receipts' => 'سندات القبض',
     'processing_fees' => 'استبعاد رسوم',
+    'payment_voucher' => 'سندات الصرف',
     'Attendance'=>'الحضور والغياب',
     'Exams'=>'الامتحانات',
     'library'=>'المكتبة',

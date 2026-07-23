@@ -26,6 +26,7 @@ return [
     'fee_invoices' => 'Fee Invoices',
     'receipts' => 'Receipts',
     'processing_fees' => 'Processing Fees',
+    'payment_voucher' => 'Payment Voucher',
     'Attendance'=>'Attendance',
     'Exams'=>'Exams',
     'library'=>'Library',

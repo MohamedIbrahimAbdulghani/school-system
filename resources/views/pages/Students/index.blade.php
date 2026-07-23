@@ -75,6 +75,7 @@
                                                     <a class="dropdown-item" href="{{route('fee_invoices.show', $student->id)}}"><i style="color: #0000cc" class="fa fa-edit"></i>&nbsp; {{trans('fees.add_fees')}}</a>
                                                     <a class="dropdown-item" href="{{route('receipt_students.show', $student->id)}}"><i style="color: #9dc8e2" class="fas fa-money-bill-alt"></i>&nbsp; {{trans('fees.receipt_student')}}</a>
                                                     <a class="dropdown-item" href="{{route('processing_fees.show', $student->id)}}"><i style="color: #ff781f" class="fas fa-sign-out-alt"></i>&nbsp; {{trans('main-side.processing_fees')}}</a>
+                                                    <a class="dropdown-item" href="{{route('payment_refunds.show', $student->id)}}"><i style="color: #9dc8e2" class="fas fa-hand-holding-dollar"></i>&nbsp; {{trans('main-side.payment_voucher')}}</a>
                                                     <a class="dropdown-item btn" data-target="#delete{{$student->id}}" data-toggle="modal"><i style="color: red" class="fa fa-trash"></i>&nbsp;  {{trans('student.Delete')}}  </a>
                                                 </div>
                                             </div>

@@ -134,6 +134,7 @@
                             <li> <a href="{{ route('fee_invoices.index') }}">{{ trans('main-side.fee_invoices') }}</a> </li>
                             <li> <a href="{{ route('receipt_students.index') }}">{{ trans('main-side.receipts') }}</a> </li>
                             <li> <a href="{{ route('processing_fees.index') }}">{{ trans('main-side.processing_fees') }}</a> </li>
+                            <li> <a href="{{ route('payment_refunds.index') }}">{{ trans('main-side.payment_voucher') }}</a> </li>
                         </ul>
                     </li>
 

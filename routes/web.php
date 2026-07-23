@@ -15,6 +15,7 @@ use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Students\ReceiptStudentsController;
 use App\Http\Controllers\Students\ProcessingFeesController;
+use App\Http\Controllers\Students\PaymentRefundsController;
 
 // ======== المجموعة الرئيسية ========
 Route::group([
@@ -101,6 +102,9 @@ Route::group([
 
         // ProcessingFees
             Route::resource('processing_fees', ProcessingFeesController::class);
+
+        // PaymentRefunds
+            Route::resource('payment_refunds', PaymentRefundsController::class);
     });
 
 });

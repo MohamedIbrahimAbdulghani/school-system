@@ -36,7 +36,7 @@ class PaymentRefundsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->payment->store($request);
     }
 
     /**
@@ -44,7 +44,7 @@ class PaymentRefundsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return $this->payment->show($id);
     }
 
     /**
@@ -52,7 +52,7 @@ class PaymentRefundsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return $this->payment->edit($id);
     }
 
     /**
@@ -60,14 +60,14 @@ class PaymentRefundsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return $this->payment->update($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->payment->destroy($request);
     }
 }

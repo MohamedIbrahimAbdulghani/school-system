@@ -151,4 +151,16 @@ $(document).ready(function () {
 });
 </script>
 
+<!-- fee invoices -->
+<script>
+$(document).ready(function () {
+    $(document).on('change', '.fee-type-select', function () {
+        var selectedAmount = $(this).find('option:selected').data('amount');
+        var row = $(this).closest('.row');
+        row.find('.fee-amount-input').val(selectedAmount || '');
+    });
+});
+</script>
+
+
 @yield('js')

@@ -53,13 +53,14 @@
                                                             <option value="{{ $student->id }}">{{ $student->name }}</option>
                                                     </select>
                                                 </div>
+
                                                 <div class="col">
-                                                    <label for="type_fees" class="mr-sm-2">{{ trans('fees.type_fees') }} </label>
+                                                    <label for="type_fees" class="mr-sm-2">{{ trans('fees.type_fees') }}</label>
                                                     <div class="box">
-                                                        <select class="fancyselect" name="fee_id" >
+                                                        <select class="fancyselect fee-type-select" name="fee_id" id="type_fees">
                                                             <option value="">{{ trans('parent.Choose') }}</option>
                                                             @foreach($fees as $fee)
-                                                                <option value="{{ $fee->id }}">{{ $fee->name }}</option>
+                                                                <option value="{{ $fee->id }}" data-amount="{{ $fee->amount }}">{{ $fee->name }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -68,12 +69,7 @@
                                                 <div class="col">
                                                     <label for="amount" class="mr-sm-2">{{ trans('fees.fees_amount') }}</label>
                                                     <div class="box">
-                                                        <select class="fancyselect" name="amount" >
-                                                            <option value="">{{ trans('parent.Choose') }}</option>
-                                                            @foreach($fees as $fee)
-                                                                <option value="{{ $fee->amount }}">{{ $fee->amount }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        <input type="text" class="form-control fee-amount-input" name="amount" id="amount" readonly>
                                                     </div>
                                                 </div>
 
@@ -110,5 +106,7 @@
 <!-- row closed -->
 @endsection
 @section('js')
+
+
 
 @endsection

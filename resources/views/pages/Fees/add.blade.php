@@ -109,6 +109,7 @@
                                                 <option value="">{{trans('parent.Choose')}}...</option>
                                                 <option value="1">{{ trans('fees.studying_fees') }}</option>
                                                 <option value="2">{{ trans('fees.bus_fees') }}</option>
+                                                <option value="3">{{ trans('fees.uniform_fees') }}</option>
                                             </select>
                                             @error('type_fees')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}

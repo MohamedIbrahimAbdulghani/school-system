@@ -47,6 +47,25 @@ return [
     'delete_Warning_Processing'=>'حذف استبعاد الرسوم',
     'close'=>'اغلاق',
 
+    'payment_vouchers'=>'سندات الدفع',
+    'payment_vouchers_Processing'=>'سندات الدفع',
+    'delete_payment_vouchers_Processing'=>'حذف سندات الدفع',
+    'edit_payment_vouchers_Processing'=>'تعديل سندات الدفع',
+    'show_payment_vouchers_Processing'=>'عرض سندات الدفع',
+    'Add_payment_vouchers_Processing'=>'اضافة سندات الدفع',
+    'amount_payment_vouchers_Processing'=>'مبلغ سندات الدفع',
+    'description_payment_vouchers_Processing'=>'بيان سندات الدفع',
+    'student_id_payment_vouchers_Processing'=>'الطالب',
+    'fee_id_payment_vouchers_Processing'=>'نوع الرسوم',
+    'year_payment_vouchers_Processing'=>'السنة الدراسية',
+    'class_id_payment_vouchers_Processing'=>'الصف الدراسي',
+    'grade_id_payment_vouchers_Processing'=>'المرحلة الدراسية',
+    'notes_payment_vouchers_Processing'=>'ملاحظات',
+    'Warning_payment_vouchers_Processing'=> 'هل انت متاكد من حذف هذه الرسوم ',
+    'delete_Warning_payment_vouchers_Processing'=>'حذف سندات الدفع',
+    'close_payment_vouchers_Processing'=>'اغلاق',
+    
+
     'required_ar'=>'يرجي ادخال اسم القسم باللغة العربية',
     'required_en'=>'يرجي ادخال اسم القسم باللغة الانجليزية',
     'required_fees_amount'=>'يرجي ادخال مبلغ الرسوم الدراسية',
@@ -74,4 +93,5 @@ return [
     'amount_max' => 'يجب ألا يزيد المبلغ عن 1000000.',
     'required_description' => 'البيان مطلوب.',
     'description_max' => 'يجب ألا يزيد البيان عن 255 حرفًا.',
+    'uniform_fees' => 'رسوم الزي المدرسي',
 ];

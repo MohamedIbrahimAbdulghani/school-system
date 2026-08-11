@@ -42,13 +42,12 @@ class PaymentRefundsRepository implements PaymentRefundsInterface {
                 'credit' => 0.00,
                 'description' => $request->description,
             ]);
-            toastr()->success(trans('messages.success'));
             DB::commit();
+            toastr()->success(trans('messages.success'));
         } catch (\Exception $e) {
             DB::rollBack();
             toastr()->error(trans('messages.error'));
         }
-        
         return redirect()->route('payment_refunds.index');
     }
     public function show($id) {

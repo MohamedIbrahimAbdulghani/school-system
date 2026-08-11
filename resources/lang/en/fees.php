@@ -47,7 +47,7 @@ return [
     'delete_Warning_Processing'=>'Delete Warning Processing',
     'close'=>'Close',
 
-        'payment_vouchers'=>'Payment Vouchers',
+    'payment_vouchers'=>'Payment Vouchers',
     'payment_vouchers_Processing'=>'Payment Vouchers',
     'delete_payment_vouchers_Processing'=>'Delete Payment Vouchers',
     'edit_payment_vouchers_Processing'=>'Edit Payment Vouchers',
@@ -81,6 +81,8 @@ return [
 
     'required_amount_Processing' => 'Please enter the amount of fees exclusion',
     'required_description_Processing' => 'Please enter the description of fees exclusion',
+    'required_amount_payment_vouchers_Processing' => 'Please enter the amount of fees exclusion',
+    'required_description_payment_vouchers_Processing' => 'Please enter the description of fees exclusion',
     'amount_numeric_Processing' => 'Please enter the amount of fees exclusion',
     'amount_min_Processing' => 'Please enter the amount of fees exclusion',
     'amount_max_Processing' => 'Please enter the amount of fees exclusion',

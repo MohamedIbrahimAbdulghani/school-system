@@ -80,6 +80,8 @@ return [
     'required_amount' => 'يرجي إدخال مبلغ الرسوم',
     'required_description' => 'يرجي إدخال بيان ',
     'required_amount_Processing' => 'يرجي ادخال مبلغ استبعاد الرسوم',
+    'required_amount_payment_vouchers_Processing' => 'يرجي ادخال مبلغ سندات الدفع  ',
+    'required_description_payment_vouchers_Processing' => 'يرجي ادخال بيان سندات الدفع',
     'required_description_Processing' => 'يرجي ادخال بيان استبعاد الرسوم',
     'amount_numeric_Processing' => 'يرجي ادخال مبلغ استبعاد الرسوم',
     'amount_min_Processing' => 'يرجي ادخال مبلغ استبعاد الرسوم يجب ان يكون اكبر من 1',

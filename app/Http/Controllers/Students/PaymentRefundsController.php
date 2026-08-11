@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Students;
 use App\Http\Controllers\Controller;
 use App\Repository\PaymentRefundsInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePaymentRefundsRequest;
 
 
 class PaymentRefundsController extends Controller
@@ -34,7 +35,7 @@ class PaymentRefundsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePaymentRefundsRequest $request)
     {
         return $this->payment->store($request);
     }

@@ -55,12 +55,42 @@ class PaymentRefundsRepository implements PaymentRefundsInterface {
         return view('pages.PaymentRefunds.add', compact('student'));
     }
     public function edit($id) {
-
+        $paymentrefund = PaymentRefunds::findOrFail($id);
+        return view('pages.PaymentRefunds.edit', compact('paymentrefund'));
     }
     public function update($request) {
+        DB::beginTransaction();
+        try {
+            $paymentrefund = PaymentRefunds::findOrFail($request->paymentrefund_id);
+            $paymentrefund->update([
+                'amount' => $request->amount,
+                'description' => $request->description,
+            ]);
 
+            // Update in fund_accounts table in database
+            $fund_accounts = FundAccounts::where('payment_refunds_id', $paymentrefund->id)->first();
+            $fund_accounts->update([
+                'credit' => $request->amount,
+                'description' => $request->description,
+            ]);
+
+            // Update in student_accounts table in database
+            $students_accounts = StudentAccounts::where('payment_refunds_id', $paymentrefund->id)->first();
+            $students_accounts->update([
+                'debit' => $request->amount,
+                'description' => $request->description,
+            ]);
+            DB::commit();
+            toastr()->success(trans('messages.Update'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            toastr()->error(trans('messages.error'));
+        }
+        return redirect()->route('payment_refunds.index');
     }
     public function destroy($request) {
-
+        PaymentRefunds::destroy($request->id);
+        toastr()->error(trans('messages.delete'));
+        return redirect()->route('payment_refunds.index');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repository\PaymentRefundsInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePaymentRefundsRequest;
+use App\Http\Requests\UpdatePaymentRefundsRequest;
 
 
 class PaymentRefundsController extends Controller
@@ -59,7 +60,7 @@ class PaymentRefundsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePaymentRefundsRequest $request, string $id)
     {
         return $this->payment->update($request);
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Attendances\AttendanceController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Grades\GradesController;
@@ -105,6 +106,9 @@ Route::group([
 
         // PaymentRefunds
             Route::resource('payment_refunds', PaymentRefundsController::class);
+
+        // Attendance
+            Route::resource('attendances', AttendanceController::class);
     });
 
 });

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Attendances\AttendanceController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Grades\GradesController;
@@ -17,6 +16,7 @@ use App\Http\Controllers\Teachers\TeachersController;
 use App\Http\Controllers\Students\ReceiptStudentsController;
 use App\Http\Controllers\Students\ProcessingFeesController;
 use App\Http\Controllers\Students\PaymentRefundsController;
+use App\Http\Controllers\Students\AttendanceController;
 
 // ======== المجموعة الرئيسية ========
 Route::group([

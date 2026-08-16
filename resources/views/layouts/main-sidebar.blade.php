@@ -146,7 +146,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('attendances.index') }}">{{ trans('attendances.studets_list') }}</a> </li>
+                            <li> <a href="{{ route('attendances.index') }}">{{ trans('attendances.students_list') }}</a> </li>
                         </ul>
                     </li>
 

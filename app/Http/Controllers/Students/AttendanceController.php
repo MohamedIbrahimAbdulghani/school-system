@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Attendances;
+namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
 use App\Repository\AttendancesInterface;

@@ -7,6 +7,7 @@ use Spatie\Translatable\HasTranslations;
 use App\Models\Grades;
 use App\Models\ClassRooms;
 use App\Models\Teachers;
+use App\Models\Students;
 
 class Sections extends Model
 {
@@ -26,5 +27,10 @@ class Sections extends Model
     // relationship between Teacher and Section to get Teacher in Section table
     public function teachers() {
         return $this->belongsToMany(Teachers::class, 'teacher_section', 'section_id', 'teacher_id');
+    }
+    // relationship between Students and Section to get Students in Section table
+    public function students()
+    {
+        return $this->hasMany(Students::class, 'section_id');
     }
 }

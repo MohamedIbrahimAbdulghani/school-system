@@ -8,7 +8,12 @@ class AttendancesRepository implements AttendancesInterface
 {
     public function index()
     {
-        $grades = Grades::all();
+        // $grades = Grades::with(['sections'])->get();
+        $grades = Grades::with([
+            'sections' => function ($query) {
+                $query->whereHas('students'); // هات الـ Section لو عنده Students مرتبطين بيه
+            }
+        ])->get();
         return view('pages.Attendances.index', compact('grades'));
     }
 
@@ -25,8 +30,7 @@ class AttendancesRepository implements AttendancesInterface
     public function show($id)
     {
         $students = Students::where('section_id', $id)->get();
-        // return view('pages.Attendances.show', compact('students'));
-        return $students;
+        return view('pages.Attendances.show', compact('students'));
     }
 
     public function edit($id)

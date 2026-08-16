@@ -15,4 +15,7 @@ return [
     'classroom_name' => 'اسم الفصل الدراسي',
     'section_name' => 'اسم القسم',
     'title_page' => 'الحضور والغياب',
+    'attendance_for_students' => 'قائمة الحضور والغياب للطلاب',
+    'sections' => 'الأقسام',
+    'date' => 'تاريخ اليوم',
 ];

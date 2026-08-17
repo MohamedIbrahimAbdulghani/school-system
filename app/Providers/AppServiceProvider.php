@@ -2,15 +2,15 @@
 
 namespace App\Providers;
 
-use App\Repository\AttendancesInterface;
+use App\Repository\AttendancesRepositoryInterface;
 use App\Repository\AttendancesRepository;
-use App\Repository\FeeInvoicesInterface;
+use App\Repository\FeeInvoicesRepositoryInterface;
 use App\Repository\FeeInvoicesRepository;
 use App\Repository\FeesRepository;
 use App\Repository\FeesRepositoryInterface;
 use App\Repository\GraduatedRepository;
 use App\Repository\GraduatedRepositoryInterface;
-use App\Repository\PaymentRefundsInterface;
+use App\Repository\PaymentRefundsRepositoryInterface;
 use App\Repository\PaymentRefundsRepository;
 use App\Repository\StudentRepository;
 use App\Repository\StudentRepositoryInterface;
@@ -37,11 +37,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(StudentPromotionsRepositoryInterface::class, StudentPromotionsRepository::class);
         $this->app->bind(GraduatedRepositoryInterface::class, GraduatedRepository::class);
         $this->app->bind(FeesRepositoryInterface::class, FeesRepository::class);
-        $this->app->bind(FeeInvoicesInterface::class, FeeInvoicesRepository::class);
+        $this->app->bind(FeeInvoicesRepositoryInterface::class, FeeInvoicesRepository::class);
         $this->app->bind(ReceiptStudentsRepositoryInterface::class, ReceiptStudentsRepository::class);
         $this->app->bind(ProcessingFeesRepositoryInterface::class, ProcessingFeesRepository::class);
-        $this->app->bind(PaymentRefundsInterface::class, PaymentRefundsRepository::class);
-        $this->app->bind(AttendancesInterface::class, AttendancesRepository::class);
+        $this->app->bind(PaymentRefundsRepositoryInterface::class, PaymentRefundsRepository::class);
+        $this->app->bind(AttendancesRepositoryInterface::class, AttendancesRepository::class);
     }
 
     /**

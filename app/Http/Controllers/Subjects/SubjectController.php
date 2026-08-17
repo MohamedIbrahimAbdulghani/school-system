@@ -1,27 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Students;
+namespace App\Http\Controllers\Subjects;
 
 use App\Http\Controllers\Controller;
-use App\Repository\AttendancesRepositoryInterface;
 use Illuminate\Http\Request;
 
-class AttendanceController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
-    protected $attendance;
-
-    public function __construct(AttendancesRepositoryInterface $attendance)
-    {
-        $this->attendance = $attendance;
-    }
-
     public function index()
     {
-        return $this->attendance->index();
+        //
     }
 
     /**
@@ -29,7 +20,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        return $this->attendance->create();
+        //
     }
 
     /**
@@ -37,7 +28,7 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->attendance->store($request);
+        //
     }
 
     /**
@@ -45,7 +36,7 @@ class AttendanceController extends Controller
      */
     public function show(string $id)
     {
-        return $this->attendance->show($id);
+        //
     }
 
     /**
@@ -53,15 +44,15 @@ class AttendanceController extends Controller
      */
     public function edit(string $id)
     {
-        return $this->attendance->edit($id);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
-        return $this->attendance->update($request);
+        //
     }
 
     /**
@@ -69,6 +60,6 @@ class AttendanceController extends Controller
      */
     public function destroy(string $id)
     {
-        return $this->attendance->destroy($id);
+        //
     }
 }

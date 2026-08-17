@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
-use App\Repository\PaymentRefundsInterface;
+use App\Repository\PaymentRefundsRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePaymentRefundsRequest;
 use App\Http\Requests\UpdatePaymentRefundsRequest;
@@ -14,7 +14,7 @@ class PaymentRefundsController extends Controller
 
     protected $payment;
 
-    public function __construct(PaymentRefundsInterface $payment) {
+    public function __construct(PaymentRefundsRepositoryInterface $payment) {
         $this->payment = $payment;
     }
     /**

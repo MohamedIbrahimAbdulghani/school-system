@@ -10,7 +10,7 @@ use App\Models\StudentAccounts;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
-class FeeInvoicesRepository implements FeeInvoicesInterface {
+class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface {
     public function index() {
         $fee_invoices = FeeInvoices::all();
         $grades = Grades::all();

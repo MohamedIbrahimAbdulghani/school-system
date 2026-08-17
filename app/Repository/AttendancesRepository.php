@@ -4,7 +4,7 @@ namespace App\Repository;
 use App\Models\Grades;
 use App\Models\Students;
 
-class AttendancesRepository implements AttendancesInterface
+class AttendancesRepository implements AttendancesRepositoryInterface
 {
     public function index()
     {

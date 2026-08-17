@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\StudentAccounts;
 use App\Models\FundAccounts;
 
-class PaymentRefundsRepository implements PaymentRefundsInterface {
+class PaymentRefundsRepository implements PaymentRefundsRepositoryInterface {
     public function index() {
         $paymentrefunds = PaymentRefunds::all();
         return view('pages.PaymentRefunds.index', compact('paymentrefunds'));

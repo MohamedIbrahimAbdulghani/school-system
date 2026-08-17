@@ -39,7 +39,6 @@ class ProcessingFeesRepository implements ProcessingFeesRepositoryInterface {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
         }
-        
     }
     public function show($id) {
         $student = Students::findOrFail($id);

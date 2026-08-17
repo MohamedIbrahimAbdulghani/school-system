@@ -91,7 +91,7 @@
                                                                         @endif
                                                                     </td>
                                                                     <td>
-                                                                        <a href="{{ route('attendances.show', $listSection->id) }}" class="btn btn-outline-info btn-sm">{{ trans('attendances.students_list') }}</a>
+                                                                        <a href="{{ route('attendances.show', $listSection->id) }}" class="btn btn-warning btn-sm">{{ trans('attendances.students_list') }}</a>
                                                                     </td>
                                                                 </tr>
                                                             @endforeach

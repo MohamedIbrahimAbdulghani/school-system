@@ -18,4 +18,6 @@ return [
     'attendance_for_students' => 'قائمة الحضور والغياب للطلاب',
     'sections' => 'الأقسام',
     'date' => 'تاريخ اليوم',
+    'presence' => 'حضور',
+    'absence' => 'غياب',
 ];

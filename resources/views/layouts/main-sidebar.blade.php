@@ -153,12 +153,12 @@
                     <!-- Subjects-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Subjects-icon">
-                            <div class="pull-left"><i class="fas fa-calendar-alt"></i><span class="right-nav-text">{{trans('main-side.Attendance')}}</span></div>
+                            <div class="pull-left"><i class="fas fa-calendar-alt"></i><span class="right-nav-text">{{trans('subjects.subjects')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('attendances.index') }}">{{ trans('attendances.students_list') }}</a> </li>
+                        <ul id="Subjects-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('subjects.index') }}">{{ trans('subjects.students_list') }}</a> </li>
                         </ul>
                     </li>
 

@@ -17,6 +17,7 @@ use App\Http\Controllers\Students\ReceiptStudentsController;
 use App\Http\Controllers\Students\ProcessingFeesController;
 use App\Http\Controllers\Students\PaymentRefundsController;
 use App\Http\Controllers\Students\AttendanceController;
+use App\Http\Controllers\Subjects\SubjectController;
 
 // ======== المجموعة الرئيسية ========
 Route::group([
@@ -109,6 +110,9 @@ Route::group([
 
         // Attendance
             Route::resource('attendances', AttendanceController::class);
+
+        // Subjects
+            Route::resource('subjects', SubjectController::class);
     });
 
 });

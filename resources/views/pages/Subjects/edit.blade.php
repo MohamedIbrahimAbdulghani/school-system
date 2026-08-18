@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{trans('subjects.add_subject')}}
+    {{trans('subjects.edit_subject')}}
 @stop
 @endsection
 @section('page-header')
@@ -10,12 +10,12 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">{{trans('subjects.add_subject')}}</h4>
+            <h4 class="mb-0">{{trans('subjects.edit_subject')}}</h4>
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('subjects.index') }}" class="default-color">{{ trans('subjects.subjects') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('subjects.add_subject') }}</li>
+                <li class="breadcrumb-item active">{{ trans('subjects.edit_subject') }}</li>
             </ol>
         </div>
     </div>
@@ -28,8 +28,9 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <form action="{{route('subjects.store')}}" method="post" autocomplete="off">
+                <form action="{{route('subjects.update',$subject->id)}}" method="post" autocomplete="off">
                     @csrf
+                    @method('PUT')
                     <div class="row setup-content">
                             <div class="col">
                                 <div class="col-md-12">
@@ -37,7 +38,7 @@
                                     <div class="form-row">
                                         <div class="col">
                                             <label for="title">{{trans('subjects.subject_name_ar')}}</label>
-                                            <input type="text" name="subject_name_ar"  class="form-control" value="{{ old('subject_name_ar') }}">
+                                            <input type="text" name="subject_name_ar"  class="form-control"  value="{{ $subject->getTranslation('name','ar') }}">
                                             @error('subject_name_ar')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -48,7 +49,7 @@
                                         </div>
                                         <div class="col">
                                             <label for="title">{{trans('subjects.subject_name_en')}}</label>
-                                            <input type="text" name="subject_name_en"  class="form-control" value="{{ old('subject_name_en') }}">
+                                            <input type="text" name="subject_name_en"  class="form-control" value="{{ $subject->getTranslation('name','en') }}">
                                             @error('subject_name_en')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -57,7 +58,6 @@
                                             </div>
                                             @enderror
                                         </div>
-
                                     </div>
 
                                     <div class="form-row">
@@ -66,7 +66,7 @@
                                             <select class="my-1 custom-select mr-sm-2" name="grade_id">
                                                 <option value="">{{trans('student.Choose')}}...</option>
                                                 @foreach($grades as $grade)
-                                                    <option value="{{$grade->id}}" {{ old('grade_id') == $grade->id ? 'selected' : '' }}>{{$grade->name}}</option>
+                                                    <option value="{{$grade->id}}" {{ $subject->grade_id == $grade->id ? 'selected' : '' }}>{{$grade->name}}</option>
                                                 @endforeach
                                             </select>
                                             @error('grade_id')
@@ -80,7 +80,9 @@
                                         <div class="form-group col">
                                             <label>{{trans('student.classrooms')}}</label>
                                             <select class="my-1 custom-select mr-sm-2" name="classroom_id" >
-
+                                                <option value="{{ $subject->classroom_id }}">
+                                                        {{ $subject->classroom->name_class }}
+                                                    </option>
                                             </select>
                                             @error('classroom_id')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
@@ -90,13 +92,12 @@
                                             </div>
                                             @enderror
                                         </div>
-
                                         <div class="form-group col">
                                             <label>{{trans('subjects.teacher_name')}}</label>
                                             <select class="my-1 custom-select mr-sm-2" name="teacher_id" >
                                                 <option value="">{{trans('student.Choose')}}...</option>
                                                 @foreach($teachers as $teacher)
-                                                    <option value="{{$teacher->id}}" {{ old('teacher_id') == $teacher->id ? 'selected' : '' }}>{{$teacher->name}}</option>
+                                                    <option value="{{$teacher->id}}" {{ $subject->teacher_id == $teacher->id ? 'selected' : '' }}>{{$teacher->name}}</option>
                                                 @endforeach
                                             </select>
                                             @error('teacher_id')
@@ -107,7 +108,6 @@
                                             </div>
                                             @enderror
                                         </div>
-
                                     </div>
                                     <button class="mt-3 btn btn-success" type="submit">{{trans('student.Save')}}</button>
                                 </div>

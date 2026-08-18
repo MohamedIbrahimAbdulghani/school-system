@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{ trans('teacher.teacher_list') }}
+    {{ trans('subjects.students_list') }}
 @stop
 @endsection
 @section('page-header')
@@ -10,12 +10,12 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">{{ trans('teacher.teacher_list') }}</h4>
+            <h4 class="mb-0">{{ trans('subjects.students_list') }}</h4>
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('teacher.teachers') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('teacher.teacher_list') }}</li>
+                <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('subjects.subjects') }}</a></li>
+                <li class="breadcrumb-item active">{{ trans('subjects.students_list') }}</li>
             </ol>
         </div>
     </div>
@@ -57,31 +57,59 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{ trans('teacher.name_teacher') }}</th>
-                                    <th>{{ trans('teacher.gender') }}</th>
-                                    <th>{{ trans('teacher.joining_date') }}</th>
-                                    <th>{{ trans('teacher.specialization') }}</th>
-                                    <th>{{ trans('teacher.processes') }}</th>
+                                    <th>{{ trans('subjects.subject_name') }}</th>
+                                    <th>{{ trans('subjects.grade') }}</th>
+                                    <th>{{ trans('subjects.classroom') }}</th>
+                                    <th>{{ trans('subjects.teacher_name') }}</th>
+                                    <th>{{ trans('subjects.processes') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 0; ?>
-                                @foreach ($subjects as $teacher)
+                                @foreach ($subjects as $subject)
                                     <tr>
                                         <?php $i++; ?>
                                         <td>{{ $i }}</td>
-                                        <td>{{ $teacher->name }}</td>
-                                        <td>{{ $teacher->gender->name }}</td>
-                                        <td>{{ $teacher->join_date }}</td>
-                                        <td>{{ $teacher->specialization->name }}</td>
+                                        <td>{{ $subject->name }}</td>
+                                        <td>{{ $subject->grade->name }}</td>
+                                        <td>{{ $subject->classroom->name_class }}</td>
+                                        <td>{{ $subject->teachers->name }}</td>
                                         <td>
-                                            <a href="{{route('teachers.edit', $teacher->id)}}"><button title="{{ trans('teacher.edit') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
+                                            <a href="{{route('subjects.edit', $subject->id)}}"><button title="{{ trans('teacher.edit') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
 
-                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$teacher->id}}"  title="{{trans('teacher.Delete')}}"><i class="fa fa-trash"></i></button>
+                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$subject->id}}"  title="{{trans('subjects.delete')}}"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
-
-
+                                        {{-- Start Modal To Delete students --}}
+                                            <div class="modal fade" id="delete{{$subject->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('subjects.delete')}}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    {{-- delete form--}}
+                                                    <form action="{{ route('subjects.destroy', $subject->id) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                            <input type="hidden" name="id" value={{$subject->id}}>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="name" class="mr-sm-2">{{trans('classrooms.Warning_class')}}</label>
+                                                                <input type="text" readonly value="{{ $subject->name }}" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-danger">{{trans('grades.delete')}}</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('grades.close')}}</button>
+                                                    </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        {{-- End Modal To Delete students --}}
                             @endforeach
                         </table>
                     </div>

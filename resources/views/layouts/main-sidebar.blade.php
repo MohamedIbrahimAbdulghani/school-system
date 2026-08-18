@@ -153,7 +153,7 @@
                     <!-- Subjects-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Subjects-icon">
-                            <div class="pull-left"><i class="fas fa-calendar-alt"></i><span class="right-nav-text">{{trans('subjects.subjects')}}</span></div>
+                            <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">{{trans('subjects.subjects')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>

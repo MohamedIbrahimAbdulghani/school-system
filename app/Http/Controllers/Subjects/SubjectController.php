@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Subjects;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSubjectsRequest;
 use App\Repository\SubjectRepositoryInterface;
 use Illuminate\Http\Request;
+
 
 class SubjectController extends Controller
 {
@@ -34,7 +36,7 @@ class SubjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreSubjectsRequest $request)
     {
         return $this->subject->store($request);
     }
@@ -58,9 +60,9 @@ class SubjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(StoreSubjectsRequest $request, $id)
     {
-        return $this->subject->update($request);
+        return $this->subject->update($request, $id);
     }
 
     /**

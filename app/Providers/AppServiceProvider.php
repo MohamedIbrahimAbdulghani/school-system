@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repository\AttendancesRepositoryInterface;
 use App\Repository\AttendancesRepository;
+use App\Repository\ExamsRepository;
+use App\Repository\ExamsRepositoryInterface;
 use App\Repository\FeeInvoicesRepositoryInterface;
 use App\Repository\FeeInvoicesRepository;
 use App\Repository\FeesRepository;
@@ -46,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PaymentRefundsRepositoryInterface::class, PaymentRefundsRepository::class);
         $this->app->bind(AttendancesRepositoryInterface::class, AttendancesRepository::class);
         $this->app->bind(SubjectRepositoryInterface::class, SubjectRepository::class);
+        $this->app->bind(ExamsRepositoryInterface::class, ExamsRepository::class);
     }
 
     /**

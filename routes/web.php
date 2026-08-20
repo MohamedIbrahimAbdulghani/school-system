@@ -5,10 +5,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Grades\GradesController;
 use App\Http\Controllers\Classrooms\ClassRoomsController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
-use App\Http\Controllers\Exmas\ExamController;
 use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\ParentController;
+use App\Http\Controllers\Quizzes\QuizzController;
 use App\Http\Controllers\Students\FeeInvoicesController;
 use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\PromotionsController;
@@ -115,8 +115,8 @@ Route::group([
         // Subjects
             Route::resource('subjects', SubjectController::class);
 
-        // Exams
-            Route::resource('exams', ExamController::class);
+        // Quizzes
+            Route::resource('quizzes', QuizzController::class);
     });
 
 });

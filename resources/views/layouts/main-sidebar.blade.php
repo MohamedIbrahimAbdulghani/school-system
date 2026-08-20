@@ -163,15 +163,15 @@
                     </li>
 
 
-                    <!-- Exams-->
+                    <!-- Quizzes-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exams-icon">
-                            <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">{{trans('main-side.Exams')}}</span></div>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Quizzes-icon">
+                            <div class="pull-left"><i class="fas fa-clipboard-list"></i><span class="right-nav-text">{{trans('quizzes.quizzes')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('exams.index') }}">{{ trans('exams.exams_list') }}</a> </li>
+                        <ul id="Quizzes-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('quizzes.index') }}">{{ trans('quizzes.quizzes_list') }}</a> </li>
                         </ul>
                     </li>
 

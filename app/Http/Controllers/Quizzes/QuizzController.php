@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Exmas;
+namespace App\Http\Controllers\Quizzes;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreExamRequest;
-use App\Repository\ExamsRepositoryInterface;
+use App\Repository\QuizzesRepositoryInterface;
 use Illuminate\Http\Request;
 
-class ExamController extends Controller
+class QuizzController extends Controller
 {
+    protected $quizzes;
 
-    protected $exams;
-
-    public function __construct(ExamsRepositoryInterface $exams)
+    public function __construct(QuizzesRepositoryInterface $quizzes)
     {
-        $this->exams = $exams;
+        $this->quizzes = $quizzes;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return $this->exams->index();
+        return $this->quizzes->index();
     }
 
     /**
@@ -29,15 +27,15 @@ class ExamController extends Controller
      */
     public function create()
     {
-        return $this->exams->create();
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreExamRequest $request)
+    public function store(Request $request)
     {
-        return $this->exams->store($request);
+        return $this->quizzes->store($request);
     }
 
     /**
@@ -45,7 +43,7 @@ class ExamController extends Controller
      */
     public function show(string $id)
     {
-        return $this->exams->show($id);
+        return $this->quizzes->show($id);
     }
 
     /**
@@ -53,15 +51,15 @@ class ExamController extends Controller
      */
     public function edit(string $id)
     {
-        return $this->exams->edit($id);
+        return $this->quizzes->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreExamRequest $request)
+    public function update(Request $request, string $id)
     {
-        return $this->exams->update($request);
+        return $this->quizzes->update($request);
     }
 
     /**
@@ -69,6 +67,6 @@ class ExamController extends Controller
      */
     public function destroy(string $id)
     {
-        return $this->exams->destroy($id);
+        return $this->quizzes->destroy($id);
     }
 }

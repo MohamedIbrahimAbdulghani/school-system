@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Fees\FeesController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\ParentController;
+use App\Http\Controllers\Questions\QuestionController;
 use App\Http\Controllers\Quizzes\QuizzController;
 use App\Http\Controllers\Students\FeeInvoicesController;
 use App\Http\Controllers\Students\GraduatedController;
@@ -117,6 +118,9 @@ Route::group([
 
         // Quizzes
             Route::resource('quizzes', QuizzController::class);
+
+        // Questions
+            Route::resource('questions', QuestionController::class);
     });
 
 });

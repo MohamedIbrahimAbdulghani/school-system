@@ -172,6 +172,7 @@
                         </a>
                         <ul id="Quizzes-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('quizzes.index') }}">{{ trans('quizzes.quizzes_list') }}</a> </li>
+                            <li> <a href="{{ route('questions.index') }}">{{ trans('questions.question_list') }}</a> </li>
                         </ul>
                     </li>
 

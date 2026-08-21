@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Quizzes;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreQuizzRequest;
 use App\Repository\QuizzesRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -27,13 +28,13 @@ class QuizzController extends Controller
      */
     public function create()
     {
-        //
+        return $this->quizzes->create();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreQuizzRequest $request)
     {
         return $this->quizzes->store($request);
     }
@@ -57,7 +58,7 @@ class QuizzController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreQuizzRequest $request, string $id)
     {
         return $this->quizzes->update($request);
     }

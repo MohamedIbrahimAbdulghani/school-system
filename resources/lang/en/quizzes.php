@@ -1,0 +1,32 @@
+<?php
+
+return [
+    'quizzes' => 'Quizzes',
+    'quizzes_list' => 'Quizzes List',
+    'quizze_name' => 'Quiz Name',
+    'term' => 'Academic Term',
+    'add_quizze' => 'Add Quiz',
+    'edit_quizze' => 'Edit Quiz',
+    'delete_quizze' => 'Delete Quiz',
+    'Warning_quizze' => 'Are you sure you want to delete this quiz?',
+    'submit' => 'Confirm',
+    'close' => 'Close',
+    'name_ar' => 'Quiz Name in Arabic',
+    'name_en' => 'Quiz Name in English',
+    'processes' => 'Actions',
+    'teacher_name' => 'Teacher Name',
+    'classroom' => 'Class',
+    'grade' => 'Grade',
+    'section' => 'Section',
+    'quiz_name_ar' => 'Quiz Name in Arabic',
+    'quiz_name_en' => 'Quiz Name in English',
+    'subject' => 'Subject',
+
+    'required_ar' => 'Please enter the quiz name in Arabic',
+    'required_en' => 'Please enter the quiz name in English',
+    'required_subject_id' => 'Please select a subject',
+    'required_teacher_id' => 'Please select a teacher',
+    'required_grade_id' => 'Please select a grade',
+    'required_classroom_id' => 'Please select a class',
+    'required_section_id' => 'Please select a section',
+];

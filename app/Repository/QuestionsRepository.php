@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repository;
+use App\Models\Quizz;
 
 use App\Models\Question;
 
@@ -11,7 +12,8 @@ class QuestionsRepository implements  QuestionsRepositoryInterface {
     }
 
     public function create() {
-        return "create function";
+        $quizzes = Quizz::all();
+        return view('pages.Questions.create', compact('quizzes'));
     }
 
     public function show($id) {
@@ -19,18 +21,51 @@ class QuestionsRepository implements  QuestionsRepositoryInterface {
     }
 
     public function store($request) {
-        return "store function";
+        try {
+            Question::create([
+                'title' => $request->question_name,
+                'answers' => $request->answers,
+                'right_answer' => $request->right_answer,
+                'score' => $request->score,
+                'quizz_id'=> $request->quizz_id
+            ]);
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('questions.index');
+        } catch(\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]); 
+        }
     }
 
     public function edit($id) {
-        return "edit function";
+        $quizzes = Quizz::all();
+        $question = Question::findOrFail($id);
+        return view('pages.Questions.edit', compact('question', 'quizzes'));
     }
 
     public function update($request) {
-        return "update function";
+        try {
+            $question = Question::findOrFail($request->id);
+            $question->update([
+                'title' => $request->question_name,
+                'answers' => $request->answers,
+                'right_answer' => $request->right_answer,
+                'score' => $request->score,
+                'quizz_id'=> $request->quizz_id
+            ]);
+            toastr()->success(trans('messages.update'));
+            return redirect()->route('questions.index');
+        } catch(\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]); 
+        }
     }
 
     public function destroy($id) {
-        return "destroy function";
+        try{
+            Question::findOrFail($id)->delete();
+            toastr()->success(trans('messages.delete'));
+            return redirect()->route('questions.index');
+        } catch(\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]); 
+        }
     }
 }

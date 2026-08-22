@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Questions;
 use App\Http\Controllers\Controller;
 use App\Repository\QuestionsRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreQuestionRequest;
+
 
 class QuestionController extends Controller
 {
@@ -33,7 +35,7 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreQuestionRequest $request)
     {
         return $this->question->store($request);
     }
@@ -57,7 +59,7 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(StoreQuestionRequest $request)
     {
         return $this->question->update($request);
     }

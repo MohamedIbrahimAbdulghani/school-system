@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{trans('quizzes.add_quizze')}}
+    {{trans('questions.add_question')}}
 @stop
 @endsection
 @section('page-header')
@@ -10,12 +10,12 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">{{trans('quizzes.add_quizze')}}</h4>
+            <h4 class="mb-0">{{trans('questions.add_question')}}</h4>
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('quizzes.index') }}" class="default-color">{{ trans('quizzes.quizzes') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('quizzes.add_quizze') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('questions.index') }}" class="default-color">{{ trans('questions.questions_list') }}</a></li>
+                <li class="breadcrumb-item active">{{ trans('questions.add_question') }}</li>
             </ol>
         </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <form action="{{route('quizzes.store')}}" method="post" autocomplete="off">
+                <form action="{{route('questions.store')}}" method="post" autocomplete="off">
                     @csrf
                     <div class="row setup-content">
                             <div class="col">
@@ -36,9 +36,9 @@
                                     <br>
                                     <div class="form-row">
                                         <div class="col">
-                                            <label for="quiz_name_ar">{{trans('quizzes.quiz_name_ar')}}</label>
-                                            <input type="text" name="quiz_name_ar"  class="form-control" value="{{ old('quiz_name_ar') }}">
-                                            @error('quiz_name_ar')
+                                            <label for="question_name">{{trans('questions.question_name')}}</label>
+                                            <input type="text" name="question_name"  class="form-control" value="{{ old('question_name') }}">
+                                            @error('question_name')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -46,10 +46,25 @@
                                             </div>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="form-row">
                                         <div class="col">
-                                            <label for="quiz_name_en">{{trans('quizzes.quiz_name_en')}}</label>
-                                            <input type="text" name="quiz_name_en"  class="form-control" value="{{ old('quiz_name_en') }}">
-                                            @error('quiz_name_en')
+                                            <label for="answers">{{trans('questions.answers')}}</label>
+                                            <textarea name="answers" id="answers" cols="30" rows="3"  class="form-control" >{{ old('answers') }}</textarea>
+                                            @error('answers')
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <label for="right_answer">{{trans('questions.right_answer')}}</label>
+                                            <input type="text" name="right_answer"  class="form-control" value="{{ old('right_answer') }}">
+                                            @error('right_answer')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -61,14 +76,14 @@
 
                                     <div class="form-row form-group ">
                                         <div class="col">
-                                            <label for="subject_id">{{trans('quizzes.subject')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="subject_id">
+                                            <label for="quizz_id">{{trans('questions.quizz_name')}}</label>
+                                            <select class="my-1 custom-select mr-sm-2" name="quizz_id">
                                                 <option value="">{{trans('parent.Choose')}}...</option>
-                                                @foreach($subjects as $subject)
-                                                    <option value="{{$subject->id}}" {{ old('subject_id') == $subject->id ? 'selected' : '' }}>{{$subject->name}}</option>
+                                                @foreach($quizzes as $quizze)
+                                                    <option value="{{$quizze->id}}" {{ old('quizz_id') == $quizze->id ? 'selected' : '' }}>{{$quizze->name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('subject_id')
+                                            @error('quizz_id')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -77,14 +92,15 @@
                                             @enderror
                                         </div>
                                         <div class="col">
-                                            <label for="teacher_id">{{trans('quizzes.teacher_name')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="teacher_id">
+                                            <label for="score">{{trans('questions.score')}}</label>
+                                            <select class="my-1 custom-select mr-sm-2" name="score">
                                                 <option value="">{{trans('parent.Choose')}}...</option>
-                                                @foreach($teachers as $teacher)
-                                                    <option value="{{$teacher->id}}" {{ old('teacher_id') == $teacher->id ? 'selected' : '' }}>{{$teacher->name}}</option>
-                                                @endforeach
+                                                    <option value="5" >5</option>
+                                                    <option value="10" >10</option>
+                                                    <option value="15" >15</option>
+                                                    <option value="20" >20</option>
                                             </select>
-                                            @error('teacher_id')
+                                            @error('score')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -93,52 +109,7 @@
                                             @enderror
                                         </div>
                                     </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col">
-                                            <label for="grade_id">{{trans('quizzes.grade')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="grade_id">
-                                                <option value="">{{trans('student.Choose')}}...</option>
-                                                @foreach($grades as $grade)
-                                                    <option value="{{$grade->id}}" {{ old('grade_id') == $grade->id ? 'selected' : '' }}>{{$grade->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('grade_id')
-                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col">
-                                            <label for="classroom_id">{{trans('student.classrooms')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="classroom_id" disabled>
-
-                                            </select>
-                                            @error('classroom_id')
-                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col">
-                                            <label for="section_id">{{trans('student.section')}}</label>
-                                            <select class="my-1 custom-select mr-sm-2" name="section_id" disabled>
-
-                                            </select>
-                                            @error('section_id')
-                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <button class="mt-3 btn btn-success" type="submit">{{trans('quizzes.submit')}}</button>
+                                    <button class="mt-3 btn btn-success" type="submit">{{trans('questions.submit')}}</button>
                                 </div>
                             </div>
                     </div>

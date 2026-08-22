@@ -192,7 +192,7 @@
                     </li>
 
 
-                    <!-- Onlinec lasses-->
+                    <!-- Onlinec Classes-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
                             <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">{{trans('main-side.Onlineclasses')}}</span></div>
@@ -200,9 +200,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                            <li> <a href="{{ route('online_classes.index') }}">{{ trans('online_classes.direct_connection') }}</a> </li>
+                            <li> <a href="themify-icons.html">{{ trans('online_classes.not_direct_connection') }}</a> </li>
                         </ul>
                     </li>
 

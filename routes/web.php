@@ -6,6 +6,7 @@ use App\Http\Controllers\Grades\GradesController;
 use App\Http\Controllers\Classrooms\ClassRoomsController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Fees\FeesController;
+use App\Http\Controllers\OnlineClasses\OnlineClassController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\ParentController;
 use App\Http\Controllers\Questions\QuestionController;
@@ -121,6 +122,9 @@ Route::group([
 
         // Questions
             Route::resource('questions', QuestionController::class);
+
+        // online_classes
+            Route::resource('online_classes', OnlineClassController::class);
     });
 
 });

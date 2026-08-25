@@ -20,6 +20,14 @@ return [
     'link' => 'رابط الحصة',
     'processes' => 'العمليات',
 
+    'metting_id' => 'رقم الاجتماع',
+    'password' => 'كلمة المرور للاجتماع',
+    'meeting_link' => 'لينك الاجتماع',
+
+    'meeting_platform' => 'نوع المنصة',
+    'add_automatic_meeting' =>'إنشاء اجتماع تلقائي Zoom ',
+    'add_manual_meeting' => 'إنشاء اجتماع يدويًا',
+
     // Validation messages
     'required_grade_id' => 'يرجي ادخال المرحلة الدراسية',
     'required_classroom_id' => 'يرجي ادخال الصف الدراسي',
@@ -27,6 +35,21 @@ return [
     'required_topic' => 'يرجي ادخال عنوان الحصة',
     'required_start_at' => 'يرجي ادخال تاريخ البداية',
     'required_duration' => 'يرجي ادخال مدة الحصة',
+
+    // Validation - Meeting Platform
+    'required_meeting_platform' => 'يرجى اختيار منصة الاجتماع',
+    'invalid_meeting_platform' => 'منصة الاجتماع غير صحيحة',
+
+    // Validation - Meeting ID
+    'required_metting_id' => 'يرجى إدخال رقم الاجتماع',
+
+    // Validation - Password
+    'required_password' => 'يرجى إدخال كلمة مرور الاجتماع',
+    'invalid_password' => 'كلمة مرور الاجتماع يجب أن تكون نصًا',
+
+    // Validation - Meeting Link
+    'required_meeting_link' => 'يرجى إدخال رابط الاجتماع',
+    'invalid_meeting_link' => 'رابط الاجتماع غير صحيح',
 
     // Validation - Exists
     'invalid_grade_id' => 'المرحلة الدراسية غير موجودة',

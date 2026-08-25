@@ -124,6 +124,8 @@ Route::group([
             Route::resource('questions', QuestionController::class);
 
         // online_classes
+            Route::get('createManual', [OnlineClassController::class, 'createManual'])->name('online_classes.createManual');
+            Route::post('storeManual', [OnlineClassController::class, 'storeManual'])->name('online_classes.storeManual');
             Route::resource('online_classes', OnlineClassController::class);
     });
 

@@ -201,7 +201,7 @@
                         </a>
                         <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('online_classes.index') }}">{{ trans('online_classes.direct_connection') }}</a> </li>
-                            <li> <a href="themify-icons.html">{{ trans('online_classes.not_direct_connection') }}</a> </li>
+                            {{-- <li> <a href="themify-icons.html">{{ trans('online_classes.not_direct_connection') }}</a> </li> --}}
                         </ul>
                     </li>
 

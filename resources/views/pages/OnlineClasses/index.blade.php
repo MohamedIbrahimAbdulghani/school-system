@@ -47,9 +47,9 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    <a href="{{route('online_classes.create')}}"><button type="button" class="mb-2 button x-small">{{trans('online_classes.add_new_class')}}</button></a>
+                    <a href="{{route('online_classes.create')}}"><button type="button" class="mb-2 button x-small"> + {{trans('online_classes.add_automatic_meeting')}}</button></a>
 
-                    {{-- <button type="button" class="mb-2 button x-small" id="bulk-delete-btn"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" >{{trans('classrooms.delete_checkbox')}}</button> --}}
+                    <a href="{{route('online_classes.createManual')}}"><button type="button" style="background-color:#ffc107; border-color: #ffc107; color: black" class="mb-2 button x-small"> + {{trans('online_classes.add_manual_meeting')}}</button></a>
 
                     <div class="table-responsive">
                         <table id="datatable" class="table p-0 table-striped table-bordered" data-page-length="10"  style="text-align: center">
@@ -63,6 +63,7 @@
                                     <th>{{ trans('online_classes.topic') }}</th>
                                     <th>{{ trans('online_classes.start_at') }}</th>
                                     <th>{{ trans('online_classes.duration') }}</th>
+                                    <th>{{ trans('online_classes.meeting_platform') }}</th>
                                     <th>{{ trans('online_classes.link') }}</th>
                                     <th>{{ trans('online_classes.processes') }}</th>
                                 </tr>
@@ -80,6 +81,7 @@
                                         <td>{{ $online_class->topic }}</td>
                                         <td>{{ $online_class->start_at }}</td>
                                         <td>{{ $online_class->duration }}</td>
+                                        <td>{{ $online_class->meeting_platform }}</td>
                                         <td class="text-danger"><a href="{{ $online_class->join_url }}" target="_blank">{{trans('online_classes.link')}}</a></td>
                                         <td>
                                             <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$online_class->id}}"  title="{{trans('exams.delete')}}"><i class="fa fa-trash"></i></button>

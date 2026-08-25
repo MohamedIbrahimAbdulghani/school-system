@@ -17,12 +17,13 @@ return new class extends Migration
             $table->foreignId('classroom_id')->constrained('class_rooms')->onDelete('cascade');
             $table->foreignId('section_id')->constrained('sections')->onDelete('cascade');
             $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
-            $table->string('metting_id');
+            $table->string('meeting_platform');
+            $table->string('metting_id')->nullable();
             $table->string('topic');
             $table->dateTime('start_at');
             $table->integer('duration')->comment('minutes');
-            $table->string('password')->comment('meeting password');
-            $table->text('start_url');
+            $table->string('password')->nullable()->comment('meeting password');
+            $table->text('start_url')->nullable();
             $table->text('join_url');
             $table->timestamps();
         });

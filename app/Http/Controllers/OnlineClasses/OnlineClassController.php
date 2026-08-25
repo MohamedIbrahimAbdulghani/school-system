@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\OnlineClasses;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreOnlineClassManualRequest;
 use App\Http\Requests\StoreOnlineClassRequest;
 use App\Repository\OnlineClassesRepositoryInterface;
 use Illuminate\Http\Request;
@@ -69,5 +70,12 @@ class OnlineClassController extends Controller
     public function destroy(string $id)
     {
         return $this->online_class->destroy($id);
+    }
+
+    public function createManual() {
+        return $this->online_class->createManual();
+    }
+    public function storeManual(StoreOnlineClassManualRequest $request) {
+        return $this->online_class->storeManual($request);
     }
 }

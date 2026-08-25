@@ -10,4 +10,6 @@ interface OnlineClassesRepositoryInterface {
     public function edit($id);
     public function update($request);
     public function destroy($id);
+    public function createManual();
+    public function storeManual($request);
 }

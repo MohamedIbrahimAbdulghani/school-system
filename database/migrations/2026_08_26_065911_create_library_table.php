@@ -11,20 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('online_classes', function (Blueprint $table) {
+        Schema::create('library', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('file_name');
             $table->foreignId('grade_id')->constrained('grades')->onDelete('cascade');
             $table->foreignId('classroom_id')->constrained('class_rooms')->onDelete('cascade');
             $table->foreignId('section_id')->constrained('sections')->onDelete('cascade');
-            $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
-            $table->string('meeting_platform');
-            $table->string('meeting_id')->nullable();
-            $table->string('topic');
-            $table->dateTime('start_at');
-            $table->integer('duration')->comment('minutes');
-            $table->string('password')->nullable()->comment('meeting password');
-            $table->text('start_url')->nullable();
-            $table->text('join_url');
+            $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('online_classes');
+        Schema::dropIfExists('library');
     }
 };

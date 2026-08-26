@@ -59,7 +59,7 @@ class OnlineClassesRepository implements  OnlineClassesRepositoryInterface {
             toastr()->success(trans('messages.success'));
             return redirect()->route('online_classes.index');
         } catch(\Exception $e) {
-            dd($e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 

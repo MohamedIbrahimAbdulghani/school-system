@@ -6,6 +6,7 @@ use App\Http\Controllers\Grades\GradesController;
 use App\Http\Controllers\Classrooms\ClassRoomsController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
 use App\Http\Controllers\Fees\FeesController;
+use App\Http\Controllers\Libraries\LibraryController;
 use App\Http\Controllers\OnlineClasses\OnlineClassController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Parents\ParentController;
@@ -123,10 +124,13 @@ Route::group([
         // Questions
             Route::resource('questions', QuestionController::class);
 
-        // online_classes
+        // Online_classes
             Route::get('createManual', [OnlineClassController::class, 'createManual'])->name('online_classes.createManual');
             Route::post('storeManual', [OnlineClassController::class, 'storeManual'])->name('online_classes.storeManual');
             Route::resource('online_classes', OnlineClassController::class);
+
+        // Libraries
+            Route::resource('libraries', LibraryController::class);
     });
 
 });

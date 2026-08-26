@@ -10,6 +10,8 @@ use App\Repository\FeesRepository;
 use App\Repository\FeesRepositoryInterface;
 use App\Repository\GraduatedRepository;
 use App\Repository\GraduatedRepositoryInterface;
+use App\Repository\LibrariesRepository;
+use App\Repository\LibrariesRepositoryInterface;
 use App\Repository\OnlineClassesRepository;
 use App\Repository\OnlineClassesRepositoryInterface;
 use App\Repository\PaymentRefundsRepositoryInterface;
@@ -55,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(QuizzesRepositoryInterface::class, QuizzesRepository::class);
         $this->app->bind(QuestionsRepositoryInterface::class, QuestionsRepository::class);
         $this->app->bind(OnlineClassesRepositoryInterface::class, OnlineClassesRepository::class);
+        $this->app->bind(LibrariesRepositoryInterface::class, LibrariesRepository::class);
     }
 
     /**

@@ -4,6 +4,7 @@ return [
     'books_list' => 'قائمة الكتب',
     'library' => 'المكتبة',
     'add_book' => 'اضافة كتاب جديد',
+    'edit_book' =>'تعديل كتاب',
     'book_name' => 'اسم الكتاب',
     'teacher_name' => 'اسم المعلم',
     'grade' => 'المرحلة الدراسية',
@@ -12,6 +13,7 @@ return [
     'file' => ' اختيار الملف',
     'processes' => 'العمليات',
     'submit' => 'تاكيد',
+    'Warning_book' => 'هل أنت متأكد من حذف الكتاب؟',
 
 
     // Validation

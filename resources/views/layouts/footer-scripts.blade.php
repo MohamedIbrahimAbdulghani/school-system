@@ -148,6 +148,11 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('form').on('submit', function () {
+    $('select[name="classroom_id"]').prop('disabled', false);
+    $('select[name="section_id"]').prop('disabled', false);
+});
 });
 </script>
 

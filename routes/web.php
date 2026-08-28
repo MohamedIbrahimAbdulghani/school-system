@@ -131,6 +131,7 @@ Route::group([
 
         // Libraries
             Route::resource('libraries', LibraryController::class);
+            Route::get('libraries/download/{id}', [LibraryController::class, 'download'])->name('libraries.download');
     });
 
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Libraries;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLibraryRequest;
+use App\Http\Requests\UpdateLibraryRequest;
 use App\Repository\LibrariesRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -58,7 +59,7 @@ class LibraryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(UpdateLibraryRequest $request)
     {
         return $this->libraries->update($request);
     }
@@ -69,5 +70,10 @@ class LibraryController extends Controller
     public function destroy(string $id)
     {
         return $this->libraries->destroy($id);
+    }
+
+    public function download($id)
+    {
+        return $this->libraries->download($id);
     }
 }

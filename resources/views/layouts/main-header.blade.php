@@ -4,10 +4,16 @@
     <!-- logo -->
     <div class="text-left navbar-brand-wrapper">
         <a class="navbar-brand brand-logo" href="{{ url('/') }}">
-            <img src="{{ asset('assets/images/logo-dark.png') }}" alt="">
+            <picture>
+                <source srcset="{{ asset('assets/images/logo-white.jpg') }}" media="(prefers-color-scheme: dark)">
+                <img src="{{ asset('assets/images/logo-dark.jpg') }}" alt="Logo">
+            </picture>
         </a>
         <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}">
-            <img src="{{ asset('assets/images/logo-icon-dark.png') }}" alt="">
+            <picture>
+                <source srcset="{{ asset('assets/images/logo-icon-light.jpg') }}" media="(prefers-color-scheme: dark)">
+                <img src="{{ asset('assets/images/logo-icon-dark.jpg') }}" alt="Logo Mini">
+            </picture>
         </a>
     </div>
 
@@ -99,7 +105,7 @@
             .dropdown.show .lang-chevron {
                 transform: rotate(180deg);
             }
-            
+
             .lang-switcher-dropdown {
                 border-radius: 12px !important;
                 box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
@@ -127,7 +133,7 @@
                 color: #10b981 !important;
                 font-size: 12px;
             }
-            
+
             /* Enable Click behavior for dropdowns using no-hover class */
             .admin-header .dropdown.no-hover.show .dropdown-menu {
                 margin-top: 0 !important;
@@ -219,4 +225,3 @@
 </nav>
 <!--=================================
  header End-->
- 

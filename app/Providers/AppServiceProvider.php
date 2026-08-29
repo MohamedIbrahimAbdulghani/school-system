@@ -29,6 +29,8 @@ use App\Repository\QuestionsRepository;
 use App\Repository\QuestionsRepositoryInterface;
 use App\Repository\QuizzesRepository;
 use App\Repository\QuizzesRepositoryInterface;
+use App\Repository\SettingRepository;
+use App\Repository\SettingRepositoryInterface;
 use App\Repository\SubjectRepository;
 use App\Repository\SubjectRepositoryInterface;
 use App\Repository\TeacherRepository;
@@ -58,6 +60,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(QuestionsRepositoryInterface::class, QuestionsRepository::class);
         $this->app->bind(OnlineClassesRepositoryInterface::class, OnlineClassesRepository::class);
         $this->app->bind(LibrariesRepositoryInterface::class, LibrariesRepository::class);
+        $this->app->bind(SettingRepositoryInterface::class, SettingRepository::class);
     }
 
     /**

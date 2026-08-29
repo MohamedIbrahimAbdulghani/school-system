@@ -22,6 +22,7 @@ use App\Http\Controllers\Students\ProcessingFeesController;
 use App\Http\Controllers\Students\PaymentRefundsController;
 use App\Http\Controllers\Students\AttendanceController;
 use App\Http\Controllers\Subjects\SubjectController;
+use App\Http\Controllers\Settingss\SettingController;
 
 // ======== المجموعة الرئيسية ========
 Route::group([
@@ -132,6 +133,10 @@ Route::group([
         // Libraries
             Route::resource('libraries', LibraryController::class);
             Route::get('libraries/download/{id}', [LibraryController::class, 'download'])->name('libraries.download');
+
+       // Settings
+            Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+            Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
     });
 
 });

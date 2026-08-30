@@ -37,4 +37,14 @@ return [
     'Logout' => 'تسجيل الخروج',
 
     'Whoops' => 'عذراً! حدث خطأ ما.',
+
+    'student' => 'طالب',
+    'parent' => 'ولي امر',
+    'teacher' => 'معلم',
+    'admin' => 'ادمن',
+
+    'login_student' => 'تسجيل دخول طالب',
+    'login_parent' => 'تسجيل دخول ولي امر',
+    'login_teacher' => 'تسجيل دخول معلم',
+    'login_admin' => 'تسجيل دخول ادمن',
 ];

@@ -38,4 +38,16 @@ return [
     'Logout' => 'Logout',
 
     'Whoops' => 'Whoops! Something went wrong',
+
+
+    'student' => 'Student',
+    'parent' => 'Parent',
+    'teacher' => 'Teacher',
+    'admin' => 'Admin',
+
+
+    'login_student' => 'Student Login',
+    'login_parent' => 'Parent Login',
+    'login_teacher' => 'Teacher Login',
+    'login_admin' => 'Admin Login',
 ];

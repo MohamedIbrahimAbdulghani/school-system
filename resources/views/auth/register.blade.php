@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ trans('auth.Register') }}</title>
-    
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />
 
@@ -17,7 +17,7 @@
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,10 +26,10 @@
                 extend: {
                     colors: {
                         brand: {
-                            blue: '#1e40af', 
+                            blue: '#1e40af',
                             'blue-light': '#3b82f6',
                             'blue-dark': '#1d4ed8',
-                            green: '#10b981', 
+                            green: '#10b981',
                             'green-dark': '#059669',
                             navy: '#0f172a',
                         }
@@ -119,10 +119,10 @@
     <div class="relative min-h-screen flex items-center justify-center bg-slate-900 overflow-x-hidden py-6 px-4 sm:py-12 sm:px-6 lg:px-8">
         <!-- Background Image with Cover -->
         <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50" style="background-image: url('{{ asset('assets/images/school-hero-bg.png') }}');"></div>
-        
+
         <!-- Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/60 to-slate-950/90 backdrop-blur-[4px] pointer-events-none"></div>
-        
+
         <!-- Decorative subtle grid -->
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
 
@@ -141,7 +141,7 @@
         </ul>
 
         <div class="max-w-md w-full space-y-4 sm:space-y-5 glass-card p-5  rounded-3xl shadow-2xl z-10 relative border border-white/20 my-auto">
-            
+
             <!-- Language Switcher -->
             <div class="absolute top-4 {{ app()->getLocale() == 'ar' ? 'left-4' : 'right-4' }} z-50">
                 <div class="relative inline-block text-left" id="lang-dropdown-wrapper">
@@ -163,13 +163,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center">
-                <a href="{{ url('/') }}" class="inline-block transform hover:scale-110 transition duration-300">
+                {{-- <a href="{{ url('/') }}" class="inline-block transform hover:scale-110 transition duration-300">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl bg-gradient-to-tr from-brand-blue to-indigo-500 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-lg shadow-brand-blue/30">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </div>
-                </a>
+                </a> --}}
+                <a href="{{ url('/') }}"><img src="{{ asset('assets/images/logo-icon-light.jpg') }}" style="width: 50px; height: 50px; margin: auto;"></a>
                 <h2 class="mt-3 sm:mt-4 text-xl sm:text-2xl font-black text-slate-900 tracking-tight {{ app()->getLocale() == 'ar' ? 'font-cairo' : 'font-inter' }}">
                     {{ trans('auth.Register_title') }}
                 </h2>
@@ -204,8 +205,8 @@
                             <div class="absolute inset-y-0 {{ app()->getLocale() == 'ar' ? 'right-0 pr-4' : 'left-0 pl-4' }} flex items-center pointer-events-none">
                                 <i class="fa-regular fa-user text-slate-400"></i>
                             </div>
-                            <input id="name" name="name" type="text" value="{{ old('name') }}"  autofocus autocomplete="name" 
-                                class="block w-full {{ app()->getLocale() == 'ar' ? 'pr-11 pl-4' : 'pl-11 pr-4' }} py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-white/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-all duration-300 text-xs sm:text-sm font-medium shadow-sm hover:border-brand-blue/30 placeholder-slate-400" 
+                            <input id="name" name="name" type="text" value="{{ old('name') }}"  autofocus autocomplete="name"
+                                class="block w-full {{ app()->getLocale() == 'ar' ? 'pr-11 pl-4' : 'pl-11 pr-4' }} py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-white/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-all duration-300 text-xs sm:text-sm font-medium shadow-sm hover:border-brand-blue/30 placeholder-slate-400"
                                 placeholder="{{ app()->getLocale() == 'ar' ? 'الاسم الكامل' : 'Full Name' }}">
                         </div>
                     </div>
@@ -217,8 +218,8 @@
                             <div class="absolute inset-y-0 {{ app()->getLocale() == 'ar' ? 'right-0 pr-4' : 'left-0 pl-4' }} flex items-center pointer-events-none">
                                 <i class="fa-regular fa-envelope text-slate-400"></i>
                             </div>
-                            <input id="email" name="email" type="email" value="{{ old('email') }}"  autocomplete="username" 
-                                class="block w-full {{ app()->getLocale() == 'ar' ? 'pr-11 pl-4' : 'pl-11 pr-4' }} py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-white/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-all duration-300 text-xs sm:text-sm font-medium shadow-sm hover:border-brand-blue/30 placeholder-slate-400" 
+                            <input id="email" name="email" type="email" value="{{ old('email') }}"  autocomplete="username"
+                                class="block w-full {{ app()->getLocale() == 'ar' ? 'pr-11 pl-4' : 'pl-11 pr-4' }} py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-white/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-all duration-300 text-xs sm:text-sm font-medium shadow-sm hover:border-brand-blue/30 placeholder-slate-400"
                                 placeholder="name@example.com">
                         </div>
                     </div>
@@ -230,8 +231,8 @@
                             <div class="absolute inset-y-0 {{ app()->getLocale() == 'ar' ? 'right-0 pr-4' : 'left-0 pl-4' }} flex items-center pointer-events-none">
                                 <i class="fa-solid fa-lock text-slate-400"></i>
                             </div>
-                            <input id="password" name="password" type="password"  autocomplete="new-password" 
-                                class="block w-full px-11 py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-white/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-all duration-300 text-xs sm:text-sm font-medium shadow-sm hover:border-brand-blue/30 placeholder-slate-400" 
+                            <input id="password" name="password" type="password"  autocomplete="new-password"
+                                class="block w-full px-11 py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-white/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-all duration-300 text-xs sm:text-sm font-medium shadow-sm hover:border-brand-blue/30 placeholder-slate-400"
                                 placeholder="••••••••">
                             <button type="button" onclick="togglePassword('password', 'togglePasswordIcon')" tabindex="-1" class="absolute inset-y-0 {{ app()->getLocale() == 'ar' ? 'left-0 pl-4' : 'right-0 pr-4' }} flex items-center text-slate-400 hover:text-brand-blue transition-colors duration-300 focus:outline-none">
                                 <i id="togglePasswordIcon" class="fa-regular fa-eye"></i>
@@ -243,7 +244,7 @@
                     <!-- Terms & Conditions (if enabled) -->
                     @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                         <div class="flex items-start gap-3 pt-1">
-                            <input type="checkbox" name="terms" id="terms" required 
+                            <input type="checkbox" name="terms" id="terms" required
                                 class="mt-1 h-4 w-4 rounded border-slate-200 text-brand-blue focus:ring-brand-blue/50 focus:ring-2 transition-all duration-300">
                             <label for="terms" class="text-xs text-slate-500 font-medium leading-tight">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
@@ -256,23 +257,23 @@
                 </div>
 
                 <div class="pt-1.5">
-                    <button type="submit" 
+                    <button type="submit"
                         class="w-full flex justify-center items-center gap-3 py-2.5 sm:py-3 px-4 border border-transparent text-xs sm:text-sm font-black rounded-2xl text-white bg-gradient-to-r from-brand-blue to-blue-700 hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-blue transition-all duration-300 shadow-xl shadow-brand-blue/30 transform hover:-translate-y-1">
                         {{ trans('auth.Register_btn') }}
                         <i class="fa-solid fa-arrow-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }}"></i>
                     </button>
                 </div>
-                
+
                 <div class="text-center mt-4 pt-3 sm:mt-5 sm:pt-4 border-t border-slate-200">
                     <p class="text-xs font-medium text-slate-500">
-                        {{ trans('auth.Already registered?') }} 
+                        {{ trans('auth.Already registered?') }}
                         <a href="{{ route('login') }}" class="font-bold text-brand-blue hover:text-brand-blue-dark transition-colors duration-300 ml-1 mr-1 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-brand-blue after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300">
                             {{ trans('auth.Log in') }}
                         </a>
                     </p>
                 </div>
             </form>
-            
+
             <!-- Link Back to Home -->
             <div class="text-center mt-2.5">
                 <a href="{{ url('/') }}" class="inline-flex items-center gap-2 text-[10px] font-bold text-slate-400 hover:text-brand-blue transition duration-300 group">
@@ -288,7 +289,7 @@
     function togglePassword(inputId, iconId) {
         const passwordInput = document.getElementById(inputId);
         const icon = document.getElementById(iconId);
-        
+
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
             icon.classList.remove('fa-eye');

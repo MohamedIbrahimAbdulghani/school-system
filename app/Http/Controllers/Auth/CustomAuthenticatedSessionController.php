@@ -9,40 +9,92 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 class CustomAuthenticatedSessionController
 {
     /**
-     * عرض صفحة تسجيل الدخول
+     * صفحة اختيار نوع تسجيل الدخول
      */
     public function create()
     {
-        return view('auth.login');
+        // return view('auth.login');
+        return view('auth.login-type');
     }
-    public function register() {
+
+    /**
+     * عرض صفحة تسجيل الدخول حسب نوع المستخدم
+     */
+    public function showLoginForm($type)
+    {
+        $allowedTypes = [
+            'admin',
+            'teacher',
+            'student',
+            'parent',
+        ];
+
+        abort_unless(in_array($type, $allowedTypes), 404);
+
+        return view('auth.login', compact('type'));
+    }
+
+    /**
+     * صفحة التسجيل
+     */
+    public function register()
+    {
         return view('auth.register');
     }
 
     /**
      * تنفيذ عملية تسجيل الدخول
      */
-    public function store(Request $request)
+    public function store(Request $request, $type)
     {
-        // Set the app locale from the session (saved during GET request)
+        // Set the app locale from the session
         $locale = session('locale', app()->getLocale());
         app()->setLocale($locale);
 
-        // تحقق من بيانات المستخدم
-        $credentials = $request->only('email', 'password');
+        // تحديد الـ Guard حسب نوع المستخدم
+        $guards = [
+            'admin' => 'web',
+            'teacher' => 'teacher',
+            'student' => 'student',
+            'parent' => 'parent',
+        ];
 
-        if (Auth::attempt($credentials)) {
+        abort_unless(isset($guards[$type]), 404);
+
+        $guard = $guards[$type];
+
+        // التحقق من بيانات الدخول
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        // محاولة تسجيل الدخول
+        if (Auth::guard($guard)->attempt($credentials)) {
+
             $request->session()->regenerate();
 
-            // بعد تسجيل الدخول، وجّه المستخدم إلى الـ dashboard
-            return redirect()->intended('dashboard');
+            // Dashboard حسب نوع المستخدم
+            return match ($type) {
+
+                'admin' => redirect()->route('dashboard'),
+
+                'teacher' => redirect()->route('teacher.dashboard'),
+
+                'student' => redirect()->route('student.dashboard'),
+
+                'parent' => redirect()->route('parent.dashboard'),
+            };
         }
 
         return back()->withErrors([
             'email' => trans('auth.failed'),
-        ]);
+        ])->onlyInput('email');
     }
 
+    /**
+     * تسجيل الخروج
+     */
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
@@ -50,10 +102,12 @@ class CustomAuthenticatedSessionController
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        // هات اللغة من الكوكي (أو خليها اللغة الحالية لو مفيش كوكي)
+        // هات اللغة من الكوكي
         $locale = $request->cookie('locale', app()->getLocale());
 
-        // اعمل redirect على الصفحة الرئيسية بنفس اللغة
-        return redirect(LaravelLocalization::getLocalizedURL($locale, '/'));
+        // Redirect للصفحة الرئيسية بنفس اللغة
+        return redirect(
+            LaravelLocalization::getLocalizedURL($locale, '/')
+        );
     }
 }

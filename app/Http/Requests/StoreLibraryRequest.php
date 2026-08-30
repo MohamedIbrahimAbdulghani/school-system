@@ -24,7 +24,7 @@ class StoreLibraryRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'grade_id' => 'required|exists:grades,id',
-            'classroom_id' => 'required|exists:class_rooms,id',
+            'classroom_id' => 'required|exists:classrooms,id',
             'section_id' => 'required|exists:sections,id',
             'file_name' => 'required|file',
         ];

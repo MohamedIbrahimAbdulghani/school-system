@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('invoice_date');
             $table->foreignId('student_id')->constrained('students')->cascadeOnDelete();
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
-            $table->foreignId('classroom_id')->constrained('class_rooms')->cascadeOnDelete();
+            $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnDelete();
             $table->foreignId('fee_id')->constrained('fees')->cascadeOnDelete();
             $table->decimal('amount', 8, 2);
             $table->string('description')->nullable();
@@ -32,3 +32,4 @@ return new class extends Migration
         Schema::dropIfExists('fee_invoices');
     }
 };
+

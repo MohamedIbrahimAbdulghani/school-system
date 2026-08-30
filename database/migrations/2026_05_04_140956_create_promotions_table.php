@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('student_id')->constrained('students')->cascadeOnDelete();
             $table->foreignId('from_grade')->constrained('grades')->cascadeOnDelete();
-            $table->foreignId('from_classroom')->constrained('class_rooms')->cascadeOnDelete();
+            $table->foreignId('from_classroom')->constrained('classrooms')->cascadeOnDelete();
             $table->foreignId('from_section')->constrained('sections')->cascadeOnDelete();
             $table->foreignId('to_grade')->constrained('grades')->cascadeOnDelete();
-            $table->foreignId('to_classroom')->constrained('class_rooms')->cascadeOnDelete();
+            $table->foreignId('to_classroom')->constrained('classrooms')->cascadeOnDelete();
             $table->foreignId('to_section')->constrained('sections')->cascadeOnDelete();
             $table->string('academic_year');
             $table->string('new_academic_year');

@@ -3,23 +3,23 @@
 
 namespace App\Repository;
 
-use App\Models\Fees;
-use App\Models\Grades;
+use App\Models\Fee;
+use App\Models\Grade;
 
 class FeesRepository implements FeesRepositoryInterface {
     // this function to get all data from fees and show index page
     public function index() {
-        $fees = Fees::all();
+        $fees = Fee::all();
         return view('pages.Fees.index', compact('fees'));
     }
     // this function to get all data from grades and show create page
     public function create() {
-        $Grades = Grades::all();
+        $Grades = Grade::all();
         return view('pages.Fees.add', compact('Grades'));
     }
     // this function to store data to database and show message success or error
     public function store($request) {
-        $fee = Fees::create([
+        $fee = Fee::create([
             'name' => ['en' => $request->name_en, 'ar' => $request->name_ar],
             'amount' => $request->amount,
             'grade_id' => $request->grade_id,
@@ -41,13 +41,13 @@ class FeesRepository implements FeesRepositoryInterface {
     }
     // this function to show edit page by id
     public function edit($id) {
-        $Grades = Grades::all();
-        $fee = Fees::findOrFail($id);
+        $Grades = Grade::all();
+        $fee = Fee::findOrFail($id);
         return view('pages.Fees.edit', compact('fee', 'Grades'));
     }
     // this function to update data in database and show message success or error
     public function update($request) {
-        $fee = Fees::findOrFail($request->id);
+        $fee = Fee::findOrFail($request->id);
         $fee->update([
             'name' => ['en' => $request->name_en, 'ar' => $request->name_ar],
             'amount' => $request->amount,
@@ -66,7 +66,7 @@ class FeesRepository implements FeesRepositoryInterface {
     }
     // this function to delete data from database and show message success or error
     public function destroy($id) {
-        $fee = Fees::findOrFail($id);
+        $fee = Fee::findOrFail($id);
         $fee->delete();
         if ($fee) {
             toastr()->success(trans('messages.delete'));
@@ -76,3 +76,5 @@ class FeesRepository implements FeesRepositoryInterface {
         return redirect()->route('fees.index');
     }
 }
+
+

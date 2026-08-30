@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('online_classes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('grade_id')->constrained('grades')->onDelete('cascade');
-            $table->foreignId('classroom_id')->constrained('class_rooms')->onDelete('cascade');
+            $table->foreignId('classroom_id')->constrained('classrooms')->onDelete('cascade');
             $table->foreignId('section_id')->constrained('sections')->onDelete('cascade');
             $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
             $table->string('meeting_platform');

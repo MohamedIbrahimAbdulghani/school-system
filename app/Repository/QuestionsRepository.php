@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Repository;
-use App\Models\Quizz;
+use App\Models\Quiz;
 
 use App\Models\Question;
 
@@ -12,7 +12,7 @@ class QuestionsRepository implements  QuestionsRepositoryInterface {
     }
 
     public function create() {
-        $quizzes = Quizz::all();
+        $quizzes = Quiz::all();
         return view('pages.Questions.create', compact('quizzes'));
     }
 
@@ -37,7 +37,7 @@ class QuestionsRepository implements  QuestionsRepositoryInterface {
     }
 
     public function edit($id) {
-        $quizzes = Quizz::all();
+        $quizzes = Quiz::all();
         $question = Question::findOrFail($id);
         return view('pages.Questions.edit', compact('question', 'quizzes'));
     }
@@ -69,3 +69,5 @@ class QuestionsRepository implements  QuestionsRepositoryInterface {
         }
     }
 }
+
+

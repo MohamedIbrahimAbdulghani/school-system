@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Specializations;
+use App\Models\Specialization;
 
 class SpecializationSeeder extends Seeder
 {
@@ -24,7 +24,7 @@ class SpecializationSeeder extends Seeder
             ['en' => 'History', 'ar' => 'تاريخ'],
         ];
         foreach($specializations as $specialization) {
-            Specializations::create(['name' => $specialization]);
+            Specialization::create(['name' => $specialization]);
         }
     }
 }

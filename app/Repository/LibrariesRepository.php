@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Models\Grades;
+use App\Models\Grade;
 use App\Models\Library;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,7 +13,7 @@ class LibrariesRepository implements LibrariesRepositoryInterface {
     }
 
     public function create() {
-        $grades = Grades::all();
+        $grades = Grade::all();
         return view('pages.Libraries.create', compact('grades'));
     }
 
@@ -45,7 +45,7 @@ class LibrariesRepository implements LibrariesRepositoryInterface {
 
     public function edit($id) {
         $library = Library::findOrFail($id);
-        $grades = Grades::all();
+        $grades = Grade::all();
         return view('pages.Libraries.edit', compact('library', 'grades'));
     }
 

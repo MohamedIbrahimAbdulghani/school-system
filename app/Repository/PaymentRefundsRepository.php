@@ -1,22 +1,22 @@
 <?php
 
 namespace App\Repository;
-use App\Models\PaymentRefunds;
-use App\Models\Students;
+use App\Models\PaymentRefund;
+use App\Models\Student;
 use Illuminate\Support\Facades\DB;
-use App\Models\StudentAccounts;
-use App\Models\FundAccounts;
+use App\Models\StudentAccount;
+use App\Models\FundAccount;
 
 class PaymentRefundsRepository implements PaymentRefundsRepositoryInterface {
     public function index() {
-        $paymentrefunds = PaymentRefunds::all();
+        $paymentrefunds = PaymentRefund::all();
         return view('pages.PaymentRefunds.index', compact('paymentrefunds'));
     }
     public function store($request) {
         DB::beginTransaction();
         try {
             //  Save in payment_refunds table in database
-            $paymentrefund = PaymentRefunds::create([
+            $paymentrefund = PaymentRefund::create([
                 'date' => date('Y-m-d'),
                 'student_id' => $request->student_id,
                 'amount' => $request->amount,
@@ -24,7 +24,7 @@ class PaymentRefundsRepository implements PaymentRefundsRepositoryInterface {
             ]);
 
             // Save in fund_accounts table in database
-            $fund_accounts = FundAccounts::create([
+            $fund_accounts = FundAccount::create([
                 'date' => date('Y-m-d'),
                 'payment_refunds_id' => $paymentrefund->id,
                 'debit' => 0.00,
@@ -33,7 +33,7 @@ class PaymentRefundsRepository implements PaymentRefundsRepositoryInterface {
             ]);
 
             // Save in student_accounts table in database
-            $students_accounts = StudentAccounts::create([
+            $students_accounts = StudentAccount::create([
                 'date' => date('Y-m-d'),
                 'type' => 'payment',
                 'student_id' => $request->student_id,
@@ -51,31 +51,31 @@ class PaymentRefundsRepository implements PaymentRefundsRepositoryInterface {
         return redirect()->route('payment_refunds.index');
     }
     public function show($id) {
-        $student = Students::findOrFail($id);
+        $student = Student::findOrFail($id);
         return view('pages.PaymentRefunds.add', compact('student'));
     }
     public function edit($id) {
-        $paymentrefund = PaymentRefunds::findOrFail($id);
+        $paymentrefund = PaymentRefund::findOrFail($id);
         return view('pages.PaymentRefunds.edit', compact('paymentrefund'));
     }
     public function update($request) {
         DB::beginTransaction();
         try {
-            $paymentrefund = PaymentRefunds::findOrFail($request->paymentrefund_id);
+            $paymentrefund = PaymentRefund::findOrFail($request->paymentrefund_id);
             $paymentrefund->update([
                 'amount' => $request->amount,
                 'description' => $request->description,
             ]);
 
             // Update in fund_accounts table in database
-            $fund_accounts = FundAccounts::where('payment_refunds_id', $paymentrefund->id)->first();
+            $fund_accounts = FundAccount::where('payment_refunds_id', $paymentrefund->id)->first();
             $fund_accounts->update([
                 'credit' => $request->amount,
                 'description' => $request->description,
             ]);
 
             // Update in student_accounts table in database
-            $students_accounts = StudentAccounts::where('payment_refunds_id', $paymentrefund->id)->first();
+            $students_accounts = StudentAccount::where('payment_refunds_id', $paymentrefund->id)->first();
             $students_accounts->update([
                 'debit' => $request->amount,
                 'description' => $request->description,
@@ -89,8 +89,10 @@ class PaymentRefundsRepository implements PaymentRefundsRepositoryInterface {
         return redirect()->route('payment_refunds.index');
     }
     public function destroy($request) {
-        PaymentRefunds::destroy($request->id);
+        PaymentRefund::destroy($request->id);
         toastr()->error(trans('messages.delete'));
         return redirect()->route('payment_refunds.index');
     }
 }
+
+

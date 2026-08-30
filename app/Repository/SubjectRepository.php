@@ -2,29 +2,29 @@
 
 namespace App\Repository;
 
-use App\Models\Genders;
-use App\Models\Grades;
-use App\Models\Subjects;
-use App\Models\Teachers;
+use App\Models\Gender;
+use App\Models\Grade;
+use App\Models\Subject;
+use App\Models\Teacher;
 
 class SubjectRepository implements SubjectRepositoryInterface
 {
     public function index()
     {
-        $subjects = Subjects::all();
+        $subjects = Subject::all();
         return view('pages.Subjects.index', compact('subjects'));
     }
 
     public function create()
     {
-        $grades = Grades::all();
-        $teachers = Teachers::all();
+        $grades = Grade::all();
+        $teachers = Teacher::all();
         return view('pages.Subjects.create', compact('grades', 'teachers'));
     }
     public function store($request)
     {
         try {
-            Subjects::create([
+            Subject::create([
                 'name' => ['ar' => $request->subject_name_ar, 'en' => $request->subject_name_en],
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
@@ -39,15 +39,15 @@ class SubjectRepository implements SubjectRepositoryInterface
 
     public function edit($id)
     {
-        $subject = Subjects::findOrFail($id);
-        $grades = Grades::all();
-        $teachers = Teachers::all();
+        $subject = Subject::findOrFail($id);
+        $grades = Grade::all();
+        $teachers = Teacher::all();
         return view('pages.Subjects.edit', compact('subject', 'grades', 'teachers'));
     }
     public function update($request, $id)
     {
         try {
-            Subjects::findOrFail($id)->update([
+            Subject::findOrFail($id)->update([
                 'name' => ['ar' => $request->subject_name_ar, 'en' => $request->subject_name_en],
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
@@ -61,8 +61,9 @@ class SubjectRepository implements SubjectRepositoryInterface
     }
     public function destroy($request)
     {
-        Subjects::findOrFail($request->id)->delete();
+        Subject::findOrFail($request->id)->delete();
         toastr()->success(trans('messages.delete'));
         return redirect()->route('subjects.index');
     }
 }
+

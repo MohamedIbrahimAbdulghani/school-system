@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('status');
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
-            $table->foreignId('classroom_id')->constrained('class_rooms')->cascadeOnDelete();
+            $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -29,3 +29,4 @@ return new class extends Migration
         Schema::dropIfExists('sections');
     }
 };
+

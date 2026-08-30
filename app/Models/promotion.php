@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class promotion extends Model
+class Promotion extends Model
 {
     protected $fillable = [
         'student_id',
@@ -19,24 +19,24 @@ class promotion extends Model
     ];
 
     public function student() {
-        return $this->belongsTo(Students::class, 'student_id')->withTrashed();
+        return $this->belongsTo(Student::class, 'student_id')->withTrashed();
     }
     public function fromGrade() {
-        return $this->belongsTo(Grades::class, 'from_grade');
+        return $this->belongsTo(Grade::class, 'from_grade');
     }
     public function fromClassroom() {
-        return $this->belongsTo(ClassRooms::class, 'from_classroom');
+        return $this->belongsTo(Classroom::class, 'from_classroom');
     }
     public function fromSection() {
-        return $this->belongsTo(Sections::class, 'from_section');
+        return $this->belongsTo(Section::class, 'from_section');
     }
     public function toGrade() {
-        return $this->belongsTo(Grades::class, 'to_grade');
+        return $this->belongsTo(Grade::class, 'to_grade');
     }
     public function toClassroom() {
-        return $this->belongsTo(ClassRooms::class, 'to_classroom');
+        return $this->belongsTo(Classroom::class, 'to_classroom');
     }
     public function toSection() {
-        return $this->belongsTo(Sections::class, 'to_section');
+        return $this->belongsTo(Section::class, 'to_section');
     }
 }

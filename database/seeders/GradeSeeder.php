@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Grades;
+use App\Models\Grade;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +22,7 @@ class GradeSeeder extends Seeder
             ['en' => 'High School', 'ar' => 'المرحلة الثانوية'],
         ];
         foreach($grades as $grade) {
-            Grades::create([
+            Grade::create([
                 'name' => $grade,
                 'notes' => fake()->sentence(),
             ]);

@@ -6,22 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Library extends Model
 {
-    protected $table = 'library';
+    protected $table = 'libraries';
     protected $guarded = [];
 
     public function grade()
     {
-        return $this->belongsTo(Grades::class, 'grade_id');
+        return $this->belongsTo(Grade::class, 'grade_id');
     }
     public function classroom()
     {
-        return $this->belongsTo(ClassRooms::class, 'classroom_id');
+        return $this->belongsTo(Classroom::class, 'classroom_id');
     }
     public function section()
     {
-        return $this->belongsTo(Sections::class, 'section_id');
+        return $this->belongsTo(Section::class, 'section_id');
     }
     public function teacher() {
-        return $this->belongsTo(Teachers::class, 'teacher_id');
+        return $this->belongsTo(Teacher::class, 'teacher_id');
     }
 }

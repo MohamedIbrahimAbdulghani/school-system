@@ -23,7 +23,7 @@ class StoreOnlineClassRequest extends FormRequest
     {
         return [
             'grade_id' => 'required|exists:grades,id',
-            'classroom_id' => 'required|exists:class_rooms,id',
+            'classroom_id' => 'required|exists:classrooms,id',
             'section_id' => 'required|exists:sections,id',
             'topic' => 'required|string|max:255',
             'start_at' => 'required|date',

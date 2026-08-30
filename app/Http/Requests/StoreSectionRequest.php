@@ -25,7 +25,7 @@ class StoreSectionRequest extends FormRequest
             'Name_Section_Ar' => 'required|min:1|max:255',
             'Name_Section_En' => 'required|min:1|max:255',
             'Grade_id'        => 'required|exists:grades,id',
-            'Class_id'        => 'required|exists:class_rooms,id',
+            'Class_id'        => 'required|exists:classrooms,id',
             'teachers_id'     => 'required|exists:teachers,id',
         ];
     }
@@ -42,3 +42,4 @@ class StoreSectionRequest extends FormRequest
     }
 
 }
+

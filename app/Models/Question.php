@@ -9,6 +9,7 @@ class Question extends Model
     protected $guarded = [];
 
     public function quizz() {
-        return $this->belongsTo(Quizz::class, 'quizz_id');
+        return $this->belongsTo(Quiz::class, 'quizz_id');
     }
 }
+

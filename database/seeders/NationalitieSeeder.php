@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Nationalitie;
+use App\Models\Nationality;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -1248,7 +1248,7 @@ class NationalitieSeeder extends Seeder
             ]
         ];
         foreach($nationals as $national) {
-            Nationalitie::create(['name' => $national]);
+            Nationality::create(['name' => $national]);
         }
     }
 }

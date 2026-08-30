@@ -2,14 +2,14 @@
 
 namespace App\Repository;
 
-use App\Models\ClassRooms;
-use App\Models\Genders;
-use App\Models\Grades;
-use App\Models\MyParents;
-use App\Models\Nationalitie;
-use App\Models\Sections;
-use App\Models\Students;
-use App\Models\TypeBloods;
+use App\Models\Classroom;
+use App\Models\Gender;
+use App\Models\Grade;
+use App\Models\MyParent;
+use App\Models\Nationality;
+use App\Models\Section;
+use App\Models\Student;
+use App\Models\TypeBlood;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB;
@@ -17,37 +17,37 @@ use Illuminate\Support\Facades\Storage;
 
 class StudentRepository implements StudentRepositoryInterface {
     public function getStudents() {
-        return Students::all();
+        return Student::all();
     }
     public function getStudentById($id) {
-        return Students::findOrFail($id);
+        return Student::findOrFail($id);
     }
     public function getGenders() {
-        return Genders::all();
+        return Gender::all();
     }
     public function getGrades() {
-        return Grades::all();
+        return Grade::all();
     }
     public function getParents() {
-        return MyParents::all();
+        return MyParent::all();
     }
     public function getNationalities() {
-        return Nationalitie::all();
+        return Nationality::all();
     }
     public function getType_Bloods() {
-        return TypeBloods::all();
+        return TypeBlood::all();
     }
     public function getClassrooms($id) {
-        return ClassRooms::where('grade_id', $id)->pluck('name_class', 'id');
+        return Classroom::where('grade_id', $id)->pluck('name_class', 'id');
     }
     public function getSections($id) {
-        return Sections::where('classroom_id', $id)->pluck('name', 'id');
+        return Section::where('classroom_id', $id)->pluck('name', 'id');
     }
 
     public function storeStudent($request) {
         DB::beginTransaction(); // start transaction
         try {
-            $student = Students::create([
+            $student = Student::create([
             'name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -69,7 +69,7 @@ class StudentRepository implements StudentRepositoryInterface {
                 Image::create([
                     'filename' => 'attachments/students/' . $student->name . '/' . $name,
                     'imageable_id' => $student->id,
-                    'imageable_type' => 'App\Models\Students',
+                    'imageable_type' => 'App\Models\Student',
                 ]);
             }
         }
@@ -90,12 +90,12 @@ class StudentRepository implements StudentRepositoryInterface {
     }
 
     public function showStudent($id) {
-        $student = Students::findOrFail($id);
+        $student = Student::findOrFail($id);
         return view('pages.Students.show_student', compact('student'));
     }
 
     public function updateStudent($request, $id) {
-        $student = Students::findOrFail($id)->update([
+        $student = Student::findOrFail($id)->update([
             'name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
             'email' => $request->email,
             'gender_id' => $request->gender_id,
@@ -122,7 +122,7 @@ class StudentRepository implements StudentRepositoryInterface {
     }
 
     public function deleteStudent($id) {
-        $student = Students::findOrFail($id);
+        $student = Student::findOrFail($id);
         $student->delete();
         toastr()->success(trans('messages.delete'));
         return redirect()->route('students.index');
@@ -135,7 +135,7 @@ class StudentRepository implements StudentRepositoryInterface {
             $ids = explode(',', $ids);
         }
         // حذف الطلاب
-        $student = Students::whereIn('id', $ids)->delete();
+        $student = Student::whereIn('id', $ids)->delete();
 
         if ($student) {
             toastr()->success(trans('messages.delete'));
@@ -144,7 +144,7 @@ class StudentRepository implements StudentRepositoryInterface {
     }
 
     public function uploadStudentAttachments($request, $id) {
-        $student = Students::findOrFail($id);
+        $student = Student::findOrFail($id);
         // Storage photo
         if($request->hasFile('files')) {
             foreach($request->file('files') as $file) {
@@ -153,7 +153,7 @@ class StudentRepository implements StudentRepositoryInterface {
                 Image::create([
                     'filename' => 'attachments/students/' . $student->name . '/' . $name,
                     'imageable_id' => $student->id,
-                    'imageable_type' => 'App\Models\Students',
+                    'imageable_type' => 'App\Models\Student',
                 ]);
             }
         }
@@ -184,7 +184,7 @@ class StudentRepository implements StudentRepositoryInterface {
             abort(404, 'File not found');
         }
         // تحميل الملف
-        return Storage::disk('upload_attachments')->download( $filePath, basename($filePath) ); // اسم الملف عند التحميل
+        return Storage::disk('upload_attachments')->download( $filePath, basename($filePath) ); // Ø§Ø³Ù… Ø§Ù„Ù…Ù„Ù Ø¹Ù†Ø¯ Ø§Ù„ØªØ­Ù…ÙŠÙ„
     }
 
     // this is function to preview file for  attachments for students

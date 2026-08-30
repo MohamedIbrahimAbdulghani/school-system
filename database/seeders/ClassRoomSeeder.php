@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\ClassRooms;
-use App\Models\Grades;
+use App\Models\Classroom;
+use App\Models\Grade;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,17 +15,17 @@ class ClassRoomSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('class_rooms')->delete();
+        DB::table('classrooms')->delete();
 
-        $class_rooms = [
+        $classrooms = [
             ['en' => 'First Classroom', 'ar' => 'الفصل الاول'],
             ['en' => 'Second Classroom', 'ar' => 'الفصل الثاني'],
             ['en' => 'Third Classroom', 'ar' => 'الفصل الثالث'],
         ];
-        foreach($class_rooms as $class_room) {
-            ClassRooms::create([
+        foreach($classrooms as $class_room) {
+            Classroom::create([
                 'name_class' => $class_room,
-                'grade_id' => Grades::all()->unique()->random()->id,
+                'grade_id' => Grade::all()->unique()->random()->id,
             ]);
         }
     }

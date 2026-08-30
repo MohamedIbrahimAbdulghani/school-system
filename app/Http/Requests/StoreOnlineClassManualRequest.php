@@ -24,7 +24,7 @@ class StoreOnlineClassManualRequest extends FormRequest
     {
         return [
             'grade_id'  => 'required', 'exists:grades,id' ,
-            'classroom_id' => 'required','exists:class_rooms,id',
+            'classroom_id' => 'required','exists:classrooms,id',
             'section_id'  => 'required','exists:sections,id' ,
             'meeting_platform'  => 'required', Rule::in(['Zoom', 'Google Meet']) ,
             'metting_id'  => 'required_if:meeting_platform,zoom', 'nullable' ,

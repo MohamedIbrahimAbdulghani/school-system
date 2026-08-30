@@ -26,7 +26,7 @@ class UpdateLibraryRequest extends FormRequest
 
             'grade_id' => 'required|exists:grades,id',
 
-            'classroom_id' => 'required|exists:class_rooms,id',
+            'classroom_id' => 'required|exists:classrooms,id',
 
             'section_id' => 'required|exists:sections,id',
 

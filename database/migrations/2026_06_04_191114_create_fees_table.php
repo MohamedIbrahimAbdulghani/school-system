@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('amount', 8, 2);
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
-            $table->foreignId('classroom_id')->constrained('class_rooms')->cascadeOnDelete();
+            $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnDelete();
             $table->string('year');
             $table->integer('type_fees');
             $table->text('notes')->nullable();

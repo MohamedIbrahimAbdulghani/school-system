@@ -2,27 +2,27 @@
 
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use App\Http\Controllers\Grades\GradesController;
-use App\Http\Controllers\Classrooms\ClassRoomsController;
+use App\Http\Controllers\Grade\GradeController;
+use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Auth\CustomAuthenticatedSessionController;
-use App\Http\Controllers\Fees\FeesController;
-use App\Http\Controllers\Libraries\LibraryController;
-use App\Http\Controllers\OnlineClasses\OnlineClassController;
-use App\Http\Controllers\Sections\SectionController;
-use App\Http\Controllers\Parents\ParentController;
-use App\Http\Controllers\Questions\QuestionController;
-use App\Http\Controllers\Quizzes\QuizzController;
-use App\Http\Controllers\Students\FeeInvoicesController;
-use App\Http\Controllers\Students\GraduatedController;
-use App\Http\Controllers\Students\PromotionsController;
-use App\Http\Controllers\Students\StudentsController;
-use App\Http\Controllers\Teachers\TeachersController;
-use App\Http\Controllers\Students\ReceiptStudentsController;
-use App\Http\Controllers\Students\ProcessingFeesController;
-use App\Http\Controllers\Students\PaymentRefundsController;
-use App\Http\Controllers\Students\AttendanceController;
-use App\Http\Controllers\Subjects\SubjectController;
-use App\Http\Controllers\Settingss\SettingController;
+use App\Http\Controllers\Fee\FeeController;
+use App\Http\Controllers\Library\LibraryController;
+use App\Http\Controllers\OnlineClass\OnlineClassController;
+use App\Http\Controllers\Section\SectionController;
+use App\Http\Controllers\Parent\ParentController;
+use App\Http\Controllers\Question\QuestionController;
+use App\Http\Controllers\Quiz\QuizController;
+use App\Http\Controllers\Student\FeeInvoiceController;
+use App\Http\Controllers\Student\GraduatedController;
+use App\Http\Controllers\Student\PromotionController;
+use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Controllers\Student\ReceiptStudentController;
+use App\Http\Controllers\Student\ProcessingFeeController;
+use App\Http\Controllers\Student\PaymentRefundController;
+use App\Http\Controllers\Student\AttendanceController;
+use App\Http\Controllers\Subject\SubjectController;
+use App\Http\Controllers\Setting\SettingController;
 
 // ======== المجموعة الرئيسية ========
 Route::group([
@@ -56,11 +56,11 @@ Route::group([
         Route::post('logout', [CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
 
         // Grades
-            Route::resource('grades', GradesController::class);
+            Route::resource('grades', GradeController::class);
 
         // ClassRooms
-            Route::delete('classrooms/bulkDestroy', [ClassRoomsController::class, 'bulkDestroy'])->name('classrooms.bulkDestroy');
-            Route::resource('classrooms', ClassRoomsController::class);
+            Route::delete('classrooms/bulkDestroy', [ClassroomController::class, 'bulkDestroy'])->name('classrooms.bulkDestroy');
+            Route::resource('classrooms', ClassroomController::class);
 
         // Sections
             Route::get('classes/{id}', [SectionController::class, 'getClasses']);
@@ -77,21 +77,21 @@ Route::group([
             Route::resource('parents', ParentController::class);
 
         // Teachers
-            Route::delete('teachers/bulkDestroy', [TeachersController::class, 'bulkDestroy'])->name('teachers.bulkDestroy');
-            Route::resource('teachers', TeachersController::class);
+            Route::delete('teachers/bulkDestroy', [TeacherController::class, 'bulkDestroy'])->name('teachers.bulkDestroy');
+            Route::resource('teachers', TeacherController::class);
 
         // Students
-            Route::delete('students/deleteAllStudents', [StudentsController::class, 'deleteAllStudents'])->name('students.deleteAllStudents');
-            Route::post('uploadStudentAttachments/{id}', [StudentsController::class, 'uploadStudentAttachments'])->name('students.uploadStudentAttachments');
-            Route::delete('deleteStudentAttachments/{id}', [StudentsController::class, 'deleteStudentAttachments'])->name('students.deleteStudentAttachments');
-            Route::get('students/downloadStudentAttachment/{id}', [StudentsController::class, 'downloadStudentAttachment'])->name('students.downloadStudentAttachment');
-            Route::get('students/previewStudentAttachment/{id}', [StudentsController::class, 'previewStudentAttachment'])->name('students.previewStudentAttachment');
-            Route::resource('students', StudentsController::class);
-            Route::get('get_classrooms/{id}', [StudentsController::class, 'getClassrooms']);
-            Route::get('get_sections/{id}', [StudentsController::class, 'getSections']);
+            Route::delete('students/deleteAllStudents', [StudentController::class, 'deleteAllStudents'])->name('students.deleteAllStudents');
+            Route::post('uploadStudentAttachments/{id}', [StudentController::class, 'uploadStudentAttachments'])->name('students.uploadStudentAttachments');
+            Route::delete('deleteStudentAttachments/{id}', [StudentController::class, 'deleteStudentAttachments'])->name('students.deleteStudentAttachments');
+            Route::get('students/downloadStudentAttachment/{id}', [StudentController::class, 'downloadStudentAttachment'])->name('students.downloadStudentAttachment');
+            Route::get('students/previewStudentAttachment/{id}', [StudentController::class, 'previewStudentAttachment'])->name('students.previewStudentAttachment');
+            Route::resource('students', StudentController::class);
+            Route::get('get_classrooms/{id}', [StudentController::class, 'getClassrooms']);
+            Route::get('get_sections/{id}', [StudentController::class, 'getSections']);
 
         // Promotions
-            Route::resource('promotions', PromotionsController::class);
+            Route::resource('promotions', PromotionController::class);
 
         // Graduations
             Route::post('graduations/restore/{id}', [GraduatedController::class, 'restore'])->name('graduations.restore');
@@ -99,19 +99,19 @@ Route::group([
             Route::resource('graduations', GraduatedController::class);
 
         // Fees
-            Route::resource('fees', FeesController::class);
+            Route::resource('fees', FeeController::class);
 
         // FeeInvoices
-            Route::resource('fee_invoices', FeeInvoicesController::class);
+            Route::resource('fee_invoices', FeeInvoiceController::class);
 
         // Receipts
-            Route::resource('receipt_students', ReceiptStudentsController::class);
+            Route::resource('receipt_students', ReceiptStudentController::class);
 
         // ProcessingFees
-            Route::resource('processing_fees', ProcessingFeesController::class);
+            Route::resource('processing_fees', ProcessingFeeController::class);
 
         // PaymentRefunds
-            Route::resource('payment_refunds', PaymentRefundsController::class);
+            Route::resource('payment_refunds', PaymentRefundController::class);
 
         // Attendance
             Route::resource('attendances', AttendanceController::class);
@@ -120,7 +120,7 @@ Route::group([
             Route::resource('subjects', SubjectController::class);
 
         // Quizzes
-            Route::resource('quizzes', QuizzController::class);
+            Route::resource('quizzes', QuizController::class);
 
         // Questions
             Route::resource('questions', QuestionController::class);

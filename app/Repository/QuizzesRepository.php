@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Models\ClassRooms;
-use App\Models\Grades;
-use App\Models\Quizz;
-use App\Models\Subjects;
-use App\Models\Teachers;
+use App\Models\Classroom;
+use App\Models\Grade;
+use App\Models\Quiz;
+use App\Models\Subject;
+use App\Models\Teacher;
 
 class QuizzesRepository implements QuizzesRepositoryInterface
 {
     public function index()
     {
-        $quizzes = Quizz::all();
+        $quizzes = Quiz::all();
         return view('pages.Quizzes.index', compact('quizzes'));
     }
 
     public function create()
     {
-        $grades = Grades::all();
-        $teachers = Teachers::all();
-        $classrooms = ClassRooms::all();
-        $subjects = Subjects::all();
+        $grades = Grade::all();
+        $teachers = Teacher::all();
+        $classrooms = Classroom::all();
+        $subjects = Subject::all();
 
         return view('pages.Quizzes.create', compact('grades', 'teachers', 'classrooms', 'subjects'));
     }
@@ -34,7 +34,7 @@ class QuizzesRepository implements QuizzesRepositoryInterface
         public function store($request)
     {
         try {
-            Quizz::create([
+            Quiz::create([
             'name' => ['ar' => $request->quiz_name_ar, 'en' => $request->quiz_name_en],
             'subject_id' => $request->subject_id,
             'grade_id' => $request->grade_id,
@@ -51,11 +51,11 @@ class QuizzesRepository implements QuizzesRepositoryInterface
 
         public function edit($request)
     {
-        $quizz = Quizz::findOrFail($request);
-        $grades = Grades::all();
-        $teachers = Teachers::all();
-        $classrooms = ClassRooms::all();
-        $subjects = Subjects::all();
+        $quizz = Quiz::findOrFail($request);
+        $grades = Grade::all();
+        $teachers = Teacher::all();
+        $classrooms = Classroom::all();
+        $subjects = Subject::all();
 
         return view('pages.Quizzes.edit', compact('quizz', 'grades', 'teachers', 'classrooms', 'subjects'));
     }
@@ -63,7 +63,7 @@ class QuizzesRepository implements QuizzesRepositoryInterface
         public function update($request)
     {
         try {
-            $quizz = Quizz::findOrFail($request->id);
+            $quizz = Quiz::findOrFail($request->id);
             $quizz->update([
             'name' => ['ar' => $request->quiz_name_ar, 'en' => $request->quiz_name_en],
             'subject_id' => $request->subject_id,
@@ -82,7 +82,7 @@ class QuizzesRepository implements QuizzesRepositoryInterface
         public function destroy($id)
     {
         try {
-            Quizz::findOrFail($id)->delete();
+            Quiz::findOrFail($id)->delete();
             toastr()->success(trans('messages.delete'));
             return redirect()->route('quizzes.index');
         } catch(\Exception $e) {
@@ -90,3 +90,5 @@ class QuizzesRepository implements QuizzesRepositoryInterface
         }
     }
 }
+
+

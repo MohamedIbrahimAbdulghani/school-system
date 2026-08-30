@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Religions;
+use App\Models\Religion;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +33,8 @@ class ReligionSeeder extends Seeder
         ];
 
         foreach($religions as $religion) {
-            Religions::create(['name'=>$religion]);
+            Religion::create(['name'=>$religion]);
         }
     }
 }
+

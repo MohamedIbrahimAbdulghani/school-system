@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Genders;
+use App\Models\Gender;
 
 class GenderSeeder extends Seeder
 {
@@ -21,7 +21,7 @@ class GenderSeeder extends Seeder
             ['en' => 'Female', 'ar' => 'أنثى'],
         ];
         foreach($genders as $gender) {
-            Genders::create(['name' => $gender]);
+            Gender::create(['name' => $gender]);
         }
     }
 }

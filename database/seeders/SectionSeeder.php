@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\ClassRooms;
-use App\Models\Grades;
-use App\Models\Sections;
+use App\Models\Classroom;
+use App\Models\Grade;
+use App\Models\Section;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -23,11 +23,11 @@ class SectionSeeder extends Seeder
             ['en' => 'c', 'ar' => 'ت'],
         ];
         foreach($sections as $section) {
-            Sections::create([
+            Section::create([
                 'name' => $section,
                 'status' => 1,
-                'grade_id' => Grades::all()->unique()->random()->id,
-                'classroom_id' => ClassRooms::all()->unique()->random()->id,
+                'grade_id' => Grade::all()->unique()->random()->id,
+                'classroom_id' => Classroom::all()->unique()->random()->id,
             ]);
         }
     }

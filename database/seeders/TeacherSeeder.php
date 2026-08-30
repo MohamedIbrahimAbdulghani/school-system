@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Genders;
-use App\Models\Specializations;
-use App\Models\Teachers;
+use App\Models\Gender;
+use App\Models\Specialization;
+use App\Models\Teacher;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -19,12 +19,12 @@ class TeacherSeeder extends Seeder
     {
         DB::table('teachers')->delete();
 
-        $teacher = new Teachers();
+        $teacher = new Teacher();
         $teacher->name = ['ar' => ' علي', 'en' => 'Ali '];
         $teacher->email = 'ali.teacher@gmail.com';
         $teacher->password = Hash::make('123');
-        $teacher->gender_id = Genders::all()->unique()->random()->id;
-        $teacher->specialization_id = Specializations::all()->unique()->random()->id;
+        $teacher->gender_id = Gender::all()->unique()->random()->id;
+        $teacher->specialization_id = Specialization::all()->unique()->random()->id;
         $teacher->join_date = date('2021-01-01');
         $teacher->address = 'القاهرة';
         $teacher->save();

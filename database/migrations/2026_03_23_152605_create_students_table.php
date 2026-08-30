@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('blood_type_id')->constrained('type_bloods')->cascadeOnDelete();
             $table->date('birth_date');
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
-            $table->foreignId('classroom_id')->constrained('class_rooms')->cascadeOnDelete();
+            $table->foreignId('classroom_id')->constrained('classrooms')->cascadeOnDelete();
             $table->foreignId('section_id')->constrained('sections')->cascadeOnDelete();
             $table->foreignId('parent_id')->constrained('my_parents')->cascadeOnDelete();
             $table->string('academic_year');

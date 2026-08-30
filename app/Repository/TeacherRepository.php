@@ -1,32 +1,32 @@
 <?php
 
 namespace App\Repository;
-use App\Models\Teachers;
-use App\Models\Specializations;
-use App\Models\Genders;
+use App\Models\Teacher;
+use App\Models\Specialization;
+use App\Models\Gender;
 use Illuminate\Support\Facades\Hash;
 
 
 class TeacherRepository implements TeacherRepositoryInterface {
         // this is function to get all teachers from database by this design patteren
     public function getTeachers() {
-        return Teachers::all();
+        return Teacher::all();
     }
         // this is function to get teacher by id from database by this design patteren
     public function getTeacherById($id) {
-        return Teachers::where('id', $id)->get();
+        return Teacher::where('id', $id)->get();
     }
         // this is function to get specializations from database by this design patteren
     public function getSpecializations() {
-        return Specializations::all();
+        return Specialization::all();
     }
         // this is function to store genders from database by this design patteren
     public function getGenders() {
-        return Genders::all();
+        return Gender::all();
     }
     // this is function to store teacher in database by this design patteren
     public function storeTeacher($request) {
-        $teacher = Teachers::create([
+        $teacher = Teacher::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'name' => ['ar' => $request->teacher_name_ar, 'en' => $request->teacher_name_en],
@@ -45,13 +45,13 @@ class TeacherRepository implements TeacherRepositoryInterface {
 
     // this is function to edit teacher from database by this design patteren
     public function editTeacher($id) {
-        return Teachers::findOrFail($id);
+        return Teacher::findOrFail($id);
     }
 
 
     // this is function to update teacher in database by this design patteren
     public function updateTeacher($request, $id) {
-        $teacher = Teachers::find($id)->update([
+        $teacher = Teacher::find($id)->update([
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'name' => ['ar' => $request->teacher_name_ar, 'en' => $request->teacher_name_en],
@@ -70,10 +70,11 @@ class TeacherRepository implements TeacherRepositoryInterface {
 
     // this is function to delete teacher from database by this design patteren
     public function deleteTeacher($id) {
-        $teacher = Teachers::findOrFail($id);
+        $teacher = Teacher::findOrFail($id);
         $teacher->delete();
         toastr()->success(trans('messages.delete'));
         return redirect()->route('teachers.index');
     }
 
 }
+

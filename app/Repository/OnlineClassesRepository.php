@@ -2,10 +2,10 @@
 
 namespace App\Repository;
 
-use App\Models\ClassRooms;
-use App\Models\Grades;
-use App\Models\OnlineClasses;
-use App\Models\Sections;
+use App\Models\Classroom;
+use App\Models\Grade;
+use App\Models\OnlineClass;
+use App\Models\Section;
 use App\Services\ZoomService;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,14 +19,14 @@ class OnlineClassesRepository implements  OnlineClassesRepositoryInterface {
     }
 
     public function index() {
-        $online_classes = OnlineClasses::all();
+        $online_classes = OnlineClass::all();
         return view('pages.OnlineClasses.index', compact('online_classes'));
     }
 
     public function create() {
-        $grades = Grades::all();
-        $classrooms = ClassRooms::all();
-        $sections = Sections::all();
+        $grades = Grade::all();
+        $classrooms = Classroom::all();
+        $sections = Section::all();
         return view('pages.OnlineClasses.create', compact('grades', 'classrooms', 'sections'));
     }
 
@@ -36,19 +36,18 @@ class OnlineClassesRepository implements  OnlineClassesRepositoryInterface {
 
     public function store($request) {
         try {
-            // إنشاء Zoom Meeting
             $meeting = $this->zoomService->createMeeting([
                 'topic' => $request->topic,
                 'start_at' => $request->start_at,
                 'duration' => $request->duration,
             ]);
-            OnlineClasses::create([
+            OnlineClass::create([
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
                 'section_id' => $request->section_id,
                 'users_id' => Auth::user()->id,
                 'meeting_platform' => 'Zoom',
-                'metting_id' => $meeting['id'],
+                'meeting_id' => $meeting['id'],
                 'topic' => $request->topic,
                 'start_at' => $request->start_at,
                 'duration' => $meeting['duration'],
@@ -70,26 +69,10 @@ class OnlineClassesRepository implements  OnlineClassesRepositoryInterface {
     public function update($request) {
        //
     }
-    // public function destroy($id) {
-    //     try {
-    //         $online_class = OnlineClasses::findOrFail($id);
-    //         // حذف الاجتماع من Zoom
-    //         if (!empty($online_class->metting_id)) {
-    //             $this->zoomService->deleteMeeting( $online_class->metting_id );
-    //         }
-    //         // حذف الحصة من MySQL
-    //         $online_class->delete();
-    //         toastr()->success(trans('messages.delete'));
-    //         return redirect()->route('online_classes.index');
-    //     }  catch(\Exception $e) {
-    //         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-    //     }
-    // }
-
     public function destroy($id)
     {
         try {
-            $online_class = OnlineClasses::findOrFail($id);
+            $online_class = OnlineClass::findOrFail($id);
             // Delete from Zoom only if the meeting was created on Zoom
             if (
                 $online_class->meeting_platform === 'Zoom'
@@ -109,9 +92,9 @@ class OnlineClassesRepository implements  OnlineClassesRepositoryInterface {
     }
 
     public function createManual() {
-        $grades = Grades::all();
-        $classrooms = ClassRooms::all();
-        $sections = Sections::all();
+        $grades = Grade::all();
+        $classrooms = Classroom::all();
+        $sections = Section::all();
         return view('pages.OnlineClasses.createManual', compact('grades', 'classrooms','sections'));
     }
 
@@ -119,14 +102,14 @@ class OnlineClassesRepository implements  OnlineClassesRepositoryInterface {
     {
         try {
 
-            OnlineClasses::create([
+            OnlineClass::create([
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
                 'section_id' => $request->section_id,
                 'users_id' => Auth::user()->id,
                 'meeting_platform' => $request->meeting_platform,
                 // 'metting_id' => $request->metting_id,
-                'metting_id' => preg_replace('/\s+/', '', $request->metting_id), // to remove any space when take id copy from zoom application
+                'meeting_id' => preg_replace('/\s+/', '', $request->metting_id), // to remove any space when take id copy from zoom application
                 'topic' => $request->topic,
                 'start_at' => $request->start_at,
                 'duration' => $request->duration,

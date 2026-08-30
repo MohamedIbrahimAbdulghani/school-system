@@ -2,9 +2,9 @@
 
 namespace App\Repository;
 
-use App\Models\attendances;
-use App\Models\Grades;
-use App\Models\Students;
+use App\Models\Attendance;
+use App\Models\Grade;
+use App\Models\Student;
 use Exception;
 
 class AttendancesRepository implements AttendancesRepositoryInterface
@@ -12,9 +12,9 @@ class AttendancesRepository implements AttendancesRepositoryInterface
     public function index()
     {
         // $grades = Grades::with(['sections'])->get();
-        $grades = Grades::with([
+        $grades = Grade::with([
             'sections' => function ($query) {
-                $query->whereHas('students'); // هات الـ Section لو عنده Students مرتبطين بيه
+                $query->whereHas('students'); // Ù‡Ø§Øª Ø§Ù„Ù€ Section Ù„Ùˆ Ø¹Ù†Ø¯Ù‡ Students Ù…Ø±ØªØ¨Ø·ÙŠÙ† Ø¨ÙŠÙ‡
             }
         ])->get();
         return view('pages.Attendances.index', compact('grades'));
@@ -34,7 +34,7 @@ class AttendancesRepository implements AttendancesRepositoryInterface
                 } else {
                     $attendance_status = false; // $attendance_status = 0
                 }
-                attendances::create([
+                Attendance::create([
                     'student_id' => $student_id,
                     'grade_id' => $request->grade_id,
                     'classroom_id' => $request->classroom_id,
@@ -53,7 +53,7 @@ class AttendancesRepository implements AttendancesRepositoryInterface
 
     public function show($id)
     {
-        $students = Students::with('attendance')->where('section_id', $id)->get();
+        $students = Student::with('attendance')->where('section_id', $id)->get();
         return view('pages.Attendances.show', compact('students'));
     }
 
@@ -72,3 +72,4 @@ class AttendancesRepository implements AttendancesRepositoryInterface
         //
     }
 }
+

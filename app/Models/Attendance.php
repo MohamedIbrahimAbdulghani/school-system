@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     protected $guarded = [];
+
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class, 'classroom_id');
+    }
 }

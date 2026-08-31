@@ -57,16 +57,29 @@ Route::group([
     });
 
     // ======== الروابط بعد التسجيل ========
-    Route::middleware([
-        'auth:sanctum',
-        config('jetstream.auth_session'),
-        'verified'
-    ])->group(function () {
+    Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified' ])->group(function () {
 
         // Dashboard
-        Route::get('dashboard', function () {
+        Route::get('/admin/dashboard', function () {
             return view('dashboard');
-            })->name('dashboard');
+        })->name('admin.dashboard');
+
+        Route::get('/teacher/dashboard', function () {
+            return view('dashboard');
+        })->name('teacher.dashboard');
+
+        Route::get('/student/dashboard', function () {
+            return view('dashboard');
+        })->name('student.dashboard');
+
+        Route::get('/parent/dashboard', function () {
+            return view('dashboard');
+        })->name('parent.dashboard');
+        // Route::get('dashboard', function () {
+        //     return view('dashboard');
+        //     })->name('dashboard');
+
+
 
 
         // Logout

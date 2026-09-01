@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'dashboard' => 'Students Dashboard',
     'title' => 'Students List',
     'students'=> 'Students',
     'add_student'=>'Add New Student',

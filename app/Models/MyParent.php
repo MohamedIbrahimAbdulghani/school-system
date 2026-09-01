@@ -3,12 +3,22 @@
 namespace App\Models;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class MyParent extends Model
+class MyParent extends Authenticatable
 {
     use HasTranslations;
     public array $translatable = ['father_name', 'mother_name', 'father_job', 'mother_job'];
     protected $guarded = [];
+
+    // Get the name attribute (father_name) for the parent model
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->father_name,
+        );
+    }
 
     // Father relationships
     public function fatherNationality() {
@@ -37,4 +47,3 @@ class MyParent extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 }
-

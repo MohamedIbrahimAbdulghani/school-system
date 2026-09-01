@@ -2,7 +2,7 @@
 
 return [
     'Welcome'        => 'صفحة الترحيب',
-    'Dashboard'      => 'لوحة التحكم',
+    'Dashboard'      => ' لوحة التحكم الادمن',
     'Dashboard_01'   => 'لوحة 01',
     'Dashboard_02'   => 'لوحة 02',
     'Dashboard_03'   => 'لوحة 03',

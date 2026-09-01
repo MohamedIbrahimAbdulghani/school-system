@@ -47,4 +47,5 @@ return [
     'login_parent' => 'تسجيل دخول ولي امر',
     'login_teacher' => 'تسجيل دخول معلم',
     'login_admin' => 'تسجيل دخول ادمن',
+    'unauthorized_different_user' => 'غير مصرح لك بالوصول إلي هذه الصفحة .',
 ];

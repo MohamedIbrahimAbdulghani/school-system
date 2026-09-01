@@ -2,6 +2,7 @@
 
 return [
 
+    'dashboard' => 'لوحة تحكم الطالب',
     'title' => 'قائمة الطلاب',
     'students'=> 'الطلاب',
     'add_student'=>'اضافة طالب جديد',

@@ -2,6 +2,7 @@
 
 return [
 
+    'dashboard' => 'Teachers Dashboard',
     'teachers'        => 'Teachers',
     'name_teacher'    => 'Teacher Name',
     'add_teacher'     => 'Add Teacher',

@@ -9,16 +9,12 @@
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
                     <li>
-                        <a href="{{ url('/dashboard') }}">
+                        <a href="{{ route('dashboard') }}">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main-side.Dashboard')}}</span>
                             </div>
                             <div class="clearfix"></div>
                         </a>
                     </li>
-                    <!-- menu title -->
-                @php
-                        $currentLocale = app()->getLocale();
-                @endphp
                     <!-- Grades-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Grades-menu">
@@ -41,7 +37,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="classes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="classrooms">{{trans('main-side.list_classes')}}</a> </li>
+                            {{-- ✅ كان hardcoded href="classrooms" بدون locale prefix --}}
+                            <li> <a href="{{ route('classrooms.index') }}">{{trans('main-side.list_classes')}}</a> </li>
                         </ul>
                     </li>
 
@@ -55,8 +52,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="sections">{{trans('main-side.list_sections')}}</a> </li>
-                            {{-- <li> <a href="calendar-list.html">List Calendar</a> </li> --}}
+                            {{-- ✅ نفس المشكلة: كان href="sections" بدون locale prefix --}}
+                            <li> <a href="{{ route('sections.index') }}">{{trans('main-side.list_sections')}}</a> </li>
                         </ul>
                     </li>
 
@@ -116,8 +113,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{url('parents')}}">{{ trans('main-side.Parent_list') }}</a> </li>
-                            <!-- {{-- <li> <a href="{{url('add_parent')}}">{{ trans('parent.Add_parent') }}</a> </li> --}} -->
+                            <li> <a href="{{ route('parents.index') }}">{{ trans('main-side.Parent_list') }}</a> </li>
                         </ul>
                     </li>
 
@@ -190,7 +186,7 @@
                     </li>
 
 
-                    <!-- Onlinec Classes-->
+                    <!-- Online Classes-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
                             <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">{{trans('main-side.Onlineclasses')}}</span></div>
@@ -199,7 +195,6 @@
                         </a>
                         <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('online_classes.index') }}">{{ trans('online_classes.direct_connection') }}</a> </li>
-                            {{-- <li> <a href="themify-icons.html">{{ trans('online_classes.not_direct_connection') }}</a> </li> --}}
                         </ul>
                     </li>
 
@@ -213,21 +208,6 @@
                         </a>
                         <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('settings.index') }}">{{ trans('settings.settings_list') }}</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Users-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Users-icon">
-                            <div class="pull-left"><i class="fas fa-users"></i><span class="right-nav-text">{{trans('main-side.Users')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Users-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
                         </ul>
                     </li>
 

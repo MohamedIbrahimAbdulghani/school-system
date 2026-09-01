@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'dashboard' => 'Parent Dashboard',
     'Parent_list' => 'Parent list',
     'Edit_parent' => 'Edit Parent Information',
     'Delete_parent' => 'Delete Parent Information',

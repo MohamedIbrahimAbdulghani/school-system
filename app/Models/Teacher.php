@@ -7,8 +7,9 @@ use Spatie\Translatable\HasTranslations;
 use App\Models\Gender;
 use App\Models\Specialization;
 use App\Models\Section;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
     use HasTranslations;
     public array $translatable = ['name'];
@@ -23,8 +24,5 @@ class Teacher extends Model
     // relationship between Teacher and Section to get Section in Teacher table
     public function sections() {
         return $this->belongsToMany(Section::class, 'teacher_section', 'teacher_id', 'section_id');
-    } 
+    }
 }
-
-
-

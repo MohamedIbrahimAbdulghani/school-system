@@ -2,7 +2,7 @@
 
 return [
     'Welcome'        => 'Welcome Page',
-    'Dashboard'      => 'Dashboard',
+    'Dashboard'      => 'Dashboard for Admin',
     'Dashboard_01'   => 'Dashboard 01',
     'Dashboard_02'   => 'Dashboard 02',
     'Dashboard_03'   => 'Dashboard 03',

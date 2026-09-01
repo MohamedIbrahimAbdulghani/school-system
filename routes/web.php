@@ -35,83 +35,56 @@ Route::group([
         return view('welcome');
     })->name('home');
 
+    Route::get('dashboard', function () {
+        $guard = \App\Http\Middleware\CheckGuard::guard();
+        if (!$guard) {
+            return redirect()->route('login');
+        }
+        return redirect()->route($guard . '.dashboard');
+    })->middleware('auth.any')->name('dashboard');
 
     // ======== Authentication ========
-    Route::middleware('guest')->group(function () {
+    Route::middleware('guest:admin,teacher,student,parent')->group(function () {
 
         // اختيار نوع تسجيل الدخول
         Route::get('/login', [CustomAuthenticatedSessionController::class,'create'])->name('login');
 
-        // عرض صفحة تسجيل الدخول حسب نوع المستخدم
-        // /login/admin
-        // /login/teacher
-        // /login/student
-        // /login/parent
         Route::get('/login/{type}', [CustomAuthenticatedSessionController::class,'showLoginForm'])->name('login.show');
 
         // تنفيذ تسجيل الدخول حسب نوع المستخدم
-        Route::post('/login/{type}', [CustomAuthenticatedSessionController::class,'store'])->name('login.store');
+        Route::post('/login/{type}', [CustomAuthenticatedSessionController::class,'store'])->name('login-type.store');
 
         // Register
         Route::get('/register', [CustomAuthenticatedSessionController::class,'register'])->name('register');
+
+        Route::post('/register', [CustomAuthenticatedSessionController::class,'storeRegister'])->name('register.store');
     });
 
     // ======== الروابط بعد التسجيل ========
-    Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified' ])->group(function () {
 
-        // Dashboard
-        Route::get('/admin/dashboard', function () {
+    Route::middleware('auth.role:admin')->group(function () {
+        Route::get('admin/dashboard', function () {
             return view('dashboard');
         })->name('admin.dashboard');
-
-        Route::get('/teacher/dashboard', function () {
-            return view('dashboard');
-        })->name('teacher.dashboard');
-
-        Route::get('/student/dashboard', function () {
-            return view('dashboard');
-        })->name('student.dashboard');
-
-        Route::get('/parent/dashboard', function () {
-            return view('dashboard');
-        })->name('parent.dashboard');
-        // Route::get('dashboard', function () {
-        //     return view('dashboard');
-        //     })->name('dashboard');
-
-
-
-
-        // Logout
-        Route::post('logout',[CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
-
 
         // Grades
         Route::resource('grades', GradeController::class);
 
         // ClassRooms
         Route::delete('classrooms/bulkDestroy',[ClassroomController::class, 'bulkDestroy'])->name('classrooms.bulkDestroy');
-
         Route::resource('classrooms', ClassroomController::class);
 
         // Sections
-        Route::get('classes/{id}',[SectionController::class, 'getClasses']);
-
+        Route::get('classes/{id}',[SectionController::class, 'getClasses'])->name('sections.getClasses');
         Route::resource('sections', SectionController::class);
 
         // Parents
         Route::post('parents/validate',[ParentController::class, 'validateField'])->name('parents.validate');
-
         Route::post('parents/uploadParentAttachments/{id}',[ParentController::class, 'uploadParentAttachments'])->name('parents.uploadParentAttachments');
-
         Route::delete('parents/deleteParentAttachments/{id}',[ParentController::class, 'deleteParentAttachments'])->name('parents.deleteParentAttachments');
-
         Route::get('parents/downloadParentAttachment/{id}',[ParentController::class, 'downloadParentAttachment'])->name('parents.downloadParentAttachment');
-
         Route::get( 'parents/previewParentAttachment/{id}',[ParentController::class, 'previewParentAttachment'])->name('parents.previewParentAttachment');
-
         Route::delete('parents/bulkDestroy',[ParentController::class, 'bulkDestroy'])->name('parents.bulkDestroy');
-
         Route::resource('parents', ParentController::class);
 
         // Teachers
@@ -126,8 +99,8 @@ Route::group([
         Route::get('students/downloadStudentAttachment/{id}',[StudentController::class, 'downloadStudentAttachment'])->name('students.downloadStudentAttachment');
         Route::get('students/previewStudentAttachment/{id}',[StudentController::class, 'previewStudentAttachment'])->name('students.previewStudentAttachment');
         Route::resource('students', StudentController::class);
-        Route::get('get_classrooms/{id}',[StudentController::class, 'getClassrooms']);
-        Route::get('get_sections/{id}', [StudentController::class, 'getSections']);
+        Route::get('get_classrooms/{id}',[StudentController::class, 'getClassrooms'])->name('students.getClassrooms');
+        Route::get('get_sections/{id}', [StudentController::class, 'getSections'])->name('students.getSections');
 
         // Promotions
         Route::resource('promotions', PromotionController::class);
@@ -167,22 +140,38 @@ Route::group([
 
         // Online Classes
         Route::get('createManual',[OnlineClassController::class, 'createManual'])->name('online_classes.createManual');
-
         Route::post('storeManual',[OnlineClassController::class, 'storeManual'])->name('online_classes.storeManual');
-
         Route::resource('online_classes',OnlineClassController::class);
 
 
         // Libraries
         Route::resource('libraries', LibraryController::class);
-
         Route::get('libraries/download/{id}',[LibraryController::class, 'download'])->name('libraries.download');
 
 
         // Settings
         Route::get('settings',[SettingController::class, 'index'])->name('settings.index');
-
         Route::put('settings',[SettingController::class, 'update'])->name('settings.update');
+
     });
+
+    Route::middleware('auth.role:student')->group(function () {
+        Route::get('student/dashboard', function () {
+            return view('pages.Students.dashboard');
+            })->name('student.dashboard');
+    });
+    Route::middleware('auth.role:parent')->group(function () {
+        Route::get('parent/dashboard', function () {
+            return view('pages.Parents.dashboard');
+            })->name('parent.dashboard');
+    });
+    Route::middleware('auth.role:teacher')->group(function () {
+        Route::get('teacher/dashboard', function () {
+            return view('pages.Teachers.dashboard');
+            })->name('teacher.dashboard');
+    });
+
+    // Logout
+        Route::post('logout',[CustomAuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 });

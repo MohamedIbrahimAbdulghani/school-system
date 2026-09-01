@@ -1,5 +1,5 @@
 @section('title')
-{{ trans('dashboard.Dashboard') }}
+{{ trans('teacher.dashboard') }}
 @endsection
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="mb-0">{{ trans('dashboard.Dashboard') }}</h4>
+                        <h4 class="mb-0">{{ trans('teacher.dashboard') }} </h4>
                     </div>
                     <div class="col-sm-6">
                         <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right">

@@ -50,4 +50,5 @@ return [
     'login_parent' => 'Parent Login',
     'login_teacher' => 'Teacher Login',
     'login_admin' => 'Admin Login',
+    'unauthorized_different_user' => 'You are not authorized to access this page.',
 ];

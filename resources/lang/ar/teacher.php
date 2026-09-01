@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'dashboard' => 'لوحة تحكم المعلم',
     'teachers'=>'المعلمين',
     'name_teacher'=>'اسم المعلم',
     'add_teacher'=>'اضافة معلم',

@@ -48,4 +48,8 @@ return [
     'login_teacher' => 'تسجيل دخول معلم',
     'login_admin' => 'تسجيل دخول ادمن',
     'unauthorized_different_user' => 'غير مصرح لك بالوصول إلي هذه الصفحة .',
+    'email_required' => 'حقل البريد الإلكتروني مطلوب.',
+    'email_invalid' => 'صيغة البريد الإلكتروني غير صحيحة.',
+    'password_required' => 'حقل كلمة المرور مطلوب.',
+    'password_invalid' => 'صيغة كلمة المرور غير صحيحة.',
 ];

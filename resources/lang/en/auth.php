@@ -51,4 +51,8 @@ return [
     'login_teacher' => 'Teacher Login',
     'login_admin' => 'Admin Login',
     'unauthorized_different_user' => 'You are not authorized to access this page.',
+    'email_required' => 'The email field is required.',
+    'email_invalid' => 'The email format is invalid.',
+    'password_required' => 'The password field is required.',
+    'password_invalid' => 'The password format is invalid.',
 ];

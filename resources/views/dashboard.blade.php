@@ -50,378 +50,266 @@
             </div>
             <!-- widgets -->
             <div class="row">
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
-                    <div class="card card-statistics h-100">
-                        <div class="card-body">
-                            <div class="clearfix">
-                                <div class="float-left">
-                                    <span class="text-danger">
-                                        <i class="fa fa-bar-chart-o highlight-icon" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <div class="float-right text-right">
-                                    <p class="card-text text-dark">Visitors</p>
-                                    <h4>65,650</h4>
-                                </div>
-                            </div>
-                            <p class="pt-3 mt-2 mb-0 text-muted border-top">
-                                <i class="mr-1 fa fa-exclamation-circle" aria-hidden="true"></i> 81% lower
-                                growth
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
-                    <div class="card card-statistics h-100">
-                        <div class="card-body">
-                            <div class="clearfix">
-                                <div class="float-left">
-                                    <span class="text-warning">
-                                        <i class="fa fa-shopping-cart highlight-icon" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <div class="float-right text-right">
-                                    <p class="card-text text-dark">Orders</p>
-                                    <h4>656</h4>
-                                </div>
-                            </div>
-                            <p class="pt-3 mt-2 mb-0 text-muted border-top">
-                                <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i> Total sales
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                {{-- Student Widget --}}
                 <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="clearfix">
                                 <div class="float-left">
                                     <span class="text-success">
-                                        <i class="fa fa-dollar highlight-icon" aria-hidden="true"></i>
+                                        <i class="fas fa-user-graduate highlight-icon" aria-hidden="true"></i>
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">Revenue</p>
-                                    <h4>$65656</h4>
+                                    <p class="card-text text-dark">{{ trans('dashboard.student_count') }}</p>
+                                    <h4>{{ App\Models\Student::count() }}</h4>
                                 </div>
                             </div>
-                            <p class="pt-3 mt-2 mb-0 text-muted border-top">
-                                <i class="mr-1 fa fa-calendar" aria-hidden="true"></i> Sales Per Week
-                            </p>
+                                <p class="pt-3 mt-2 mb-0 text-muted border-top">
+                                    <i class="mr-1 fas fa-binoculars" aria-hidden="true"></i> <a href="{{ route('students.index') }}" target="_blank" style="color: red; ">{{ trans('dashboard.show_data') }}</a>
+                                </p>
                         </div>
                     </div>
                 </div>
+                {{-- Teacher Widget --}}
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <span class="text-warning">
+                                        <i class="fas fa-chalkboard-teacher highlight-icon" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="float-right text-right">
+                                    <p class="card-text text-dark">{{ trans('dashboard.teacher_count') }}</p>
+                                    <h4>{{ App\Models\Teacher::count() }}</h4>
+                                </div>
+                            </div>
+                                <p class="pt-3 mt-2 mb-0 text-muted border-top">
+                                    <i class="mr-1 fas fa-binoculars" aria-hidden="true"></i> <a href="{{ route('teachers.index') }}" target="_blank" style="color: red; ">{{ trans('dashboard.show_data') }}</a>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                {{-- Parent Widget --}}
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <span class="text-success">
+                                        <i class="fas fa-user-tie highlight-icon" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="float-right text-right">
+                                    <p class="card-text text-dark">{{ trans('dashboard.parent_count') }}</p>
+                                    <h4>{{ App\Models\MyParent::count() }}</h4>
+                                </div>
+                            </div>
+                                <p class="pt-3 mt-2 mb-0 text-muted border-top">
+                                    <i class="mr-1 fas fa-binoculars" aria-hidden="true"></i> <a href="{{ route('parents.index') }}" target="_blank" style="color: red; ">{{ trans('dashboard.show_data') }}</a>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                {{-- Classroom Widget --}}
                 <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="clearfix">
                                 <div class="float-left">
                                     <span class="text-primary">
-                                        <i class="fa fa-twitter highlight-icon" aria-hidden="true"></i>
+                                        <i class="fas fa-chalkboard highlight-icon" aria-hidden="true"></i>
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">Followers</p>
-                                    <h4>62,500+</h4>
+                                    <p class="card-text text-dark">{{ trans('dashboard.classroom_count') }}</p>
+                                    <h4>{{ App\Models\Classroom::count() }}</h4>
                                 </div>
                             </div>
-                            <p class="pt-3 mt-2 mb-0 text-muted border-top">
-                                <i class="mr-1 fa fa-repeat" aria-hidden="true"></i> Just Updated
-                            </p>
+                                <p class="pt-3 mt-2 mb-0 text-muted border-top">
+                                    <i class="mr-1 fas fa-binoculars" aria-hidden="true"></i> <a href="{{ route('classrooms.index') }}" target="_blank" style="color: red; ">{{ trans('dashboard.show_data') }}</a>
+                                </p>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Orders Status widgets-->
             <div class="row">
-                <div class="col-xl-4 mb-30">
-                    <div class="card card-statistics h-100">
-                        <!-- action group -->
-                        <div class="btn-group info-drop">
-                            <button type="button" class="dropdown-toggle-split text-muted" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><i class="ti-more"></i></button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#"><i class="text-primary ti-reload"></i>Refresh</a>
-                                <a class="dropdown-item" href="#"><i class="text-secondary ti-eye"></i>View
-                                    all</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Market summary</h5>
-                            <h4>$50,500 </h4>
-                            <div class="mt-20 row">
-                                <div class="col-4">
-                                    <h6>Apple</h6>
-                                    <b class="text-info">+ 82.24 % </b>
-                                </div>
-                                <div class="col-4">
-                                    <h6>Instagram</h6>
-                                    <b class="text-danger">- 12.06 % </b>
-                                </div>
-                                <div class="col-4">
-                                    <h6>Google</h6>
-                                    <b class="text-warning">+ 24.86 % </b>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="sparkline2" class="text-center scrollbar-x"></div>
-                    </div>
-                </div>
-                <div class="col-xl-8 mb-30">
-                    <div class="card h-100">
-                        <div class="btn-group info-drop">
-                            <button type="button" class="dropdown-toggle-split text-muted" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><i class="ti-more"></i></button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#"><i class="text-primary ti-reload"></i>Refresh</a>
-                                <a class="dropdown-item" href="#"><i class="text-secondary ti-eye"></i>View
-                                    all</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-block d-md-flexx justify-content-between">
-                                <div class="d-block">
-                                    <h5 class="card-title">Site Visits Growth </h5>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="clearfix mr-30">
-                                        <h6 class="text-success">Income</h6>
-                                        <p>+584</p>
-                                    </div>
-                                    <div class="clearfix mr-50">
-                                        <h6 class="text-danger"> Outcome</h6>
-                                        <p>-255</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="morris-area" style="height: 320px;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-4 mb-30">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Customer Feedback </h5>
-                            <div class="row mb-30">
-                                <div class="col-md-6">
-                                    <div class="clearfix">
-                                        <p class="float-left mb-10">Positive</p>
-                                        <i class="float-right mb-10 text-success fa fa-arrow-up"> </i>
-                                    </div>
-                                    <div class="progress progress-small">
-                                        <div class="skill2-bar bg-success" role="progressbar" style="width: 70%"
-                                            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="mt-10 text-success">8501</h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="clearfix">
-                                        <p class="float-left mb-10">Negative</p>
-                                        <i class="float-right mb-10 text-danger fa fa-arrow-down"> </i>
-                                    </div>
-                                    <div class="progress progress-small">
-                                        <div class="skill2-bar bg-danger" role="progressbar" style="width: 30%"
-                                            aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="mt-10 text-danger">3251</h4>
-                                </div>
-                            </div>
-                            <div class="chart-wrapper" style="width: 100%; margin: 0 auto;">
-                                <div id="canvas-holder">
-                                    <canvas id="canvas3" width="550"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-8 mb-30">
+                <div class="col-xl-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="tab nav-border" style="position: relative;">
                                 <div class="d-block d-md-flex justify-content-between">
                                     <div class="d-block w-100">
-                                        <h5 class="card-title">Best Sellers</h5>
+                                        <h4 class="card-title">{{ trans('dashboard.last_tracking') }}</h4>
                                     </div>
                                     <div class="d-block d-md-flex nav-tabs-custom">
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active show" id="months-tab" data-toggle="tab"
-                                                    href="#months" role="tab" aria-controls="months"
-                                                    aria-selected="true"> Months</a>
+                                                <a class="nav-link active show" id="students-tab" data-toggle="tab"
+                                                    href="#students" role="tab" aria-controls="students"
+                                                    aria-selected="true"> {{ trans('dashboard.student') }}</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="year-tab" data-toggle="tab" href="#year"
-                                                    role="tab" aria-controls="year" aria-selected="false">Year
+                                                <a class="nav-link" id="teachers-tab" data-toggle="tab" href="#teachers"
+                                                    role="tab" aria-controls="teachers" aria-selected="false">{{ trans('dashboard.teacher') }}
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="parents-tab" data-toggle="tab" href="#parents"
+                                                    role="tab" aria-controls="parents" aria-selected="false">{{ trans('dashboard.parent') }}
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="fee_invoices-tab" data-toggle="tab" href="#fee_invoices"
+                                                    role="tab" aria-controls="fee_invoices" aria-selected="false">{{ trans('dashboard.fee_invoices') }}
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade active show" id="months" role="tabpanel"
-                                        aria-labelledby="months-tab">
-                                        <div class="row mb-30">
-                                            <div class="col-md-2 col-sm-6">
-                                                <img class="img-fluid" src="{{ asset('images/blog/05.jpg') }}" alt="">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <h6 class="mb-0 sm-mt-5">Supercharge your motivation</h6>
-                                                <p class="sm-mb-5 d-block">I truly believe Augustine’s words are
-                                                    true. </p>
-                                                <span class="mb-0">by - <b class="text-info">PotenzaUser</b></span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-primary"><b>45,436</b></h5>
-                                                <span>Sales</span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-secondary"><b>$05,236</b></h5>
-                                                <span>Revenue</span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-30">
-                                            <div class="col-md-2 col-sm-6">
-                                                <img class="img-fluid" src="{{ asset('images/blog/02.jpg') }}" alt="">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <h6 class="mb-0 sm-mt-5">Helen keller a teller seller</h6>
-                                                <p class="sm-mb-5 d-block">We also know those epic stories,
-                                                    those modern.</p>
-                                                <span class="mb-0">by - <b class="text-warning">WebminUser</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-success"><b>23,462</b></h5>
-                                                <span>Sales</span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-danger"><b>$166</b></h5>
-                                                <span>Revenue</span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-30">
-                                            <div class="col-md-2 col-sm-6">
-                                                <img class="img-fluid" src="{{ asset('images/blog/03.jpg') }}" alt="">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <h6 class="mb-0 sm-mt-5">The other virtues practice</h6>
-                                                <p class="sm-mb-5 d-block">One of the most difficult aspects of
-                                                    achieving. </p>
-                                                <span class="mb-0">by - <b class="text-danger">TheCorps</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-warning"><b>5,566</b></h5>
-                                                <span>Sales</span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-info"><b>$4,126</b></h5>
-                                                <span>Revenue</span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-2 col-sm-6">
-                                                <img class="img-fluid" src="{{ asset('images/blog/04.jpg') }}" alt="">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <h6 class="mb-0 sm-mt-5">You will begin to realise</h6>
-                                                <p class="sm-mb-5 d-block">Remind yourself you have nowhere to
-                                                    go except. </p>
-                                                <span class="mb-0">by - <b class="text-success">PGSinfotech</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-dark"><b>5,446</b></h5>
-                                                <span>Sales</span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-success"><b>$436</b></h5>
-                                                <span>Revenue</span>
-                                            </div>
+                                    {{-- Students Tab Content --}}
+                                    <div class="tab-pane fade active show" id="students" role="tabpanel" aria-labelledby="students-tab">
+                                        <div class="table-responsive">
+                                            <table  class="table table-striped table-hover"  style="text-align: center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>{{ trans('student.name') }}</th>
+                                                        <th>{{ trans('student.email') }}</th>
+                                                        <th>{{ trans('student.gender') }}</th>
+                                                        <th>{{ trans('student.Grade') }}</th>
+                                                        <th>{{ trans('student.classrooms') }}</th>
+                                                        <th>{{ trans('student.section') }}</th>
+                                                        <th>{{ trans('dashboard.date') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $i = 0; ?>
+                                                    @forelse (App\Models\Student::latest()->take(5)->get() as $student)
+                                                        <tr>
+                                                            <?php $i++; ?>
+                                                            <td>{{ $i }}</td>
+                                                            <td>{{ $student->name }}</td>
+                                                            <td>{{ $student->email }}</td>
+                                                            <td>{{ $student->gender->name }}</td>
+                                                            <td>{{ $student->grade->name }}</td>
+                                                            <td>{{ $student->classroom->name_class }}</td>
+                                                            <td>{{ $student->section->name }}</td>
+                                                            <td class="text-success">{{ $student->created_at->format('Y-m-d') }}</td>
+                                                        </tr>
+                                                        @empty
+                                                            <td colspan="6" class="alert-danger">{{ trans('dashboard.no_students') }}</td>
+                                                    @endforelse
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab">
-                                        <div class="row mb-30">
-                                            <div class="col-md-2 col-sm-6">
-                                                <img class="img-fluid" src="{{ asset('images/blog/09.jpg') }}" alt="">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <h6 class="mb-0 sm-mt-5">Walk out 10 years into</h6>
-                                                <p class="sm-mb-5 d-block">Understanding the price and having
-                                                    the willingness to pay. </p>
-                                                <span class="mb-0">by - <b class="text-danger">TheZayka</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-dark"><b>12,549</b></h5>
-                                                <span>Sales</span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 theme-color"><b>$1,656</b></h5>
-                                                <span>Revenue</span>
-                                            </div>
+                                    {{-- Teachers Tab Content --}}
+                                    <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover" style="text-align: center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>{{ trans('teacher.name_teacher') }}</th>
+                                                        <th>{{ trans('teacher.gender') }}</th>
+                                                        <th>{{ trans('teacher.joining_date') }}</th>
+                                                        <th>{{ trans('teacher.specialization') }}</th>
+                                                        <th>{{ trans('dashboard.date') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $i = 0; ?>
+                                                    @forelse (App\Models\Teacher::latest()->take(5)->get() as $teacher)
+                                                        <tr>
+                                                            <?php $i++; ?>
+                                                            <td>{{ $i }}</td>
+                                                            <td>{{ $teacher->name }}</td>
+                                                            <td>{{ $teacher->gender->name }}</td>
+                                                            <td>{{ $teacher->join_date }}</td>
+                                                            <td>{{ $teacher->specialization->name }}</td>
+                                                            <td class="text-success">{{ $teacher->created_at->format('Y-m-d') }}</td>
+                                                        </tr>
+                                                        @empty
+                                                            <td colspan="6" class="alert-danger">{{ trans('dashboard.no_teachers') }}</td>
+                                                    @endforelse
+                                            </table>
                                         </div>
-                                        <div class="row mb-30">
-                                            <div class="col-md-2 col-sm-6">
-                                                <img class="img-fluid" src="{{ asset('images/blog/06.jpg') }}" alt="">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <h6 class="mb-0 sm-mt-5">Step out on to the path</h6>
-                                                <p class="sm-mb-5 d-block">Success to you and then pull it out
-                                                    when you are.</p>
-                                                <span class="mb-0">by - <b class="text-info">CarDealer</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-primary"><b>1,366</b></h5>
-                                                <span>Sales</span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-secondary"><b>$4,536</b></h5>
-                                                <span>Revenue</span>
-                                            </div>
+                                    </div>
+                                    {{-- Parents Tab Content --}}
+                                    <div class="tab-pane fade" id="parents" role="tabpanel" aria-labelledby="parents-tab">
+                                        <div class="table-responsive">
+                                            <table  class="table table-striped table-hover"  style="text-align: center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>{{ trans('parent.Name_Father') }}</th>
+                                                        <th>{{ trans('parent.Email') }}</th>
+                                                        <th>{{ trans('parent.National_ID_Father') }}</th>
+                                                        <th>{{ trans('parent.Phone_Father') }}</th>
+                                                        <th>{{ trans('dashboard.date') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $i = 0; ?>
+                                                    @forelse (App\Models\MyParent::latest()->take(5)->get() as $my_parent)
+                                                        <tr>
+                                                            <?php $i++; ?>
+                                                            <td>{{ $i }}</td>
+                                                            <td>{{ $my_parent->father_name }}</td>
+                                                            <td>{{ $my_parent->email }}</td>
+                                                            <td>{{ $my_parent->father_national_id }}</td>
+                                                            <td>{{ $my_parent->father_phone }}</td>
+                                                            <td class="text-success">{{ $my_parent->created_at->format('Y-m-d') }}</td>
+                                                        </tr>
+                                                        @empty
+                                                            <td colspan="6" class="alert-danger">{{ trans('dashboard.no_parents') }}</td>
+                                                    @endforelse
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        <div class="row mb-30">
-                                            <div class="col-md-2 col-sm-6">
-                                                <img class="img-fluid" src="{{ asset('images/blog/07.jpg') }}" alt="">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <h6 class="mb-0 sm-mt-5">Briefly imagine that you</h6>
-                                                <p class="sm-mb-5 d-block">Motivators for your personality and
-                                                    your personal goals. </p>
-                                                <span class="mb-0">by - <b class="text-success">SamMartin</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-success"><b>465</b></h5>
-                                                <span>Sales</span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-danger"><b>$499</b></h5>
-                                                <span>Revenue</span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-2 col-sm-6">
-                                                <img class="img-fluid" src="{{ asset('images/blog/08.jpg') }}" alt="">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <h6 class="mb-0 sm-mt-5">You continue doing what</h6>
-                                                <p class="sm-mb-5 d-block">The first thing to remember about
-                                                    success is that. </p>
-                                                <span class="mb-0">by - <b class="text-warning">Cosntro</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-warning"><b>4,456</b></h5>
-                                                <span>Sales</span>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-6 sm-mt-20">
-                                                <h5 class="mb-0 text-info"><b>$6,485</b></h5>
-                                                <span>Revenue</span>
-                                            </div>
+                                    </div>
+                                    {{-- Fee Invoices Tab Content --}}
+                                    <div class="tab-pane fade" id="fee_invoices" role="tabpanel" aria-labelledby="fee_invoices-tab">
+                                        <div class="table-responsive">
+                                            <table  class="table table-striped table-hover"  style="text-align: center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>{{ trans('fees.invoice_date') }}</th>
+                                                        <th>{{ trans('student.name') }}</th>
+                                                        <th>{{ trans('fees.grade_id_Processing') }}</th>
+                                                        <th>{{ trans('fees.class_id_Processing') }}</th>
+                                                        <th>{{ trans('fees.fee_id_payment_vouchers_Processing') }}</th>
+                                                        <th>{{ trans('fees.amount') }}</th>
+                                                        <th>{{ trans('dashboard.date') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $i = 0; ?>
+                                                    @forelse (App\Models\FeeInvoice::latest()->take(5)->get() as $fee_invoice)
+                                                        <tr>
+                                                            <?php $i++; ?>
+                                                            <td>{{ $i }}</td>
+                                                            <td>{{ $fee_invoice->invoice_date }}</td>
+                                                            <td>{{ $fee_invoice->student->name }}</td>
+                                                            <td>{{ $fee_invoice->grade_id }}</td>
+                                                            <td>{{ $fee_invoice->classroom->name_class }}</td>
+                                                            <td>{{ $fee_invoice->fee->name }}</td>
+                                                            <td>{{ $fee_invoice->amount }}</td>
+                                                            <td class="text-success">{{ $fee_invoice->created_at->format('Y-m-d') }}</td>
+                                                        </tr>
+                                                    @empty
+                                                        <tr>
+                                                            <td colspan="8" class="alert-danger">{{ trans('dashboard.no_fee_invoices') }}</td>
+                                                        </tr>
+                                                    @endforelse
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -430,243 +318,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-4 mb-30">
-                    <div class="card card-statistics h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Best Selling Items</h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-20">
-                                    <div class="media">
-                                        <div class="position-relative">
-                                            <img class="img-fluid mr-15 avatar-small" src="{{ asset('images/item/01.png') }}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-0">Car dealer <span class="float-right text-danger">
-                                                    8,561</span> </h6>
-                                            <p>Automotive WordPress Theme </p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-20 divider dotted"></div>
-                                </li>
-                                <li class="mb-20">
-                                    <div class="media">
-                                        <div class="clearfix position-relative">
-                                            <img class="img-fluid mr-15 avatar-small" src="{{ asset('images/item/02.png') }}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-0">Webster <span class="float-right text-warning">
-                                                    6,213</span> </h6>
-                                            <p>Multi-purpose HTML5 Template </p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-20 divider dotted"></div>
-                                </li>
-                                <li class="mb-20">
-                                    <div class="media">
-                                        <div class="position-relative">
-                                            <img class="img-fluid mr-15 avatar-small" src="{{ asset('images/item/03.png') }}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-0">The corps <span class="float-right text-success">
-                                                    2,926</span> </h6>
-                                            <p> Multi-Purpose WordPress Theme </p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-20 divider dotted"></div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <div class="clearfix position-relative">
-                                            <img class="img-fluid mr-15 avatar-small" src="{{ asset('images/item/04.png') }}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-0">Sam martin <span
-                                                    class="float-right text-warning">6,213 </span></h6>
-                                            <p>Personal vCard Resume WordPress Theme </p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 mb-30">
-                    <div class="card h-100">
-                        <div class="btn-group info-drop">
-                            <button type="button" class="dropdown-toggle-split text-muted" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><i class="ti-more"></i></button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#"><i class="text-primary ti-reload"></i>Refresh</a>
-                                <a class="dropdown-item" href="#"><i class="text-secondary ti-eye"></i>View
-                                    all</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Site Visits Growth </h5>
-                            <div class="row">
-                                <div class="col-6">
-                                    <h6 class="text-danger">Income</h6>
-                                    <p class="text-danger">+584</p>
-                                </div>
-                                <div class="col-6">
-                                    <h6 class="text-info">Outcome</h6>
-                                    <p class="text-info">-255</p>
-                                </div>
-                            </div>
-                            <div id="morris-line" style="height: 320px;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 mb-30">
-                    <div class="card card-statistics h-100">
-                        <div class="p-4 text-center bg" style="background: url('{{ asset('images/bg/01.jpg') }}');">
-                            <h5 class="text-white mb-70 position-relative">Michael Bean </h5>
-                            <div class="btn-group info-drop">
-                                <button type="button" class="text-white dropdown-toggle-split" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"><i class="ti-more"></i></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#"><i class="text-primary ti-files"></i> Add
-                                        task</a>
-                                    <a class="dropdown-item" href="#"><i class="text-dark ti-pencil-alt"></i>
-                                        Edit Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="text-success ti-user"></i> View
-                                        Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="text-secondary ti-info"></i>
-                                        Contact Info</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center card-body position-relative">
-                            <div class="avatar-top">
-                                <img class="img-fluid w-25 rounded-circle " src="{{ asset('images/team/13.jpg') }}" alt="">
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4 mt-30">
-                                    <b>Files Saved</b>
-                                    <h4 class="mt-10 text-success">1582</h4>
-                                </div>
-                                <div class="col-sm-4 mt-30">
-                                    <b>Memory Used </b>
-                                    <h4 class="mt-10 text-danger">58GB</h4>
-                                </div>
-                                <div class="col-sm-4 mt-30">
-                                    <b>Spent Money</b>
-                                    <h4 class="mt-10 text-warning">352,6$</h4>
-                                </div>
-                            </div>
-                            <div class="mt-20 divider"></div>
-                            <p class="mt-30">17504 Carlton Cuevas Rd, Gulfport, MS, 39503</p>
-                            <p class="mt-10">michael@webmin.com</p>
-                            <div class="mt-20 social-icons color-icon">
-                                <ul>
-                                    <li class="social-rss"><a href="#"><i class="fa fa-rss"></i></a></li>
-                                    <li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li class="social-github"><a href="#"><i class="fa fa-github"></i></a></li>
-                                    <li class="social-youtube"><a href="#"><i class="fa fa-youtube"></i></a>
-                                    </li>
-                                    <li class="social-instagram"><a href="#"><i class="fa fa-instagram"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="calendar-main mb-30">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="row">
-                            <div class="col-12 sm-mb-30">
-                                <a href="#" data-toggle="modal" data-target="#add-category"
-                                    class="btn btn-primary btn-block m-t-20">
-                                    <i class="pr-2 fa fa-plus"></i> Create New
-                                </a>
-                                <div id="external-events" class="m-t-20">
-                                    <br>
-                                    <p class="text-muted">Drag and drop your event or click in the calendar</p>
-                                    <div class="external-event bg-success fc-event">
-                                        <i class="mr-2 fa fa-circle vertical-middle"></i>New Theme Release
-                                    </div>
-                                    <div class="external-event bg-info fc-event">
-                                        <i class="mr-2 fa fa-circle vertical-middle"></i>My Event
-                                    </div>
-                                    <div class="external-event bg-warning fc-event">
-                                        <i class="mr-2 fa fa-circle vertical-middle"></i>Meet manager
-                                    </div>
-                                    <div class="external-event bg-danger fc-event">
-                                        <i class="mr-2 fa fa-circle vertical-middle"></i>Create New theme
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-9">
-                        <div id="calendar"></div>
-                        <div class="modal" tabindex="-1" role="dialog" id="event-modal">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Add New Event</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="p-20 modal-body"></div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-success save-event">Create
-                                            event</button>
-                                        <button type="button" class="btn btn-danger delete-event"
-                                            data-dismiss="modal">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal Add Category -->
-                        <div class="modal" tabindex="-1" role="dialog" id="add-category">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Add a category</h5>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">&times;</button>
-                                    </div>
-                                    <div class="p-20 modal-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label class="control-label">Category Name</label>
-                                                    <input class="form-control form-white" placeholder="Enter name"
-                                                        type="text" name="category-name" />
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="control-label">Choose Category Color</label>
-                                                    <select class="form-control form-white"
-                                                        data-placeholder="Choose a color..." name="category-color">
-                                                        <option value="success">Success</option>
-                                                        <option value="danger">Danger</option>
-                                                        <option value="info">Info</option>
-                                                        <option value="primary">Primary</option>
-                                                        <option value="warning">Warning</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-success save-category"
-                                            data-dismiss="modal">Save</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {{-- Calendar --}}
+            <div class="mb-30">
+                <livewire:calendar />
             </div>
             <!--=================================
  wrapper -->

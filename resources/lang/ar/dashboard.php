@@ -8,4 +8,21 @@ return [
     'Dashboard_03'   => 'لوحة 03',
     'Dashboard_04'   => 'لوحة 04',
     'Dashboard_05'   => 'لوحة 05',
+
+    'student_count' => 'عدد الطلاب',
+    'teacher_count' => 'عدد المعلمين',
+    'parent_count' => 'عدد أولياء الأمور',
+    'classroom_count' => 'عدد الصفوف الدراسية',
+    'show_data' => 'عرض البيانات',
+    'last_tracking' => 'اخر العمليات علي النظام',
+    'student' => 'الطلاب',
+    'teacher' => 'المعلمين',
+    'parent' => 'أولياء الأمور',
+    'fee_invoices' => 'الفواتير الدراسية',
+    'date' =>'تاريخ الاضافة',
+    'section' => 'القسم',
+    'no_students' => 'لا يوجد طلاب',
+    'no_teachers' => 'لا يوجد معلمين',
+    'no_parents' => 'لا يوجد أولياء أمور',
+    'no_classrooms' => 'لا يوجد صفوف دراسية'
 ];

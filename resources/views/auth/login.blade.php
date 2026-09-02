@@ -221,7 +221,7 @@
                             <div class="absolute inset-y-0 {{ app()->getLocale() == 'ar' ? 'right-0 pr-4' : 'left-0 pl-4' }} flex items-center pointer-events-none">
                                 <i class="fa-regular fa-envelope text-slate-400"></i>
                             </div>
-                            <input id="email" name="email"  value="{{ old('email') }}"  autofocus autocomplete="username"
+                            <input id="email" name="email" type="email" value="{{ old('email') }}"  autofocus autocomplete="username"
                                 class="block w-full {{ app()->getLocale() == 'ar' ? 'pr-11 pl-4' : 'pl-11 pr-4' }} py-2.5 border border-slate-200 rounded-xl text-slate-900 bg-white/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue transition-all duration-300 text-xs sm:text-sm font-medium shadow-sm hover:border-brand-blue/30 placeholder-slate-400"
                                 placeholder="name@example.com">
                                 <input type="hidden" name="type" value="{{ $type }}" id="">

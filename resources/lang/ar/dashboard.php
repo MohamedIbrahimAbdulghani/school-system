@@ -24,5 +24,5 @@ return [
     'no_students' => 'لا يوجد طلاب',
     'no_teachers' => 'لا يوجد معلمين',
     'no_parents' => 'لا يوجد أولياء أمور',
-    'no_classrooms' => 'لا يوجد صفوف دراسية'
+    'no_fee_invoices' => 'لا يوجد فواتير دراسية '
 ];

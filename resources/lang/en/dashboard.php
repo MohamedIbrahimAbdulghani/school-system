@@ -24,5 +24,5 @@ return [
     'no_students' => 'No Students Found',
     'no_teachers' => 'No Teachers Found',
     'no_parents' => 'No Parents Found',
-    'no_classrooms' => 'No Classrooms Found',
+    'no_fee_invoices' => 'No Fee Invoices',
 ];

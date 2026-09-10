@@ -13,6 +13,7 @@ return [
     'teacher_count' => 'عدد المعلمين',
     'parent_count' => 'عدد أولياء الأمور',
     'classroom_count' => 'عدد الصفوف الدراسية',
+    'section_count' => 'عدد الاقسام',
     'show_data' => 'عرض البيانات',
     'last_tracking' => 'اخر العمليات علي النظام',
     'student' => 'الطلاب',

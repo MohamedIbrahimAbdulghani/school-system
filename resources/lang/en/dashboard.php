@@ -13,6 +13,7 @@ return [
     'teacher_count' => 'Number of Teachers',
     'parent_count' => 'Number of Parents',
     'classroom_count' => 'Number of Classrooms',
+    'section_count' => 'Number of Sections',
     'show_data' => 'Show Data',
     'last_tracking' => 'Latest System Activities',
     'student' => 'Students',

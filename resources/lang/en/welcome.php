@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'welcome' => 'Welcome ',
     'system_title' => 'School Management System',
     'nav_features' => 'Features',
     'nav_about' => 'About Us',
@@ -30,7 +31,7 @@ return [
     'contact_text' => 'Have any inquiries or want to get a custom consultation for your school? Our technical support team is always at your service.',
     'footer_text' => 'All rights reserved - Integrated School Management System',
     'hello' => 'Welcome, ',
-    
+
     // New Keys
     'roles_title' => 'Roles & System Permissions',
     'roles_subtitle' => 'A dedicated and interconnected environment for each user that ensures privacy and work efficiency',
@@ -42,13 +43,13 @@ return [
     'role_student_desc' => 'Access daily schedule, perform online exams, download study materials, and track grades first-hand.',
     'role_parent' => 'Parent',
     'role_parent_desc' => 'Monitor children\'s academic levels, behavior, attendance, pay pending fees, and communicate directly with teachers.',
-    
+
     'stats_title' => 'Numbers & Statistics We Take Pride In',
     'stats_students' => 'Active Students',
     'stats_teachers' => 'Highly Qualified Teachers',
     'stats_classes' => 'Smart Classrooms',
     'stats_exams' => 'Online Exams Taken',
-    
+
     'explore_system' => 'Explore System',
     'demo_login' => 'Quick Demo Login',
     'developer_rights' => 'Developed by Eng. Mohamed Ibrahim Abdulghani',

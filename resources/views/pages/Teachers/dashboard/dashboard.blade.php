@@ -40,7 +40,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="mb-0">{{ trans('teacher.dashboard') }} </h4>
+                        <h4 class="mb-2">{{ trans('welcome.welcome') }} : {{ auth('teacher')->user()->name }} </h4>
                     </div>
                     <div class="col-sm-6">
                         <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right">
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                                 <p class="pt-3 mt-2 mb-0 text-muted border-top">
-                                    <i class="mr-1 fas fa-binoculars" aria-hidden="true"></i> <a href="{{ route('students.index') }}" target="_blank" style="color: red; ">{{ trans('dashboard.show_data') }}</a>
+                                    <i class="mr-1 fas fa-binoculars" aria-hidden="true"></i> <a href="{{ route('student.index') }}" target="_blank" style="color: red; ">{{ trans('dashboard.show_data') }}</a>
                                 </p>
                         </div>
                     </div>

@@ -25,9 +25,8 @@ return [
     'no_students' => 'No Students Found',
     'no_teachers' => 'No Teachers Found',
     'no_parents' => 'No Parents Found',
-<<<<<<< HEAD
     'no_classrooms' => 'No Classrooms Found',
-=======
+
     'no_fee_invoices' => 'No Fee Invoices',
->>>>>>> 0b1b06d9492e5cd2ca2c717eb53cd5ba5a35d4b1
+
 ];

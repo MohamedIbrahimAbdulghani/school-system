@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Teacher\dashboard\StudentController as DashboardStudentController;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -16,8 +18,10 @@ Route::middleware('auth.role:teacher')->group(function () {
         $count_sections = $sectionIds->count();
         $count_students = Student::whereIn('section_id', $sectionIds)->count();
 
-        return view('pages.Teachers.dashboard', compact('count_sections', 'count_students'));
+        return view('pages.Teachers.dashboard.dashboard', compact('count_sections', 'count_students'));
 
         })->name('teacher.dashboard');
 
+
+    Route::resource('student', DashboardStudentController::class);
 });

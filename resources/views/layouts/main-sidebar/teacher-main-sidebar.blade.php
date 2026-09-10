@@ -13,7 +13,7 @@
 
                     <!-- Students-->
                     <li>
-                        <a href="{{route('students.index')}}"><i class="fas fa-user-graduate"></i><span
+                        <a href="{{route('student.index')}}"><i class="fas fa-user-graduate"></i><span
                                 class="right-nav-text">{{trans('student.students')}}</span></a>
                     </li>
 

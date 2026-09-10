@@ -43,4 +43,8 @@ return [
     'join_date' => 'the join_date is required',
     'address' => 'the address is required',
 
+    'reports' => 'Reports',
+    'report_attendances' => 'Report Attendances and Absences',
+    'report_quizzs' => 'Report Quizzs',
+
 ];

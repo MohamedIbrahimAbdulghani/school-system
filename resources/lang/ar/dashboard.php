@@ -25,5 +25,9 @@ return [
     'no_students' => 'لا يوجد طلاب',
     'no_teachers' => 'لا يوجد معلمين',
     'no_parents' => 'لا يوجد أولياء أمور',
+<<<<<<< HEAD
     'no_classrooms' => 'لا يوجد صفوف دراسية'
+=======
+    'no_fee_invoices' => 'لا يوجد فواتير دراسية '
+>>>>>>> 0b1b06d9492e5cd2ca2c717eb53cd5ba5a35d4b1
 ];

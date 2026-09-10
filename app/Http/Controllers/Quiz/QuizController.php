@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Quiz;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreQuizzRequest;
-use App\Repository\QuizzesRepositoryInterface;
+use App\Repository\QuizzRepositoryInterface;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
     protected $quizzes;
 
-    public function __construct(QuizzesRepositoryInterface $quizzes)
+    public function __construct(QuizzRepositoryInterface $quizzes)
     {
         $this->quizzes = $quizzes;
     }
@@ -71,4 +71,3 @@ class QuizController extends Controller
         return $this->quizzes->destroy($id);
     }
 }
-

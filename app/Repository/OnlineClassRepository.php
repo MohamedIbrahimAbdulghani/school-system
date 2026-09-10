@@ -9,7 +9,7 @@ use App\Models\Section;
 use App\Services\ZoomService;
 use Illuminate\Support\Facades\Auth;
 
-class OnlineClassesRepository implements  OnlineClassesRepositoryInterface {
+class OnlineClassRepository implements  OnlineClassRepositoryInterface {
 
     protected ZoomService $zoomService;
 

@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Promotion;
 use App\Models\Student;
-use App\Repository\StudentPromotionsRepositoryInterface;
+use App\Repository\StudentPromotionRepositoryInterface;
 use Illuminate\Http\Request;
 
 class PromotionController extends Controller
 {
     protected $promotions;
 
-    public function __construct(StudentPromotionsRepositoryInterface $promotions)
+    public function __construct(StudentPromotionRepositoryInterface $promotions)
     {
         $this->promotions = $promotions;
     }

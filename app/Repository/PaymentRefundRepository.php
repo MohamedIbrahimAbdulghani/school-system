@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\StudentAccount;
 use App\Models\FundAccount;
 
-class PaymentRefundsRepository implements PaymentRefundsRepositoryInterface {
+class PaymentRefundRepository implements PaymentRefundRepositoryInterface {
     public function index() {
         $paymentrefunds = PaymentRefund::all();
         return view('pages.PaymentRefunds.index', compact('paymentrefunds'));
@@ -94,5 +94,3 @@ class PaymentRefundsRepository implements PaymentRefundsRepositoryInterface {
         return redirect()->route('payment_refunds.index');
     }
 }
-
-

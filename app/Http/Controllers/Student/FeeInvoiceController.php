@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use App\Repository\FeeInvoicesRepositoryInterface;
+use App\Repository\FeeInvoiceRepositoryInterface;
 use App\Http\Requests\StoreFeeInvoiceRequest;
 use App\Http\Requests\UpdateFeeInvoiceRequest;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class FeeInvoiceController extends Controller
 {
     protected $fee_invoice;
 
-    public function __construct(FeeInvoicesRepositoryInterface $fee_invoice)
+    public function __construct(FeeInvoiceRepositoryInterface $fee_invoice)
     {
         $this->fee_invoice = $fee_invoice ;
     }
@@ -72,4 +72,3 @@ class FeeInvoiceController extends Controller
         return $this->fee_invoice->destroy($id);
     }
 }
-

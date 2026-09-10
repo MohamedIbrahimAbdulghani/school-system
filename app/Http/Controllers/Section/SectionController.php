@@ -9,18 +9,22 @@ use App\Models\Section;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSectionRequest;
+use App\Repository\SectionRepositoryInterface;
 
 class SectionController extends Controller
 {
+    protected $section;
+
+    public function __construct(SectionRepositoryInterface $section)
+    {
+        $this->section = $section;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $grades = Grades::with('sections')->get();
-        $grades = Grade::all();
-        $teachers = Teacher::all();
-        return view('pages.Sections.section', compact('grades', 'teachers'));
+        return $this->section->index();
     }
 
     /**
@@ -36,21 +40,7 @@ class SectionController extends Controller
      */
     public function store(StoreSectionRequest $request)
     {
-        try {
-            $validated = $request->validated();
-            $section = Section::create([
-                'name' => ['ar' => $request->Name_Section_Ar, 'en' => $request->Name_Section_En], // this is to enter 2 forma from name ( arabic + english )
-                'status' => 1,
-                'grade_id' => $request->Grade_id,
-                'classroom_id' => $request->Class_id,
-            ]);
-            $section->teachers()->attach($request->teachers_id); // attach() is a function to take teacher_id and section_id and insert this value in table teacher_section
-            toastr()->success(trans('messages.success'));
-            return redirect()->route('sections.index');
-
-        } catch(\Exception $exc) {
-            return redirect()->back()->withErrors(['error' => $exc->getMessage()]);
-        }
+        return $this->section->store($request);
     }
 
     /**
@@ -74,29 +64,7 @@ class SectionController extends Controller
      */
     public function update(StoreSectionRequest $request, string $id)
     {
-        try {
-            $validated = $request->validated();
-
-            $section = Section::findOrFail($id);
-
-            if(isset($request->status)) {
-                $section->status = 1;
-            } else {
-                $section->status = 2;
-            }
-
-            $section->update([
-                'name' => ['ar' => $request->Name_Section_Ar, 'en' => $request->Name_Section_En], // this is to enter 2 forma from name ( arabic + english )
-                'grade_id' => $request->Grade_id ?? $section->grade_id,
-                'classroom_id' => $request->Class_id ?? $section->classroom_id,
-            ]);
-            $section->teachers()->sync($request->teachers_id); // sync() is a function to update teacher_id and section_id  in table teacher_section
-            toastr()->success(trans('messages.update'));
-            return redirect()->route('sections.index');
-
-            } catch(\Exception $exc) {
-                return redirect()->back()->withErrors(['error' => $exc->getMessage()]);
-            }
+        return $this->section->update($request, $id);
     }
 
     /**
@@ -104,13 +72,9 @@ class SectionController extends Controller
      */
     public function destroy(Request $request, string $id)
     {
-        $section = Section::findOrFail($id);
-        $section->delete();
-        toastr()->success(trans('messages.delete'));
-        return redirect()->route('sections.index');
+        return $this->section->destroy($request, $id);
     }
     public function getClasses($id) {
-        $listClassrooms = Classroom::where('grade_id', $id)->pluck('name_class', 'id');
-        return $listClassrooms;
+        return $this->section->getClasses($id);
     }
 }

@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Fee;
 
 use App\Http\Controllers\Controller;
-use App\Repository\FeesRepositoryInterface;
 use App\Http\Requests\StoreFeesRequest;
 use App\Http\Requests\UpdateFeesRequest;
+use App\Repository\FeeRepositoryInterface;
 use Illuminate\Http\Request;
 
 class FeeController extends Controller
 {
     protected $fees;
 
-    public function __construct(FeesRepositoryInterface $fees) {
+    public function __construct(FeeRepositoryInterface $fees) {
         $this->fees = $fees;
     }
     /**
@@ -71,4 +71,3 @@ class FeeController extends Controller
         return $this->fees->destroy($id);
     }
 }
-

@@ -8,7 +8,7 @@ use App\Models\Quiz;
 use App\Models\Subject;
 use App\Models\Teacher;
 
-class QuizzesRepository implements QuizzesRepositoryInterface
+class QuizzRepository implements QuizzRepositoryInterface
 {
     public function index()
     {
@@ -90,5 +90,3 @@ class QuizzesRepository implements QuizzesRepositoryInterface
         }
     }
 }
-
-

@@ -5,14 +5,14 @@ namespace App\Http\Controllers\OnlineClass;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOnlineClassManualRequest;
 use App\Http\Requests\StoreOnlineClassRequest;
-use App\Repository\OnlineClassesRepositoryInterface;
+use App\Repository\OnlineClassRepositoryInterface;
 use Illuminate\Http\Request;
 
 class OnlineClassController extends Controller
 {
     protected $online_class;
 
-    public function __construct(OnlineClassesRepositoryInterface $online_class)
+    public function __construct(OnlineClassRepositoryInterface $online_class)
     {
         $this->online_class = $online_class;
     }
@@ -79,4 +79,3 @@ class OnlineClassController extends Controller
         return $this->online_class->storeManual($request);
     }
 }
-

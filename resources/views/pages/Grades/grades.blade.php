@@ -69,7 +69,7 @@
                                     <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$grade->id}}" title="{{trans('grades.delete')}}"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
-                            
+
                             {{-- Start Modal To Edit Grade --}}
                                 <div class="modal fade" id="edit{{$grade->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -188,7 +188,7 @@
                     </div>
                     <!-- End Modal To Add Grade  -->
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
 </div>

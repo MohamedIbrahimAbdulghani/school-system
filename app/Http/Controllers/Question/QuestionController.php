@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Question;
 
 use App\Http\Controllers\Controller;
-use App\Repository\QuestionsRepositoryInterface;
+use App\Repository\QuestionRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreQuestionRequest;
 
@@ -12,7 +12,7 @@ class QuestionController extends Controller
 {
     protected $question;
 
-    public function __construct(QuestionsRepositoryInterface $question)
+    public function __construct(QuestionRepositoryInterface $question)
     {
         $this->question = $question;
     }

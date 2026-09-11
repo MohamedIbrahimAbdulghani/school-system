@@ -7,7 +7,7 @@ use App\Models\Grade;
 use App\Models\Student;
 use Exception;
 
-class AttendancesRepository implements AttendancesRepositoryInterface
+class AttendanceRepository implements AttendanceRepositoryInterface
 {
     public function index()
     {

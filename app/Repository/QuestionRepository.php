@@ -5,7 +5,7 @@ use App\Models\Quiz;
 
 use App\Models\Question;
 
-class QuestionsRepository implements  QuestionsRepositoryInterface {
+class QuestionRepository implements  QuestionRepositoryInterface {
     public function index() {
         $questions = Question::all();
         return view('pages.Questions.index', compact('questions'));
@@ -32,7 +32,7 @@ class QuestionsRepository implements  QuestionsRepositoryInterface {
             toastr()->success(trans('messages.success'));
             return redirect()->route('questions.index');
         } catch(\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]); 
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -55,7 +55,7 @@ class QuestionsRepository implements  QuestionsRepositoryInterface {
             toastr()->success(trans('messages.update'));
             return redirect()->route('questions.index');
         } catch(\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]); 
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -65,7 +65,7 @@ class QuestionsRepository implements  QuestionsRepositoryInterface {
             toastr()->success(trans('messages.delete'));
             return redirect()->route('questions.index');
         } catch(\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]); 
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 }

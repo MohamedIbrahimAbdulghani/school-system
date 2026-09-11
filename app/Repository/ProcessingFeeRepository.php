@@ -7,7 +7,7 @@ use App\Models\StudentAccount;
 use Illuminate\Support\Facades\DB;
 
 
-class ProcessingFeesRepository implements ProcessingFeesRepositoryInterface {
+class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface {
     public function index() {
         $processing_fees = ProcessingFee::all();
         return view('pages.ProcessingFees.index', compact('processing_fees'));
@@ -78,5 +78,3 @@ class ProcessingFeesRepository implements ProcessingFeesRepositoryInterface {
         return redirect()->route('processing_fees.index');
     }
 }
-
-

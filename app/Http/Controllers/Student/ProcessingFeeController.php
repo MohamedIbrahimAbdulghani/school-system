@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Repository\ProcessingFeesRepositoryInterface;
+use App\Repository\ProcessingFeeRepositoryInterface;
 use App\Http\Requests\StoreProcessingFeeRequest;
 
 class ProcessingFeeController extends Controller
 {
     protected $processing;
 
-    public function __construct(ProcessingFeesRepositoryInterface $processing) {
+    public function __construct(ProcessingFeeRepositoryInterface $processing) {
         $this->processing = $processing;
     }
     /**
@@ -70,4 +70,3 @@ class ProcessingFeeController extends Controller
         return $this->processing->destroy($request);
     }
 }
-

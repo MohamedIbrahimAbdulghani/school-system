@@ -5,7 +5,7 @@ namespace App\Repository;
 
 use App\Http\Requests\UpdatePromotionsRequest;
 
-interface StudentPromotionsRepositoryInterface {
+interface StudentPromotionRepositoryInterface {
     public function index();
     public function store(UpdatePromotionsRequest $request);
     public function create();

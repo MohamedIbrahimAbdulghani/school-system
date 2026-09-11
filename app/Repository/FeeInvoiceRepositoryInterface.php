@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 
-interface FeeInvoicesRepositoryInterface {
+interface FeeInvoiceRepositoryInterface {
     public function index();
     public function show($id);
     public function store($request);

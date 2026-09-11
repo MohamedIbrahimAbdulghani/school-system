@@ -8,7 +8,7 @@ use App\Models\StudentAccount;
 use App\Models\FundAccount;
 
 
-class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface {
+class ReceiptStudentRepository implements ReceiptStudentRepositoryInterface {
     public function index() {
         $receipt_students = ReceiptStudent::all();
         return view('pages.Receipts.index', compact('receipt_students'));
@@ -35,7 +35,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface {
                 'credit' => 0.00,
                 'description' => $request->description,
             ]);
-            // 3- to insert data in students_accounts table in database { ( Ø¯Ø§Ø¦Ù† ) Ø¬Ø¯ÙˆÙ„ Ø­Ø³Ø§Ø¨Ø§Øª Ø§Ù„Ø·Ù„Ø§Ø¨ } 
+            // 3- to insert data in students_accounts table in database { ( Ø¯Ø§Ø¦Ù† ) Ø¬Ø¯ÙˆÙ„ Ø­Ø³Ø§Ø¨Ø§Øª Ø§Ù„Ø·Ù„Ø§Ø¨ }
             $student_account = StudentAccount::create([
                 'date' => date('Y-m-d'),
                 'type' => 'receipt',
@@ -76,7 +76,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface {
                 'credit' => 0.00,
                 'description' => $request->description,
             ]);
-            // 3- to update data in students_accounts table in database { ( Ø¯Ø§Ø¦Ù† ) Ø¬Ø¯ÙˆÙ„ Ø­Ø³Ø§Ø¨Ø§Øª Ø§Ù„Ø·Ù„Ø§Ø¨ } 
+            // 3- to update data in students_accounts table in database { ( Ø¯Ø§Ø¦Ù† ) Ø¬Ø¯ÙˆÙ„ Ø­Ø³Ø§Ø¨Ø§Øª Ø§Ù„Ø·Ù„Ø§Ø¨ }
             $student_account = StudentAccount::where('receipt_id', $request->receipt_student_id)->update([
                 'date' => date('Y-m-d'),
                 'type' => 'receipt',

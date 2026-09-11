@@ -6,7 +6,7 @@ use App\Models\Grade;
 use App\Models\Library;
 use Illuminate\Support\Facades\Storage;
 
-class LibrariesRepository implements LibrariesRepositoryInterface {
+class LibraryRepository implements LibraryRepositoryInterface {
     public function index() {
         $libraries = Library::all();
         return view('pages.Libraries.index', compact('libraries'));

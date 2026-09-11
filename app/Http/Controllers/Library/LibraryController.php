@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Library;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLibraryRequest;
 use App\Http\Requests\UpdateLibraryRequest;
-use App\Repository\LibrariesRepositoryInterface;
+use App\Repository\LibraryRepositoryInterface;
 use Illuminate\Http\Request;
 
 class LibraryController extends Controller
 {
     protected $libraries;
 
-    public function __construct(LibrariesRepositoryInterface $libraries)
+    public function __construct(LibraryRepositoryInterface $libraries)
     {
         $this->libraries = $libraries;
     }
@@ -77,4 +77,3 @@ class LibraryController extends Controller
         return $this->libraries->download($id);
     }
 }
-

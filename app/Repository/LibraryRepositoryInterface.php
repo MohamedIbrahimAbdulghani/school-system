@@ -1,15 +1,14 @@
 <?php
 
-
 namespace App\Repository;
 
-interface AttendancesRepositoryInterface
-{
+interface LibraryRepositoryInterface {
     public function index();
     public function create();
-    public function store($request);
     public function show($id);
+    public function store($request);
     public function edit($id);
     public function update($request);
     public function destroy($id);
+    public function download($id);
 }

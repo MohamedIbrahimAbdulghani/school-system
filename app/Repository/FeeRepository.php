@@ -6,7 +6,7 @@ namespace App\Repository;
 use App\Models\Fee;
 use App\Models\Grade;
 
-class FeesRepository implements FeesRepositoryInterface {
+class FeeRepository implements FeeRepositoryInterface {
     // this function to get all data from fees and show index page
     public function index() {
         $fees = Fee::all();
@@ -76,5 +76,3 @@ class FeesRepository implements FeesRepositoryInterface {
         return redirect()->route('fees.index');
     }
 }
-
-

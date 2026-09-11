@@ -1,8 +1,9 @@
 <?php
 
+
 namespace App\Repository;
 
-interface OnlineClassesRepositoryInterface {
+interface QuizzRepositoryInterface {
     public function index();
     public function create();
     public function show($id);
@@ -10,6 +11,4 @@ interface OnlineClassesRepositoryInterface {
     public function edit($id);
     public function update($request);
     public function destroy($id);
-    public function createManual();
-    public function storeManual($request);
 }

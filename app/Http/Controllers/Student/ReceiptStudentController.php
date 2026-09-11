@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use App\Repository\ReceiptStudentsRepositoryInterface;
+use App\Repository\ReceiptStudentRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReceiptStudentRequest;
 
@@ -11,7 +11,7 @@ class ReceiptStudentController extends Controller
 {
     public $receipt;
 
-    public function __construct(ReceiptStudentsRepositoryInterface $receipt) {
+    public function __construct(ReceiptStudentRepositoryInterface $receipt) {
         $this->receipt = $receipt;
     }
     /**
@@ -70,4 +70,3 @@ class ReceiptStudentController extends Controller
         return $this->receipt->destroy($request);
     }
 }
-

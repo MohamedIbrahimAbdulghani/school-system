@@ -9,7 +9,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class StudentPromotionsRepository implements StudentPromotionsRepositoryInterface {
+class StudentPromotionRepository implements StudentPromotionRepositoryInterface {
     public function index() {
         $promotions = Promotion::all();
         return view('pages.Students.Promotions.promotions_manage',compact('promotions'));
@@ -113,5 +113,3 @@ class StudentPromotionsRepository implements StudentPromotionsRepositoryInterfac
     }
 
 }
-
-

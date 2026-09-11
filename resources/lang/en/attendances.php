@@ -20,4 +20,7 @@ return [
     'date' => 'Today\'s Date',
     'presence' => 'Present',
     'absence' => 'Absent',
+    'edit_attendance_for_student' => 'Edit Attendance and Absence List For Student',
+    'submit' => 'Submit',
+    'close' => 'Close',
 ];

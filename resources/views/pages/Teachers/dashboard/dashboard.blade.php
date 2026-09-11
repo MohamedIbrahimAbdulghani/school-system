@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                                 <p class="pt-3 mt-2 mb-0 text-muted border-top">
-                                    <i class="mr-1 fas fa-binoculars" aria-hidden="true"></i> <a href="{{ route('sections.index') }}" target="_blank" style="color: red; ">{{ trans('dashboard.show_data') }}</a>
+                                    <i class="mr-1 fas fa-binoculars" aria-hidden="true"></i> <a href="{{ route('section') }}" target="_blank" style="color: red; ">{{ trans('dashboard.show_data') }}</a>
                                 </p>
                         </div>
                     </div>

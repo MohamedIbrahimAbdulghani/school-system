@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Student\StudentController;
-use App\Http\Controllers\Teacher\dashboard\StudentController as DashboardStudentController;
+
+use App\Http\Controllers\Teacher\dashboard\StudentController;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -23,5 +23,7 @@ Route::middleware('auth.role:teacher')->group(function () {
         })->name('teacher.dashboard');
 
 
-    Route::resource('student', DashboardStudentController::class);
+    Route::resource('student', StudentController::class);
+    Route::get('section', [StudentController::class, 'section'])->name('section');
+    Route::post('attendance', [StudentController::class, 'attendance'])->name('attendance');
 });

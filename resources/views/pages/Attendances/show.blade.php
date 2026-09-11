@@ -27,7 +27,7 @@
 <div class="row">
         <div class="col-md-12">
             <h5 style="color: red">{{ trans('attendances.date') }} : {{ date('Y-m-d') }}</h5>
-            <div class="card card-statistics h-100">
+            <div class="card card-statistics">
                 <div class="card-body">
                     <div class="col-xl-12 ">
                         <div class="card card-statistics h-100">

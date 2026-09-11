@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Teacher\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Attendance;
+use App\Models\Section;
 use App\Models\Student;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -65,5 +68,36 @@ class StudentController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function section() {
+        $sectionIds = DB::table('teacher_section')->where('teacher_id', auth('teacher')->user()->id)->pluck('section_id');
+        $sections = Section::whereIn('id', $sectionIds)->get();
+        return view('pages.Teachers.dashboard.sections.index', compact('sections'));
+    }
+    public function attendance(Request $request) {
+        try {
+            foreach($request->attendances as $student_id => $attendance) {
+                if($attendance === 'presence') {
+                    $attendance_status = true;
+                } else if($attendance === 'absence') {
+                    $attendance_status = false;
+                }
+                Attendance::updateorCreate([
+                    'student_id' => $student_id
+                ],[
+                'student_id' =>$student_id,
+                'grade_id' => $request->grade_id,
+                'classroom_id' => $request->classroom_id,
+                'section_id' => $request->section_id,
+                'teacher_id' => auth('teacher')->user()->id,
+                'attendance_date' => date('Y-m-d'),
+                'attendance_status' => $attendance_status,
+            ]);
+            }
+            toastr()->success(trans('messages.update'));
+            return redirect()->route('attendances.show');
+        } catch(Exception $exp) {
+            return redirect()->back()->withErrors(['error' => $exp->getMessage()]);
+        }
     }
 }

@@ -13,7 +13,7 @@
 
                     <!-- sections-->
                     <li>
-                        <a href="{{ route('sections.index') }}"><i class="fas fa-chalkboard"></i><span  class="right-nav-text">{{ trans('main-side.sections') }}</span></a>
+                        <a href="{{ route('section') }}"><i class="fas fa-chalkboard"></i><span  class="right-nav-text">{{ trans('main-side.sections') }}</span></a>
                     </li>
 
                     <!-- Students-->

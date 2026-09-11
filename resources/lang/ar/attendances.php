@@ -20,4 +20,7 @@ return [
     'date' => 'تاريخ اليوم',
     'presence' => 'حضور',
     'absence' => 'غياب',
+    'edit_attendance_for_student' => 'تعديل حضور وغياب الطالب',
+    'submit' => 'تأكيد',
+    'close' => 'اغلاق',
 ];

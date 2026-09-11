@@ -39,7 +39,7 @@ class AttendancesRepository implements AttendancesRepositoryInterface
                     'grade_id' => $request->grade_id,
                     'classroom_id' => $request->classroom_id,
                     'section_id' => $request->section_id,
-                    'teacher_id' => 1,
+                    'teacher_id' => auth('teacher')->user()->id,
                     'attendance_date' => date('Y-m-d'),
                     'attendance_status' => $attendance_status
                 ]);
@@ -72,4 +72,3 @@ class AttendancesRepository implements AttendancesRepositoryInterface
         //
     }
 }
-

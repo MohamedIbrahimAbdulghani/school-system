@@ -115,7 +115,6 @@
                                         </div>
                                     </div>
 
-
                                     <button class="mt-3 btn btn-success" type="submit">{{trans('libraries.submit')}}</button>
                                 </div>
                             </div>

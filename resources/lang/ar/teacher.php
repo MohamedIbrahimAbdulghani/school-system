@@ -51,4 +51,5 @@ return [
     'reports' => 'التقارير',
     'report_attendances' => 'تقارير الحضور والغياب',
     'report_quizzs' => 'تقارير الاختبارات',
+    'search_information' => 'معلومات البحث',
 ];

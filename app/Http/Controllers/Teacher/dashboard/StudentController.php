@@ -74,6 +74,7 @@ class StudentController extends Controller
         $sections = Section::whereIn('id', $sectionIds)->get();
         return view('pages.Teachers.dashboard.sections.index', compact('sections'));
     }
+
     public function attendance(Request $request) {
         try {
             foreach($request->attendances as $student_id => $attendance) {
@@ -98,6 +99,31 @@ class StudentController extends Controller
             return redirect()->route('attendances.show');
         } catch(Exception $exp) {
             return redirect()->back()->withErrors(['error' => $exp->getMessage()]);
+        }
+    }
+
+    public function attendance_report() {
+        $sectionIds = DB::table('teacher_section')->where('teacher_id', auth('teacher')->user()->id)->pluck('section_id');
+        $students = Student::whereIn('section_id', $sectionIds)->get();
+        return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
+    }
+
+    public function attendance_quizze() {
+        return 'Done This is attendance quizze function';
+    }
+
+    public function attendance_search(Request $request) {
+        if($request->student_id == 0) {
+            $students = Attendance::whereBetween('attendance_date', [$request->start_date, $request->end_date])
+            ->where('teacher_id', auth('teacher')->user()->id)->get();
+            // return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
+            return $students;
+        } else {
+            $students = Attendance::whereBetween('attendance_date', [$request->start_date, $request->end_date])
+            ->where('student_id', $request->student_id)
+            ->where('teacher_id', auth('teacher')->user()->id)->get();
+            // return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
+            return $students;
         }
     }
 }

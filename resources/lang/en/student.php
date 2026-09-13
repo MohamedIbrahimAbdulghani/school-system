@@ -69,4 +69,9 @@ return [
     'restore_successfully' => 'Restored Student Successfully',
     'delete' => 'Delete Student',
     'deleted_successfully' => 'Deleted Student Successfully',
+    'start_date' => 'Start Date',
+    'to_date' => 'To Date',
+    'end_date' => 'End Date',
+    'all_students' => 'All Students',
+
 ];

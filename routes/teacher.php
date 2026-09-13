@@ -26,4 +26,7 @@ Route::middleware('auth.role:teacher')->group(function () {
     Route::resource('student', StudentController::class);
     Route::get('section', [StudentController::class, 'section'])->name('section');
     Route::post('attendance', [StudentController::class, 'attendance'])->name('attendance');
+    Route::get('attendance/report', [StudentController::class, 'attendance_report'])->name('attendance.report');
+    Route::get('attendance/quizze', [StudentController::class, 'attendance_quizze'])->name('attendance.quizze');
+    Route::post('attendance/search', [StudentController::class, 'attendance_search'])->name('attendance.search');
 });

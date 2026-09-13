@@ -32,7 +32,7 @@ class LibraryRepository implements LibraryRepositoryInterface {
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
                 'section_id' => $request->section_id,
-                'teacher_id' => '1'
+                'teacher_id' => 2,
             ]);
             // if library created in database store file in local storage
             $file->storeAs('attachments/libraries/' . $library->title, $name, 'upload_attachments');
@@ -110,7 +110,7 @@ class LibraryRepository implements LibraryRepositoryInterface {
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
                 'section_id' => $request->section_id,
-                'teacher_id' => '1'
+                'teacher_id' => 2,
             ]);
 
             toastr()->success(trans('messages.success'));

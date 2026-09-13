@@ -70,4 +70,8 @@ return [
     'restore_successfully' => 'تم ارجاع الطالب بنجاح',
     'delete' => 'حذف الطالب',
     'deleted_successfully' => 'تم حذف الطالب بنجاح',
+    'start_date' => 'تاريخ البداية',
+    'to_date' => 'الي تاريخ',
+    'end_date' => 'تاريخ النهاية',
+    'all_students' => 'كل الطلاب',
 ];

@@ -1,37 +1,40 @@
 <?php
 
-namespace App\Repository;
+namespace App\Http\Controllers\Teacher\dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\Quiz;
+use App\Models\Section;
 use App\Models\Subject;
-use App\Models\Teacher;
+use Illuminate\Http\Request;
 
-class QuizzRepository implements QuizzRepositoryInterface
+class QuizzController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $quizzes = Quiz::all();
-        return view('pages.Quizzes.index', compact('quizzes'));
+        $quizzes = Quiz::where('teacher_id', auth('teacher')->user()->id)->get();
+        return view('pages.Teachers.dashboard.quizzes.index', compact('quizzes'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         $grades = Grade::all();
-        $teachers = Teacher::all();
-        $classrooms = Classroom::all();
-        $subjects = Subject::all();
-
-        return view('pages.Quizzes.create', compact('grades', 'teachers', 'classrooms', 'subjects'));
+        $subjects = Subject::where('teacher_id', auth('teacher')->user()->id)->get();
+        return view('pages.Teachers.dashboard.quizzes.create', compact('grades', 'subjects'));
     }
 
-    public function show($request)
-    {
-        //TODO: Implement show() method.
-    }
-
-        public function store($request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
         try {
             Quiz::create([
@@ -49,18 +52,31 @@ class QuizzRepository implements QuizzRepositoryInterface
         }
     }
 
-        public function edit($request)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $quizz = Quiz::findOrFail($request);
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $quizz = Quiz::findOrFail($id);
         $grades = Grade::all();
-        $teachers = Teacher::all();
         $classrooms = Classroom::all();
         $subjects = Subject::all();
 
-        return view('pages.Quizzes.edit', compact('quizz', 'grades', 'teachers', 'classrooms', 'subjects'));
+        return view('pages.Teachers.dashboard.quizzes.edit', compact('quizz', 'grades', 'classrooms', 'subjects'));
     }
 
-        public function update($request)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
         try {
             $quizz = Quiz::findOrFail($request->id);
@@ -70,7 +86,7 @@ class QuizzRepository implements QuizzRepositoryInterface
             'grade_id' => $request->grade_id,
             'classroom_id' => $request->classroom_id,
             'section_id' => $request->section_id,
-            'teacher_id' => $request->teacher_id
+            'teacher_id' => auth('teacher')->user()->id,
         ]);
             toastr()->success(trans('messages.update'));
             return redirect()->route('quizzes.index');
@@ -79,7 +95,10 @@ class QuizzRepository implements QuizzRepositoryInterface
         }
     }
 
-        public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         try {
             Quiz::findOrFail($id)->delete();
@@ -88,5 +107,15 @@ class QuizzRepository implements QuizzRepositoryInterface
         } catch(\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+    }
+
+    public function get_classrooms($id) {
+        $list_classes = Classroom::where("grade_id", $id)->pluck("name_class", "id");
+        return $list_classes;
+    }
+
+    public function get_sections($id) {
+        $list_sections = Section::where("classroom_id", $id)->pluck("name", "id");
+        return $list_sections;
     }
 }

@@ -24,7 +24,15 @@
 
                     <!-- Quizzes -->
                     <li>
-                        <a href="{{ route('quizzes.index') }}"><i class="fas fa-book-open"></i><span  class="right-nav-text">{{ trans('Quizzes.quizzes') }}</span></a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Quizzes-icon">
+                            <div class="pull-left"><i class="fas fa-clipboard-list"></i><span class="right-nav-text">{{trans('quizzes.quizzes')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Quizzes-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('quizzes.index') }}">{{ trans('quizzes.quizzes_list') }}</a> </li>
+                            <li> <a href="{{ route('questions.index') }}">{{ trans('questions.questions_list') }}</a> </li>
+                        </ul>
                     </li>
 
                     <!-- reports -->

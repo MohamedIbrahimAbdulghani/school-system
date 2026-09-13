@@ -85,7 +85,8 @@ class StudentController extends Controller
                     $attendance_status = false;
                 }
                 Attendance::updateorCreate([
-                    'student_id' => $student_id
+                    'student_id' => $student_id,
+                    'attendance_date' => date('Y-m-d')
                 ],[
                 'student_id' =>$student_id,
                 'grade_id' => $request->grade_id,

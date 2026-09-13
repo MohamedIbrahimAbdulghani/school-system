@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AttendanceResearchRequest;
 use App\Models\Attendance;
 use App\Models\Section;
 use App\Models\Student;
@@ -112,18 +113,22 @@ class StudentController extends Controller
         return 'Done This is attendance quizze function';
     }
 
-    public function attendance_search(Request $request) {
+    public function attendance_search(AttendanceResearchRequest $request) {
+
+        $sectionIds = DB::table('teacher_section')->where('teacher_id', auth('teacher')->user()->id)->pluck('section_id');
+        $students = Student::whereIn('section_id', $sectionIds)->get();
+
         if($request->student_id == 0) {
-            $students = Attendance::whereBetween('attendance_date', [$request->start_date, $request->end_date])
+            $Students = Attendance::whereBetween('attendance_date', [$request->start_date, $request->end_date])
             ->where('teacher_id', auth('teacher')->user()->id)->get();
-            // return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
-            return $students;
+            return view('pages.Teachers.dashboard.students.attendance_report', compact('Students', 'students'));
+            // return $students;
         } else {
-            $students = Attendance::whereBetween('attendance_date', [$request->start_date, $request->end_date])
+            $Students = Attendance::whereBetween('attendance_date', [$request->start_date, $request->end_date])
             ->where('student_id', $request->student_id)
             ->where('teacher_id', auth('teacher')->user()->id)->get();
-            // return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
-            return $students;
+            return view('pages.Teachers.dashboard.students.attendance_report', compact('Students', 'students'));
+            // return $students;
         }
     }
 }

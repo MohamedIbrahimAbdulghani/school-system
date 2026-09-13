@@ -8,8 +8,21 @@ class Attendance extends Model
 {
     protected $guarded = [];
 
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
+
+    public function grade() {
+        return $this->belongsTo(Grade::class, 'grade_id');
+    }
+
     public function classroom()
     {
         return $this->belongsTo(Classroom::class, 'classroom_id');
+    }
+
+    public function section() {
+        return $this->belongsTo(Section::class, 'section_id');
     }
 }

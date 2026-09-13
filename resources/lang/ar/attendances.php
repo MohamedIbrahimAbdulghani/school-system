@@ -23,4 +23,9 @@ return [
     'edit_attendance_for_student' => 'تعديل حضور وغياب الطالب',
     'submit' => 'تأكيد',
     'close' => 'اغلاق',
+
+    'required_title' => 'تاريخ البداية مطلوب',
+    'invalid_date' => 'تاريخ البداية غير صحيح',
+    'invalid_date_format' => 'يجب أن يكون تاريخ البداية بالصيغة Y-m-d', 'required_end_date' => 'تاريخ النهاية مطلوب',
+    'invalid_end_date' => 'تاريخ النهاية غير صحيح', 'invalid_end_date_format' => 'يجب أن يكون تاريخ النهاية بالصيغة Y-m-d', 'end_date_after_or_equal' => 'يجب أن يكون تاريخ النهاية أكبر من أو يساوي تاريخ البداية',
 ];

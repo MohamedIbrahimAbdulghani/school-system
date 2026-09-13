@@ -23,4 +23,11 @@ return [
     'edit_attendance_for_student' => 'Edit Attendance and Absence List For Student',
     'submit' => 'Submit',
     'close' => 'Close',
+
+    // Validation    'required_start_date' => 'Start date is required',
+    'required_title' => 'Start date is required',
+    'invalid_date' => 'Start date is invalid',
+    'invalid_date_format' => 'Start date must be in the Y-m-d format', 'required_end_date' => 'End date is required',
+    'invalid_end_date' => 'End date is invalid',
+    'invalid_end_date_format' => 'End date must be in the Y-m-d format', 'end_date_after_or_equal' => 'The end date must be greater than or equal to the start date',
 ];

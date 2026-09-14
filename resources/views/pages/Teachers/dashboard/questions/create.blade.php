@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('questions.index') }}" class="default-color">{{ trans('questions.questions_list') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('quizzes.show',  $quizz_id) }}" class="default-color">{{ trans('questions.questions_list') }}</a></li>
                 <li class="breadcrumb-item active">{{ trans('questions.add_question') }}</li>
             </ol>
         </div>

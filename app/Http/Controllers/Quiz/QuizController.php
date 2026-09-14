@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Quiz;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreQuizzRequest;
+use App\Http\Requests\UpdateQuizzRequest;
 use App\Repository\QuizzRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -58,7 +59,7 @@ class QuizController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreQuizzRequest $request, string $id)
+    public function update(UpdateQuizzRequest $request, string $id)
     {
         return $this->quizzes->update($request);
     }

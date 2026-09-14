@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Teacher\dashboard\QuestionController;
 use App\Http\Controllers\Teacher\dashboard\QuizzController;
 use App\Http\Controllers\Teacher\dashboard\StudentController;
 use App\Models\Section;
@@ -32,4 +33,5 @@ Route::middleware('auth.role:teacher')->group(function () {
     Route::resource('quizzes', QuizzController::class);
     Route::get('get_classrooms/{id}', [QuizzController::class, 'get_classrooms']);
     Route::get('get_sections/{id}', [QuizzController::class, 'get_sections']);
+    Route::resource('questions', QuestionController::class);
 });

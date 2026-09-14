@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Teacher\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreQuizzRequest;
+use App\Http\Requests\UpdateQuizzRequest;
 use App\Models\Classroom;
 use App\Models\Grade;
+use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\Section;
 use App\Models\Subject;
@@ -34,7 +37,7 @@ class QuizzController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreQuizzRequest $request)
     {
         try {
             Quiz::create([
@@ -57,7 +60,9 @@ class QuizzController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $questions = Question::where('quizz_id', $id)->get();
+        $quizz = Quiz::findOrFail($id);
+        return view('pages.Teachers.dashboard.questions.index', compact('questions', 'quizz'));
     }
 
     /**
@@ -76,16 +81,16 @@ class QuizzController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateQuizzRequest $request, string $id)
     {
         try {
-            $quizz = Quiz::findOrFail($request->id);
+            $quizz = Quiz::findOrFail($id);
             $quizz->update([
             'name' => ['ar' => $request->quiz_name_ar, 'en' => $request->quiz_name_en],
             'subject_id' => $request->subject_id,
             'grade_id' => $request->grade_id,
-            'classroom_id' => $request->classroom_id,
-            'section_id' => $request->section_id,
+            'classroom_id' => $request->classroom_id ?? $quizz->classroom_id,
+            'section_id' => $request->section_id ?? $quizz->section_id,
             'teacher_id' => auth('teacher')->user()->id,
         ]);
             toastr()->success(trans('messages.update'));

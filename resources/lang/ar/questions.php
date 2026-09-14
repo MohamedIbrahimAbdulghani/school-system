@@ -13,6 +13,7 @@ return [
     'question_name' => 'السؤال',
     'submit' => 'حفظ',
     'edit_question' => 'تعديل السؤال',
+    'delete_question' => 'حذف السؤال',
 
     'required_question_name' => 'يرجى إدخال السؤال',
     'required_answers' => 'يرجى إدخال الإجابات',

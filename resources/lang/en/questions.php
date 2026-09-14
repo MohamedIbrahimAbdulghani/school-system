@@ -13,6 +13,7 @@ return [
     'question_name' => 'Question',
     'submit' => 'Save',
     'edit_question' => 'Edit Question',
+    'delete_question' => 'Delete Question',
 
     'required_question_name' => 'Please enter the question',
     'required_answers' => 'Please enter the answers',

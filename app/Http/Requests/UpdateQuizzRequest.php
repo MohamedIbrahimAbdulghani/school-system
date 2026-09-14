@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreQuizzRequest extends FormRequest
+class UpdateQuizzRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,8 @@ class StoreQuizzRequest extends FormRequest
             'quiz_name_en' => 'required',
             'subject_id' => 'required',
             'grade_id'  => 'required',
-            'classroom_id' => 'required',
-            'section_id' => 'required'
+            'classroom_id' => 'nullable',
+            'section_id' => 'nullable',
         ];
     }
 
@@ -37,8 +37,6 @@ class StoreQuizzRequest extends FormRequest
             'quiz_name_en.required' => trans("quizzes.required_en"),
             'subject_id.required' =>  trans("quizzes.required_subject_id"),
             'grade_id.required' =>  trans("quizzes.required_grade_id"),
-            'classroom_id.required' =>  trans("quizzes.required_classroom_id"),
-            'section_id.required' =>  trans("quizzes.required_section_id"),
         ];
     }
 }

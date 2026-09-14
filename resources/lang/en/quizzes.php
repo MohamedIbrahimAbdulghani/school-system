@@ -21,6 +21,7 @@ return [
     'quiz_name_ar' => 'Quiz Name in Arabic',
     'quiz_name_en' => 'Quiz Name in English',
     'subject' => 'Subject',
+    'show' => 'Show Questions',
 
     'required_ar' => 'Please enter the quiz name in Arabic',
     'required_en' => 'Please enter the quiz name in English',

@@ -46,10 +46,10 @@ class QuizzController extends Controller
             'grade_id' => $request->grade_id,
             'classroom_id' => $request->classroom_id,
             'section_id' => $request->section_id,
-            'teacher_id' => auth('teacher')->user()->id,
+            'teacher_id' => auth('teacher')->user()->id
         ]);
             toastr()->success(trans('messages.success'));
-            return redirect()->route('quizzes.index');
+            return redirect()->route('quizze.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -62,6 +62,7 @@ class QuizzController extends Controller
     {
         $questions = Question::where('quizz_id', $id)->get();
         $quizz = Quiz::findOrFail($id);
+        // $quizzes = Quiz::all();
         return view('pages.Teachers.dashboard.questions.index', compact('questions', 'quizz'));
     }
 
@@ -94,7 +95,7 @@ class QuizzController extends Controller
             'teacher_id' => auth('teacher')->user()->id,
         ]);
             toastr()->success(trans('messages.update'));
-            return redirect()->route('quizzes.index');
+            return redirect()->route('quizze.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -108,7 +109,7 @@ class QuizzController extends Controller
         try {
             Quiz::findOrFail($id)->delete();
             toastr()->success(trans('messages.delete'));
-            return redirect()->route('quizzes.index');
+            return redirect()->route('quizze.index');
         } catch(\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

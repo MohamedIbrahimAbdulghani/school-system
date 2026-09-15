@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreQuizzRequest extends FormRequest
+class StoreAdminQuizzRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,7 +19,7 @@ class StoreQuizzRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+   public function rules(): array
     {
         return [
             'quiz_name_ar' => 'required',
@@ -28,6 +28,7 @@ class StoreQuizzRequest extends FormRequest
             'grade_id'  => 'required',
             'classroom_id' => 'required',
             'section_id' => 'required',
+            'teacher_id' => 'required|exists:teachers,id',
         ];
     }
 
@@ -39,6 +40,7 @@ class StoreQuizzRequest extends FormRequest
             'grade_id.required' =>  trans("quizzes.required_grade_id"),
             'classroom_id.required' =>  trans("quizzes.required_classroom_id"),
             'section_id.required' =>  trans("quizzes.required_section_id"),
+            'teacher_id.required' => trans("quizzes.required_teacher_id"),
         ];
     }
 }

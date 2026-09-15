@@ -40,7 +40,7 @@ class QuizzRepository implements QuizzRepositoryInterface
             'grade_id' => $request->grade_id,
             'classroom_id' => $request->classroom_id,
             'section_id' => $request->section_id,
-            'teacher_id' => auth('teacher')->user()->id,
+            'teacher_id' => $request->teacher_id,
         ]);
             toastr()->success(trans('messages.success'));
             return redirect()->route('quizzes.index');
@@ -68,8 +68,8 @@ class QuizzRepository implements QuizzRepositoryInterface
             'name' => ['ar' => $request->quiz_name_ar, 'en' => $request->quiz_name_en],
             'subject_id' => $request->subject_id,
             'grade_id' => $request->grade_id,
-            'classroom_id' => $request->classroom_id,
-            'section_id' => $request->section_id,
+            'classroom_id' => $request->classroom_id ?? $quizz->classroom_id,
+            'section_id' => $request->section_id ?? $quizz->section_id,
             'teacher_id' => $request->teacher_id
         ]);
             toastr()->success(trans('messages.update'));

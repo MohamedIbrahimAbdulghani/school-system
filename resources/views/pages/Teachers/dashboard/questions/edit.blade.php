@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('quizzes.show',  $question->quizz_id ) }}" class="default-color">{{ trans('questions.questions_list') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('quizze.show',  $question->quizz_id ) }}" class="default-color">{{ trans('questions.questions_list') }}</a></li>
                 <li class="breadcrumb-item active">{{ trans('questions.edit_question') }}</li>
             </ol>
         </div>
@@ -28,7 +28,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <form action="{{route('questions.update', $question->id)}}" method="post" autocomplete="off">
+                <form action="{{route('question.update', $question->id)}}" method="post" autocomplete="off">
                     @csrf
                     @method('PUT')
                     <div class="row setup-content">

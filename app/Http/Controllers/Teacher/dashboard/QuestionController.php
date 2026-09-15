@@ -16,7 +16,7 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view('pages.Questions.index', compact('questions'));
+        return view('pages.Teachers.dashboard.questions.index', compact('questions'));
     }
 
     /**
@@ -24,8 +24,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        // $quizzes = Quiz::all();
-        // return view('pages.Teachers.dashboard.questions.create', compact('quizzes'));
+        $quizzes = Quiz::all();
+        return view('pages.Teachers.dashboard.questions.create', compact('quizzes'));
     }
 
     /**
@@ -42,7 +42,7 @@ class QuestionController extends Controller
                 'quizz_id'=> $request->quizz_id
             ]);
             toastr()->success(trans('messages.success'));
-            return redirect()->route('quizzes.show',  $request->quizz_id);
+            return redirect()->route('quizze.show', $request->quizz_id);
         } catch(\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -82,7 +82,7 @@ class QuestionController extends Controller
                 'quizz_id'=> $request->quizz_id
             ]);
             toastr()->success(trans('messages.update'));
-            return redirect()->route('quizzes.show',  $request->quizz_id);
+            return redirect()->route('quizze.show', $request->quizz_id);
         } catch(\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

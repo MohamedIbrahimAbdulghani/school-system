@@ -76,9 +76,9 @@
                                         <td>{{ $question->score }}</td>
                                         <td>{{ $question->quizz->name }}</td>
                                         <td>
-                                            <a href="{{route('questions.edit', $question->id)}}"><button title="{{ trans('exams.edit') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
+                                            <a href="{{route('questions.edit', $question->id)}}"><button title="{{ trans('questions.edit_question') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
 
-                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$question->id}}"  title="{{trans('exams.delete')}}"><i class="fa fa-trash"></i></button>
+                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$question->id}}"  title="{{trans('questions.delete_question')}}"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
                                         {{-- Start Modal To Delete students --}}

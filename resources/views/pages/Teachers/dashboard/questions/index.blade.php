@@ -10,12 +10,12 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">{{ trans('questions.questions_list') }} : <span style="color: red;">{{ $quizz->name }}</span></h4>
+            <h4 class="mb-0">{{ trans('questions.questions_list') }}</h4>
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('quizzes.index') }}" class="default-color">{{ trans('quizzes.quizzes') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('questions.questions_list') }} : <span style="color: red;">{{ $quizz->name }}</span></li>
+                <li class="breadcrumb-item"><a href="{{ route('quizze.index') }}" class="default-color">{{ trans('quizzes.quizzes') }}</a></li>
+                <li class="breadcrumb-item active">{{ trans('questions.questions_list') }}</li>
             </ol>
         </div>
     </div>
@@ -47,7 +47,9 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    <a href="{{route('questions.show', $quizz->id)}}"><button type="button" class="mb-2 button x-small">{{trans('questions.add_question')}}</button></a>
+                        <a href="{{route('question.create')}}"><button type="button" class="mb-2 button x-small">{{trans('questions.add_question')}}</button></a>
+
+                    {{-- <button type="button" class="mb-2 button x-small" id="bulk-delete-btn"  style="background: #dc3545; border: 2px solid #dc3545;" data-toggle="modal" data-target="#delete_all_classes" >{{trans('classrooms.delete_checkbox')}}</button> --}}
 
                     <div class="table-responsive">
                         <table id="datatable" class="table p-0 table-striped table-bordered" data-page-length="10"  style="text-align: center">
@@ -74,7 +76,7 @@
                                         <td>{{ $question->score }}</td>
                                         <td>{{ $question->quizz->name }}</td>
                                         <td>
-                                            <a href="{{route('questions.edit', $question->id)}}"><button title="{{ trans('questions.edit_question') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
+                                            <a href="{{route('question.edit', $question->id)}}"><button title="{{ trans('questions.edit_question') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
 
                                             <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$question->id}}"  title="{{trans('questions.delete_question')}}"><i class="fa fa-trash"></i></button>
                                         </td>
@@ -89,7 +91,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                     {{-- delete form--}}
-                                                    <form action="{{ route('questions.destroy', $question->id) }}" method="post">
+                                                    <form action="{{ route('question.destroy', $question->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                             <input type="hidden" name="id" value={{$question->id}}>

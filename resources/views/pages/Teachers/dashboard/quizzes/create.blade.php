@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('quizzes.index') }}" class="default-color">{{ trans('quizzes.quizzes') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('quizze.index') }}" class="default-color">{{ trans('quizzes.quizzes') }}</a></li>
                 <li class="breadcrumb-item active">{{ trans('quizzes.add_quizze') }}</li>
             </ol>
         </div>
@@ -28,7 +28,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <form action="{{route('quizzes.store')}}" method="post" autocomplete="off">
+                <form action="{{route('quizze.store')}}" method="post" autocomplete="off">
                     @csrf
                     <div class="row setup-content">
                             <div class="col">

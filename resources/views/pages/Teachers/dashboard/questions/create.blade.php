@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('quizzes.show',  $quizz_id) }}" class="default-color">{{ trans('questions.questions_list') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('question.index') }}" class="default-color">{{ trans('questions.questions_list') }}</a></li>
                 <li class="breadcrumb-item active">{{ trans('questions.add_question') }}</li>
             </ol>
         </div>
@@ -28,7 +28,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <form action="{{route('questions.store')}}" method="post" autocomplete="off">
+                <form action="{{route('question.store')}}" method="post" autocomplete="off">
                     @csrf
                     <div class="row setup-content">
                             <div class="col">
@@ -38,7 +38,6 @@
                                         <div class="col">
                                             <label for="question_name">{{trans('questions.question_name')}}</label>
                                             <input type="text" name="question_name"  class="form-control" value="{{ old('question_name') }}">
-                                            <input type="hidden" name="quizz_id" value="{{ $quizz_id }}">
                                             @error('question_name')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -76,6 +75,22 @@
                                     </div>
 
                                     <div class="form-row form-group ">
+                                        <div class="col">
+                                            <label for="quizz_id">{{trans('questions.quizz_name')}}</label>
+                                            <select class="my-1 custom-select mr-sm-2" name="quizz_id">
+                                                <option value="">{{trans('parent.Choose')}}...</option>
+                                                @foreach($quizzes as $quizze)
+                                                    <option value="{{$quizze->id}}" {{ old('quizz_id') == $quizze->id ? 'selected' : '' }}>{{$quizze->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('quizz_id')
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            @enderror
+                                        </div>
                                         <div class="col">
                                             <label for="score">{{trans('questions.score')}}</label>
                                             <select class="my-1 custom-select mr-sm-2" name="score">

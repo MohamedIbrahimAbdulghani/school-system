@@ -77,9 +77,9 @@
                                         <td>{{ $quizze->section->name }}</td>
                                         <td>{{ $quizze->teacher->name }}</td>
                                         <td>
-                                            <a href="{{route('quizzes.edit', $quizze->id)}}"><button title="{{ trans('exams.edit') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
+                                            <a href="{{route('quizzes.edit', $quizze->id)}}"><button title="{{ trans('quizzes.edit_quizze') }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></button></a>
 
-                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$quizze->id}}"  title="{{trans('exams.delete')}}"><i class="fa fa-trash"></i></button>
+                                            <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$quizze->id}}"  title="{{trans('quizzes.delete_quizze')}}"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
                                         {{-- Start Modal To Delete students --}}

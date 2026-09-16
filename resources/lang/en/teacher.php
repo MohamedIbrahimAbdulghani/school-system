@@ -47,5 +47,7 @@ return [
     'report_attendances' => 'Report Attendances and Absences',
     'report_quizzs' => 'Report Quizzs',
     'search_information' => 'Search Information',
+    'profile' => 'Profile',
+    'profile_information' => 'Profile Information',
 
 ];

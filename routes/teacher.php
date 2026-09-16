@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Teacher\dashboard\QuestionController;
 use App\Http\Controllers\Teacher\dashboard\OnlineClassController;
+use App\Http\Controllers\Teacher\dashboard\ProfileController;
 use App\Http\Controllers\Teacher\dashboard\QuizzController;
 use App\Http\Controllers\Teacher\dashboard\StudentController;
 use App\Models\Section;
@@ -40,5 +41,8 @@ Route::middleware('auth.role:teacher')->group(function () {
     Route::get('createManualonlineclass', [OnlineClassController::class, 'createManualonlineclass'] )->name('online_classe.createManual');
     Route::post('storeManualonlineclass', [OnlineClassController::class, 'storeManualonlineclass'] )->name('online_classe.storeManual');
     Route::resource('online_classe', OnlineClassController::class);
+
+    Route::get('profile', [ProfileController::class, 'index'] )->name('profile.index');
+    Route::put('profile/{id}', [ProfileController::class, 'update'] )->name('profile.update');
 
 });

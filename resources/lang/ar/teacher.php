@@ -52,4 +52,6 @@ return [
     'report_attendances' => 'تقارير الحضور والغياب',
     'report_quizzs' => 'تقارير الاختبارات',
     'search_information' => 'معلومات البحث',
+    'profile' => 'الملف الشخصي',
+    'profile_information' => 'معلومات الملف الشخصي',
 ];

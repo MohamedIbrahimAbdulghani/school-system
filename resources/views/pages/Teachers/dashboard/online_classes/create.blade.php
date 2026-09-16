@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-6">
             <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('online_classes.index') }}" class="default-color">{{ trans('online_classes.online_classes') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('online_classe.index') }}" class="default-color">{{ trans('online_classes.online_classes') }}</a></li>
                 <li class="breadcrumb-item active">{{ trans('online_classes.add_automatic_meeting') }}</li>
             </ol>
         </div>
@@ -37,7 +37,7 @@
     </div>
 @endif
             <div class="card-body">
-                <form action="{{route('online_classes.store')}}" method="post" autocomplete="off">
+                <form action="{{route('online_classe.store')}}" method="post" autocomplete="off">
                     @csrf
                     <div class="row setup-content">
                             <div class="col">

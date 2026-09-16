@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Repository;
+namespace App\Http\Controllers\Teacher\dashboard;
 
-use App\Models\Classroom;
-use App\Models\Grade;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\OnlineClass;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Grade;
+use App\Models\Classroom;
 use App\Models\Section;
 use App\Services\ZoomService;
-use Illuminate\Support\Facades\Auth;
 
-class OnlineClassRepository implements  OnlineClassRepositoryInterface {
+
+
+class OnlineClassController extends Controller
+{
 
     protected ZoomService $zoomService;
 
@@ -18,24 +23,26 @@ class OnlineClassRepository implements  OnlineClassRepositoryInterface {
         $this->zoomService = $zoomService;
     }
 
+    /**
+     * Display a listing of the resource.
+     */
     public function index() {
-        $online_classes = OnlineClass::all();
-        // $online_classes = OnlineClass::where('created_by', Auth::user()->email)->get();
-        return view('pages.OnlineClasses.index', compact('online_classes'));
+        $online_classes = OnlineClass::where('created_by', auth('teacher')->user()->email)->get();
+        return view('pages.Teachers.dashboard.online_classes.index', compact('online_classes'));
     }
 
     public function create() {
         $grades = Grade::all();
         $classrooms = Classroom::all();
         $sections = Section::all();
-        return view('pages.OnlineClasses.create', compact('grades', 'classrooms', 'sections'));
+        return view('pages.Teachers.dashboard.online_classes.create', compact('grades', 'classrooms', 'sections'));
     }
 
     public function show($id) {
         return "show function";
     }
 
-    public function store($request) {
+    public function store(Request $request) {
         try {
             $meeting = $this->zoomService->createMeeting([
                 'topic' => $request->topic,
@@ -46,7 +53,7 @@ class OnlineClassRepository implements  OnlineClassRepositoryInterface {
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
                 'section_id' => $request->section_id,
-                'created_by' => Auth::user()->email,
+                'created_by' => auth('teacher')->user()->email,
                 'meeting_platform' => 'Zoom',
                 'meeting_id' => $meeting['id'],
                 'topic' => $request->topic,
@@ -57,7 +64,7 @@ class OnlineClassRepository implements  OnlineClassRepositoryInterface {
                 'join_url' => $meeting['join_url'],
             ]);
             toastr()->success(trans('messages.success'));
-            return redirect()->route('online_classes.index');
+            return redirect()->route('online_classe.index');
         } catch(\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -67,7 +74,7 @@ class OnlineClassRepository implements  OnlineClassRepositoryInterface {
         //
     }
 
-    public function update($request) {
+    public function update(Request $request) {
        //
     }
     public function destroy($id)
@@ -86,20 +93,21 @@ class OnlineClassRepository implements  OnlineClassRepositoryInterface {
             // Delete from database
             $online_class->delete();
             toastr()->success(trans('messages.delete'));
-            return redirect()->route('online_classes.index');
+            return redirect()->route('online_classe.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
-    public function createManual() {
+    
+    public function createManualonlineclass() {
         $grades = Grade::all();
         $classrooms = Classroom::all();
         $sections = Section::all();
-        return view('pages.OnlineClasses.createManual', compact('grades', 'classrooms','sections'));
+        return view('pages.Teachers.dashboard.online_classes.createManual', compact('grades', 'classrooms','sections'));
     }
 
-    public function storeManual($request)
+    public function storeManualonlineclass(Request $request)
     {
         try {
 
@@ -107,7 +115,7 @@ class OnlineClassRepository implements  OnlineClassRepositoryInterface {
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
                 'section_id' => $request->section_id,
-                'created_by' => Auth::user()->email,
+                'created_by' => auth('teacher')->user()->email,
                 'meeting_platform' => $request->meeting_platform,
                 // 'metting_id' => $request->metting_id,
                 'meeting_id' => preg_replace('/\s+/', '', $request->metting_id), // to remove any space when take id copy from zoom application
@@ -119,7 +127,7 @@ class OnlineClassRepository implements  OnlineClassRepositoryInterface {
                 'join_url' => $request->meeting_link,
             ]);
             toastr()->success(trans('messages.success'));
-            return redirect()->route('online_classes.index');
+            return redirect()->route('online_classe.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()])->withInput();
         }

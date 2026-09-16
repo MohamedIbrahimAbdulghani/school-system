@@ -26,7 +26,7 @@ use App\Http\Controllers\Subject\SubjectController;
 use App\Http\Controllers\Setting\SettingController;
 
 
-Route::middleware('auth.role:admin')->group(function () {
+Route::middleware(['auth:admin'])->group(function () {
 
     // ========================================
     // Dashboard

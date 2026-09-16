@@ -48,9 +48,9 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
                     
-                    <a href="{{route('online_classes.create')}}"><button type="button" class="mb-2 button x-small"> + {{trans('online_classes.add_automatic_meeting')}}</button></a>
+                    <a href="{{route('online_classe.create')}}"><button type="button" class="mb-2 button x-small"> + {{trans('online_classes.add_automatic_meeting')}}</button></a>
 
-                    <a href="{{route('online_classes.createManual')}}"><button type="button" style="background-color:#ffc107; border-color: #ffc107; color: black" class="mb-2 button x-small"> + {{trans('online_classes.add_manual_meeting')}}</button></a>
+                    <a href="{{route('online_classe.createManual')}}"><button type="button" style="background-color:#ffc107; border-color: #ffc107; color: black" class="mb-2 button x-small"> + {{trans('online_classes.add_manual_meeting')}}</button></a>
 
                     <div class="table-responsive">
                         <table id="datatable" class="table p-0 table-striped table-bordered" data-page-length="10"  style="text-align: center">
@@ -93,12 +93,12 @@
                                                 <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('questions.Warning_question')}}</h5>
+                                                    <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;" id="exampleModalLabel">{{trans('onlineclasses.delete_online_classe')}}</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
                                                     <div class="modal-body">
                                                     {{-- delete form--}}
-                                                    <form action="{{ route('online_classes.destroy', $online_class->id) }}" method="post">
+                                                    <form action="{{ route('online_classe.destroy', $online_class->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                             <input type="hidden" name="id" value={{$online_class->id}}>

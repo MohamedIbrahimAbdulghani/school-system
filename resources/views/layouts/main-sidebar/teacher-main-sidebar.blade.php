@@ -28,6 +28,18 @@
                                 class="right-nav-text">{{trans('quizzes.quizzes_list')}}</span></a>
                     </li>
 
+                    
+                    <!-- Online Classes-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
+                            <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">{{trans('main-side.Onlineclasses')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('online_classe.index') }}">{{ trans('online_classes.direct_connection') }}</a> </li>
+                        </ul>
+                    </li>
 
                     <!-- reports -->
                     <li>

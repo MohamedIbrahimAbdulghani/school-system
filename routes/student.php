@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth.role:student')->group(function () {
+Route::middleware(['auth:student'])->group(function () {
 
     // ========================================
     // Dashboard
@@ -11,5 +11,7 @@ Route::middleware('auth.role:student')->group(function () {
     Route::get('student/dashboard', function () {
         return view('pages.Students.dashboard');
     })->name('student.dashboard');
+    
 
 });
+

@@ -90,6 +90,7 @@ class Calendar extends LivewireCalendar
                 'title' => $this->title,
                 'notes' => $this->notes,
                 'scheduled_at' => $this->selectedDate . ' ' . $this->time,
+                
             ]);
         }
 

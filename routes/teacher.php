@@ -10,7 +10,7 @@ use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth.role:teacher')->group(function () {
+Route::middleware(['auth:teacher'])->group(function () {
 
     // ========================================
     // Dashboard
@@ -26,23 +26,25 @@ Route::middleware('auth.role:teacher')->group(function () {
         })->name('teacher.dashboard');
 
 
-    Route::resource('student', StudentController::class);
-    Route::get('section', [StudentController::class, 'section'])->name('section');
-    Route::post('attendance', [StudentController::class, 'attendance'])->name('attendance');
-    Route::get('attendance/report', [StudentController::class, 'attendance_report'])->name('attendance.report');
-    Route::get('attendance/quizze', [StudentController::class, 'attendance_quizze'])->name('attendance.quizze');
-    Route::post('attendance/search', [StudentController::class, 'attendance_search'])->name('attendance.search');
-    Route::resource('quizze', QuizzController::class);
-    Route::get('get_classrooms/{id}', [QuizzController::class, 'get_classrooms']);
-    Route::get('get_sections/{id}', [QuizzController::class, 'get_sections']);
-    Route::resource('question', QuestionController::class);
+        Route::prefix('teacher')->group(function() {
+            Route::resource('student', StudentController::class);
+            Route::get('section', [StudentController::class, 'section'])->name('section');
+            Route::post('attendance', [StudentController::class, 'attendance'])->name('attendance');
+            Route::get('attendance/report', [StudentController::class, 'attendance_report'])->name('attendance.report');
+            Route::get('attendance/quizze', [StudentController::class, 'attendance_quizze'])->name('attendance.quizze');
+            Route::post('attendance/search', [StudentController::class, 'attendance_search'])->name('attendance.search');
+            Route::resource('quizze', QuizzController::class);
+            Route::get('get_classrooms/{id}', [QuizzController::class, 'get_classrooms']);
+            Route::get('get_sections/{id}', [QuizzController::class, 'get_sections']);
+            Route::resource('question', QuestionController::class);
 
 
-    Route::get('createManualonlineclass', [OnlineClassController::class, 'createManualonlineclass'] )->name('online_classe.createManual');
-    Route::post('storeManualonlineclass', [OnlineClassController::class, 'storeManualonlineclass'] )->name('online_classe.storeManual');
-    Route::resource('online_classe', OnlineClassController::class);
+            Route::get('createManualonlineclass', [OnlineClassController::class, 'createManualonlineclass'] )->name('online_classe.createManual');
+            Route::post('storeManualonlineclass', [OnlineClassController::class, 'storeManualonlineclass'] )->name('online_classe.storeManual');
+            Route::resource('online_classe', OnlineClassController::class);
 
-    Route::get('profile', [ProfileController::class, 'index'] )->name('profile.index');
-    Route::put('profile/{id}', [ProfileController::class, 'update'] )->name('profile.update');
+            Route::get('profile', [ProfileController::class, 'index'] )->name('profile.index');
+            Route::put('profile/{id}', [ProfileController::class, 'update'] )->name('profile.update');
+        });
 
 });

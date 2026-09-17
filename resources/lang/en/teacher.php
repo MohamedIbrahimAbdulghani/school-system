@@ -26,8 +26,8 @@ return [
 
     'teacher_list'    => 'Teachers List',
     'processes'=>'Processes',
-    'edit'=>'Edit',
-    'delete'=>'Delete',
+    'Edit'=>'Edit Teacher Information',
+    'Delete'=>'Delete Teacher Information',
 
     'Information_teacher' => 'Teacher Information',
     'name_teacher_ar' => 'Teacher Name in Arabic',
@@ -49,5 +49,8 @@ return [
     'search_information' => 'Search Information',
     'profile' => 'Profile',
     'profile_information' => 'Profile Information',
+    'teacher' => 'Teacher',
+    'password' => 'Password',
+    'show_password' => 'Show Password',
 
 ];

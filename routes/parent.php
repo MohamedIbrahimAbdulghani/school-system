@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth.role:parent')->group(function () {
+Route::middleware(['auth:parent'])->group(function () {
 
     // ========================================
     // Dashboard

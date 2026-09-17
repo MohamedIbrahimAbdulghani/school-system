@@ -194,7 +194,15 @@
         <li class="nav-item dropdown mr-30 no-hover">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                 aria-haspopup="true" aria-expanded="false">
-                <img src="{{ asset('assets/images/user_icon.png') }}" alt="avatar">
+                @if(auth('admin')->check())
+                    <img src="{{ asset('assets/images/admin.png') }}" alt="avatar">
+                @elseif(auth('teacher')->check())
+                    <img src="{{ asset('assets/images/teacher.png') }}" alt="avatar">
+                @elseif(auth('student')->check())
+                    <img src="{{ asset('assets/images/student.png') }}" alt="avatar">
+                @elseif(auth('parent')->check())
+                    <img src="{{ asset('assets/images/parent.png') }}" alt="avatar">
+                @endif
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">

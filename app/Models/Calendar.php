@@ -11,4 +11,14 @@ class Calendar extends Model
     protected $casts = [
         'scheduled_at' => 'datetime',
     ];
+
+    public function teacher()
+    {
+        return $this->belongsTo(\App\Models\Teacher::class);
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(\App\Models\Section::class);
+    }
 }

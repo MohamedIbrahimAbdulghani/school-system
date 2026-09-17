@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->text('notes')->nullable();
             $table->dateTime('scheduled_at');
+            $table->foreignId('teacher_id')->constrained('teachers')->cascadeOnDelete();
+            $table->foreignId('section_id')->constrained('sections')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -25,6 +27,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('calendars');
+        Schema::table('calendars', function (Blueprint $table) {
+            $table->dropForeign(['teacher_id']);
+            $table->dropForeign(['section_id']);
+            $table->dropColumn(['teacher_id', 'section_id']);
+        });
     }
 };

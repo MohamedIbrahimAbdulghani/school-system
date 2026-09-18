@@ -40,7 +40,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="mb-0">{{ trans('dashboard.Dashboard') }}</h4>
+                        <h3 class="mb-3">{{ trans('dashboard.Dashboard') }}</h3>
                     </div>
                     <div class="col-sm-6">
                         <ol class="float-left pt-0 pr-0 breadcrumb float-sm-right">

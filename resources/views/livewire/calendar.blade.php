@@ -159,13 +159,15 @@
                                 >
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="lw-day-number">{{ $day->format('j') }}</span>
-                                        <button
-                                            type="button"
-                                            class="lw-add-btn"
-                                            wire:click="onDayClick({{ $day->year }}, {{ $day->month }}, {{ $day->day }})"
-                                            title="إضافة حجز"
-                                        >
+                                        @if(auth('teacher')->check())
+                                            <button
+                                                type="button"
+                                                class="lw-add-btn"
+                                                wire:click="onDayClick({{ $day->year }}, {{ $day->month }}, {{ $day->day }})"
+                                                title="إضافة حجز"
+                                            >
                                             <i class="fa fa-plus"></i>
+                                        @endif
                                         </button>
                                     </div>
 
@@ -215,7 +217,7 @@
 
 
                         <div class="form-group ">
-                            <label for="grade_id">القسم</label>
+                            <label for="grade_id">{{trans('student.section')}}</label>
                                 <select id="section_id" wire:model="section_id" class="my-1 custom-select mr-sm-2">
                                     <option value="">{{trans('student.Choose')}}...</option>
                                     @foreach($sections as $section)

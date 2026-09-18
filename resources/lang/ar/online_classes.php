@@ -9,6 +9,8 @@ return [
     'online_classes' => 'حصص اونلاين',
     'add_new_class' => 'اضافة حصة جديدة',
 
+    'rule_answer' => 'يلزم وضع علامة * قبل الاجابات',
+
     // Form fields
     'grade' => 'المرحلة الدراسية',
     'classroom' => 'الصف الدراسي',

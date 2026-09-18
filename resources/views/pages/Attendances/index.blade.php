@@ -27,11 +27,6 @@
 <div class="row">
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
-            <div class="card-body">
-                <a class="button x-small" href="#" data-toggle="modal" data-target="#addSection">
-                    {{ trans('section.add_section') }}</a>
-            </div>
-
             @if ($errors->any())
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <ul>

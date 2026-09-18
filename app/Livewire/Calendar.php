@@ -19,23 +19,31 @@ class Calendar extends LivewireCalendar
     public string $time = '10:00';
 
 
-    public function events(): Collection
-    {
-        return CalendarModel::query()
-            ->whereDate('scheduled_at', '>=', $this->gridStartsAt)
-            ->whereDate('scheduled_at', '<=', $this->gridEndsAt)
-            ->where('teacher_id', auth('teacher')->id())
-            ->get()
-            ->map(function (CalendarModel $calendar) {
-                return [
-                    'id' => $calendar->id,
-                    'title' => $calendar->title,
-                    'description' => $calendar->notes,
-                    'date' => $calendar->scheduled_at,
-                    'time' => $calendar->scheduled_at->format('H:i'),
-                ];
-            });
+public function events(): Collection
+{
+    $query = CalendarModel::query()
+        ->whereDate('scheduled_at', '>=', $this->gridStartsAt)
+        ->whereDate('scheduled_at', '<=', $this->gridEndsAt);
+
+    // Teacher يشوف الـ events الخاصة بيه فقط
+    if (auth('teacher')->check()) {
+        $query->where('teacher_id', auth('teacher')->id());
     }
+
+    // Admin يشوف كل الـ events
+
+    return $query
+        ->get()
+        ->map(function (CalendarModel $calendar) {
+            return [
+                'id' => $calendar->id,
+                'title' => $calendar->title,
+                'description' => $calendar->notes,
+                'date' => $calendar->scheduled_at,
+                'time' => $calendar->scheduled_at->format('H:i'),
+            ];
+        });
+}
 
     public function onDayClick($year, $month, $day)
     {
@@ -136,10 +144,14 @@ class Calendar extends LivewireCalendar
     {
         $events = $this->events();
 
-        $sections = auth('teacher')
-        ->user()
-        ->sections()
-        ->get();
+        $sections = collect();
+
+        if (auth('teacher')->check()) {
+            $sections = auth('teacher')
+                ->user()
+                ->sections()
+                ->get();
+        }
 
         return view('livewire.calendar')
             ->with([

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Student\dashboard\ExamController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:student'])->group(function () {
@@ -11,7 +12,8 @@ Route::middleware(['auth:student'])->group(function () {
     Route::get('student/dashboard', function () {
         return view('pages.Students.dashboard');
     })->name('student.dashboard');
-    
+
+
+    Route::resource('student_exams', ExamController::class);
 
 });
-

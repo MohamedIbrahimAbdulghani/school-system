@@ -50,6 +50,7 @@
                                     <div class="form-row">
                                         <div class="col">
                                             <label for="answers">{{trans('questions.answers')}}</label>
+                                            <span class="d-block" style="color: red; margin-bottom: 0.5rem;">{{ trans('online_classes.rule_answer') }}</span>
                                             <textarea name="answers" id="answers" cols="30" rows="3"  class="form-control" >{{ old('answers') }}</textarea>
                                             @error('answers')
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}

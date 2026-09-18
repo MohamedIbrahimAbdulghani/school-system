@@ -51,4 +51,6 @@ Route::group([
     // Parent Routes
     require __DIR__.'/parent.php';
 
+    require __DIR__.'/ajax.php';
+
 });

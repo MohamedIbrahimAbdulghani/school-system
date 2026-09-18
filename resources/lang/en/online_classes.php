@@ -9,6 +9,9 @@ return [
     'online_classes' => 'Online Classes',
     'add_new_class' => 'Add New Class',
 
+    'rule_answer' => 'Must be placed * before the answers',
+
+
     // Form fields
     'grade' => 'Grade',
     'classroom' => 'Classroom',

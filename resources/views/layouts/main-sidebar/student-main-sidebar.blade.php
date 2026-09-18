@@ -13,7 +13,7 @@
 
                     <!-- Quizzes -->
                     <li>
-                        <a href="{{ route('quizzes.index') }}"><i class="fas fa-book-open"></i><span  class="right-nav-text">{{ trans('Quizzes.quizzes') }}</span></a>
+                        <a href="{{ route('student_exams.index') }}"><i class="fas fa-book-open"></i><span  class="right-nav-text">{{ trans('Quizzes.quizzes') }}</span></a>
                     </li>
 
                     <!-- Profile-->

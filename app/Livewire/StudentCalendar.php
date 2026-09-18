@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Calendar as CalendarModel;
+use App\Models\Calendar ;
 use Omnia\LivewireCalendar\LivewireCalendar;
 use Illuminate\Support\Collection;
 
@@ -13,13 +13,17 @@ class StudentCalendar extends LivewireCalendar
     public string $notes = '';
     public string $time = '10:00';
 
+
     public function events(): Collection
     {
-        return CalendarModel::query()
+        $student = auth('student')->user();
+
+        return Calendar::query()
+            ->where('section_id', $student->section_id)
             ->whereDate('scheduled_at', '>=', $this->gridStartsAt)
             ->whereDate('scheduled_at', '<=', $this->gridEndsAt)
             ->get()
-            ->map(function (CalendarModel $calendar) {
+            ->map(function (Calendar $calendar) {
                 return [
                     'id' => $calendar->id,
                     'title' => $calendar->title,

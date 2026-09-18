@@ -11,16 +11,20 @@ class Calendar extends LivewireCalendar
     public bool $showModal = false;
     public ?string $selectedDate = null;
     public ?int $editingId = null;
+    public ?int $section_id = null;
+
 
     public string $title = '';
     public string $notes = '';
     public string $time = '10:00';
+
 
     public function events(): Collection
     {
         return CalendarModel::query()
             ->whereDate('scheduled_at', '>=', $this->gridStartsAt)
             ->whereDate('scheduled_at', '<=', $this->gridEndsAt)
+            ->where('teacher_id', auth('teacher')->id())
             ->get()
             ->map(function (CalendarModel $calendar) {
                 return [
@@ -37,14 +41,14 @@ class Calendar extends LivewireCalendar
     {
         $this->editingId = null;
         $this->selectedDate = sprintf('%04d-%02d-%02d', $year, $month, $day);
-        $this->reset(['title', 'notes']);
+        $this->reset(['title', 'notes', 'section_id']);
         $this->time = '10:00';
         $this->showModal = true;
     }
 
     public function onEventClick($eventId)
     {
-        $calendar = CalendarModel::find($eventId);
+        $calendar = CalendarModel::where('teacher_id', auth('teacher')->id())->find($eventId);
 
         if ($calendar) {
             $this->editingId = $calendar->id;
@@ -52,6 +56,7 @@ class Calendar extends LivewireCalendar
             $this->time = $calendar->scheduled_at->format('H:i');
             $this->title = $calendar->title;
             $this->notes = $calendar->notes;
+            $this->section_id = $calendar->section_id;
             $this->showModal = true;
         }
     }
@@ -59,7 +64,7 @@ class Calendar extends LivewireCalendar
     // بيتنادى تلقائي لما تسحب حجز وتفلته في يوم تاني
     public function onEventDropped($eventId, $year, $month, $day)
     {
-        $calendar = CalendarModel::find($eventId);
+        $calendar = CalendarModel::where('teacher_id', auth('teacher')->id())->find($eventId);
 
         if ($calendar) {
             $time = $calendar->scheduled_at->format('H:i:s');
@@ -77,12 +82,21 @@ class Calendar extends LivewireCalendar
             'title' => 'required|string|max:255',
             'notes' => 'nullable|string',
             'time' => 'required',
+            'section_id' => 'required|integer|exists:sections,id',
         ]);
 
+        $teacher = auth('teacher')->user();
+
+        $hasSection = $teacher->sections()->where('sections.id', $this->section_id)->exists();
+            if (!$hasSection) {
+                abort(403);
+            }
+
         if ($this->editingId) {
-            CalendarModel::find($this->editingId)?->update([
+            CalendarModel::where('teacher_id', $teacher->id)->findOrFail($this->editingId)->update([
                 'title' => $this->title,
                 'notes' => $this->notes,
+                'section_id' => $this->section_id,
                 'scheduled_at' => $this->selectedDate . ' ' . $this->time,
             ]);
         } else {
@@ -90,39 +104,49 @@ class Calendar extends LivewireCalendar
                 'title' => $this->title,
                 'notes' => $this->notes,
                 'scheduled_at' => $this->selectedDate . ' ' . $this->time,
-                
+                // المدرس الحالي
+                'teacher_id' => $teacher->id,
+                // الـ Section اللي اختاره المدرس
+                'section_id' => $this->section_id,
             ]);
         }
 
         $this->showModal = false;
-        $this->reset(['title', 'notes', 'editingId']);
+        $this->reset(['title', 'notes', 'editingId','section_id',]);
+        $this->time = '10:00';
     }
 
     public function deleteCalendar()
     {
         if ($this->editingId) {
-            CalendarModel::find($this->editingId)?->delete();
+            CalendarModel::where('teacher_id', auth('teacher')->id())->find($this->editingId)?->delete();
         }
 
         $this->showModal = false;
-        $this->reset(['title', 'notes', 'editingId']);
+        $this->reset(['title', 'notes', 'editingId', 'section_id',]);
     }
 
     public function closeModal()
     {
         $this->showModal = false;
-        $this->reset(['title', 'notes', 'editingId']);
+        $this->reset(['title', 'notes', 'editingId', 'section_id',]);
     }
 
     public function render()
     {
         $events = $this->events();
 
+        $sections = auth('teacher')
+        ->user()
+        ->sections()
+        ->get();
+
         return view('livewire.calendar')
             ->with([
                 'componentId' => $this->getId(),
                 'monthGrid' => $this->monthGrid(),
                 'events' => $events,
+                'sections' => $sections,
                 'getEventsForDay' => function ($day) use ($events) {
                     return $this->getEventsForDay($day, $events);
                 },

@@ -213,6 +213,20 @@
                             @error('title') <span class="text-danger small">{{ $message }}</span> @enderror
                         </div>
 
+
+                        <div class="form-group ">
+                            <label for="grade_id">القسم</label>
+                                <select id="section_id" wire:model="section_id" class="my-1 custom-select mr-sm-2">
+                                    <option value="">{{trans('student.Choose')}}...</option>
+                                    @foreach($sections as $section)
+                                        <option value="{{ $section->id }}"> {{ $section->name }} </option>
+                                    @endforeach
+                                </select>
+                            @error('section_id')
+                                <span class="text-danger small">{{ $message }}</span>
+                            @enderror
+                        </div>
+
                         <div class="form-group">
                             <label>{{ __('calendar.Event_Time') }}</label>
                             <input type="time" wire:model="time" class="form-control">

@@ -39,9 +39,10 @@ class ExamController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $quizz_id)
     {
-        return $id;
+        $student_id = auth('student')->user()->id;
+        return view('pages.Students.dashboard.exams.show', compact('quizz_id', 'student_id'));
     }
 
     /**

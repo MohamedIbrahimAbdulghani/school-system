@@ -30,4 +30,7 @@ class Quiz extends Model
     public function subject() {
         return $this->belongsTo(Subject::class, 'subject_id');
     }
+    public function degree() {
+        return $this->hasMany(Degree::class, 'quizz_id');
+    }
 }

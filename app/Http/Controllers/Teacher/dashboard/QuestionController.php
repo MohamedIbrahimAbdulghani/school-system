@@ -24,7 +24,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        $quizzes = Quiz::all();
+        $quizzes = Quiz::where('teacher_id', auth('teacher')->user()->id)->get();
         return view('pages.Teachers.dashboard.questions.create', compact('quizzes'));
     }
 

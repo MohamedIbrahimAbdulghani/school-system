@@ -83,6 +83,8 @@
                                             <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#delete{{$quizze->id}}"  title="{{trans('quizzes.delete_quizze')}}"><i class="fa fa-trash"></i></button>
 
                                             <a href="{{route('quizze.show', $quizze->id)}}"><button title="{{ trans('quizzes.show') }}" class="btn btn-warning btn-sm" ><i class="fa fa-binoculars"></i></button></a>
+
+                                            <a href="{{route('student_quizzed', $quizze->id)}}"><button title="{{ trans('quizzes.show_students') }}" class="btn btn-primary btn-sm" ><i class="fa fa-street-view"></i></button></a>
                                         </td>
                                     </tr>
                                         {{-- Start Modal To Delete students --}}

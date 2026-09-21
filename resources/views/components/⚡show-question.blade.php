@@ -18,9 +18,9 @@ new class extends Component
 
         // VALDIATION ABOUT QUESTIONS
         if ($this->questioncount !== 0) {
-            toastr()->info('برجاء عدم إعادة تحميل الصفحة بعد دخول الاختبار - في حال تم تنفيذ ذلك سيتم إلغء الاختبار بشكل تلقائي');
+            toastr()->info(trans('quizzes.reload_page'));
         } else {
-            toastr()->error('لا يوجد أسئلة في هذا الاختبار');
+            toastr()->error(trans('questions.no_questions'));
             return redirect('student_exams');
         }
     }
@@ -53,7 +53,7 @@ new class extends Component
                 $student_degree->score = 0;
                 $student_degree->abuse = '1';
                 $student_degree->save();
-                toastr()->error('تم الغاء الاختبار لإكتشاف تلاعب بالنظام');
+                toastr()->error(trans('quizzes.cancel_quizee'));
                 return redirect('student_exams');
             } else {
                 $student_degree->question_id  = $question_id;
@@ -70,7 +70,7 @@ new class extends Component
         if($this->question < $this->questioncount - 1 ) {
             $this->question++;
         } else {
-            toastr()->success('تم اجراء الاخبتار بنجاح');
+            toastr()->success(trans('quizzes.done'));
             return redirect('student_exams');
         }
 

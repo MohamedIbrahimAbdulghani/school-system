@@ -22,4 +22,6 @@ return [
     'required_quizz_id' => 'Please select the quiz',
 
     'Warning_question' => 'Are you sure you want to delete this question?',
+
+    'no_questions' => 'There are no questions in this Quizz.',
 ];

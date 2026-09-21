@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreQuizzRequest;
 use App\Http\Requests\UpdateQuizzRequest;
 use App\Models\Classroom;
+use App\Models\Degree;
 use App\Models\Grade;
 use App\Models\Question;
 use App\Models\Quiz;
@@ -113,6 +114,19 @@ class QuizzController extends Controller
         } catch(\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+    }
+
+    public function student_quizzed($quizz_id) {
+        $degrees = Degree::where('quizz_id', $quizz_id)->get();
+        return view('pages.Teachers.dashboard.quizzes.student_quizzed', compact('degrees'));
+    }
+
+    public function repeat_quizze(Request $request) {
+        Degree::where('student_id', $request->student_id)
+        ->where('quizz_id', $request->quizz_id)
+        ->delete();
+        toastr()->success('تم فتح الاختبار مره اخري للطالب');
+        return redirect()->back();
     }
 
 }

@@ -22,4 +22,5 @@ return [
     'required_quizz_id' => 'يرجى اختيار الاختبار',
 
     'Warning_question' => 'هل أنت متأكد من حذف السؤال؟',
+    'no_questions' => 'لا يوجد أسئلة في هذا الاختبار',
 ];

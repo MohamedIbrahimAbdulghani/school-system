@@ -65,5 +65,17 @@ return [
     'Show' => 'Show Information About Parent',
     'Download' => 'Download Attachment',
     'Close' => 'Close',
+    'sons' => 'Sons',
+    'sons_list' => 'Sons List',
+    'sons_registred' => 'Sons Registred',
+    'financial_report' => 'Financial Report',
+    'attendance_report' => 'Attendance Reports',
+    'classroom' => 'Classroom',
+    'section' => 'Section',
+    'number_of_exams' => 'Number of Exams',
+    'no_sons_registered' => 'No Sons Registered',
+    'grade_not_specified' => 'Grade Not Specified',
+    'show_sons_results' => 'Show Sons Result',
+    'no_result' => 'Not Found Quizzes For This Son'
 
 ];

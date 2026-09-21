@@ -67,5 +67,19 @@ return [
     'Show' => 'عرض بيانات ولي الامر',
     'Download' => 'تحميل المرفق',
     'Close' => 'اغلاق',
+    'sons' => 'الابناء',
+    'sons_list' => 'قائمة الابناء',
+    'sons_registred' => 'الابناء المسجلين',
+    'financial_report' => 'تقارير المالية',
+    'attendance_report' => 'تقارير الحضور والغياب',
+    'classroom' => 'الصف الدراسي',
+    'section' => 'القسم',
+    'number_of_exams' => 'عدد الاختبارات',
+    'no_sons_registered' => 'لا يوجد أبناء مسجلين حالياً',
+    'grade_not_specified' => 'المرحلة غير محددة',
+    'show_sons_results' => 'عرض نتائج الابن',
+    'no_result' => 'لا يوجد اختبارات لهذا الطالب',
+    
+
 
 ];

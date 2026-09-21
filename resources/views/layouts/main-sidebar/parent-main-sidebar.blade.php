@@ -18,7 +18,7 @@
 
                     <!-- Attendance Reports -->
                     <li>
-                        <a href="{{ route('student_exams.index') }}"><i class="fa-regular fa-file-lines"></i><span  class="right-nav-text">{{ trans('parent.attendance_report') }}</span></a>
+                        <a href="{{ route('sons.attendances') }}"><i class="fa-regular fa-file-lines"></i><span  class="right-nav-text">{{ trans('parent.attendance_report') }}</span></a>
                     </li>
 
                     <!-- Financial Report -->

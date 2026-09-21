@@ -68,7 +68,7 @@
                                         <?php $i++; ?>
                                         <td>{{ $i }}</td>
                                         <td>{{$degree->student->name}}</td>
-                                        <td>{{$degree->question_id}}</td>
+                                        <td>{{$degree->question->title}}</td>
                                         <td>{{$degree->score}}</td>
                                         @if($degree->abuse == 0)
                                             <td style="color: green">{{ trans('quizzes.no_found_detection') }}</td>

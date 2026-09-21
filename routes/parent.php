@@ -19,6 +19,8 @@ Route::middleware(['auth:parent'])->group(function () {
 
     Route::get('sons', [SonController::class, "index"])->name('sons.index');
     Route::get('sons/result/{id}', [SonController::class, "result"])->name('sons.result');
+    Route::get('sons/attendances', [SonController::class, 'attendances'])->name('sons.attendances');
+    Route::post('sons/attendances', [SonController::class, 'search'])->name('sons.attendances.search');
 
 
 });

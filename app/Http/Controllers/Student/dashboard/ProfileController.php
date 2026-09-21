@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Teacher\dashboard;
+namespace App\Http\Controllers\Student\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProfileTeacherRequest;
-use App\Models\Teacher;
+use App\Http\Requests\ProfileStudentRequest;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
     public function index() {
-        $profile = Teacher::findOrFail(auth('teacher')->user()->id);
-        return view('pages.Teachers.profile', compact('profile'));
+        $profile = Student::findOrFail(auth('student')->user()->id);
+        return view('pages.Students.profile', compact('profile'));
     }
 
-    public function update(ProfileTeacherRequest $request, $id) {
+    public function update(ProfileStudentRequest $request, $id) {
         try {
-            $profile = Teacher::findOrFail($id);
+            $profile = Student::findOrFail($id);
             if(!empty($request->password)) {
                 $profile->update([
                     'name' => ['en' => $request->name_en, 'ar' => $request->name_ar],

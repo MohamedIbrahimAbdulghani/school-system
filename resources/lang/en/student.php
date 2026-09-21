@@ -73,5 +73,9 @@ return [
     'to_date' => 'To Date',
     'end_date' => 'End Date',
     'all_students' => 'All Students',
+    'student' => 'Student',
+
+    'required_name_ar' => 'the name_ar is required',
+    'required_name_en' => 'the name_en is required',
 
 ];

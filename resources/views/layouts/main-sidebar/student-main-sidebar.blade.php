@@ -18,7 +18,7 @@
 
                     <!-- Profile-->
                     <li>
-                        <a href="{{route('settings.index')}}"><i class="fas fa-id-card-alt"></i><span  class="right-nav-text">{{ trans('settings.settings_list') }}</span></a>
+                        <a href="{{route('profile')}}"><i class="fas fa-id-card-alt"></i><span  class="right-nav-text">{{ trans('teacher.profile') }}</span></a>
                     </li>
                 </ul>
             </div>

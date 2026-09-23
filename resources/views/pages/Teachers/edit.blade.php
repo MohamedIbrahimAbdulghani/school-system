@@ -51,7 +51,7 @@
                                         <div class="col">
                                             <label for="title">{{trans('teacher.password')}}</label>
                                             <input type="password" name="password" placeholder="{{trans('teacher.password')}}" class="form-control" value="{{ $teachers->password }}">
-                                         @error('password')
+                                        @error('password')
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -89,7 +89,7 @@
                                     <div class="form-row">
                                         <div class="form-group col">
                                             <label for="inputState">{{trans('teacher.specialization')}}</label>
-                                            <select class="custom-select my-1 mr-sm-2" name="specialization_id">
+                                            <select class="my-1 custom-select mr-sm-2" name="specialization_id">
                                                 <option value="{{ $teachers->specialization->id }}">
                                                     {{ $teachers->specialization->name }}
                                                 </option>
@@ -109,7 +109,7 @@
                                         </div>
                                         <div class="form-group col">
                                             <label for="inputZip">{{trans('teacher.gender')}}</label>
-                                            <select class="custom-select my-1 mr-sm-2" name="gender_id">
+                                            <select class="my-1 custom-select mr-sm-2" name="gender_id">
                                                 <option value="{{ $teachers->gender->id }}">
                                                     {{ $teachers->gender->name }}
                                                 </option>
@@ -141,7 +141,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">{{trans('teacher.address')}}</label>
-                                        <textarea class="form-control mb-1" name="address" id="exampleFormControlTextarea1" rows="4">{{ $teachers->address }}{{ old('address') }}</textarea>
+                                        <textarea class="mb-1 form-control" name="address" id="exampleFormControlTextarea1" rows="4">{{ $teachers->address }}{{ old('address') }}</textarea>
                                         @error('address')
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -153,8 +153,8 @@
                                 </div>
                             </div>
                     </div>
-                    <button class="btn btn-success mt-3" type="submit">{{trans('parent.Save')}}</button>
-                    <!-- End Mother Form -->    
+                    <button class="mt-3 btn btn-success" type="submit">{{trans('parent.Save')}}</button>
+                    <!-- End Mother Form -->
                 </form>
             </div>
         </div>

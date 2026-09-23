@@ -49,6 +49,4 @@ class StoreTeacherRequest extends FormRequest
             'password.min' => trans('teacher.password.min'),
         ];
     }
-    
-    
 }

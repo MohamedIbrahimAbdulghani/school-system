@@ -55,4 +55,6 @@ return [
     'teacher' => 'معلم',
     'password' => 'كلمة المرور',
     'show_password' => 'إظهار كلمة المرور',
+    'required_password' => 'يرجي ادخال الباسورد',
+    'required_email' => ' يرجي ادخال الاميل',
 ];

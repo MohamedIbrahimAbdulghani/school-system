@@ -30,15 +30,6 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                    @if (Session::has('error_promotions'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>{{Session::get('error_promotions')}}</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-
                         <h6 style="color: red;font-family: Cairo">{{trans('student.old_grade')}}</h6>
 
                     <form method="post" action="{{ route('promotions.store') }}" autocomplete="off">
@@ -52,6 +43,13 @@
                                             <option value="{{$grade->id}}" {{ old('grade_id') == $grade->id ? 'selected' : '' }}>{{$grade->name}}</option>
                                         @endforeach
                                 </select>
+                                @error('grade_id')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group col">
                                 <label for="Classroom_id">{{trans('student.classrooms')}} : <span
@@ -59,6 +57,13 @@
                                 <select class="custom-select mr-sm-2" name="classroom_id" required disabled>
 
                                 </select>
+                                @error('classroom_id')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="form-group col">
@@ -66,6 +71,13 @@
                                 <select class="custom-select mr-sm-2" name="section_id" required disabled>
 
                                 </select>
+                                @error('section_id')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group col">
                                 <label for="inputState">{{trans('student.academic_year')}}</label>
@@ -99,6 +111,13 @@
                                             <option value="{{$grade->id}}" {{ old('grade_id') == $grade->id ? 'selected' : '' }}>{{$grade->name}}</option>
                                         @endforeach
                                 </select>
+                                @error('grade_id_new')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group col">
                                 <label for="Classroom_id">{{trans('student.classrooms')}}: <span
@@ -106,12 +125,26 @@
                                 <select class="custom-select mr-sm-2" name="classroom_id_new" required disabled>
 
                                 </select>
+                                @error('classroom_id_new')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group col">
                                 <label for="section_id">:{{trans('student.section')}} </label>
                                 <select class="custom-select mr-sm-2" name="section_id_new" required disabled>
 
                                 </select>
+                                @error('section_id_new')
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group col">
                                 <label for="inputState">{{trans('student.new_academic_year')}}</label>

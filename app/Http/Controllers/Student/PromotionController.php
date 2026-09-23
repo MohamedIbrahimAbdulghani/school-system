@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StudentPromotionRequest;
+use App\Http\Requests\UpdatePromotionsRequest;
 use App\Models\Promotion;
 use App\Models\Student;
 use App\Repository\StudentPromotionRepositoryInterface;
@@ -36,7 +38,7 @@ class PromotionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StudentPromotionRequest $request)
     {
         return $this->promotions->store($request);
     }

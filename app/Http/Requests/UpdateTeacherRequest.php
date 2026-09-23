@@ -22,6 +22,8 @@ class UpdateTeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'email' => 'required|email',
+            'password' => 'required|string|min:2',
             'teacher_name_ar' => 'required|string|max:255',
             'teacher_name_en' => 'required|string|max:255',
             'join_date' => 'required|date',
@@ -30,6 +32,12 @@ class UpdateTeacherRequest extends FormRequest
     }
     public function messages() {
         return [
+            'email.required' => trans('teacher.required_email'),
+            'email.email' => trans('teacher.invalid_email'),
+
+            'password.required' => trans('teacher.required_password'),
+            'password.min' => trans('teacher.password_min'),
+
             'teacher_name_ar.required' => trans('teacher.required_name_ar'),
             'teacher_name_en.required' => trans('teacher.required_name_en'),
             'join_date.required' => trans('teacher.join_date'),

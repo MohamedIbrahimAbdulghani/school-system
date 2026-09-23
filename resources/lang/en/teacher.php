@@ -53,4 +53,7 @@ return [
     'password' => 'Password',
     'show_password' => 'Show Password',
 
+    'required_password' => 'The Password Is Required',
+    'required_email' => 'The Email Is Required',
+
 ];

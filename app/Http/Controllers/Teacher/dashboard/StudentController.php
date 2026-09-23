@@ -110,10 +110,6 @@ class StudentController extends Controller
         return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
     }
 
-    public function attendance_quizze() {
-        return 'Done This is attendance quizze function';
-    }
-
     public function attendance_search(AttendanceResearchRequest $request) {
 
         $sectionIds = DB::table('teacher_section')->where('teacher_id', auth('teacher')->user()->id)->pluck('section_id');

@@ -81,5 +81,8 @@ return [
     'error_id' => 'Found Error In Student Code',
     'amount' => 'Total amount',
     'remainder' => 'Remaining Amount',
+    'parent' => 'Parent',
+    'required_father_name' => 'Please Enter Parent Name in Arabic',
+    'required_father_name_en' => 'Please Enter Parent Name in English',
 
 ];

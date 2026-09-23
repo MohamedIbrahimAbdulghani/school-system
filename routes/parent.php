@@ -24,5 +24,7 @@ Route::middleware(['auth:parent'])->group(function () {
     Route::get('sons/fess', [SonController::class, 'fees'])->name('sons.fees');
     Route::get('sons/receipt/fess/{id}', [SonController::class, 'receipt'])->name('sons.receipt');
 
+    Route::get('profile', [SonController::class, 'profile'] )->name('parent.profile');
+    Route::put('profile/{id}', [SonController::class, 'update'] )->name('parent.profile.update');
 
 });

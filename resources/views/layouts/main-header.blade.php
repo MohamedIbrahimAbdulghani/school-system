@@ -23,7 +23,8 @@
             <a id="button-toggle" class="inline-block ml-20 button-toggle-nav pull-left"
                 href="javascript:void(0);"><i class="zmdi zmdi-menu ti-align-right"></i></a>
         </li>
-        <li class="nav-item">
+        {{-- search --}}
+        {{-- <li class="nav-item">
             <div class="search">
                 <a class="search-btn not_click" href="javascript:void(0);"></a>
                 <div class="search-box not-click">
@@ -34,7 +35,7 @@
                     </button>
                 </div>
             </div>
-        </li>
+        </li> --}}
     </ul>
 
     <!-- top bar right -->
@@ -44,7 +45,7 @@
         </li>
 
         <!-- Notifications -->
-        <li class="nav-item dropdown no-hover">
+        {{-- <li class="nav-item dropdown no-hover">
             <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
                 <i class="ti-bell"></i>
@@ -67,7 +68,7 @@
                 <a href="#" class="dropdown-item">{{ trans('navbar.order_confirm') }}<small class="float-right text-muted time">2
                         {{ trans('navbar.days') }}</small> </a>
             </div>
-        </li>
+        </li> --}}
 
         <!-- Language Switcher -->
         <style>
@@ -163,7 +164,7 @@
         </li>
 
         <!-- Quick Links -->
-        <li class="nav-item dropdown no-hover">
+        {{-- <li class="nav-item dropdown no-hover">
             <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="true"> <i class="ti-view-grid"></i> </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-big">
@@ -188,7 +189,7 @@
                     </a>
                 </div>
             </div>
-        </li>
+        </li> --}}
 
         <!-- User Profile -->
         <li class="nav-item dropdown mr-30 no-hover">
@@ -214,13 +215,13 @@
                     </div>
                 </div>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>{{ trans('navbar.activity') }}</a>
+                {{-- <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>{{ trans('navbar.activity') }}</a>
                 <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>{{ trans('navbar.messages') }}</a>
                 <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>{{ trans('navbar.profile') }}</a>
                 <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>{{ trans('navbar.projects') }}<span
                         class="badge badge-info">6</span> </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>{{ trans('navbar.settings') }}</a>
+                <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>{{ trans('navbar.settings') }}</a> --}}
                 <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="dropdown-item">

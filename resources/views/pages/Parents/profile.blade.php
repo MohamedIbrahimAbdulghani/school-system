@@ -44,36 +44,36 @@
                     <div class="col-lg-4 border-right">
                         <div class="p-3 text-center">
                             <div class="mb-4">
-                                <img src="{{URL::asset('assets/images/teacher.png')}}" alt="avatar" class="rounded-circle" style="width: 150px; height: 150px; padding: 5px; background-color: #fff; border: 2px solid #e9ecef; box-shadow: 0px 4px 8px rgba(0,0,0,0.05);">
+                                <img src="{{URL::asset('assets/images/parent.png')}}" alt="avatar" class="rounded-circle" style="width: 150px; height: 150px; padding: 5px; background-color: #fff; border: 2px solid #e9ecef; box-shadow: 0px 4px 8px rgba(0,0,0,0.05);">
                             </div>
                             <h4 style="font-family: Cairo; font-weight: bold;" class="mb-2 text-dark">{{$profile->name}}</h4>
                             <p class="mb-2 text-muted"><i class="mr-1 fa fa-envelope-o"></i> {{$profile->email}}</p>
-                            <span class="px-3 py-2 mt-2 badge badge-success" style="font-size: 14px;">{{trans('teacher.teacher')}}</span>
+                            <span class="px-3 py-2 mt-2 badge badge-success" style="font-size: 14px;">{{trans('parent.parent')}}</span>
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="p-3">
                             <h5 class="mb-4 text-dark" style="font-family: Cairo; font-weight: bold; border-bottom: 2px solid #f3f3f3; padding-bottom: 10px;">
-                                <i class="mr-2 fa fa-edit text-primary"></i> {{trans('teacher.Edit')}}
+                                <i class="mr-2 fa fa-edit text-primary"></i> {{trans('parent.Edit')}}
                             </h5>
-                            <form action="{{route('profile.update',$profile->id)}}" method="post">
+                            <form action="{{route('parent.profile.update',$profile->id)}}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3 row align-items-center">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0 text-muted" style="font-weight: 600;">{{trans('teacher.teacher')}} (AR)</h6>
+                                        <h6 class="mb-0 text-muted" style="font-weight: 600;">{{trans('parent.parent')}} (AR)</h6>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" name="name_ar" value="{{ $profile->getTranslation('name', 'ar') }}" class="form-control form-control-lg" style="background-color: #f8f9fa; border: 1px solid #e9ecef;">
+                                        <input type="text" name="father_name" value="{{ $profile->getTranslation('father_name', 'ar') }}" class="form-control form-control-lg" style="background-color: #f8f9fa; border: 1px solid #e9ecef;">
                                     </div>
                                 </div>
                                 <hr class="my-3">
                                 <div class="mb-3 row align-items-center">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0 text-muted" style="font-weight: 600;">{{trans('teacher.teacher')}} (EN)</h6>
+                                        <h6 class="mb-0 text-muted" style="font-weight: 600;">{{trans('parent.parent')}} (EN)</h6>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" name="name_en" value="{{ $profile->getTranslation('name', 'en') }}" class="form-control form-control-lg" style="background-color: #f8f9fa; border: 1px solid #e9ecef;">
+                                        <input type="text" name="father_name_en" value="{{ $profile->getTranslation('father_name', 'en') }}" class="form-control form-control-lg" style="background-color: #f8f9fa; border: 1px solid #e9ecef;">
                                     </div>
                                 </div>
                                 <hr class="my-3">
@@ -92,7 +92,7 @@
                                 <hr class="my-3">
                                 <div class="mt-4 text-right">
                                     <button type="submit" class="px-5 shadow-sm btn btn-success btn-lg" style="font-family: Cairo; font-weight: bold;">
-                                        <i class="mr-2 fa fa-save"></i> {{trans('teacher.Edit')}}
+                                        <i class="mr-2 fa fa-save"></i> {{trans('parent.Edit')}}
                                     </button>
                                 </div>
                             </form>

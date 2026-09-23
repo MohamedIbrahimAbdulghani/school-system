@@ -28,7 +28,7 @@
 
                     <!-- Profile-->
                     <li>
-                        <a href="{{route('profile')}}"><i class="fas fa-id-card-alt"></i><span  class="right-nav-text">{{ trans('teacher.profile') }}</span></a>
+                        <a href="{{route('parent.profile')}}"><i class="fas fa-id-card-alt"></i><span  class="right-nav-text">{{ trans('teacher.profile') }}</span></a>
                     </li>
                 </ul>
             </div>

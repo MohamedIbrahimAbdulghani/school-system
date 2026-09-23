@@ -28,7 +28,7 @@
                                 class="right-nav-text">{{trans('quizzes.quizzes_list')}}</span></a>
                     </li>
 
-                    
+
                     <!-- Online Classes-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
@@ -46,7 +46,6 @@
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#students-menu"><i class="fas fa-chalkboard"></i>{{trans('teacher.reports')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
                         <ul id="students-menu" class="collapse">
                             <li> <a href="{{route('attendance.report')}}">{{trans('teacher.report_attendances')}}</a></li>
-                            <li> <a href="{{route('attendance.quizze')}}">{{trans('teacher.report_quizzs')}}</a></li>
                         </ul>
                     </li>
 

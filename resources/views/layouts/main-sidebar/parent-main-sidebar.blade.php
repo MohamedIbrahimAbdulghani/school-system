@@ -23,7 +23,7 @@
 
                     <!-- Financial Report -->
                     <li>
-                        <a href="{{ route('student_exams.index') }}"><i class="fa-solid fa-money-bill-trend-up"></i><span  class="right-nav-text">{{ trans('parent.financial_report') }}</span></a>
+                        <a href="{{ route('sons.fees') }}"><i class="fa-solid fa-money-bill-trend-up"></i><span  class="right-nav-text">{{ trans('parent.financial_report') }}</span></a>
                     </li>
 
                     <!-- Profile-->

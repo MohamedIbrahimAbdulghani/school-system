@@ -48,4 +48,8 @@ class Student extends Authenticatable
     public function attendance() {
         return $this->hasMany(Attendance::class, 'student_id');
     }
+    public function feeInvoices()
+    {
+        return $this->hasMany(FeeInvoice::class);
+    }
 }

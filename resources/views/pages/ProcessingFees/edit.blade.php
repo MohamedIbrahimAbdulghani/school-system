@@ -60,7 +60,7 @@
                             @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">{{ trans('section.Update') }} </button>
+                    <button type="submit" class="mt-3 btn btn-primary">{{ trans('section.Update') }} </button>
                 </form>
             </div>
         </div>

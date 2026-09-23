@@ -64,7 +64,7 @@ return [
     'Warning_payment_vouchers_Processing'=> 'هل انت متاكد من حذف هذه الرسوم ',
     'delete_Warning_payment_vouchers_Processing'=>'حذف سندات الدفع',
     'close_payment_vouchers_Processing'=>'اغلاق',
-    
+
 
     'required_ar'=>'يرجي ادخال اسم القسم باللغة العربية',
     'required_en'=>'يرجي ادخال اسم القسم باللغة الانجليزية',
@@ -96,4 +96,5 @@ return [
     'required_description' => 'البيان مطلوب.',
     'description_max' => 'يجب ألا يزيد البيان عن 255 حرفًا.',
     'uniform_fees' => 'رسوم الزي المدرسي',
+    'no_receipt' => 'لا يوجد مدفوعات لهذا الطالب',
 ];

@@ -95,4 +95,5 @@ return [
     'required_description' => 'The statement field is required.',
     'description_max' => 'The statement may not be greater than 255 characters.',
     'uniform_fees' => 'Uniform Fees',
+    'no_receipt' => 'There are no payments for this student ',
 ];

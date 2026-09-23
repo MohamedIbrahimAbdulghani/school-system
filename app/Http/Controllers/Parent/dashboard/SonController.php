@@ -8,6 +8,10 @@ use App\Models\Attendance;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Degree;
+use App\Models\Fee;
+use App\Models\FeeInvoice;
+use App\Models\ReceiptStudent;
+use App\Models\StudentAccount;
 use Illuminate\Support\Facades\DB;
 
 class SonController extends Controller
@@ -67,5 +71,52 @@ class SonController extends Controller
         return view( 'pages.Parents.attendance.index', compact('Students', 'students') );
     }
 
+    public function fees() {
+        $students_ids = Student::where('parent_id', auth('parent')->user()->id)->pluck('id');
+        $fee_invoices = FeeInvoice::whereIn('student_id', $students_ids)
+        ->with(['student', 'fee', 'grade', 'classroom'])
+        ->orderBy('student_id')
+        ->orderBy('id')
+        ->get()
+        ->unique('student_id');
+
+
+        $debit = StudentAccount::whereIn('student_id', $students_ids)
+        ->selectRaw('student_id, SUM(debit) as debit')
+        ->groupBy('student_id')
+        ->pluck('debit', 'student_id');
+
+        $balance = StudentAccount::whereIn('student_id', $students_ids)
+            ->selectRaw('
+                student_id,
+                SUM(debit) as debit,
+                SUM(credit) as credit,
+                SUM(debit) - SUM(credit) as balance
+            ')
+            ->groupBy('student_id')
+            ->get()
+            ->keyBy('student_id');
+
+
+
+        return view('pages.Parents.fees.index', compact('students_ids', 'fee_invoices', 'debit', 'balance'));
+    }
+
+    public function receipt($id) {
+        $student = Student::find($id);
+        if (!$student || $student->parent_id != auth('parent')->user()->id) {
+            toastr()->error(trans('parent.error_id'));
+            return redirect()->route('sons.fees');
+        }
+
+        $receipt_students = ReceiptStudent::where('student_id', $id)->get();
+        if($receipt_students->isEmpty()) {
+            toastr()->error(trans('fees.no_receipt'));
+            return redirect()->route('sons.fees');
+        }
+
+        return view('pages.Parents.receipt.index', compact('receipt_students'));
+
+    }
 
 }

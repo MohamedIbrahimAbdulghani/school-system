@@ -74,7 +74,7 @@
                             @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">{{ trans('classrooms.submit') }} </button>
+                    <button type="submit" class="mt-3 btn btn-success">{{ trans('classrooms.submit') }} </button>
                 </form>
             </div>
         </div>

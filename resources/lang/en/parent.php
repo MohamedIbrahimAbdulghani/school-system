@@ -76,6 +76,10 @@ return [
     'no_sons_registered' => 'No Sons Registered',
     'grade_not_specified' => 'Grade Not Specified',
     'show_sons_results' => 'Show Sons Result',
-    'no_result' => 'Not Found Quizzes For This Son'
+    'no_result' => 'Not Found Quizzes For This Son',
+    'son_name' => 'Son Name',
+    'error_id' => 'Found Error In Student Code',
+    'amount' => 'Total amount',
+    'remainder' => 'Remaining Amount',
 
 ];

@@ -29,7 +29,7 @@ class ProfileController extends Controller
                 ]);
             }
             toastr()->success(trans('messages.update'));
-            return redirect()->route('profile.index');
+            return redirect()->route('student.profile');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

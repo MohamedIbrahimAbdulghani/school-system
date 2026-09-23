@@ -56,7 +56,7 @@
                             <h5 class="mb-4 text-dark" style="font-family: Cairo; font-weight: bold; border-bottom: 2px solid #f3f3f3; padding-bottom: 10px;">
                                 <i class="mr-2 fa fa-edit text-primary"></i> {{trans('student.Edit')}}
                             </h5>
-                            <form action="{{route('profile_student.update',$profile->id)}}" method="POST">
+                            <form action="{{route('student.profile.update',$profile->id)}}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3 row align-items-center">
@@ -93,9 +93,6 @@
                                 </div>
                                 <hr class="my-3">
                                 <div class="mt-4 text-right">
-                                    {{-- <button type="submit" class="px-5 shadow-sm btn btn-success btn-lg" style="font-family: Cairo; font-weight: bold;">
-                                        <i class="mr-2 fa fa-save"></i> {{trans('student.Edit')}}
-                                    </button> --}}
                                     <button type="submit" class="px-5 shadow-sm btn btn-success btn-lg" style="font-family: Cairo; font-weight: bold;"><i class="mr-2 fa fa-save"></i> {{trans('student.Edit')}}</button>
                                 </div>
                             </form>

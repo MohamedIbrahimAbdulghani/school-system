@@ -17,6 +17,6 @@ Route::middleware(['auth:student'])->group(function () {
 
     Route::resource('student_exams', ExamController::class);
 
-    Route::get('profile', [ProfileController::class, "index"])->name('profile');
-    Route::put('profile_student/{id}', [ProfileController::class, 'update'] )->name('profile_student.update');
+    Route::get('student/profile', [ProfileController::class, 'index'])->name('student.profile');
+    Route::put('student/profile/{id}', [ProfileController::class, 'update'] )->name('student.profile.update');
 });
